@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+
+        <class>com.example.bd.Entity.Cliente</class>
+        <class>com.example.bd.Entity.Codpostais</class>
+        <class>com.example.bd.Entity.Colaborador</class>
+        <class>com.example.bd.Entity.Encomendafornecedor</class>
+        <class>com.example.bd.Entity.Estado</class>
+        <class>com.example.bd.Entity.Estadofatura</class>
+        <class>com.example.bd.Entity.Fatura</class>
+        <class>com.example.bd.Entity.Fornecedor</class>
+        <class>com.example.bd.Entity.Linhaencomendafornecedor</class>
+        <class>com.example.bd.Entity.Linhafatura</class>
+        <class>com.example.bd.Entity.Moradaentrega</class>
+        <class>com.example.bd.Entity.Produto</class>
+        <class>com.example.bd.Entity.Tipocliente</class>
+        <class>com.example.bd.Entity.Tipoproduto</class>
+        <class>com.example.bd.CRUD.ClienteCRUD</class>
+        <class>com.example.bd.Entity.Cliente</class>
+        <class>com.example.bd.Entity.Encomendafornecedor</class>
+        <class>com.example.bd.Entity.Estado</class>
+        <class>com.example.bd.Entity.Tipocolaborador</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/proj2"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="123456"/>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+        </properties>
+    </persistence-unit>
+</persistence>
