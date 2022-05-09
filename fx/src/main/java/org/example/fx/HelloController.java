@@ -10,6 +10,7 @@ public class HelloController {
     private Label welcomeText;
     private Button BtnInicio;
 
+
     @FXML
     protected void onHelloButtonClick() {
         System.out.println(ClienteCRUD.findClientesTodos());
