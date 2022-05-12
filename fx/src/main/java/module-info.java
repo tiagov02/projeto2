@@ -1,6 +1,3 @@
-/**
- *
- */
 module org.example.fx {
     requires javafx.controls;
     requires javafx.fxml;

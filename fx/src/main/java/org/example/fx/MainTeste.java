@@ -7,11 +7,11 @@ import com.example.bd.Entity.Colaborador;
 import java.math.BigDecimal;
 
 public class MainTeste {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         /*Colaborador c=new Colaborador();
         c.setCodpostal("4444-444");
-        c.setIdtipo(1);
-        c.setPassword(Encriptacao.encript("1234567"));
+        c.setPassword(Encriptacao.encript("
+        c.setIdtipo(1);1234567"));
         c.setNome("Nome do Colab");
         c.setNumporta(1);
         c.setRua("Rua ");
@@ -19,8 +19,8 @@ public class MainTeste {
         c.setSalario(new BigDecimal(555555));
         c.setUsername("nossocolab@nossaempresa.pt");
         ColaboradorCRUD.createColaborador(c);*/
-        Colaborador c=ColaboradorCRUD.findColaboradores(8);
+        /*Colaborador c=ColaboradorCRUD.findColaboradores(8);
         System.out.println("ID DO COLABORADOR: "+c.getUsername());
-        System.out.println("Password do colaborador: "+Encriptacao.decrypt(c.getPassword()));
+        System.out.println("Password do colaborador: "+Encriptacao.decrypt(c.getPassword()));*/
     }
 }
