@@ -8,19 +8,19 @@ import java.math.BigDecimal;
 
 public class MainTeste {
     public static void main(String[] args) throws Exception {
-        Colaborador c=new Colaborador();
+        /*Colaborador c=new Colaborador();
         c.setCodpostal("4444-444");
         c.setIdtipo(1);
+        c.setPassword(Encriptacao.encript("1234567"));
         c.setNome("Nome do Colab");
-        //c.setUsername(Encriptacao.enc);
         c.setNumporta(1);
         c.setRua("Rua ");
         c.setTelefone("5555555");
         c.setSalario(new BigDecimal(555555));
         c.setUsername("nossocolab@nossaempresa.pt");
-        ColaboradorCRUD.createColaborador(c);
-        /*Colaborador c=ColaboradorCRUD.findColaboradores(2);
+        ColaboradorCRUD.createColaborador(c);*/
+        Colaborador c=ColaboradorCRUD.findColaboradores(8);
         System.out.println("ID DO COLABORADOR: "+c.getUsername());
-        System.out.println("Password do colaborador: "+c.getPassword());*/
+        System.out.println("Password do colaborador: "+Encriptacao.decrypt(c.getPassword()));
     }
 }
