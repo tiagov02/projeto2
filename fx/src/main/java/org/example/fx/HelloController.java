@@ -16,5 +16,6 @@ public class HelloController {
         System.out.println(ClienteCRUD.findClientesTodos());
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+    //
 
 }

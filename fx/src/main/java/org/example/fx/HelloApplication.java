@@ -47,6 +47,7 @@ public class HelloApplication extends Application {
             dialogVbox.getChildren().add(new Text(ex.getMessage()));
             Scene dialogScene = new Scene(dialogVbox, 300, 200);
         }
+        //
     }
 
     public static void main(String[] args) {
