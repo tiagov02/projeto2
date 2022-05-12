@@ -9,7 +9,7 @@ import org.example.fx.SingleInstance.UserLogado;
 import java.util.Arrays;
 
 public class loginApplication {
-   public Colaborador verifyLogin(String username,byte[] pwd) throws UserPwdErradoaxception {
+   public static Colaborador verifyLogin(String username,byte[] pwd) throws UserPwdErradoaxception {
       for(Colaborador c: ColaboradorCRUD.findTodosColaboradores()){
          if(c.getUsername().equals(username) && c.getPassword().equals(Arrays.toString(pwd))){
             UserLogado.getInstance().setCurrentUser(c);

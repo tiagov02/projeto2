@@ -1,6 +1,7 @@
 package org.example.fx;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,8 +17,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Loja Produtos Biológicos ");
         stage.setScene(scene);
         stage.show();
-        loginApplication l1 = new loginApplication();
-        l1.verifyLogin()
+        //loginApplication.verifyLogin()
     }
 
     public static void main(String[] args) {
