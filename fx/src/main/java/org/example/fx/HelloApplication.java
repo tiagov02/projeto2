@@ -11,6 +11,7 @@ import javafx.scene.control.PopupControl;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import org.example.fx.Exceptions.UserPwdErradoaxception;
@@ -43,9 +44,7 @@ public class HelloApplication extends Application {
             Colaborador c= UserMethods.verifyLogin(user,pwd);
         }
         catch (UserPwdErradoaxception ex){
-            VBox dialogVbox = new VBox(20);
-            dialogVbox.getChildren().add(new Text(ex.getMessage()));
-            Scene dialogScene = new Scene(dialogVbox, 300, 200);
+            //Apresentação da mensagem
         }
         //
     }
