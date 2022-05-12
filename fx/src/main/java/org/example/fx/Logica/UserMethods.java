@@ -15,7 +15,6 @@ public class UserMethods {
             UserLogado.getInstance().setCurrentUser(c);
             return c;
          }
-         //
       }
       throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
    }

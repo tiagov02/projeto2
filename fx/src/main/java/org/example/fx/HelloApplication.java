@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
         //loginApplication.verifyLogin()
     }
 
-    public void ClicaLogin() throws Exception {
+    public void ClicaLogin(javafx.event.ActionEvent event) throws Exception {
         String pwd=lb_pwd.getText();
         String user= Encriptacao.encripta(lb_user.getText());
         try{
