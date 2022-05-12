@@ -1,6 +1,7 @@
 package org.example.fx;
 
-import com.example.bd.Encrypt.Encriptacao;
+import com.example.bd.CRUD.ColaboradorCRUD;
+import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Colaborador;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -16,9 +17,11 @@ import javafx.stage.Modality;
 import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import org.example.fx.Exceptions.UserPwdErradoaxception;
+import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.Logica.UserMethods;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class HelloApplication extends Application {
     @FXML
@@ -40,17 +43,17 @@ public class HelloApplication extends Application {
 
     public void ClicaLogin(javafx.event.ActionEvent event) throws Exception {
         String pwd=lb_pwd.getText();
-        String user= Encriptacao.encripta(lb_user.getText());
+        //String user= Encriptacao.encripta(lb_user.getText());
         try{
-            Colaborador c= UserMethods.verifyLogin(user,pwd);
-            //System.out.println("o user existe: "+c.getUsername());
+            //Colaborador c= UserMethods.verifyLogin(user,pwd);
+            TrocaPaineis.changePanel(event,"menuPrincipalGerente.fxml","Menu do Gerente",ColaboradorController.class);
         }
-        catch (UserPwdErradoaxception ex){
+        catch (Exception ex){
             //Apresentação da mensagem
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         launch();
     }
 }

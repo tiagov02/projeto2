@@ -1,54 +1,34 @@
 package com.example.bd.Encrypt;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.lang.reflect.Array;
-import java.security.MessageDigest;
-import java.util.Arrays;
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import java.security.*;
+import java.util.*;
 
-public class Encriptacao {
-    public static String encripta(String message) throws Exception {
-        final MessageDigest md = MessageDigest.getInstance("md5");
-        final byte[] digestOfPassword = md.digest("HG58YZ3CR9"
-                .getBytes("utf-8"));
-        final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-        for (int j = 0, k = 16; j < 8;) {
-            keyBytes[k++] = keyBytes[j++];
-        }
+public class Encriptacao{
+    private static String  ENCRYPT_KEY="clave-compartida-no-reveloar-nunca";
 
-        final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-        final IvParameterSpec iv = new IvParameterSpec(new byte[8]);
-        final Cipher cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, key, iv);
+    private static String encript(String text) throws Exception {
+        Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
 
-        final byte[] plainTextBytes = message.getBytes("utf-8");
-        final byte[] cipherText = cipher.doFinal(plainTextBytes);
-        // final String encodedCipherText = new sun.misc.BASE64Encoder()
-        // .encode(cipherText);
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, aesKey);
 
-        return Arrays.toString(cipherText);
+        byte[] encrypted = cipher.doFinal(text.getBytes());
+
+        return Base64.getEncoder().encodeToString(encrypted);
     }
 
-    public static String desencripta(byte[] message) throws Exception {
-        final MessageDigest md = MessageDigest.getInstance("md5");
-        final byte[] digestOfPassword = md.digest("HG58YZ3CR9"
-                .getBytes("utf-8"));
-        final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-        for (int j = 0, k = 16; j < 8;) {
-            keyBytes[k++] = keyBytes[j++];
-        }
+    private static String decrypt(String encrypted) throws Exception {
+        byte[] encryptedBytes=Base64.getDecoder().decode(encrypted.replace("\n", ""));
 
-        final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-        final IvParameterSpec iv = new IvParameterSpec(new byte[8]);
-        final Cipher decipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
-        decipher.init(Cipher.DECRYPT_MODE, key, iv);
+        Key aesKey = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
 
-        // final byte[] encData = new
-        // sun.misc.BASE64Decoder().decodeBuffer(message);
-        final byte[] plainText = decipher.doFinal(message);
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.DECRYPT_MODE, aesKey);
 
-        return new String(plainText, "UTF-8");
+        String decrypted = new String(cipher.doFinal(encryptedBytes));
+
+        return decrypted;
     }
 }
