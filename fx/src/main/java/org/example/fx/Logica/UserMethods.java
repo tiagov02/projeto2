@@ -1,4 +1,4 @@
-package org.example.fx;
+package org.example.fx.Logica;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.Entity.Cliente;
@@ -8,10 +8,10 @@ import org.example.fx.SingleInstance.UserLogado;
 
 import java.util.Arrays;
 
-public class loginApplication {
-   public static Colaborador verifyLogin(String username,byte[] pwd) throws UserPwdErradoaxception {
+public class UserMethods {
+   public static Colaborador verifyLogin(String username,String pwd) throws UserPwdErradoaxception {
       for(Colaborador c: ColaboradorCRUD.findTodosColaboradores()){
-         if(c.getUsername().equals(username) && c.getPassword().equals(Arrays.toString(pwd))){
+         if(c.getUsername().equals(username) && c.getPassword().equals(pwd)){
             UserLogado.getInstance().setCurrentUser(c);
             return c;
          }
