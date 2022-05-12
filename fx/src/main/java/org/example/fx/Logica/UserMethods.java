@@ -6,7 +6,7 @@ import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Colaborador;
 import org.example.fx.Exceptions.RunTimeError;
 import org.example.fx.Exceptions.UserPwdErradoaxception;
-import org.example.fx.SingleInstance.UserLogado;
+import org.example.fx.SingleInstance.UserAtual;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ public class UserMethods {
       for(Colaborador c: ColaboradorCRUD.findTodosColaboradores()){
          try{
             if(c.getUsername().equals(username) && c.getPassword().equals(Encriptacao.encript(pwd))){
-               UserLogado.getInstance().setCurrentUser(c);
+               UserAtual.getInstance().setCurrentUser(c);
                return c;
             }
          }catch (Exception e){
