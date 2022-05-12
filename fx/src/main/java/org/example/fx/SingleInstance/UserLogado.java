@@ -12,6 +12,7 @@ public class UserLogado {
         }
         return singleinstance;
     }
+    //
 
     public Colaborador getCurrentUser() {
         return currentUser;
