@@ -1,5 +1,6 @@
 package org.example.fx;
 
+import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.Colaborador;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -37,18 +38,16 @@ public class HelloApplication extends Application {
         //loginApplication.verifyLogin()
     }
 
-    public void ClicaLogin() {
+    public void ClicaLogin() throws Exception {
         String pwd=lb_pwd.getText();
-        String user=lb_user.getText();
-        //este campo encripta antes de ir para a verificação do login
+        String user= Encriptacao.encripta(lb_user.getText());
         try{
             Colaborador c= UserMethods.verifyLogin(user,pwd);
-            System.out.println("o user existe: "+c.getUsername());
+            //System.out.println("o user existe: "+c.getUsername());
         }
         catch (UserPwdErradoaxception ex){
             //Apresentação da mensagem
         }
-        //
     }
 
     public static void main(String[] args) {
