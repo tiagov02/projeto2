@@ -40,8 +40,10 @@ public class HelloApplication extends Application {
     public void ClicaLogin() {
         String pwd=lb_pwd.getText();
         String user=lb_user.getText();
+        //este campo encripta antes de ir para a verificação do login
         try{
             Colaborador c= UserMethods.verifyLogin(user,pwd);
+            System.out.println("o user existe: "+c.getUsername());
         }
         catch (UserPwdErradoaxception ex){
             //Apresentação da mensagem
