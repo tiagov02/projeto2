@@ -4,11 +4,12 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
 public class Encriptacao {
-    public static byte[] encripta(String message) throws Exception {
+    public static String encripta(String message) throws Exception {
         final MessageDigest md = MessageDigest.getInstance("md5");
         final byte[] digestOfPassword = md.digest("HG58YZ3CR9"
                 .getBytes("utf-8"));
@@ -27,7 +28,7 @@ public class Encriptacao {
         // final String encodedCipherText = new sun.misc.BASE64Encoder()
         // .encode(cipherText);
 
-        return cipherText;
+        return Arrays.toString(cipherText);
     }
 
     public static String desencripta(byte[] message) throws Exception {
