@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
         //loginApplication.verifyLogin()
     }
 
-    public void ClicaLogin(javafx.event.ActionEvent event) throws Exception {
+    public void ClicaLogin(javafx.event.ActionEvent event)  {
         String pwd=lb_pwd.getText();
         String user= lb_user.getText();
         try{
@@ -53,7 +53,7 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         launch();
     }
 }
