@@ -43,11 +43,19 @@ public class HelloApplication extends Application {
         String user= lb_user.getText();
         try{
             Colaborador c= UserMethods.verifyLogin(user,pwd);
-            if(c.getIdtipo()==1){
+            if(c.getIdtipo()==2){
                 TrocaPaineis.changePanel(event,"menuPrincipalGerente.fxml","Menu do Gerente",ColaboradorController.class);
             }
             else{
-                TrocaPaineis.changePanel(event,"menuPrincipalColaborador.fxml","Menu do Colaborador",ColaboradorController.class);
+                if(c.getIdtipo()==1){
+                    TrocaPaineis.changePanel(event,"menuPrincipalColaborador.fxml","Menu do Colaborador",ColaboradorController.class);
+                }
+                else{
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText("Erro! Houve um erro no seu utilizador, pf, contacte o gerente!");
+                    dialogoAviso.showAndWait();
+                }
             }
 
         }
