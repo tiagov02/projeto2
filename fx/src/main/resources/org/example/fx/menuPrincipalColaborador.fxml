@@ -9,9 +9,9 @@
       <VBox prefHeight="537.0" prefWidth="224.0" style="-fx-background-color: rgb(102,51,0);">
          <children>
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="WHITE" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#f2f2f2" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="EFETUAR VENDA DE PRODUTOS" textFill="#fffefe" />
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ADICONAR PRODUTO LISTA" textFill="#fffefe" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="FAZER ENCOMENDA DE STOCK" textFill="#fffefe" />
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#fffefe" />
          </children>
       </VBox>

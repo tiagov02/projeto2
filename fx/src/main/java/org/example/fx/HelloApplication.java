@@ -51,7 +51,6 @@ public class HelloApplication extends Application {
             dialogoAviso.setHeaderText(ex.getMessage());
             dialogoAviso.showAndWait();
         }
-        //
     }
 
     public static void main(String[] args) throws Exception {
