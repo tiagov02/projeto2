@@ -9,17 +9,16 @@
    <children>
       <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+            <Button id="botaoPaginaPrincipal" fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ADICIONAR PRODUTO LISTA" textFill="#fcfcfc" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#f5f5f5" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE PRODUTOS" textFill="#fcfafa" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
+            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb" />
+            <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#f5f5f5" />
+            <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesProdutos" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE PRODUTOS" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
          </children></VBox>
    </children>
 </AnchorPane>
