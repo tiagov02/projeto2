@@ -49,7 +49,7 @@ public class HelloApplication extends Application {
             }
             else{
                 if(c.getIdtipo()==1){
-                    TrocaPaineis.changePanel(event,"ColaboradorMenuPrincipal.fxml","Menu do Colaborador",ColaboradorController.class);
+                    TrocaPaineis.changePanel(event,"ColaboradorMenuPrincipal.fxml","Menu do Colaborador",GerenteController.class);
                 }
                 else{
                     Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
