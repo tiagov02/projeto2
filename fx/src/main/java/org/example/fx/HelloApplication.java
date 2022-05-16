@@ -19,6 +19,7 @@ import org.example.fx.Logica.UserMethods;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URL;
 
 public class HelloApplication extends Application {
     @FXML
@@ -44,26 +45,27 @@ public class HelloApplication extends Application {
         try{
             Colaborador c= UserMethods.verifyLogin(user,pwd);
             if(c.getIdtipo()==2){
-                TrocaPaineis.changePanel(event,"menuPrincipalGerente.fxml","Menu do Gerente",ColaboradorController.class);
+                TrocaPaineis.changePanel(event,"/projeto2/resources/org.example.fx/Gerente/menuPrincipalGerente.fxml","Menu do Gerente",ColaboradorController.class);
             }
             else{
                 if(c.getIdtipo()==1){
-                    TrocaPaineis.changePanel(event,"menuPrincipalColaborador.fxml","Menu do Colaborador",ColaboradorController.class);
+                    TrocaPaineis.changePanel(event,"/projeto2/resources/org.example.fx/Gerente/menuPrincipalColaborador.fxml","Menu do Colaborador",ColaboradorController.class);
                 }
                 else{
                     Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                     dialogoAviso.setTitle("ERRO!!");
-                    dialogoAviso.setHeaderText("Erro! Houve um erro no seu utilizador, pf, contacte o gerente!");
+                    dialogoAviso.setHeaderText("Erro! Houve um erro no seu utilizador, pf contacte o gerente!");
                     dialogoAviso.showAndWait();
                 }
             }
 
         }
         catch (Exception ex){
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            /*Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText(ex.getMessage());
-            dialogoAviso.showAndWait();
+            dialogoAviso.showAndWait();*/
+            ex.printStackTrace();
         }
     }
 
