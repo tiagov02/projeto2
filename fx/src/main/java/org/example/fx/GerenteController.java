@@ -69,7 +69,7 @@ public class GerenteController{
     }
 
     public void ListaEncomendas(javafx.event.ActionEvent event){
-        fornecedorField.setCellValueFactory(new PropertyValueFactory<>("fornecedorByIdfornecedor.getNome()"));
+        fornecedorField.setCellValueFactory(new PropertyValueFactory<>("nome"));
         //estadoField.setCellValueFactory(new PropertyValueFactory<>("estado"));
         moradaField.setCellValueFactory(new PropertyValueFactory<>("morada"));
         telefoneField.setCellValueFactory(new PropertyValueFactory<>("telefone"));
