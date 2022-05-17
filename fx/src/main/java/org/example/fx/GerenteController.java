@@ -71,10 +71,13 @@ public class GerenteController{
     public void ListaEncomendas(javafx.event.ActionEvent event){
         fornecedorField.setCellValueFactory(new PropertyValueFactory<>("fornecedorByIdfornecedor.getNome()"));
         //estadoField.setCellValueFactory(new PropertyValueFactory<>("estado"));
-        moradaField.setCellValueFactory(new PropertyValueFactory<>("fornecedorByIdfornecedor.getRua()"));
-        telefoneField.setCellValueFactory(new PropertyValueFactory<>("fornecedorByIdfornecedor.getTelefone()"));
+        moradaField.setCellValueFactory(new PropertyValueFactory<>("morada"));
+        telefoneField.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         valorTotalField.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
-        table.getItems().setAll(EncomendaFornecedorCRUD.findTodasEncomendasFornecedores());
+        //table.getItems().setAll(EncomendaFornecedorCRUD.findTodasEncomendasFornecedores());
+        for(Encomendafornecedor e:EncomendaFornecedorCRUD.findTodasEncomendasFornecedores()){
+            table.getItems().add(e);
+        }
     }
 
 }
