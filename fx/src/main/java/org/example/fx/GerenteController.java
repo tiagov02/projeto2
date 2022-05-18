@@ -64,6 +64,28 @@ public class GerenteController{
     private TableView<Encomendafornecedor> table;
 
 
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Pagina Principal", GerenteController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteListaCompras.fxml", "Lista Compras", GerenteController.class);
+    }
+
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteAtualizaStocks.fxml", "Atualiza Stocks", GerenteController.class);
+    }
+
+    public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Definicoes Colaborador", GerenteController.class);
+    }
+    public void clicaDefinicoesProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesProdutos.fxml", "Definicoes Produtos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Definicoes Clientes", GerenteController.class);
+    }
 
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
