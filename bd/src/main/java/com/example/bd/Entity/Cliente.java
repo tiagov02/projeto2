@@ -18,6 +18,7 @@ public class Cliente {
     private Codpostais codpostaisByCodpostal;
     private Collection<Fatura> faturasByIdcliente;
 
+
     @Id
     @SequenceGenerator(name="cliente_idcliente_seq", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cliente_idcliente_seq")
