@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ColaboradorController {
+public class ColaboradorController{
     @FXML
     private Button btn_atualizaStocks;
 
@@ -40,13 +40,14 @@ public class ColaboradorController {
 
 
     public void atualiza(javafx.event.ActionEvent event) {
+
     }
 
     public String[] atualiza5MelhoresClientes(){
         String[] melhoresCli=new String[5];
         for(Cliente cli: ClienteCRUD.findClientesTodos()){
             for(Fatura f: cli.getFaturasByIdcliente()){
-//inacabada
+                //inacabada
             }
         }
         return melhoresCli;
