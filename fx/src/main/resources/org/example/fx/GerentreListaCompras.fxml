@@ -8,11 +8,11 @@
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
-                <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
                     <font>
                         <Font size="13.0" />
                     </font></Button>
-                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb" />
+                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
