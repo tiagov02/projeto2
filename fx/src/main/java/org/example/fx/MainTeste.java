@@ -1,27 +1,25 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.CodPostaisCRUD;
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.Encrypt.Encriptacao;
+import com.example.bd.Entity.Codpostais;
 import com.example.bd.Entity.Colaborador;
 
 import java.math.BigDecimal;
 
 public class MainTeste {
     public static void main(String[] args) throws Exception {
-        Colaborador c=new Colaborador();
-        c.setCodpostal("4444-444");
-        c.setPassword(Encriptacao.encript("123"));
-        c.setIdtipo(2);
-        c.setNome("Nome do Colab");
-        c.setNumporta(1);
-        c.setRua("Rua ");
-        c.setTelefone("5555555");
-        c.setSalario(new BigDecimal(555555));
-        c.setUsername("gerente");
-        ColaboradorCRUD.createColaborador(c);
-
-        /*Colaborador c=ColaboradorCRUD.findColaboradores(8);
-        System.out.println("ID DO COLABORADOR: "+c.getUsername());
-        System.out.println("Password do colaborador: "+Encriptacao.decrypt(c.getPassword()));*/
+        Colaborador c1 = new Colaborador();
+        c1.setCodpostal("4444-444");
+        c1.setNome("gerente");
+        c1.setTelefone("999999999");
+        c1.setSalario(new BigDecimal(1000.5));
+        c1.setNumporta(123);
+        c1.setRua("gerente");
+        c1.setPassword("gerente");
+        c1.setUsername("gerente");
+        c1.setIdtipo(2);
+        ColaboradorCRUD.createColaborador(c1);
     }
 }
