@@ -1,6 +1,7 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.EncomendaFornecedorCRUD;
+import com.example.bd.CRUD.FornecedorCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Encomendafornecedor;
 import com.example.bd.Entity.Fornecedor;
@@ -46,22 +47,22 @@ public class GerenteController{
     private Button btn_procura;
 
     @FXML
-    private TableColumn<Encomendafornecedor, String> fornecedorField;
+    private TableColumn<Fornecedor, String> fornecedorField;
 
     @FXML
-    private TableColumn<Encomendafornecedor, String> estadoField;
+    private TableColumn<Fornecedor, String> estadoField;
 
     @FXML
     private TableColumn<Encomendafornecedor, String> moradaField;
 
     @FXML
-    private TableColumn<Encomendafornecedor, String> telefoneField;
+    private TableColumn<Fornecedor, String> telefoneField;
 
     @FXML
-    private TableColumn<Encomendafornecedor, BigDecimal> valorTotalField;
+    private TableColumn<Fornecedor, BigDecimal> valorTotalField;
 
     @FXML
-    private TableView<Encomendafornecedor> table;
+    private TableView<Fornecedor> table;
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
@@ -93,13 +94,13 @@ public class GerenteController{
     }
 
     public void ListaEncomendas(javafx.event.ActionEvent event){
-        fornecedorField.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        //fornecedorField.setCellValueFactory(new PropertyValueFactory<>("getFornecedorByIdFornecedor().getNome"));
         //estadoField.setCellValueFactory(new PropertyValueFactory<>("estado"));
         moradaField.setCellValueFactory(new PropertyValueFactory<>("morada"));
         telefoneField.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        valorTotalField.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
+        //valorTotalField.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         //table.getItems().setAll(EncomendaFornecedorCRUD.findTodasEncomendasFornecedores());
-        for(Encomendafornecedor e:EncomendaFornecedorCRUD.findTodasEncomendasFornecedores()){
+        for(Fornecedor e: FornecedorCRUD.findFornecedores()){
             table.getItems().add(e);
         }
     }
