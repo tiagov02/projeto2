@@ -12,14 +12,15 @@ public class MainTeste {
     public static void main(String[] args) throws Exception {
         Colaborador c1 = new Colaborador();
         c1.setCodpostal("4444-444");
-        c1.setNome("gerente");
+        c1.setNome("colaborador");
         c1.setTelefone("999999999");
-        c1.setSalario(new BigDecimal(1000.5));
-        c1.setNumporta(123);
-        c1.setRua("gerente");
-        c1.setPassword("gerente");
-        c1.setUsername("gerente");
-        c1.setIdtipo(2);
+        c1.setSalario(new BigDecimal(1500.5));
+        c1.setNumporta(456);
+        c1.setRua("colaborador");
+        c1.setPassword(Encriptacao.encript("colaborador"));
+        c1.setUsername("colaborador");
+        c1.setIdtipo(1);
         ColaboradorCRUD.createColaborador(c1);
+
     }
 }
