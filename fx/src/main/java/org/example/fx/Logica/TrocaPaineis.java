@@ -18,7 +18,7 @@ public class TrocaPaineis {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(classe.getResource(name_fxml)));
         Scene scene = new Scene(parent, 755, 537);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //stage.getIcons().add(new Image(new Image("logotipo.png")));
+        //stage.getIcons().add(new Image("resources/images/logotipo.jpg", true));
         stage.setScene(scene);
         stage.setResizable(true);
         stage.setTitle(name_view);
