@@ -14,13 +14,13 @@
    <children>
       <VBox prefHeight="537.0" prefWidth="224.0" style="-fx-background-color: rgb(102,51,0);">
          <children>
-            <Button fx:id="btn_PagPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="WHITE">
+            <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button fx:id="btn_listaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffefe" />
-            <Button fx:id="btn_listarEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-            <Button fx:id="btn_atualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#atualiza" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#fffefe" />
+            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffefe" />
+            <Button fx:id="botaoListarEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStocks" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#fffefe" />
          </children>
       </VBox>
       <Pane layoutX="242.0" layoutY="68.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">

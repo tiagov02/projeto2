@@ -24,7 +24,16 @@ import java.util.ResourceBundle;
 
 public class ColaboradorController{
     @FXML
-    private Button btn_atualizaStocks;
+    private Button botaoPaginaPrincipal;
+
+    @FXML
+    private Button botaoListaCompras;
+
+    @FXML
+    private Button botaoListarEncomendas;
+
+    @FXML
+    private Button botaoAtualizaStocks;
 
     @FXML
     private Text txt_acumuladoAnual;
@@ -85,5 +94,22 @@ public class ColaboradorController{
             }
         }
         return melhoresCli;
+    }
+
+
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+    }
+
+    public void clicaListaEncomendas(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+    }
+
+    public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
     }
 }

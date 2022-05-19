@@ -14,10 +14,10 @@
     <children>
         <VBox prefHeight="537.0" prefWidth="224.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="WHITE" />
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffefe" />
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#fffefe">
+                <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="WHITE" />
+                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffefe" />
+                <Button fx:id="botaoListarEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+                <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStocks" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR STOCK PRODUTOS" textFill="#fffefe">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
