@@ -70,7 +70,7 @@ public class GerenteController{
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "GerenteListaCompras.fxml", "Lista Compras", GerenteController.class);
+        TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Lista Compras", GerenteController.class);
     }
 
     public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{

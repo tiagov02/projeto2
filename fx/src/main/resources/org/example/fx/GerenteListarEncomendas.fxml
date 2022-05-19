@@ -14,7 +14,7 @@
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false"  onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+                <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false"  onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
                     <font>
                         <Font size="13.0" />
                     </font></Button>
