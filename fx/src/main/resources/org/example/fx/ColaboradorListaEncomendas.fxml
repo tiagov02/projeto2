@@ -19,8 +19,8 @@
         </VBox>
       <TableView fx:id="table" layoutX="224.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
          <columns>
-            <TableColumn prefWidth="38.0" text="#" />
-            <TableColumn fx:id="fornecedorField" prefWidth="86.0" text="Cliente" />
+            <TableColumn fx:id="NumFatura" prefWidth="38.0" text="#" />
+            <TableColumn fx:id="clienteTable" prefWidth="86.0" text="Cliente" />
             <TableColumn fx:id="moradaField" prefWidth="186.0" text="Morada" />
             <TableColumn fx:id="telefoneField" text="Telefone" />
             <TableColumn fx:id="valorTotalField" prefWidth="75.0" text="Valor Total" />
