@@ -1,10 +1,10 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.EncomendaFornecedorCRUD;
 import com.example.bd.CRUD.FornecedorCRUD;
-import com.example.bd.Entity.Cliente;
-import com.example.bd.Entity.Encomendafornecedor;
-import com.example.bd.Entity.Fornecedor;
+import com.example.bd.Encrypt.Encriptacao;
+import com.example.bd.Entity.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +23,8 @@ import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GerenteController{
     @FXML
@@ -61,8 +63,42 @@ public class GerenteController{
     @FXML
     private TableColumn<Fornecedor, BigDecimal> valorTotalField;
 
+
+/*
+    //LISTAR ENCOMENDAS
     @FXML
-    private TableView<Fornecedor> table;
+    private TableColumn<Fatura, Integer> NumEncomenda;
+    @FXML
+    private TableColumn<Fatura, String> ClienteField;
+    @FXML
+    private TableColumn<Moradaentrega, String> moradaField;
+    @FXML
+    private TableColumn<Cliente, String> telefoneField;
+    @FXML
+    private TableColumn<Fatura, BigDecimal> valorTotalField;
+
+ */
+
+
+
+    @FXML
+    private TableView<Fornecedor> tableClientes;
+    @FXML
+    private TableView<Fornecedor> tableListarEncomendas;
+
+    //DEFINICOES DE COLABORADOR
+    @FXML
+    private TableColumn<Colaborador, Integer> colNumero;
+    @FXML
+    private TableColumn<Colaborador, String> colNome;
+    @FXML
+    private TableColumn<Colaborador, String> colTelefone;
+    @FXML
+    private TableColumn<Colaborador, BigDecimal> colSalario;
+    @FXML
+    private TableColumn<Colaborador, Integer> colEstado;
+
+    public TableView<Colaborador> tableColaborador;
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
@@ -90,11 +126,32 @@ public class GerenteController{
 
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
-        ListaEncomendas(event);
     }
 
-    public void ListaEncomendas(javafx.event.ActionEvent event){
+    public void listaEncomendas(javafx.event.ActionEvent event){
     }
+
+    public void gerenteDefinicoesCliente(List<Cliente> cli){
+        ObservableList<Cliente> clienteObservableList = FXCollections.observableList(cli);
+        TableColumn id = new TableColumn("#");
+        TableColumn nomeCliente = new TableColumn("Nome");
+        TableColumn tipoCliente = new TableColumn("Tipo Cliente");
+        TableColumn telefone = new TableColumn("Telefone");
+        TableColumn morada = new TableColumn("Morada");
+        TableColumn codPostal = new TableColumn("Cod Postal");
+        tableListarEncomendas.getColumns().addAll(id, nomeCliente, tipoCliente, telefone, morada, codPostal);
+
+
+        id.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idcliente"));
+        nomeCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+        tipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idtipocliente"));
+        telefone.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
+        morada.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codpostal"));
+        codPostal.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codpostal"));
+
+        //tableClientes.setItems(clienteObservableList);
+    }
+
 
 
 }

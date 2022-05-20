@@ -24,12 +24,12 @@
             </children></VBox>
       <TableView layoutX="218.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
         <columns>
-            <TableColumn prefWidth="42.0" text="#" />
-          <TableColumn prefWidth="107.0" text="Produto" />
-            <TableColumn prefWidth="91.0" text="TipoProduto" />
-          <TableColumn prefWidth="89.0" text="Qtd Existente" />
-            <TableColumn prefWidth="94.0" text="Qtd a comprar" />
-            <TableColumn prefWidth="112.0" text="Data Adição" />
+            <TableColumn fx:id="colNumero" prefWidth="42.0" text="#" />
+          <TableColumn fx:id="colProduto" prefWidth="107.0" text="Produto" />
+            <TableColumn fx:id="colTipoProduto" prefWidth="91.0" text="TipoProduto" />
+          <TableColumn fx:id="codQtdExistente" prefWidth="89.0" text="Qtd Existente" />
+            <TableColumn fx:id="colQtdComprar" prefWidth="94.0" text="Qtd a comprar" />
+            <TableColumn fx:id="colDataAdicao" prefWidth="112.0" text="Data Adição" />
         </columns>
       </TableView>
       <Button layoutX="623.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
