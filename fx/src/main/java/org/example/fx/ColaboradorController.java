@@ -20,7 +20,8 @@ import org.example.fx.Logica.TrocaPaineis;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.security.KeyStore;
+import java.util.*;
 
 public class ColaboradorController{
     @FXML
@@ -74,7 +75,8 @@ public class ColaboradorController{
      * Mudar para string
      */
 
-    public void atualiza(javafx.event.ActionEvent event) {
+    public void atualiza(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"ColaboradorAtualizaStrocks","Atualização de stocks",ColaboradorController.class);
         tbl_nomeProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tbl_tipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
         tbl_QtdStock.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
@@ -86,15 +88,26 @@ public class ColaboradorController{
         }
     }
 
-    public String[] atualiza5MelhoresClientes(){
-        String[] melhoresCli=new String[5];
+    public Map<Cliente,Float> guardaValorFaturasCli(){
+        Map<Cliente,Float> melhoresCli=new HashMap<>();
+        float valorGastoCli=0;
+        //String[] melhoresCli=new String[5];
         for(Cliente cli: ClienteCRUD.findClientesTodos()){
             for(Fatura f: cli.getFaturasByIdcliente()){
-                //inacabada
+                valorGastoCli+=f.getValorfatura().floatValue();
             }
+            melhoresCli.put(cli,valorGastoCli);
+            valorGastoCli=0;
         }
         return melhoresCli;
     }
+
+    public List<Map.Entry<Cliente,Float>> ordena5MelhoresCli(Map<Cliente,Float> cliValGasto){
+        List<Map.Entry<Cliente,Float>> ordenado=new ArrayList<>(cliValGasto.entrySet());
+        ordenado.sort(Map.Entry.comparingByValue());
+        return ordenado;
+    }
+
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
