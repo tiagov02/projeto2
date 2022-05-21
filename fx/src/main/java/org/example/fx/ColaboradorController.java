@@ -74,7 +74,8 @@ public class ColaboradorController{
      * Mudar para string
      */
 
-    public void atualiza(javafx.event.ActionEvent event) {
+    public void atualiza(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"ColaboradorAtualizaStrocks","Atualização de stocks",ColaboradorController.class);
         tbl_nomeProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tbl_tipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
         tbl_QtdStock.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
