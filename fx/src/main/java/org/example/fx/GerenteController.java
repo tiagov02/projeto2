@@ -2,6 +2,7 @@ package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.EncomendaFornecedorCRUD;
+import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.CRUD.FornecedorCRUD;
 import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.*;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class GerenteController{
 
-    ArrayList<Fatura> faturas = new ArrayList<>();
+   //ArrayList<Fatura> faturas = new ArrayList<>();
     @FXML
     private Button botaoAtualizaStocks;
 
@@ -113,8 +114,9 @@ public class GerenteController{
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
+        labelPrintVendas= new Label();
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
-        labelPrintVendas.setText(getValorFatura(faturas).toString());
+        labelPrintVendas.setText(getValorFatura().toString());
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
@@ -143,13 +145,11 @@ public class GerenteController{
     public void listaEncomendas(javafx.event.ActionEvent event){
     }
 
-    public BigDecimal getValorFatura(List<Fatura> faturas){
-         BigDecimal valor = null;
-         BigDecimal total = null;
-        for(Fatura f: faturas){
-            valor.equals(f.getValorfatura());
+    public Float getValorFatura(){
+         float total = 0;
+        for(Fatura f: FaturaCRUD.findTodasFaturas()){
+            total+=f.getValorfatura().floatValue();
         }
-        total.add(valor);
         return total;
     }
 
@@ -165,6 +165,7 @@ public class GerenteController{
         colaboradors.clear();
         query = "SELECT idcolaborador, nome, telefone, salario FROM colaborador";
         colaboradors.add(new Colaborador());
+
     }
 
 

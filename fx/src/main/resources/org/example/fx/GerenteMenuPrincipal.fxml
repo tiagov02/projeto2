@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Label layoutX="237.0" layoutY="69.0" style="-fx-background-color: transparent;" text="Label" textFill="#094d1e" />
+            <Label fx:id="labelPrintVendas" layoutX="237.0" layoutY="69.0" style="-fx-background-color: transparent;" text="Label" textFill="#094d1e" />
          </children>
          <padding>
             <Insets left="20.0" />
