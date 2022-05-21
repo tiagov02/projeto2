@@ -29,7 +29,7 @@ import java.util.List;
 
 public class GerenteController{
 
-    ArrayList<Fatura> faturas = new ArrayList<>();
+    List<Fatura> faturas = new ArrayList<>();
     @FXML
     private Button botaoAtualizaStocks;
 
@@ -147,7 +147,7 @@ public class GerenteController{
          BigDecimal valor = null;
          BigDecimal total = null;
         for(Fatura f: faturas){
-            valor.equals(f.getValorfatura());
+            valor.add(f.getValorfatura());
         }
         total.add(valor);
         return total;
