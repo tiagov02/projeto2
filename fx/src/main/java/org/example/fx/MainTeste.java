@@ -6,12 +6,14 @@ import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.Codpostais;
 import com.example.bd.Entity.Colaborador;
+import com.example.bd.Entity.Fatura;
 import com.example.bd.Entity.Produto;
 
 import java.math.BigDecimal;
 
 public class MainTeste {
     public static void main(String[] args) throws Exception {
+
         Colaborador c1 = new Colaborador();
         c1.setCodpostal("4444-444");
         c1.setNome("colaborador");
@@ -23,6 +25,7 @@ public class MainTeste {
         c1.setUsername("colaborador");
         c1.setIdtipo(1);
         ColaboradorCRUD.createColaborador(c1);
+
 
 
     }

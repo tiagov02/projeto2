@@ -24,9 +24,12 @@ import org.example.fx.Logica.TrocaPaineis;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class GerenteController{
+
+    ArrayList<Fatura> faturas = new ArrayList<>();
     @FXML
     private Button botaoAtualizaStocks;
 
@@ -79,12 +82,20 @@ public class GerenteController{
 
  */
 
+    /*
+            GERENTE MENU PRINCIPAL
+     */
+
+    @FXML
+    private Label labelPrintVendas;
 
 
     @FXML
     private TableView<Fornecedor> tableClientes;
     @FXML
     private TableView<Fornecedor> tableListarEncomendas;
+
+
 
     //DEFINICOES DE COLABORADOR
     @FXML
@@ -103,6 +114,7 @@ public class GerenteController{
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        labelPrintVendas.setText(getValorFatura(faturas).toString());
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
@@ -131,25 +143,28 @@ public class GerenteController{
     public void listaEncomendas(javafx.event.ActionEvent event){
     }
 
-    public void gerenteDefinicoesCliente(List<Cliente> cli){
-        ObservableList<Cliente> clienteObservableList = FXCollections.observableList(cli);
-        TableColumn id = new TableColumn("#");
-        TableColumn nomeCliente = new TableColumn("Nome");
-        TableColumn tipoCliente = new TableColumn("Tipo Cliente");
-        TableColumn telefone = new TableColumn("Telefone");
-        TableColumn morada = new TableColumn("Morada");
-        TableColumn codPostal = new TableColumn("Cod Postal");
-        tableListarEncomendas.getColumns().addAll(id, nomeCliente, tipoCliente, telefone, morada, codPostal);
+    public BigDecimal getValorFatura(List<Fatura> faturas){
+         BigDecimal valor = null;
+         BigDecimal total = null;
+        for(Fatura f: faturas){
+            valor.equals(f.getValorfatura());
+        }
+        total.add(valor);
+        return total;
+    }
 
+    public void definicoesColaborador(){
+        String query = new String();
 
-        id.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idcliente"));
-        nomeCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
-        tipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("idtipocliente"));
-        telefone.setCellValueFactory(new PropertyValueFactory<Cliente, String>("telefone"));
-        morada.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codpostal"));
-        codPostal.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codpostal"));
+        ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
+        colNumero.setCellValueFactory(new PropertyValueFactory<>("#"));
+        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
+        colSalario.setCellValueFactory(new PropertyValueFactory<>("Salario"));
 
-        //tableClientes.setItems(clienteObservableList);
+        colaboradors.clear();
+        query = "SELECT idcolaborador, nome, telefone, salario FROM colaborador";
+        colaboradors.add(new Colaborador());
     }
 
 
