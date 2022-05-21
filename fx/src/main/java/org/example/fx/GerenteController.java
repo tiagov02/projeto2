@@ -143,6 +143,7 @@ public class GerenteController{
     }
 
     public void listaEncomendas(javafx.event.ActionEvent event){
+        //dfgdfg
     }
 
     public Float getValorFatura(){
