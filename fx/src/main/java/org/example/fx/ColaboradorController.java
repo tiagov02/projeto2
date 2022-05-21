@@ -102,7 +102,7 @@ public class ColaboradorController{
         return melhoresCli;
     }
 
-    public List<Map.Entry<Cliente,Float>> ordena5MelhoresCli(Map<Cliente,Float> cliValGasto){
+    public List<Map.Entry<Cliente,Float>> ordenaLista(Map<Cliente,Float> cliValGasto){
         List<Map.Entry<Cliente,Float>> ordenado=new ArrayList<>(cliValGasto.entrySet());
         ordenado.sort(Map.Entry.comparingByValue());
         return ordenado;
