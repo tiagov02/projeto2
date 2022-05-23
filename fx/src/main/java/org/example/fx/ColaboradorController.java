@@ -108,6 +108,13 @@ public class ColaboradorController{
         return ordenado;
     }
 
+    public String[] atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
+        String[] melhoresCli=new String[5];
+        Collections.reverse(ordenado);
+        //PERCORRER A LIST
+        return melhoresCli;
+    }
+
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
