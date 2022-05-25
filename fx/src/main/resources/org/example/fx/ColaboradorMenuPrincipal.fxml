@@ -111,27 +111,27 @@
                   <Image url="@../../../images/five.png" />
                </image>
             </ImageView>
-            <Text fx:id="txt_cli1" fill="#094d1e" layoutX="17.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txt_cli1" layoutX="35.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txt_cli2" fill="#094d1e" layoutX="17.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txt_cli2" layoutX="35.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txt_cli3" fill="#094d1e" layoutX="17.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txt_cli3" layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txt_cli4" fill="#094d1e" layoutX="17.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txt_cli4" layoutX="35.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txt_cli5" fill="#094d1e" layoutX="17.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txt_cli5" layoutX="35.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

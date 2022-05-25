@@ -88,6 +88,12 @@ public class ColaboradorController{
         }
     }
 
+    public Cliente[] listarCliMaisGasto(){
+        Map<Cliente,Float> cliMap=guardaValorFaturasCli();
+        List<Map.Entry<Cliente,Float>> ordenada=ordenaLista(cliMap);
+        return atualiza5MelhoresClientes(ordenada);
+    }
+
     public Map<Cliente,Float> guardaValorFaturasCli(){
         Map<Cliente,Float> melhoresCli=new HashMap<>();
         float valorGastoCli=0;
@@ -108,10 +114,16 @@ public class ColaboradorController{
         return ordenado;
     }
 
-    public String[] atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
-        String[] melhoresCli=new String[5];
+    public Cliente[] atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
+        int i=0;
+        Cliente[] melhoresCli=new Cliente[5];
         Collections.reverse(ordenado);
-        //PERCORRER A LIST
+        while(i!=4){
+            for(Map.Entry<Cliente,Float> cli:ordenado){
+                melhoresCli[i]= cli.getKey();
+                i++;
+            }
+        }
         return melhoresCli;
     }
 
@@ -119,6 +131,12 @@ public class ColaboradorController{
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+        Cliente[] clientes = listarCliMaisGasto();
+        txt_cli1.setText(clientes[0].getNome());
+        txt_cli2.setText(clientes[1].getNome());
+        txt_cli3.setText(clientes[2].getNome());
+        txt_cli4.setText(clientes[3].getNome());
+        txt_cli5.setText(clientes[4].getNome());
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
