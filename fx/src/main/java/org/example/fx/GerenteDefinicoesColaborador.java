@@ -46,10 +46,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colNumero.setCellValueFactory(new PropertyValueFactory<>("Número de colaborador:"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome de colaborador:"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<>("Salário:"));
+        colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
+        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
+        colSalario.setCellValueFactory(new PropertyValueFactory<>("salario:"));
         tableColaborador.setItems(getColaborador());
     }
 

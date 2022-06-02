@@ -27,13 +27,13 @@
           <TableColumn fx:id="colNumero" prefWidth="57.0" text="#" />
           <TableColumn fx:id="colNome" prefWidth="147.0" text="Nome" />
             <TableColumn fx:id="colTelefone" prefWidth="89.0" text="Telefone" />
-            <TableColumn fx:id="colSalario" minWidth="7.0" prefWidth="89.0" text="Salário" />
+            <TableColumn fx:id="colSalario" minWidth="7.0" prefWidth="89.0" text="salario" />
             <TableColumn fx:id="colEstado" prefWidth="112.0" text="Estado" />
         </columns>
       </TableView>
       <Text layoutX="241.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de colaborador:" />
       <Text layoutX="241.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome de colaborador:" />
-      <Text layoutX="241.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salário:" />
+      <Text layoutX="241.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="salario:" />
       <Text layoutX="242.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado" />
       <TextField layoutX="406.0" layoutY="277.0" />
       <TextField layoutX="406.0" layoutY="311.0" />
