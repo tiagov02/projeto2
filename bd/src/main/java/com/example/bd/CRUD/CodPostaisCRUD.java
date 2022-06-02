@@ -24,10 +24,10 @@ public class CodPostaisCRUD implements Serializable {
             em.getTransaction().begin();
             em.persist(cp);
             em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
+            } finally {
+                if (em != null) {
+                    em.close();
+                }
         }
     }
     public static Codpostais findCodPostal(String id) {

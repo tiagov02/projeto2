@@ -20,14 +20,6 @@ import java.util.ResourceBundle;
 
 public class GerenteDefinicoesColaborador implements Initializable {
 
-    public ObservableList<Colaborador> getColaborador(){
-        ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
-        List<Colaborador> colaboradorList = ColaboradorCRUD.findTodosColaboradores();
-        colaboradors.addAll(colaboradorList);
-
-        return colaboradors;
-    }
-
     @FXML
     private TableColumn<Colaborador, Integer> colNumero;
     @FXML
@@ -51,6 +43,14 @@ public class GerenteDefinicoesColaborador implements Initializable {
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
         colSalario.setCellValueFactory(new PropertyValueFactory<>("salario:"));
         tableColaborador.setItems(getColaborador());
+    }
+
+    public ObservableList<Colaborador> getColaborador(){
+        ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
+        List<Colaborador> colaboradorList = ColaboradorCRUD.findTodosColaboradores();
+        colaboradors.addAll(colaboradorList);
+
+        return colaboradors;
     }
 
 
