@@ -31,7 +31,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GerenteController implements Initializable {
+public class GerenteController {
 
    //ArrayList<Fatura> faturas = new ArrayList<>();
     @FXML
@@ -155,30 +155,8 @@ public class GerenteController implements Initializable {
         return total;
     }
 
-    public ObservableList<Colaborador> getColaboradores(){
-        ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
-        List<Colaborador> colab = ColaboradorCRUD.findTodosColaboradores();
-        colaboradors.addAll(colab);
-        return colaboradors;
-    }
-
-    public void definicoesColaborador(){
-        ObservableList<Colaborador> colaboradors = getColaboradores();
-        colNumero.setCellValueFactory(new PropertyValueFactory<>("#"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<>("Salario"));
-        colaboradors.clear();
-        colaboradors.add(new Colaborador());
-    }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        colNumero.setCellValueFactory(new PropertyValueFactory<Colaborador, Integer>("#"));
-        colNome.setCellValueFactory(new PropertyValueFactory<Colaborador, String>("Nome"));
-        colTelefone.setCellValueFactory(new PropertyValueFactory<Colaborador, String>("Telefone"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<Colaborador, BigDecimal>("Salario"));
-        tableColaborador.setItems(getColaboradores());
-    }
+
+
 }
