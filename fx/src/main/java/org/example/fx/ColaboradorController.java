@@ -132,11 +132,6 @@ public class ColaboradorController{
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
         Cliente[] clientes = listarCliMaisGasto();
-        txt_cli1.setText(clientes[0].getNome());
-        txt_cli2.setText(clientes[1].getNome());
-        txt_cli3.setText(clientes[2].getNome());
-        txt_cli4.setText(clientes[3].getNome());
-        txt_cli5.setText(clientes[4].getNome());
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{

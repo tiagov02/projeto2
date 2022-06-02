@@ -23,12 +23,15 @@ import javafx.stage.Stage;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class GerenteController{
+public class GerenteController implements Initializable {
 
    //ArrayList<Fatura> faturas = new ArrayList<>();
     @FXML
@@ -114,9 +117,7 @@ public class GerenteController{
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
-        labelPrintVendas= new Label();
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
-        labelPrintVendas.setText(getValorFatura().toString());
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
@@ -154,21 +155,30 @@ public class GerenteController{
         return total;
     }
 
-    public void definicoesColaborador(){
-        String query = new String();
-
+    public ObservableList<Colaborador> getColaboradores(){
         ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
+        List<Colaborador> colab = ColaboradorCRUD.findTodosColaboradores();
+        colaboradors.addAll(colab);
+        return colaboradors;
+    }
+
+    public void definicoesColaborador(){
+        ObservableList<Colaborador> colaboradors = getColaboradores();
         colNumero.setCellValueFactory(new PropertyValueFactory<>("#"));
         colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
         colSalario.setCellValueFactory(new PropertyValueFactory<>("Salario"));
-
         colaboradors.clear();
-        query = "SELECT idcolaborador, nome, telefone, salario FROM colaborador";
         colaboradors.add(new Colaborador());
-
     }
 
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colNumero.setCellValueFactory(new PropertyValueFactory<Colaborador, Integer>("#"));
+        colNome.setCellValueFactory(new PropertyValueFactory<Colaborador, String>("Nome"));
+        colTelefone.setCellValueFactory(new PropertyValueFactory<Colaborador, String>("Telefone"));
+        colSalario.setCellValueFactory(new PropertyValueFactory<Colaborador, BigDecimal>("Salario"));
+        tableColaborador.setItems(getColaboradores());
+    }
 }
