@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteController">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteAtualizaStocks">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -19,17 +19,16 @@
                   <Font name="System Bold" size="12.0" />
                </font></Button>
                 <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
-                <Button fx:id="botaoDefinicoesProdutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE PRODUTOS" textFill="#fcfafa" />
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
             </children></VBox>
-      <TableView layoutX="218.0" layoutY="85.0" prefHeight="212.0" prefWidth="538.0">
+      <TableView fx:id="tableproduto" layoutX="218.0" layoutY="85.0" prefHeight="212.0" prefWidth="538.0">
         <columns>
           <TableColumn fx:id="numproduto" prefWidth="34.0" text="#" />
           <TableColumn fx:id="nomeproduto" prefWidth="182.0" text="Nome Produto" />
             <TableColumn fx:id="tipoproduto" prefWidth="92.0" text="Tipo Produto" />
-            <TableColumn prefWidth="62.5999755859375" text="Qtd Stock" />
-            <TableColumn prefWidth="74.20001220703125" text="Qtd Minima" />
-            <TableColumn prefWidth="93.00006103515625" text="Valor Unitário" />
+            <TableColumn fx:id="qtdstock" prefWidth="62.5999755859375" text="Qtd Stock" />
+            <TableColumn fx:id="qtdminima" prefWidth="74.20001220703125" text="Qtd Minima" />
+            <TableColumn fx:id="valor" prefWidth="93.00006103515625" text="Valor Unitário" />
         </columns>
       </TableView>
       <Text layoutX="243.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de barras:" wrappingWidth="107.02099609375" />
