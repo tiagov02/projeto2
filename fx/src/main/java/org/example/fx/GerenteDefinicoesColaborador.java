@@ -33,9 +33,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     public TableView<Colaborador> tableColaborador;
 
-    ObservableList<Colaborador> colaboradorObservableList = FXCollections.observableArrayList(ColaboradorCRUD.findTodosColaboradores());
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
