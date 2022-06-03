@@ -6,11 +6,18 @@ import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -19,6 +26,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GerenteListaCliente implements Initializable {
+    @FXML
+    private TextField texto;
     @FXML
     private TableColumn<Cliente, Integer> numcliente;
     @FXML
@@ -51,8 +60,8 @@ public class GerenteListaCliente implements Initializable {
         morada.setCellValueFactory(new PropertyValueFactory<>("rua"));
         codpostal.setCellValueFactory(new PropertyValueFactory<>("codpostal"));
         tableClientes.setItems(getClientes());
-
     }
+
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
