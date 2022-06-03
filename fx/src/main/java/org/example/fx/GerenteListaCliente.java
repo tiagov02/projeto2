@@ -1,62 +1,57 @@
 package org.example.fx;
 
-import com.example.bd.CRUD.ColaboradorCRUD;
+import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
-import com.example.bd.Entity.Colaborador;
+import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GerenteDefinicoesProduto implements Initializable {
+public class GerenteListaCliente implements Initializable {
+    @FXML
+    private TableColumn<Cliente, Integer> numcliente;
+    @FXML
+    private TableColumn<Cliente, String> nomecliente;
+    @FXML
+    private TableColumn<Cliente, String> tipocliente;
+    @FXML
+    private TableColumn<Cliente, String> telefone;
+    @FXML
+    private TableColumn<Cliente, String> morada;
+    @FXML
+    private TableColumn<Cliente, String> codpostal;
 
-    @FXML
-    private TableColumn<Produto, Integer> numproduto;
-    @FXML
-    private TableColumn<Produto, String> nomeproduto;
-    @FXML
-    private TableColumn<Produto, String> tipoProduto;
-    @FXML
-    private TableColumn<Produto, Integer> qtdStock;
-    @FXML
-    private TableColumn<Produto, Float> iva;
-    @FXML
-    private TableColumn<Produto, Float> valorunitario;
+    public TableView<Cliente> tableClientes;
 
+    public ObservableList<Cliente> getClientes(){
+        ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+        List<Cliente> clienteList = ClienteCRUD.findClientesTodos();
+        clientes.addAll(clienteList);
 
-    public TableView<Produto> tableProdutos;
-
-    public ObservableList<Produto> getProdutos(){
-        ObservableList<Produto> produtos = FXCollections.observableArrayList();
-        List<Produto> produtoList = ProdutoCRUD.findTodosProdutos();
-        produtos.addAll(produtoList);
-
-        return produtos;
+        return clientes;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Produto prod = new Produto();
-        numproduto.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
-        nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
-        qtdStock.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
-        valorunitario.setCellValueFactory(new PropertyValueFactory<>("valorunitario"));
-        iva.setCellValueFactory(new PropertyValueFactory<>("taxaiva"));
-        tableProdutos.setItems(getProdutos());
+        numcliente.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
+        nomecliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tipocliente.setCellValueFactory(new PropertyValueFactory<>("idtipocliente"));
+        telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        morada.setCellValueFactory(new PropertyValueFactory<>("rua"));
+        codpostal.setCellValueFactory(new PropertyValueFactory<>("codpostal"));
+        tableClientes.setItems(getClientes());
+
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {

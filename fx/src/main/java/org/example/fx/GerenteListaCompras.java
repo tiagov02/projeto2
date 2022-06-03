@@ -7,10 +7,12 @@ import com.example.bd.CRUD.TipoProdutoCRUD;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
@@ -49,10 +51,11 @@ public class GerenteListaCompras implements Initializable {
         Produto prod = new Produto();
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
         colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto");
+        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("seccao"));
         colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidademinima:"));
         tableListaCompras.setItems(getProdutos());
     }
+
 
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {

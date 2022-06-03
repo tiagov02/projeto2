@@ -24,12 +24,12 @@
             </children></VBox>
       <TableView layoutX="218.0" layoutY="85.0" prefHeight="212.0" prefWidth="538.0">
         <columns>
-          <TableColumn prefWidth="34.0" text="#" />
-          <TableColumn prefWidth="182.0" text="Nome Produto" />
-            <TableColumn prefWidth="92.0" text="Tipo Produto" />
-            <TableColumn prefWidth="69.0" text="Qtd Stock" />
-            <TableColumn prefWidth="76.0" text="Qtd Minima" />
-            <TableColumn prefWidth="84.0" text="Valor Unitário" />
+          <TableColumn fx:id="numproduto" prefWidth="34.0" text="#" />
+          <TableColumn fx:id="nomeproduto" prefWidth="182.0" text="Nome Produto" />
+            <TableColumn fx:id="tipoproduto" prefWidth="92.0" text="Tipo Produto" />
+            <TableColumn prefWidth="62.5999755859375" text="Qtd Stock" />
+            <TableColumn prefWidth="74.20001220703125" text="Qtd Minima" />
+            <TableColumn prefWidth="93.00006103515625" text="Valor Unitário" />
         </columns>
       </TableView>
       <Text layoutX="243.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de barras:" wrappingWidth="107.02099609375" />

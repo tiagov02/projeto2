@@ -27,7 +27,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
     @FXML
     private TableColumn<Colaborador, String> colTelefone;
     @FXML
-    private TableColumn<Colaborador, BigDecimal> colSalario;
+    private TableColumn<Colaborador, Float> colsalario;
     @FXML
     private TableColumn<Colaborador, Integer> colEstado;
 
@@ -38,7 +38,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
         colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
         colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<>("salario:"));
+        colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
         tableColaborador.setItems(getColaborador());
     }
 

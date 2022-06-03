@@ -27,7 +27,7 @@
           <TableColumn fx:id="colNumero" prefWidth="57.0" text="#" />
           <TableColumn fx:id="colNome" prefWidth="147.0" text="Nome" />
             <TableColumn fx:id="colTelefone" prefWidth="89.0" text="Telefone" />
-            <TableColumn fx:id="colSalario" minWidth="7.0" prefWidth="89.0" text="salario" />
+            <TableColumn fx:id="colsalario" minWidth="7.0" prefWidth="89.0" text="salario" />
             <TableColumn fx:id="colEstado" prefWidth="112.0" text="Estado" />
         </columns>
       </TableView>
