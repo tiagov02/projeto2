@@ -23,7 +23,7 @@ import java.net.URL;
 import java.security.KeyStore;
 import java.util.*;
 
-public class ColaboradorController{
+public class ColaboradorController implements Initializable{
     @FXML
     private Button botaoPaginaPrincipal;
 
@@ -107,7 +107,6 @@ public class ColaboradorController{
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
-        Cliente[] clientes = listarCliMaisGasto();
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
@@ -120,5 +119,16 @@ public class ColaboradorController{
 
     public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        /*Cliente[] clientes = listarCliMaisGasto();
+        txt_cli1.setText(clientes[0].getNome());
+        txt_cli2.setText(clientes[1].getNome());
+        txt_cli3.setText(clientes[2].getNome());
+        txt_cli4.setText(clientes[3].getNome());
+        txt_cli5.setText(clientes[4].getNome());*/
+        //Erro no Hibernate inicialize
     }
 }
