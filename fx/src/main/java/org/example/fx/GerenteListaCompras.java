@@ -68,7 +68,7 @@ public class GerenteListaCompras implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
         colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("seccao"));
+        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoprodutoByIdtipoproduto.getSeccao()"));
         colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
         colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         tableListaCompras.setItems(getProdutos());
