@@ -22,7 +22,7 @@
                 <Button fx:id="botaoDefinicoesProdutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE PRODUTOS" textFill="#fcfafa" />
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
             </children></VBox>
-        <TableView fx:id="table" layoutX="218.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
+        <TableView fx:id="tableListarEncomenda" layoutX="218.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
             <columns>
                 <TableColumn fx:id="NumEncomenda" prefWidth="38.0" text="#" />
                 <TableColumn fx:id="ClienteField" prefWidth="86.0" text="Cliente" />
