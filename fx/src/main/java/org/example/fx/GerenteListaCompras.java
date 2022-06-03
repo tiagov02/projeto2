@@ -49,7 +49,7 @@ public class GerenteListaCompras implements Initializable {
         Produto prod = new Produto();
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
         colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        //colTipoProduto.setCellValueFactory(new PropertyValueFactory<>(prod.getTipoprodutoByIdtipoproduto().getSeccao()));
+        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto");
         colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidademinima:"));
         tableListaCompras.setItems(getProdutos());
     }
