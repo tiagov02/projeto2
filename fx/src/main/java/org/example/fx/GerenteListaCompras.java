@@ -34,9 +34,7 @@ public class GerenteListaCompras implements Initializable {
     @FXML
     private TableColumn<Linhaencomendafornecedor, Integer> colQtdComprar;
 
-
     public TableView<Produto> tableListaCompras;
-
 
     public ObservableList<Produto> getProdutos(){
         ObservableList<Produto> produtos = FXCollections.observableArrayList();
@@ -46,33 +44,16 @@ public class GerenteListaCompras implements Initializable {
         return produtos;
     }
 
-    public ObservableList<Tipoproduto> getTipoProduto(){
-        ObservableList<Tipoproduto> tipoprodutos = FXCollections.observableArrayList();
-        List<Tipoproduto> tipoprodutoList = TipoProdutoCRUD.findTiposProduto();
-        tipoprodutos.addAll(tipoprodutoList);
-
-        return tipoprodutos;
-    }
-
-    public ObservableList<Encomendafornecedor> getEncomendaFornecedor(){
-        ObservableList<Encomendafornecedor> encomendafornecedors = FXCollections.observableArrayList();
-        List<Encomendafornecedor> encomendafornecedorList = EncomendaFornecedorCRUD.findTodasEncomendasFornecedores();
-        encomendafornecedors.addAll(encomendafornecedorList);
-
-        return encomendafornecedors;
-    }
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Produto prod = new Produto();
         colNumero.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
         colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("seccao"));
-        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
-        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        //colTipoProduto.setCellValueFactory(new PropertyValueFactory<>(prod.getTipoprodutoByIdtipoproduto().getSeccao()));
+        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidademinima:"));
         tableListaCompras.setItems(getProdutos());
     }
+
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);

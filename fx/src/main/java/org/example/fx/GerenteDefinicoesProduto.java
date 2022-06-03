@@ -1,7 +1,9 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
+import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.Colaborador;
+import com.example.bd.Entity.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,36 +20,43 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GerenteDefinicoesColaborador implements Initializable {
+public class GerenteDefinicoesProduto implements Initializable {
 
     @FXML
-    private TableColumn<Colaborador, Integer> colNumero;
+    private TableColumn<Produto, Integer> numproduto;
     @FXML
-    private TableColumn<Colaborador, String> colNome;
+    private TableColumn<Produto, String> nomeproduto;
     @FXML
-    private TableColumn<Colaborador, String> colTelefone;
+    private TableColumn<Produto, String> tipoProduto;
     @FXML
-    private TableColumn<Colaborador, BigDecimal> colSalario;
+    private TableColumn<Produto, Integer> qtdStock;
     @FXML
-    private TableColumn<Colaborador, Integer> colEstado;
+    private TableColumn<Produto, Float> iva;
+    @FXML
+    private TableColumn<Produto, Float> valorunitario;
 
-    public TableView<Colaborador> tableColaborador;
+
+    public TableView<Produto> tableProdutos;
+
+
+    public ObservableList<Produto> getProdutos(){
+        ObservableList<Produto> produtos = FXCollections.observableArrayList();
+        List<Produto> produtoList = ProdutoCRUD.findTodosProdutos();
+        produtos.addAll(produtoList);
+
+        return produtos;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<>("salario:"));
-        tableColaborador.setItems(getColaborador());
-    }
-
-    public ObservableList<Colaborador> getColaborador(){
-        ObservableList<Colaborador> colaboradors = FXCollections.observableArrayList();
-        List<Colaborador> colaboradorList = ColaboradorCRUD.findTodosColaboradores();
-        colaboradors.addAll(colaboradorList);
-
-        return colaboradors;
+        Produto prod = new Produto();
+        numproduto.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
+        nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
+        qtdStock.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
+        valorunitario.setCellValueFactory(new PropertyValueFactory<>("valorunitario"));
+        iva.setCellValueFactory(new PropertyValueFactory<>("taxaiva"));
+        tableProdutos.setItems(getProdutos());
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
