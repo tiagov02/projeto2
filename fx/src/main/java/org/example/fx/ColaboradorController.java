@@ -53,40 +53,16 @@ public class ColaboradorController{
 
     @FXML
     private Text txt_cli5;
-    @FXML
-    private TableColumn<Produto, Integer> tbl_QtdStock;
 
-    @FXML
-    private TableColumn<Produto, Integer> tbl_qtdMinima;
-
-    @FXML
-    private TableColumn<Produto, BigDecimal> tbl_valUnitario;
-
-    @FXML
-    private TableView<Produto> table_produtos;
-
-    @FXML
-    private TableColumn<Produto, String> tbl_nomeProd;
-
-    @FXML
-    private TableColumn<Produto, Integer> tbl_tipoProduto;
 
     /**
      * Mudar para string
      */
 
-    public void atualiza(javafx.event.ActionEvent event) throws IOException {
+    /*public void atualiza(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"ColaboradorAtualizaStrocks","Atualização de stocks",ColaboradorController.class);
-        tbl_nomeProd.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tbl_tipoProduto.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
-        tbl_QtdStock.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
-        tbl_qtdMinima.setCellValueFactory(new PropertyValueFactory<>("quantidademinima"));
-        tbl_valUnitario.setCellValueFactory(new PropertyValueFactory<>("valorunitariototal"));
 
-        for(Produto p: ProdutoCRUD.findTodosProdutos()){
-            table_produtos.getItems().add(p);
-        }
-    }
+    }*/
 
     public Cliente[] listarCliMaisGasto(){
         Map<Cliente,Float> cliMap=guardaValorFaturasCli();
