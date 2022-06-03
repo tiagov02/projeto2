@@ -31,8 +31,8 @@ public class GerenteListaCompras implements Initializable {
     private TableColumn<Tipoproduto, String> colTipoProduto;
     @FXML
     private TableColumn<Produto, Integer> colQtdExistente;
-    //@FXML
-    //private TableColumn<Linhaencomendafornecedor, Integer> colQtdComprar;
+    @FXML
+    private TableColumn<Linhaencomendafornecedor, Integer> colQtdComprar;
 
 
     public TableView<Produto> tableListaCompras;
@@ -70,7 +70,7 @@ public class GerenteListaCompras implements Initializable {
         colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("seccao"));
         colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidadestock"));
-        //colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         tableListaCompras.setItems(getProdutos());
     }
 
