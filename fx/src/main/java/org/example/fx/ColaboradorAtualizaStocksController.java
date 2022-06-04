@@ -5,6 +5,7 @@ import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Produto;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ColaboradorAtualizaStocksController implements Initializable {
+
+    @FXML
+    private Button OKButton;
     @FXML
     private TableColumn<Produto, Integer> tbl_QtdStock;
 
@@ -63,5 +67,8 @@ public class ColaboradorAtualizaStocksController implements Initializable {
         for(Produto p: ProdutoCRUD.findTodosProdutos()){
             table_produtos.getItems().add(p);
         }
+    }
+
+    public void clickOK(javafx.event.ActionEvent event){
     }
 }
