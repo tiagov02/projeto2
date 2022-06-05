@@ -1,13 +1,10 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ProdutoCRUD;
-import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Produto;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
@@ -17,6 +14,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ColaboradorAtualizaStocksController implements Initializable {
+
+    @FXML
+    private TextField lbl_nomeProd;
+
+    @FXML
+    private TextField lbl_qtdMinima;
+
+    @FXML
+    private TextField lbl_qtdStock;
+
+    @FXML
+    private TextField lbl_valUnitario;
+
+    @FXML
+    private ComboBox<?> sel_tipoProd;
 
     @FXML
     private Button OKButton;
@@ -70,5 +82,10 @@ public class ColaboradorAtualizaStocksController implements Initializable {
     }
 
     public void clickOK(javafx.event.ActionEvent event){
+        Produto pro=table_produtos.getSelectionModel().getSelectedItem();
+        lbl_nomeProd.setText(pro.getNome());
+        lbl_qtdMinima.setText(pro.getQuantidademinima().toString());
+        lbl_qtdStock.setText(pro.getQuantidadestock().toString());
+        lbl_valUnitario.setText(pro.getValorunitario().toString());
     }
 }
