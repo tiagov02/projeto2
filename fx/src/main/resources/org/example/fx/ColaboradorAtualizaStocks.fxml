@@ -41,15 +41,14 @@
       <Text layoutX="241.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nova quantidade em stock:" />
       <Text layoutX="241.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade Minima:" />
       <Text layoutX="241.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Unitário:" wrappingWidth="78.21630859375" />
-      <TextField layoutX="401.0" layoutY="331.0" />
-      <ComboBox layoutX="401.0" layoutY="361.0" prefHeight="25.0" prefWidth="161.0" />
-      <TextField layoutX="401.0" layoutY="393.0" />
-      <TextField layoutX="401.0" layoutY="423.0" />
-      <TextField layoutX="401.0" layoutY="453.0" />
+      <TextField fx:id="lbl_nomeProd" layoutX="401.0" layoutY="331.0" />
+      <ComboBox fx:id="sel_tipoProd" layoutX="401.0" layoutY="361.0" prefHeight="25.0" prefWidth="161.0" />
+      <TextField fx:id="lbl_qtdStock" layoutX="401.0" layoutY="393.0" />
+      <TextField fx:id="lbl_qtdMinima" layoutX="401.0" layoutY="423.0" />
+      <TextField fx:id="lbl_valUnitario" layoutX="401.0" layoutY="453.0" />
       <Button layoutX="405.0" layoutY="495.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
       <Button layoutX="490.0" layoutY="495.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Atualizar" textFill="WHITE" />
-      <Button fx:id="OKButton" layoutX="585.0" layoutY="322.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="OK" textFill="WHITE" >
-          <onAction>clickOK($event)</onAction>
+      <Button fx:id="OKButton" layoutX="585.0" layoutY="322.0" mnemonicParsing="false" onAction="$clickOK($event)" style="-fx-background-color: rgb(102,51,0);" text="OK" textFill="WHITE">
       </Button>
     </children>
 </AnchorPane>
