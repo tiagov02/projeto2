@@ -48,7 +48,7 @@
       <TextField fx:id="lbl_valUnitario" layoutX="401.0" layoutY="453.0" />
       <Button layoutX="405.0" layoutY="495.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
       <Button layoutX="490.0" layoutY="495.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Atualizar" textFill="WHITE" />
-      <Button fx:id="OKButton" layoutX="585.0" layoutY="322.0" mnemonicParsing="false" onAction="$clickOK($event)" style="-fx-background-color: rgb(102,51,0);" text="OK" textFill="WHITE">
+      <Button fx:id="OKButton" layoutX="585.0" layoutY="322.0" mnemonicParsing="false" onAction="#clickOK" style="-fx-background-color: rgb(102,51,0);" text="OK" textFill="WHITE">
       </Button>
     </children>
 </AnchorPane>
