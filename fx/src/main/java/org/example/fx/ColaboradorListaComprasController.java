@@ -10,8 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ListaComprasClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -69,5 +71,21 @@ public class ColaboradorListaComprasController implements Initializable {
             list.setTipoProduto(l.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
             table_listaCompras.getItems().add(list);
         }
+    }
+
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorListaComprasController.class);
+    }
+
+    public void clicaListaEncomendas(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
+    }
+
+    public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
     }
 }

@@ -21,8 +21,8 @@ public class MainTeste {
         c1.setSalario(new BigDecimal(1500.5));
         c1.setNumporta(456);
         c1.setRua("colaborador");
-        c1.setPassword(Encriptacao.encript("colaborador"));
-        c1.setUsername("colaborador");
+        c1.setPassword(Encriptacao.encript("colab"));
+        c1.setUsername("colab");
         c1.setIdtipo(1);
         ColaboradorCRUD.createColaborador(c1);
 
