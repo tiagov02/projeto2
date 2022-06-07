@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.ColaboradorListaComprasController">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.ColaboradorListaComprasController">
     <children>
         <VBox prefHeight="537.0" prefWidth="224.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -17,14 +22,14 @@
                 <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStocks" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="ATUALIZAR PRODUTOS" textFill="#fffefe" />
             </children>
         </VBox>
-      <TableView layoutX="224.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
+      <TableView fx:id="table_listaCompras" layoutX="224.0" layoutY="57.0" prefHeight="480.0" prefWidth="537.0">
          <columns>
-            <TableColumn prefWidth="42.0" text="#" />
-            <TableColumn prefWidth="107.0" text="Produto" />
-            <TableColumn prefWidth="91.0" text="TipoProduto" />
-            <TableColumn prefWidth="89.0" text="Qtd Existente" />
-            <TableColumn prefWidth="94.0" text="Qtd a comprar" />
-            <TableColumn prefWidth="112.0" text="Data Adição" />
+            <TableColumn fx:id="tbl_id" prefWidth="42.0" text="#" />
+            <TableColumn fx:id="tbl_produto" prefWidth="107.0" text="Produto" />
+            <TableColumn fx:id="tbl_tipoProduto" prefWidth="91.0" text="TipoProduto" />
+            <TableColumn fx:id="tbl_qtdExistente" prefWidth="89.0" text="Qtd Existente" />
+            <TableColumn fx:id="tbl_qtdComprar" prefWidth="94.0" text="Qtd a comprar" />
+            <TableColumn fx:id="tbl_dataAdd" prefWidth="112.0" text="Data Adição" />
          </columns>
       </TableView>
       <Button layoutX="623.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
