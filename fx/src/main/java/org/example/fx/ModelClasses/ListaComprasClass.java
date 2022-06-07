@@ -7,4 +7,8 @@ public class ListaComprasClass {
     private String produto;
     private int qtdExistente;
     private int qtdComprar;
+
+    public ListaComprasClass(){
+
+    }
 }
