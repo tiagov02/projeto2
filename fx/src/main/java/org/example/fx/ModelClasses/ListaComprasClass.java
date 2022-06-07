@@ -9,6 +9,5 @@ public class ListaComprasClass {
     private int qtdComprar;
 
     public ListaComprasClass(){
-
     }
 }
