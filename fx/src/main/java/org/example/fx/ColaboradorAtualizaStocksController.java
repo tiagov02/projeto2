@@ -56,16 +56,17 @@ public class ColaboradorAtualizaStocksController implements Initializable {
         //VAI IMPLEMENTAR INICIALIZABLE
     }
 
+
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorListaComprasController.class);
     }
 
     public void clicaListaEncomendas(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
     }
 
     public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
     }
 
     @Override
