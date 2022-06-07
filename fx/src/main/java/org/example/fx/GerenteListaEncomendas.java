@@ -32,7 +32,7 @@ public class GerenteListaEncomendas implements Initializable{
     private Button btn_procura;
 
     @FXML
-    private TableColumn<Fatura, BigDecimal> NumFatura;
+    private TableColumn<Fatura, Float> NumFatura;
 
     @FXML
     private TableColumn<Fatura, String> clienteField;
@@ -50,7 +50,7 @@ public class GerenteListaEncomendas implements Initializable{
     private TableColumn<Fatura, String> telefoneField;
 
     @FXML
-    private TableColumn<Fatura, BigDecimal> valorTotalField;
+    private TableColumn<Fatura, Float> valorTotalField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

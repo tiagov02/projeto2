@@ -68,7 +68,7 @@ public class GerenteController {
     private TableColumn<Fornecedor, String> telefoneField;
 
     @FXML
-    private TableColumn<Fornecedor, BigDecimal> valorTotalField;
+    private TableColumn<Fornecedor, Float> valorTotalField;
 
 
 /*
