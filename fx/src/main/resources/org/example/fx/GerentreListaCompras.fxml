@@ -30,7 +30,7 @@
             <TableColumn fx:id="colQtdComprar" prefWidth="92.39996337890625" text="Qtd a comprar" />
         </columns>
       </TableView>
-      <Button fx:id="buttonaddproduto" layoutX="623.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
+      <Button fx:id="buttonaddproduto" layoutX="623.0" layoutY="22.0" mnemonicParsing="false" onAction="#clicaadicionarProduto" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>

@@ -116,6 +116,7 @@ public class GerenteController {
     public TableView<Colaborador> tableColaborador;
 
 
+
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
