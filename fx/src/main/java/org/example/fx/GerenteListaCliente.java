@@ -63,8 +63,9 @@ public class GerenteListaCliente implements Initializable {
         for (Cliente cliente: ClienteCRUD.findClientesTodos()){
             clienteTipo.setNumCliente(cliente.getIdcliente());
             clienteTipo.setNomeCliente(cliente.getNome());
+            clienteTipo.setTipoCliente(cliente.getTipoclienteByIdtipocliente().getTipocliente());
             clienteTipo.setTelefone(cliente.getTelefone());
-            clienteTipo.setMorada(cliente.getCodpostaisByCodpostal().getCodpostal() + '-' + cliente.getCodpostaisByCodpostal().getLocalidade());
+            clienteTipo.setMorada(cliente.getCodpostaisByCodpostal().getCodpostal() + "  " +  cliente.getCodpostaisByCodpostal().getLocalidade());
             tableClientes.getItems().add(clienteTipo);
         }
     }

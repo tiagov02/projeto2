@@ -49,10 +49,14 @@ public class GerenteListaEncomendas implements Initializable{
         telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
         valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
-        Fatura fatura= new Fatura();
+        ListaEncomendas lista = new ListaEncomendas();
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
-            fatura.setNumfatura(fat.getNumfatura());
-            tablelistaencomenda.getItems().add(fatura);
+            lista.setNumFatura(fat.getNumfatura());
+            lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
+            lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
+            lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
+            lista.setValorTotal(fat.getValorfatura().floatValue());
+            tablelistaencomenda.getItems().add(lista);
         }
     }
 
