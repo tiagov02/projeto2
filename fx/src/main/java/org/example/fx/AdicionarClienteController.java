@@ -1,10 +1,14 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.CodPostaisCRUD;
 import com.example.bd.CRUD.TipoClienteCRUD;
 import com.example.bd.Entity.Cliente;
+import com.example.bd.Entity.Codpostais;
 import com.example.bd.Entity.Tipocliente;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -68,6 +72,32 @@ public class AdicionarClienteController implements Initializable {
     }
 
     public void clickOK(javafx.event.ActionEvent event){
-
+        int nPorta=0;
+        Tipocliente tp=select_tipoCliente.getValue();
+        Cliente cli=new Cliente();
+        cli.setUsername(lbl_username.getText());
+        cli.setPassword(lbl_passwd.getText());
+        cli.setNome(lbl_nome.getText());
+        cli.setIdtipocliente(tp.getIdtipocliente());
+        if(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText())==null){
+            Codpostais cod=new Codpostais();
+            cod.setCodpostal(lbl_codPostal.getText());
+            cod.setLocalidade(lbl_localidade.getText());
+        }
+        else{
+            cli.setCodpostal(lbl_codPostal.getText());
+        }
+        try{
+            nPorta=Integer.parseInt(lbl_numPortoa.getText());
+        }
+        catch(NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Deverá introduzir apenas números no campo de número de Porta! Obrigado!");
+            dialogoAviso.showAndWait();
+        }
+        cli.setNumporta(nPorta);
+        cli.setRua(lbl_rua.getText());
+        ClienteCRUD.createCliente(cli);
     }
 }
