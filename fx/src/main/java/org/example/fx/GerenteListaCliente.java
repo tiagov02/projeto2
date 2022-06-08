@@ -54,12 +54,11 @@ public class GerenteListaCliente implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        numcliente.setCellValueFactory(new PropertyValueFactory<>("idcliente"));
-        nomecliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tipocliente.setCellValueFactory(new PropertyValueFactory<>("idtipocliente"));
+        numcliente.setCellValueFactory(new PropertyValueFactory<>("numCliente"));
+        nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+        tipocliente.setCellValueFactory(new PropertyValueFactory<>("tipoCliente"));
         telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        morada.setCellValueFactory(new PropertyValueFactory<>("rua"));
-        codpostal.setCellValueFactory(new PropertyValueFactory<>("codpostal"));
+        morada.setCellValueFactory(new PropertyValueFactory<>("morada"));
         ClienteTipo clienteTipo = new ClienteTipo();
         for (Cliente cliente: ClienteCRUD.findClientesTodos()){
             clienteTipo.setNumCliente(cliente.getIdcliente());
