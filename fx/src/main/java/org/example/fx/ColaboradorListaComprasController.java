@@ -1,9 +1,7 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.LinhaEncomendaFornecedorCRUD;
-import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.Linhaencomendafornecedor;
-import com.example.bd.Entity.Produto;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,7 +9,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
-import org.example.fx.ModelClasses.ListaComprasClass;
 
 import java.io.IOException;
 import java.net.URL;

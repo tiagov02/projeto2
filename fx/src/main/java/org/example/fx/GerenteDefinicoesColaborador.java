@@ -1,7 +1,9 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
+import com.example.bd.CRUD.TipoColaboradorCRUD;
 import com.example.bd.Entity.Colaborador;
+import com.example.bd.Entity.Tipocolaborador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,11 +37,14 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
-        colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-        colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
-        tableColaborador.setItems(getColaborador());
+        int aux=1;
+       for (Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
+               colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
+               colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+               colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
+               colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
+               tableColaborador.setItems(getColaborador());
+       }
     }
 
     public ObservableList<Colaborador> getColaborador(){

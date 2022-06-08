@@ -1,23 +1,17 @@
 package org.example.fx;
 
-import com.example.bd.CRUD.ColaboradorCRUD;
-import com.example.bd.CRUD.EncomendaFornecedorCRUD;
-import com.example.bd.CRUD.ProdutoCRUD;
-import com.example.bd.CRUD.TipoProdutoCRUD;
+import com.example.bd.CRUD.*;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -48,12 +42,20 @@ public class GerenteListaCompras implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Produto prod = new Produto();
-        colNumero.setCellValueFactory(new PropertyValueFactory<>("numproduto"));
-        colProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("seccao"));
-        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("quantidademinima:"));
-        tableListaCompras.setItems(getProdutos());
+        colNumero.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
+        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("qtdComprar"));
+        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("qtdExistente"));
+        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
+        ListaComprasClass list= new ListaComprasClass();
+        for(Linhaencomendafornecedor l: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
+            //list.setDataAdd(l.getEncomendafornecedorByNumencomenda());
+            list.setId(l.getNumencomenda());
+            list.setProduto(l.getProdutoByNumproduto().getNome());
+            list.setQtdComprar(l.getQuantidade());
+            list.setQtdExistente(l.getProdutoByNumproduto().getQuantidadestock());
+            list.setTipoProduto(l.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
+        }
     }
 
 
