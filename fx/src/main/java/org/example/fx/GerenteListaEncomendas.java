@@ -1,6 +1,7 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.FaturaCRUD;
+import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.fx.Logica.TrocaPaineis;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,43 +20,64 @@ import java.util.ResourceBundle;
 public class GerenteListaEncomendas implements Initializable{
 
     @FXML
-    private Button botaoAtualizaStocks;
+    private TableColumn<ListaEncomendas, Integer> numfatura;
 
     @FXML
-    private Button botaoListaCompras;
+    private TableColumn<ListaEncomendas, String> nomecliente;
 
     @FXML
-    private Button botaoListarEncomendas;
+    private TableColumn<ListaEncomendas, String> moradacliente;
 
     @FXML
-    private Button botaoPaginaPrincipal;
+    private TableColumn<ListaEncomendas, String> telefonecliente;
 
     @FXML
-    private Button btn_procura;
+    private TableColumn<ListaEncomendas, Float> valortotalfatura;
 
     @FXML
-    private TableColumn<Fatura, Float> NumFatura;
+    private TableColumn<ListaEncomendas, String> estadofatura;
 
     @FXML
-    private TableColumn<Fatura, String> clienteField;
+    private TableView<ListaEncomendas> tablelistaencomenda;
 
-    @FXML
-    private TableColumn<Fatura, String> estadoField;
-
-    @FXML
-    private TableColumn<Fatura, String> moradaField;
-
-    @FXML
-    private TableView<Fatura> table;
-
-    @FXML
-    private TableColumn<Fatura, String> telefoneField;
-
-    @FXML
-    private TableColumn<Fatura, Float> valorTotalField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
+        nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
+        moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));
+        telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
+        valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
+        estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
+        Fatura fatura= new Fatura();
+        for (Fatura fat: FaturaCRUD.findTodasFaturas()){
+            fatura.setNumfatura(fat.getNumfatura());
+            tablelistaencomenda.getItems().add(fatura);
         }
+    }
+
+
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
 }
