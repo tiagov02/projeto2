@@ -6,9 +6,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.fx.Exceptions.NumberException;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -30,15 +33,21 @@ public class GerenteListaCompras implements Initializable {
     @FXML
     private TableColumn<ListaComprasClass, Integer> colQtdComprar;
 
+    @FXML
+    private TextField procuraproduto;
+    @FXML
+    private Button buttonpesquisa;
+    @FXML
+    private Button buttonaddproduto;
+    @FXML
+    private TextField numeroProduto;
+    @FXML
+    private Button buttonLimpar;
+    @FXML
+    private Button buttonRemover;
+
     public TableView<ListaComprasClass> tableListaCompras;
 
-    public ObservableList<Produto> getProdutos(){
-        ObservableList<Produto> produtos = FXCollections.observableArrayList();
-        List<Produto> produtoList = ProdutoCRUD.findTodosProdutos();
-        produtos.addAll(produtoList);
-
-        return produtos;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +68,13 @@ public class GerenteListaCompras implements Initializable {
     }
 
 
+    public void limparButton(){
+        numeroProduto.setText("");
+    }
+
+    public void removerCompra(){
+    //FAZER
+    }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
