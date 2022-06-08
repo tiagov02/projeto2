@@ -14,8 +14,6 @@ import java.math.BigDecimal;
 public class MainTeste {
     public static void main(String[] args) throws Exception {
 
-        Produto prod=ProdutoCRUD.findProduto(50);
-        System.out.println(prod.getNome());
 
 
 
