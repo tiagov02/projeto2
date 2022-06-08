@@ -14,17 +14,8 @@ import java.math.BigDecimal;
 public class MainTeste {
     public static void main(String[] args) throws Exception {
 
-        Colaborador c1 = new Colaborador();
-        c1.setCodpostal("4444-444");
-        c1.setNome("colaborador");
-        c1.setTelefone("999999999");
-        c1.setSalario(new BigDecimal(1500.5));
-        c1.setNumporta(456);
-        c1.setRua("colaborador");
-        c1.setPassword(Encriptacao.encript("colab"));
-        c1.setUsername("colab");
-        c1.setIdtipo(1);
-        ColaboradorCRUD.createColaborador(c1);
+        Produto prod=ProdutoCRUD.findProduto(50);
+        System.out.println(prod.getNome());
 
 
 
