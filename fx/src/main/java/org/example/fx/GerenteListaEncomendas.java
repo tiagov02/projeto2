@@ -54,14 +54,6 @@ public class GerenteListaEncomendas implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NumFatura.setCellValueFactory(new PropertyValueFactory<>("numfatura"));
-        clienteField.setCellValueFactory(new PropertyValueFactory<>("clienteByIdcliente.getNome()"));
-        //estadoField.setCellValueFactory();
-        //moradaField.setCellValueFactory(new PropertyValueFactory<>());
-        telefoneField.setCellValueFactory(new PropertyValueFactory<>("clienteByIdcliente.getTelefone()"));
-        valorTotalField.setCellValueFactory(new PropertyValueFactory<>("valorfatura"));
-        for(Fatura f: FaturaCRUD.findTodasFaturas()){
-            table.getItems().add(f);
         }
     }
 }

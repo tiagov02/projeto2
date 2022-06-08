@@ -20,17 +20,17 @@ public class GerenteListaCompras implements Initializable {
 
 
     @FXML
-    private TableColumn<Produto, Integer> colNumero;
+    private TableColumn<ListaComprasClass, Integer> colNumero;
     @FXML
-    private TableColumn<Produto, String> colProduto;
+    private TableColumn<ListaComprasClass, String> colProduto;
     @FXML
-    private TableColumn<Tipoproduto, String> colTipoProduto;
+    private TableColumn<ListaComprasClass, String> colTipoProduto;
     @FXML
-    private TableColumn<Produto, Integer> colQtdExistente;
+    private TableColumn<ListaComprasClass, Integer> colQtdExistente;
     @FXML
-    private TableColumn<Linhaencomendafornecedor, Integer> colQtdComprar;
+    private TableColumn<ListaComprasClass, Integer> colQtdComprar;
 
-    public TableView<Produto> tableListaCompras;
+    public TableView<ListaComprasClass> tableListaCompras;
 
     public ObservableList<Produto> getProdutos(){
         ObservableList<Produto> produtos = FXCollections.observableArrayList();
@@ -44,17 +44,17 @@ public class GerenteListaCompras implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colNumero.setCellValueFactory(new PropertyValueFactory<>("id"));
         colProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
-        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("qtdComprar"));
-        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("qtdExistente"));
         colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
+        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("qtdExistente"));
+        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("qtdComprar"));
         ListaComprasClass list= new ListaComprasClass();
         for(Linhaencomendafornecedor l: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
-            //list.setDataAdd(l.getEncomendafornecedorByNumencomenda());
             list.setId(l.getNumencomenda());
             list.setProduto(l.getProdutoByNumproduto().getNome());
             list.setQtdComprar(l.getQuantidade());
             list.setQtdExistente(l.getProdutoByNumproduto().getQuantidadestock());
             list.setTipoProduto(l.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
+            tableListaCompras.getItems().add(list);
         }
     }
 
