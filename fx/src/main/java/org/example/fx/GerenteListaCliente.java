@@ -4,6 +4,7 @@ import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Produto;
+import com.example.bd.Entity.Tipocliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,19 +30,19 @@ public class GerenteListaCliente implements Initializable {
     @FXML
     private TextField texto;
     @FXML
-    private TableColumn<Cliente, Integer> numcliente;
+    private TableColumn<ClienteTipo, Integer> numcliente;
     @FXML
-    private TableColumn<Cliente, String> nomecliente;
+    private TableColumn<ClienteTipo, String> nomecliente;
     @FXML
-    private TableColumn<Cliente, String> tipocliente;
+    private TableColumn<ClienteTipo, String> tipocliente;
     @FXML
-    private TableColumn<Cliente, String> telefone;
+    private TableColumn<ClienteTipo, String> telefone;
     @FXML
-    private TableColumn<Cliente, String> morada;
+    private TableColumn<ClienteTipo, String> morada;
     @FXML
-    private TableColumn<Cliente, String> codpostal;
+    private TableColumn<ClienteTipo, String> codpostal;
 
-    public TableView<Cliente> tableClientes;
+    public TableView<ClienteTipo> tableClientes;
 
     public ObservableList<Cliente> getClientes(){
         ObservableList<Cliente> clientes = FXCollections.observableArrayList();
@@ -59,7 +60,14 @@ public class GerenteListaCliente implements Initializable {
         telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         morada.setCellValueFactory(new PropertyValueFactory<>("rua"));
         codpostal.setCellValueFactory(new PropertyValueFactory<>("codpostal"));
-        tableClientes.setItems(getClientes());
+        ClienteTipo clienteTipo = new ClienteTipo();
+        for (Cliente cliente: ClienteCRUD.findClientesTodos()){
+            clienteTipo.setNumCliente(cliente.getIdcliente());
+            clienteTipo.setNomeCliente(cliente.getNome());
+            clienteTipo.setTelefone(cliente.getTelefone());
+            clienteTipo.setMorada(cliente.getCodpostaisByCodpostal().getCodpostal() + '-' + cliente.getCodpostaisByCodpostal().getLocalidade());
+            tableClientes.getItems().add(clienteTipo);
+        }
     }
 
 
