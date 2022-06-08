@@ -43,12 +43,12 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button layoutX="67.0" layoutY="321.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
+            <Button layoutX="67.0" layoutY="321.0" mnemonicParsing="false" onAction="#cleanButton" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: WHITE;" text="&lt;-VOLTAR" textFill="#663300">
+            <Button mnemonicParsing="false" onAction="#backbutton" style="-fx-background-color: WHITE;" text="&lt;-VOLTAR" textFill="#663300">
                <font>
                   <Font size="11.0" />
                </font>

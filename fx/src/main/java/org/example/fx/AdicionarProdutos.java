@@ -1,5 +1,6 @@
 package org.example.fx;
 
+import com.example.bd.Entity.Produto;
 import com.example.bd.Entity.Tipoproduto;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -33,6 +34,13 @@ public class AdicionarProdutos {
         labelqtdcomprar.setText("");
         labelqtdstock.setText("");
     }
+/*
+    public void adicionarProduto(){
+        Produto p1 = new Produto();
+        p1.set
+    }
+
+ */
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "AdicionarProduto.fxml", "Loja Produtos Biológicos", GerenteController.class);
