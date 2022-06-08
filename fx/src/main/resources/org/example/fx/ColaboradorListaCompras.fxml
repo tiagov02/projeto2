@@ -42,4 +42,5 @@
       <DatePicker layoutX="273.0" layoutY="21.0" prefHeight="25.0" prefWidth="154.0" />
       <Text layoutX="231.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desde" />
     </children>
+
 </AnchorPane>

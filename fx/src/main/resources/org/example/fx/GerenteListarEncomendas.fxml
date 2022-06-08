@@ -43,4 +43,5 @@
       <Text layoutX="468.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado" />
       <Button fx:id="btn_procura" layoutX="682.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Procurar" textFill="#fcfcfc" />
     </children>
+
 </AnchorPane>

@@ -53,4 +53,5 @@
       <Button layoutX="480.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Atualizar" textFill="WHITE" />
       <Button layoutX="395.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
     </children>
+
 </AnchorPane>

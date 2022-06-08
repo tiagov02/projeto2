@@ -55,4 +55,5 @@
       <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
     </children>
+
 </AnchorPane>

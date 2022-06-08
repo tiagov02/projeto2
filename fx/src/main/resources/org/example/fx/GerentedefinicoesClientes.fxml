@@ -40,4 +40,5 @@
       <Button layoutX="476.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="639.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="INSERIR CLIENTE" textFill="WHITE" />
     </children>
+
 </AnchorPane>

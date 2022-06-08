@@ -39,4 +39,5 @@
       <Button layoutX="283.0" layoutY="379.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR PRODUTO" textFill="WHITE" />
       <Button layoutX="552.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: rgb(102,51,0);" text="ALTERAR PRODUTO" textFill="WHITE" />
     </children>
+
 </AnchorPane>
