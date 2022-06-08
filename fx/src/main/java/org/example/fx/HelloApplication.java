@@ -61,7 +61,7 @@ public class HelloApplication extends Application {
 
         }
         catch (Exception ex){
-            /*Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            /*Alert dialogoAviso = new Alert(Alertrad.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText(ex.getMessage());
             dialogoAviso.showAndWait();*/
