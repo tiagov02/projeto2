@@ -1,22 +1,23 @@
 package org.example.fx;
 
-import com.example.bd.Entity.Produto;
-import com.example.bd.Entity.Tipoproduto;
+import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.FornecedorCRUD;
+import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.Entity.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
+import java.util.List;
 
 public class AdicionarProdutos {
 
     @FXML
     private TextField labelnumproduto;
-    @FXML
-    private TextField labelnomeproduto;
-    @FXML
-    private TextField labelqtdstock;
     @FXML
     private TextField labelqtdcomprar;
     @FXML
@@ -32,17 +33,16 @@ public class AdicionarProdutos {
 
     public void cleanButton(){
         labelnumproduto.setText("");
-        labelnomeproduto.setText("");
         labelqtdcomprar.setText("");
-        labelqtdstock.setText("");
-    }
-/*
-    public void adicionarProduto(){
-        Produto p1 = new Produto();
-        p1.set
     }
 
- */
+    public void listCombobox(){
+        //ESTOU A TENTAR LISTAR NA COMBOBOX(Continuar)
+        ObservableList<Fornecedor> fornecedors = FXCollections.observableArrayList();
+        List<Fornecedor> fornecedorsList = FornecedorCRUD.findFornecedores();
+        fornecedors.addAll(fornecedorsList);
+        //comboBox.getItems().addAll(fornecedors);
+    }
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "AdicionarProduto.fxml", "Loja Produtos Biológicos", GerenteController.class);

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarProdutos">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -34,22 +34,22 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <TextField layoutX="150.0" layoutY="78.0" />
+            <TextField fx:id="labelnumproduto" layoutX="150.0" layoutY="78.0" />
             <Text layoutX="14.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fornecedor" />
-            <ComboBox layoutX="150.0" layoutY="155.0" prefHeight="26.0" prefWidth="159.0" />
+            <ComboBox fx:id="comboBox" layoutX="150.0" layoutY="155.0" prefHeight="26.0" prefWidth="159.0" />
             <Text layoutX="14.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade a comprar" />
-            <TextField layoutX="150.0" layoutY="119.0" />
-            <Button layoutX="167.0" layoutY="244.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
+            <TextField fx:id="labelqtdcomprar" layoutX="150.0" layoutY="119.0" />
+            <Button layoutX="167.0" layoutY="244.0" onAction="#adicionaCompra" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button layoutX="67.0" layoutY="244.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
+            <Button layoutX="67.0" layoutY="244.0" mnemonicParsing="false" onAction="#cleanButton" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: WHITE;" text="&lt;-VOLTAR" textFill="#663300">
+            <Button mnemonicParsing="false" onAction="#backbutton" style="-fx-background-color: WHITE;" text="&lt;-VOLTAR" textFill="#663300">
                <font>
                   <Font size="11.0" />
                </font>
