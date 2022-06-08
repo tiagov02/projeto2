@@ -22,6 +22,8 @@ public class AdicionarProdutos {
     @FXML
     private ComboBox<Tipoproduto> comboBox;
 
+    //
+
 
 
     public void backbutton(javafx.event.ActionEvent event) throws IOException {
