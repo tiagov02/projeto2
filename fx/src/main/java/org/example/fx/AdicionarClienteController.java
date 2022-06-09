@@ -12,7 +12,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.example.fx.Logica.TrocaPaineis;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -99,5 +101,40 @@ public class AdicionarClienteController implements Initializable {
         cli.setNumporta(nPorta);
         cli.setRua(lbl_rua.getText());
         ClienteCRUD.createCliente(cli);
+    }
+
+    public void clearButton(){
+        lbl_nome.setText("");
+        lbl_telefone.setText("");
+        lbl_codPostal.setText("");
+        lbl_localidade.setText("");
+        lbl_rua.setText("");
+        lbl_numPortoa.setText("");
+        lbl_username.setText("");
+        lbl_passwd.setText("");
+    }
+
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
 }

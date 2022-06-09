@@ -2,16 +2,24 @@ package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.TipoColaboradorCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Colaborador;
 import com.example.bd.Entity.Tipocolaborador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
+import javafx.util.converter.BigDecimalStringConverter;
+import javafx.util.converter.DefaultStringConverter;
+import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -29,14 +37,60 @@ public class GerenteDefinicoesColaborador implements Initializable {
     @FXML
     private TableColumn<Colaborador, String> colTelefone;
     @FXML
-    private TableColumn<Colaborador, Float> colsalario;
+    private TableColumn<Colaborador, BigDecimal> colsalario;
     @FXML
     private TableColumn<Colaborador, Integer> colEstado;
 
     public TableView<Colaborador> tableColaborador;
 
+
+    public void editCamposColaborador(){
+        colsalario.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
+        colsalario.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, BigDecimal>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Colaborador, BigDecimal> colaboradorBigDecimalCellEditEvent) {
+                Colaborador colaborador = colaboradorBigDecimalCellEditEvent.getRowValue();
+                colaborador.setSalario(colaboradorBigDecimalCellEditEvent.getNewValue());
+                try {
+                    ColaboradorCRUD.editColaborador(colaborador);
+                } catch (IdNaoEncontradoException ex){
+                    ex.getMessage();
+                }
+            }
+        });
+        colTelefone.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colTelefone.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Colaborador, String> colaboradorStringCellEditEvent) {
+                Colaborador colab = colaboradorStringCellEditEvent.getRowValue();
+                colab.setTelefone(colaboradorStringCellEditEvent.getNewValue());
+                try {
+                    ColaboradorCRUD.editColaborador(colab);
+                } catch (IdNaoEncontradoException ex){
+                    ex.getMessage();
+                }
+            }
+        });
+        colNome.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colNome.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Colaborador, String> colaboradorStringCellEditEvent) {
+                Colaborador colab = colaboradorStringCellEditEvent.getRowValue();
+                colab.setNome(colaboradorStringCellEditEvent.getNewValue());
+                try {
+                    ColaboradorCRUD.editColaborador(colab);
+                } catch (IdNaoEncontradoException ex){
+                    ex.getMessage();
+                }
+            }
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tableColaborador.setEditable(true);
+        editCamposColaborador();
+
         int aux=1;
        for (Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
                colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));

@@ -71,6 +71,10 @@ public class GerenteListaCliente implements Initializable {
     }
 
 
+    public void clicaInsertCliente(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "AdicionarCliente.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
