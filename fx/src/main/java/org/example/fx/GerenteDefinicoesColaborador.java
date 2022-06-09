@@ -39,7 +39,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
     @FXML
     private TableColumn<Colaborador, BigDecimal> colsalario;
     @FXML
-    private TableColumn<Colaborador, Integer> colEstado;
+    private TableColumn<Colaborador, String> colEstado;
 
     public TableView<Colaborador> tableColaborador;
 
@@ -84,6 +84,19 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 }
             }
         });
+        colEstado.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colEstado.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Colaborador, String> colaboradorStringCellEditEvent) {
+                Colaborador colab = colaboradorStringCellEditEvent.getRowValue();
+                colab.setEstado(colaboradorStringCellEditEvent.getNewValue());
+                try {
+                    ColaboradorCRUD.editColaborador(colab);
+                } catch (IdNaoEncontradoException ex){
+                    ex.getMessage();
+                }
+            }
+        });
     }
 
     @Override
@@ -97,6 +110,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
                colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
                colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
                colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
+               colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
                tableColaborador.setItems(getColaborador());
        }
     }
@@ -107,6 +121,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
         colaboradors.addAll(colaboradorList);
 
         return colaboradors;
+    }
+
+    public void adicionarColaborador(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "AdicionarColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {

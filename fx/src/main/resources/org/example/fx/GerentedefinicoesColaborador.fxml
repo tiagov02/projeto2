@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
+<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -27,7 +21,7 @@
                </font></Button>
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
             </children></VBox>
-      <TableView fx:id="tableColaborador" layoutX="218.0" layoutY="59.0" prefHeight="200.0" prefWidth="536.0">
+      <TableView fx:id="tableColaborador" layoutX="218.0" layoutY="59.0" prefHeight="477.0" prefWidth="536.0">
         <columns>
           <TableColumn fx:id="colNumero" prefWidth="57.0" text="#" />
           <TableColumn fx:id="colNome" prefWidth="176.0" text="Nome" />
@@ -36,16 +30,6 @@
             <TableColumn fx:id="colEstado" prefWidth="113.0" text="Estado" />
         </columns>
       </TableView>
-      <Text layoutX="241.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de colaborador:" />
-      <Text layoutX="241.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome de colaborador:" />
-      <Text layoutX="241.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="salario:" />
-      <Text layoutX="242.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado" />
-      <TextField layoutX="406.0" layoutY="277.0" />
-      <TextField layoutX="406.0" layoutY="311.0" />
-      <TextField layoutX="406.0" layoutY="348.0" />
-      <ComboBox layoutX="406.0" layoutY="380.0" prefHeight="25.0" prefWidth="161.0" />
-      <Button layoutX="512.0" layoutY="421.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Alterar" textFill="WHITE" />
-      <Button layoutX="406.0" layoutY="421.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
       <Text layoutX="222.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colaborador:">
          <font>
             <Font size="14.0" />
@@ -53,7 +37,7 @@
       </Text>
       <TextField layoutX="307.0" layoutY="18.0" prefHeight="25.0" prefWidth="161.0" />
       <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
-      <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
+      <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" onAction="#adicionarColaborador" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
     </children>
 
 </AnchorPane>
