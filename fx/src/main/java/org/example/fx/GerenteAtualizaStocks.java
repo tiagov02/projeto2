@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DefaultStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -66,7 +67,27 @@ public class GerenteAtualizaStocks implements Initializable {
     }
 
     public void updateQtdStock(){
-        //sdfsdf
+        qtdstock.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        qtdstock.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<ProdutoTipo, Integer> produtoTipoIntegerCellEditEvent) {
+                ProdutoTipo prod = produtoTipoIntegerCellEditEvent.getRowValue();
+                prod.setQtdStock(produtoTipoIntegerCellEditEvent.getNewValue());
+                for (Produto p: ProdutoCRUD.findTodosProdutos()){
+                    if (prod.getId() == p.getNumproduto()){
+                        p.setQuantidadestock(prod.getQtdStock());
+                        try {
+                            ProdutoCRUD.editProduto(p);
+                        } catch (IdNaoEncontradoException ex){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("ERRO!!");
+                            dialogoAviso.setHeaderText(ex.getMessage());
+                            dialogoAviso.showAndWait();
+                        }
+                    }
+                }
+            }
+        });
     }
 
 
@@ -76,6 +97,7 @@ public class GerenteAtualizaStocks implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableproduto.setEditable(true);
         updateNomeProduto();
+        updateQtdStock();
         numproduto.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tipoproduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
