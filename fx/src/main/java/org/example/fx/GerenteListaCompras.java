@@ -1,15 +1,13 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.*;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Exceptions.NumberException;
 import org.example.fx.Logica.TrocaPaineis;
@@ -72,8 +70,16 @@ public class GerenteListaCompras implements Initializable {
         numeroProduto.setText("");
     }
 
-    public void removerCompra(){
-    //FAZER
+    public void removerCompra(javafx.event.ActionEvent event){
+        try {
+            ClienteCRUD.deleteCliente(tableListaCompras.getSelectionModel().getSelectedItem().getId());
+        } catch (IdNaoEncontradoException e) {
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Houve um erro no sistema! Por favor volte a tentar em algum tempo ou contacte" +
+                    "o seu administrador de sistema");
+            dialogoAviso.showAndWait();
+        }
     }
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{

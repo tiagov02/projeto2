@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -43,7 +43,6 @@
          </font>
       </Button>
       <Text layoutX="241.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero produto" />
-      <TextField fx:id="numeroProduto" layoutX="341.0" layoutY="441.0" />
       <Button fx:id="buttonRemover" layoutX="436.0" layoutY="480.0" mnemonicParsing="false" onAction="#removerCompra" style="-fx-background-color: rgb(102,51,0);" text="REMOVER" textFill="WHITE">
          <font>
             <Font size="11.0" />
