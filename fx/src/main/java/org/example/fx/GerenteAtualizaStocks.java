@@ -15,10 +15,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DefaultStringConverter;
+import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -70,7 +72,7 @@ public class GerenteAtualizaStocks implements Initializable {
             public void handle(TableColumn.CellEditEvent<ProdutoTipo, Integer> produtoTipoIntegerCellEditEvent) {
                 ProdutoTipo prod = produtoTipoIntegerCellEditEvent.getRowValue();
                 prod.setQtdStock(produtoTipoIntegerCellEditEvent.getNewValue());
-                for (Produto p: ProdutoCRUD.findTodosProdutos()){
+                Produto p=ProdutoCRUD.findProduto(prod.getId());
                     if (prod.getId() == p.getNumproduto()){
                         p.setQuantidadestock(prod.getQtdStock());
                         try {
@@ -83,18 +85,58 @@ public class GerenteAtualizaStocks implements Initializable {
                         }
                     }
                 }
-            }
         });
     }
 
+    public void updateQtdMinima(){
+        qtdminima.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        qtdminima.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<ProdutoTipo, Integer> produtoTipoIntegerCellEditEvent) {
+                ProdutoTipo prod = produtoTipoIntegerCellEditEvent.getRowValue();
+                prod.setQtdMinima(produtoTipoIntegerCellEditEvent.getNewValue());
+                    Produto p=ProdutoCRUD.findProduto(prod.getId());
+                        p.setQuantidademinima(prod.getQtdMinima());
+                        try {
+                            ProdutoCRUD.editProduto(p);
+                        } catch (IdNaoEncontradoException ex){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("ERRO!!");
+                            dialogoAviso.setHeaderText(ex.getMessage());
+                            dialogoAviso.showAndWait();
+                        }
+                    }
+        });
+    }
 
-
+    public void updateValorUnitario(){
+        valor.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+        valor.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, Float>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<ProdutoTipo, Float> produtoTipoFloatCellEditEvent) {
+                ProdutoTipo prod = produtoTipoFloatCellEditEvent.getRowValue();
+                prod.setValUnit(produtoTipoFloatCellEditEvent.getNewValue());
+                Produto p = ProdutoCRUD.findProduto(prod.getId());
+                p.setValorunitariototal(new BigDecimal(prod.getValUnit()));
+                try {
+                    ProdutoCRUD.editProduto(p);
+                } catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
+                }
+            }
+        });
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableproduto.setEditable(true);
         updateNomeProduto();
         updateQtdStock();
+        updateQtdMinima();
+        updateValorUnitario();
         numproduto.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tipoproduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
