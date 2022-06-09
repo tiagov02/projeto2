@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -54,7 +55,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 try {
                     ColaboradorCRUD.editColaborador(colaborador);
                 } catch (IdNaoEncontradoException ex){
-                    ex.getMessage();
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                 }
             }
         });
@@ -67,7 +71,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 try {
                     ColaboradorCRUD.editColaborador(colab);
                 } catch (IdNaoEncontradoException ex){
-                    ex.getMessage();
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                 }
             }
         });
@@ -80,7 +87,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 try {
                     ColaboradorCRUD.editColaborador(colab);
                 } catch (IdNaoEncontradoException ex){
-                    ex.getMessage();
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                 }
             }
         });
@@ -103,8 +113,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableColaborador.setEditable(true);
         editCamposColaborador();
-
-        int aux=1;
        for (Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
                colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
                colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
