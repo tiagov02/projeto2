@@ -86,9 +86,7 @@ public class AdicionarClienteController implements Initializable {
             cod.setCodpostal(lbl_codPostal.getText());
             cod.setLocalidade(lbl_localidade.getText());
         }
-        else{
-            cli.setCodpostal(lbl_codPostal.getText());
-        }
+        cli.setCodpostal(lbl_codPostal.getText());
         try{
             nPorta=Integer.parseInt(lbl_numPortoa.getText());
         }
