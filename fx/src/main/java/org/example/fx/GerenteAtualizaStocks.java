@@ -41,8 +41,7 @@ public class GerenteAtualizaStocks implements Initializable {
     public TableView<ProdutoTipo> tableproduto;
 
 
-    public void updateProdutos(){
-        tableproduto.setEditable(true);
+    public void updateNomeProduto(){
         nomeproduto.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
         nomeproduto.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, String>>() {
             @Override
@@ -66,11 +65,17 @@ public class GerenteAtualizaStocks implements Initializable {
         });
     }
 
+    public void updateQtdStock(){
+        //sdfsdf
+    }
+
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateProdutos();
+        tableproduto.setEditable(true);
+        updateNomeProduto();
         numproduto.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tipoproduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
