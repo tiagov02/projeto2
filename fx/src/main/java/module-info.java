@@ -6,6 +6,7 @@ module org.example.fx {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires com.example.bd;
+    requires java.persistence;
 
     opens org.example.fx to javafx.fxml;
     exports org.example.fx;

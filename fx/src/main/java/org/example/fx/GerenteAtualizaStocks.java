@@ -1,14 +1,20 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Produto;
+import com.example.bd.Entity.Tipoproduto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DefaultStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -35,16 +41,40 @@ public class GerenteAtualizaStocks implements Initializable {
     public TableView<ProdutoTipo> tableproduto;
 
 
+    public void updateProdutos(){
+        tableproduto.setEditable(true);
+        nomeproduto.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        nomeproduto.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<ProdutoTipo, String> produtoTipoStringCellEditEvent) {
+                for(Produto p:ProdutoCRUD.findTodosProdutos()){
+                    ProdutoTipo prod = produtoTipoStringCellEditEvent.getRowValue();
+                    prod.setNome(produtoTipoStringCellEditEvent.getNewValue());
+                    p.setNome(prod.getNome());
+                    try {
+                        ProdutoCRUD.editProduto(p);
+                    } catch (IdNaoEncontradoException ex){
+                        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                        dialogoAviso.setTitle("ERRO!!");
+                        dialogoAviso.setHeaderText(ex.getMessage());
+                        dialogoAviso.showAndWait();
+                    }
+                }
+            }
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateProdutos();
         numproduto.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeproduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tipoproduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
         qtdstock.setCellValueFactory(new PropertyValueFactory<>("qtdStock"));
         qtdminima.setCellValueFactory(new PropertyValueFactory<>("qtdMinima"));
         valor.setCellValueFactory(new PropertyValueFactory<>("valUnit"));
-        ProdutoTipo pt= new ProdutoTipo();
         for(Produto p:ProdutoCRUD.findTodosProdutos()){
+            ProdutoTipo pt= new ProdutoTipo();
             pt.setId(p.getNumproduto());
             pt.setNome(p.getNome());
             pt.setQtdStock(p.getQuantidadestock());

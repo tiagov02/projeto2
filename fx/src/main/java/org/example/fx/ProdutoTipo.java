@@ -1,5 +1,13 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Produto;
+
+import javax.persistence.EntityManager;
+
+import static com.example.bd.CRUD.ProdutoCRUD.findProduto;
+import static com.example.bd.CRUD.ProdutoCRUD.getEntityManager;
+
 public class ProdutoTipo {
     private String nome;
     private String tipoProduto;
