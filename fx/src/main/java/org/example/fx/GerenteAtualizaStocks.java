@@ -47,22 +47,26 @@ public class GerenteAtualizaStocks implements Initializable {
         nomeproduto.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<ProdutoTipo, String>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<ProdutoTipo, String> produtoTipoStringCellEditEvent) {
+                ProdutoTipo prod = produtoTipoStringCellEditEvent.getRowValue();
+                prod.setNome(produtoTipoStringCellEditEvent.getNewValue());
                 for(Produto p:ProdutoCRUD.findTodosProdutos()){
-                    ProdutoTipo prod = produtoTipoStringCellEditEvent.getRowValue();
-                    prod.setNome(produtoTipoStringCellEditEvent.getNewValue());
-                    p.setNome(prod.getNome());
-                    try {
-                        ProdutoCRUD.editProduto(p);
-                    } catch (IdNaoEncontradoException ex){
-                        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                        dialogoAviso.setTitle("ERRO!!");
-                        dialogoAviso.setHeaderText(ex.getMessage());
-                        dialogoAviso.showAndWait();
+                    if (prod.getId() == p.getNumproduto()){
+                        p.setNome(prod.getNome());
+                        try {
+                            ProdutoCRUD.editProduto(p);
+                        } catch (IdNaoEncontradoException ex){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("ERRO!!");
+                            dialogoAviso.setHeaderText(ex.getMessage());
+                            dialogoAviso.showAndWait();
+                        }
                     }
                 }
             }
         });
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
