@@ -35,8 +35,8 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField layoutX="307.0" layoutY="18.0" prefHeight="25.0" prefWidth="161.0" />
-      <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
+      <TextField fx:id="pesquisarfield" layoutX="307.0" layoutY="18.0" prefHeight="25.0" prefWidth="161.0" />
+      <Button layoutX="477.0" layoutY="18.0" onAction="#pesquisarColaborador" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" onAction="#adicionarColaborador" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
     </children>
 

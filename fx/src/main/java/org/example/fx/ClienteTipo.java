@@ -1,5 +1,14 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Cliente;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DefaultStringConverter;
+
 public class ClienteTipo {
     private int numCliente;
     private String nomeCliente;
@@ -58,4 +67,5 @@ public class ClienteTipo {
     public void setCodPostal(String codPostal) {
         this.codPostal = codPostal;
     }
+
 }

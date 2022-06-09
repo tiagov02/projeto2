@@ -1,5 +1,6 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.CodPostaisCRUD;
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.Encrypt.Encriptacao;
@@ -8,6 +9,8 @@ import com.example.bd.Entity.Colaborador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.util.converter.BigDecimalStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
@@ -35,6 +38,7 @@ public class AdicionarColaborador {
     private TextField codpostal;
     @FXML
     private TextField localidade;
+
 
     public void limpar(){
         numcolaborador.setText("");
@@ -74,6 +78,7 @@ public class AdicionarColaborador {
         cod.setLocalidade(localidade.getText());
         CodPostaisCRUD.create(cod);
     }
+
 
     public void clicaVoltar(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);

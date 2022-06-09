@@ -1,24 +1,31 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Cliente;
+import com.example.bd.Entity.Colaborador;
 import com.example.bd.Entity.Produto;
 import com.example.bd.Entity.Tipocliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import javafx.util.converter.DefaultStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -32,7 +39,7 @@ public class GerenteListaCliente implements Initializable {
     @FXML
     private TableColumn<ClienteTipo, Integer> numcliente;
     @FXML
-    private TableColumn<ClienteTipo, String> nomecliente;
+    private TableColumn<Cliente, String> nomecliente;
     @FXML
     private TableColumn<ClienteTipo, String> tipocliente;
     @FXML
@@ -52,8 +59,10 @@ public class GerenteListaCliente implements Initializable {
         return clientes;
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tableClientes.setEditable(true);
         numcliente.setCellValueFactory(new PropertyValueFactory<>("numCliente"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         tipocliente.setCellValueFactory(new PropertyValueFactory<>("tipoCliente"));

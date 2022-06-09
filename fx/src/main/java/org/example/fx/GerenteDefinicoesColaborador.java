@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
@@ -41,6 +42,8 @@ public class GerenteDefinicoesColaborador implements Initializable {
     private TableColumn<Colaborador, BigDecimal> colsalario;
     @FXML
     private TableColumn<Colaborador, String> colEstado;
+    @FXML
+    private TextField pesquisarfield;
 
     public TableView<Colaborador> tableColaborador;
 
@@ -62,6 +65,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 }
             }
         });
+
         colTelefone.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
         colTelefone.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, String>>() {
             @Override
@@ -107,6 +111,20 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 }
             }
         });
+    }
+
+
+    public void pesquisarColaborador(){
+        int id = Integer.parseInt(pesquisarfield.getText());
+        boolean existe = true;
+        if (ColaboradorCRUD.findColaboradores(id).equals(existe)){
+            colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
+            colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+            colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
+            colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
+            colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+            tableColaborador.setItems(getColaborador());
+        }
     }
 
     @Override
