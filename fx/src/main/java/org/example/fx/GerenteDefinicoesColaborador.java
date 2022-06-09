@@ -71,7 +71,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 try {
                     ColaboradorCRUD.editColaborador(colab);
                 } catch (IdNaoEncontradoException ex){
-                    ex.getMessage();
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                 }
             }
         });
@@ -84,7 +87,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 try {
                     ColaboradorCRUD.editColaborador(colab);
                 } catch (IdNaoEncontradoException ex){
-                    ex.getMessage();
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                 }
             }
         });
@@ -94,8 +100,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableColaborador.setEditable(true);
         editCamposColaborador();
-
-        int aux=1;
        for (Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
                colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
                colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
