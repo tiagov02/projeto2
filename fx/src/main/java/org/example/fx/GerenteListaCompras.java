@@ -83,7 +83,7 @@ public class GerenteListaCompras implements Initializable {
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Houve um erro no sistema! Por favor volte a tentar em algum tempo ou contacte" +
-                    "o seu administrador de sistema");
+                    " o seu administrador de sistema");
             dialogoAviso.showAndWait();
         }
     }
