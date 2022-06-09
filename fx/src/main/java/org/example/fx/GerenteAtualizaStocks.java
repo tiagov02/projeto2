@@ -48,19 +48,16 @@ public class GerenteAtualizaStocks implements Initializable {
             public void handle(TableColumn.CellEditEvent<ProdutoTipo, String> produtoTipoStringCellEditEvent) {
                 ProdutoTipo prod = produtoTipoStringCellEditEvent.getRowValue();
                 prod.setNome(produtoTipoStringCellEditEvent.getNewValue());
-                for(Produto p:ProdutoCRUD.findTodosProdutos()){
-                    if (prod.getId() == p.getNumproduto()){
-                        p.setNome(prod.getNome());
-                        try {
-                            ProdutoCRUD.editProduto(p);
-                        } catch (IdNaoEncontradoException ex){
-                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                            dialogoAviso.setTitle("ERRO!!");
-                            dialogoAviso.setHeaderText(ex.getMessage());
-                            dialogoAviso.showAndWait();
+                Produto p=ProdutoCRUD.findProduto(prod.getId());
+                p.setNome(prod.getNome());
+                try {
+                    ProdutoCRUD.editProduto(p);
+                } catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
                         }
-                    }
-                }
             }
         });
     }
