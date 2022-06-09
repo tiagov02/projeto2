@@ -17,6 +17,7 @@ public class Produto {
     private Collection<Linhaencomendafornecedor> linhaencomendafornecedorsByNumproduto;
     private Collection<Linhafatura> linhafaturasByNumproduto;
     private Tipoproduto tipoprodutoByIdtipoproduto;
+    private String estado;
 
     @Id
     @SequenceGenerator(name="produto_numproduto_seq", allocationSize=1)
@@ -98,6 +99,16 @@ public class Produto {
 
     public void setValorunitariototal(BigDecimal valorunitariototal) {
         this.valorunitariototal = valorunitariototal;
+    }
+
+    @Basic
+    @Column(name = "estado", nullable = true, length = 10)
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override

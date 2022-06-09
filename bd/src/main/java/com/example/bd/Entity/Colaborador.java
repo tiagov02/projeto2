@@ -18,6 +18,7 @@ public class Colaborador {
     private String username;
     private Codpostais codpostaisByCodpostal;
     private Collection<Fatura> faturasByIdcolaborador;
+    private String estado;
 
     @Id
     @SequenceGenerator(name="colaborador_idcolaborador_seq", allocationSize=1)
@@ -119,6 +120,16 @@ public class Colaborador {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Basic
+    @Column(name = "estado", nullable = true, length = 10)
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
