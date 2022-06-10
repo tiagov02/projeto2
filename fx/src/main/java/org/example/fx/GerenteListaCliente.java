@@ -18,10 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -31,7 +28,9 @@ import org.example.fx.Logica.TrocaPaineis;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 public class GerenteListaCliente implements Initializable {
     @FXML
@@ -39,7 +38,7 @@ public class GerenteListaCliente implements Initializable {
     @FXML
     private TableColumn<ClienteTipo, Integer> numcliente;
     @FXML
-    private TableColumn<Cliente, String> nomecliente;
+    private TableColumn<ClienteTipo, String> nomecliente;
     @FXML
     private TableColumn<ClienteTipo, String> tipocliente;
     @FXML
@@ -50,6 +49,12 @@ public class GerenteListaCliente implements Initializable {
     private TableColumn<ClienteTipo, String> codpostal;
 
     public TableView<ClienteTipo> tableClientes;
+
+    @FXML
+    private Button btn_cli;
+
+    @FXML
+    private TextField lbl_cli;
 
     public ObservableList<Cliente> getClientes(){
         ObservableList<Cliente> clientes = FXCollections.observableArrayList();
@@ -68,14 +73,41 @@ public class GerenteListaCliente implements Initializable {
         tipocliente.setCellValueFactory(new PropertyValueFactory<>("tipoCliente"));
         telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         morada.setCellValueFactory(new PropertyValueFactory<>("morada"));
-        ClienteTipo clienteTipo = new ClienteTipo();
+
         for (Cliente cliente: ClienteCRUD.findClientesTodos()){
+            ClienteTipo clienteTipo = new ClienteTipo();
             clienteTipo.setNumCliente(cliente.getIdcliente());
             clienteTipo.setNomeCliente(cliente.getNome());
             clienteTipo.setTipoCliente(cliente.getTipoclienteByIdtipocliente().getTipocliente());
             clienteTipo.setTelefone(cliente.getTelefone());
             clienteTipo.setMorada(cliente.getCodpostaisByCodpostal().getCodpostal() + "  " +  cliente.getCodpostaisByCodpostal().getLocalidade());
             tableClientes.getItems().add(clienteTipo);
+        }
+    }
+
+    public void pesquisaCli(javafx.event.ActionEvent event){
+        int cont=0;
+        tableClientes.setItems(FXCollections.observableArrayList());
+        for(Cliente cli:ClienteCRUD.findClientesTodos()){
+            if(this.lbl_cli.getText().equals(Integer.toString(cli.getIdcliente())) ||
+                    this.lbl_cli.getText().toLowerCase().equals(cli.getNome().toLowerCase()) ||
+                    this.lbl_cli.getText().equals(cli.getTelefone())){
+                cont++;
+                ClienteTipo clienteTipo = new ClienteTipo();
+                clienteTipo.setNumCliente(cli.getIdcliente());
+                clienteTipo.setNomeCliente(cli.getNome());
+                clienteTipo.setTipoCliente(cli.getTipoclienteByIdtipocliente().getTipocliente());
+                clienteTipo.setTelefone(cli.getTelefone());
+                clienteTipo.setMorada(cli.getCodpostaisByCodpostal().getCodpostal() + "  "
+                        + cli.getCodpostaisByCodpostal().getLocalidade());
+                tableClientes.getItems().add(clienteTipo);
+            }
+        }
+        if(cont==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não existem clientes com os critérios de pesquisa selecionados!");
+            dialogoAviso.showAndWait();
         }
     }
 
