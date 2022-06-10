@@ -9,9 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DefaultStringConverter;
@@ -39,6 +37,10 @@ public class GerenteAtualizaStocks implements Initializable {
     private TableColumn<ProdutoTipo, Integer> qtdminima;
     @FXML
     private TableColumn<ProdutoTipo, Float> valor;
+    @FXML
+    private TextField updatenumproduto;
+    @FXML
+    private ComboBox<Tipoproduto> combotipoprod;
 
 
     public TableView<ProdutoTipo> tableproduto;
@@ -128,6 +130,10 @@ public class GerenteAtualizaStocks implements Initializable {
                 }
             }
         });
+    }
+
+    public void tipoProduto(){
+        combotipoprod.setPromptText("Tipo de Produto: ");
     }
 
     @Override

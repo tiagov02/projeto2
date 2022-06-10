@@ -49,8 +49,8 @@ public class GerenteListaEncomendas implements Initializable{
         telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
         valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
-        ListaEncomendas lista = new ListaEncomendas();
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
+            ListaEncomendas lista = new ListaEncomendas();
             lista.setNumFatura(fat.getNumfatura());
             lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
             lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());

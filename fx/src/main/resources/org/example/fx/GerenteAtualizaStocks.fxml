@@ -36,8 +36,8 @@
       <Button layoutX="523.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Text layoutX="252.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero do Produto:" />
       <Text layoutX="252.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Produto:" />
-      <TextField layoutX="395.0" layoutY="402.0" />
-      <ComboBox layoutX="395.0" layoutY="439.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="updatenumproduto" layoutX="395.0" layoutY="402.0" />
+      <ComboBox fx:id="combotipoprod" layoutX="395.0" layoutY="439.0" prefHeight="26.0" prefWidth="150.0" />
       <Button layoutX="480.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Atualizar" textFill="WHITE" />
       <Button layoutX="395.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
     </children>

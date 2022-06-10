@@ -60,8 +60,8 @@ public class GerenteListaCompras implements Initializable {
         colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
         colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("qtdExistente"));
         colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("qtdComprar"));
-        ListaComprasClass list= new ListaComprasClass();
         for(Linhaencomendafornecedor l: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
+            ListaComprasClass list= new ListaComprasClass();
             list.setId(l.getNumencomenda());
             list.setProduto(l.getProdutoByNumproduto().getNome());
             list.setQtdComprar(l.getQuantidade());
