@@ -98,6 +98,7 @@ public class AdicionarClienteController implements Initializable {
         }
         cli.setNumporta(nPorta);
         cli.setRua(lbl_rua.getText());
+        cli.setIdtipocliente(select_tipoCliente.getSelectionModel().getSelectedItem().getIdtipocliente());
         ClienteCRUD.createCliente(cli);
     }
 
