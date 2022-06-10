@@ -1,8 +1,10 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.TipoColaboradorCRUD;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Colaborador;
 import com.example.bd.Entity.Tipocolaborador;
 import javafx.collections.FXCollections;
@@ -115,15 +117,21 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
 
     public void pesquisarColaborador(){
-        int id = Integer.parseInt(pesquisarfield.getText());
-        boolean existe = true;
-        if (ColaboradorCRUD.findColaboradores(id).equals(existe)){
-            colNumero.setCellValueFactory(new PropertyValueFactory<>("idcolaborador"));
-            colNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-            colTelefone.setCellValueFactory(new PropertyValueFactory<>("Telefone"));
-            colsalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
-            colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
-            tableColaborador.setItems(getColaborador());
+        int cont=0;
+        tableColaborador.setItems(FXCollections.observableArrayList());
+        for(Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
+            if(this.pesquisarfield.getText().equals(Integer.toString(colab.getIdcolaborador())) ||
+                    this.pesquisarfield.getText().toLowerCase().equals(colab.getNome().toLowerCase()) ||
+                    this.pesquisarfield.getText().equals(colab.getTelefone())){
+                cont++;
+                tableColaborador.getItems().add(colab);
+            }
+        }
+        if(cont==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não existem clientes com os critérios de pesquisa selecionados!");
+            dialogoAviso.showAndWait();
         }
     }
 
@@ -179,4 +187,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
+
+
 }
