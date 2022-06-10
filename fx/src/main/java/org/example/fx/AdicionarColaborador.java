@@ -71,12 +71,14 @@ public class AdicionarColaborador {
             dialogoAviso.setHeaderText("Não pode introduzir uma password vazia.");
             dialogoAviso.showAndWait();
         }
+        if(CodPostaisCRUD.findCodPostal(codpostal.getText())==null){
+            Codpostais cod = new Codpostais();
+            cod.setCodpostal(codpostal.getText());
+            cod.setLocalidade(localidade.getText());
+            CodPostaisCRUD.create(cod);
+        }
         c1.setCodpostal(codpostal.getText());
         ColaboradorCRUD.createColaborador(c1);
-        Codpostais cod = new Codpostais();
-        cod.setCodpostal(codpostal.getText());
-        cod.setLocalidade(localidade.getText());
-        CodPostaisCRUD.create(cod);
     }
 
 
