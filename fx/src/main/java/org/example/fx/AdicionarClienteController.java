@@ -82,9 +82,11 @@ public class AdicionarClienteController implements Initializable {
         cli.setNome(lbl_nome.getText());
         cli.setIdtipocliente(tp.getIdtipocliente());
         if(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText())==null){
+            System.out.println("estou aqui" + lbl_codPostal.getText());
             Codpostais cod=new Codpostais();
             cod.setCodpostal(lbl_codPostal.getText());
             cod.setLocalidade(lbl_localidade.getText());
+            CodPostaisCRUD.create(cod);
         }
         cli.setCodpostal(lbl_codPostal.getText());
         try{
