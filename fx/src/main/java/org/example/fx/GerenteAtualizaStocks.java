@@ -37,10 +37,6 @@ public class GerenteAtualizaStocks implements Initializable {
     private TableColumn<ProdutoTipo, Integer> qtdminima;
     @FXML
     private TableColumn<ProdutoTipo, Float> valor;
-    @FXML
-    private TextField updatenumproduto;
-    @FXML
-    private ComboBox<Tipoproduto> combotipoprod;
 
 
     public TableView<ProdutoTipo> tableproduto;
@@ -130,10 +126,6 @@ public class GerenteAtualizaStocks implements Initializable {
                 }
             }
         });
-    }
-
-    public void tipoProduto(){
-        combotipoprod.setPromptText("Tipo de Produto: ");
     }
 
     @Override

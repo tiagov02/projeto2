@@ -21,7 +21,7 @@
                 <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
             </children></VBox>
-      <TableView fx:id="tableproduto" layoutX="218.0" layoutY="85.0" prefHeight="311.0" prefWidth="538.0">
+      <TableView fx:id="tableproduto" layoutX="218.0" layoutY="85.0" prefHeight="452.0" prefWidth="538.0">
         <columns>
           <TableColumn fx:id="numproduto" prefWidth="34.0" text="#" />
           <TableColumn fx:id="nomeproduto" prefWidth="182.0" text="Nome Produto" />
@@ -34,12 +34,6 @@
       <Text layoutX="243.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de barras:" wrappingWidth="107.02099609375" />
       <TextField layoutX="350.0" layoutY="18.0" />
       <Button layoutX="523.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
-      <Text layoutX="252.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero do Produto:" />
-      <Text layoutX="252.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Produto:" />
-      <TextField fx:id="updatenumproduto" layoutX="395.0" layoutY="402.0" />
-      <ComboBox fx:id="combotipoprod" layoutX="395.0" layoutY="439.0" prefHeight="26.0" prefWidth="150.0" />
-      <Button layoutX="480.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Atualizar" textFill="WHITE" />
-      <Button layoutX="395.0" layoutY="485.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Limpar" textFill="WHITE" />
     </children>
 
 </AnchorPane>
