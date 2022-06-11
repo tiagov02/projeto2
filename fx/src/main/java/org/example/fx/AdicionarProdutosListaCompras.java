@@ -1,5 +1,6 @@
 package org.example.fx;
 
+
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.FornecedorCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
@@ -14,7 +15,7 @@ import org.example.fx.Logica.TrocaPaineis;
 import java.io.IOException;
 import java.util.List;
 
-public class AdicionarProdutos {
+public class AdicionarProdutosListaCompras {
 
     @FXML
     private TextField labelnumproduto;

@@ -89,7 +89,7 @@ public class GerenteListaCompras implements Initializable {
     }
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "AdicionarProduto.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "AdicionarProdutoListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{

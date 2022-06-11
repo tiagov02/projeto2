@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
+<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -28,7 +23,7 @@
             <AnchorPane prefHeight="203.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonSair" onAction="#clicaLogout" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
             </children></VBox>
@@ -49,7 +44,7 @@
       <TextField fx:id="pesquisarfield" layoutX="307.0" layoutY="18.0" prefHeight="25.0" prefWidth="161.0" />
       <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisarColaborador" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" onAction="#adicionarColaborador" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
-      <Button fx:id="btn_eliminarCliente" layoutX="668.0" layoutY="491.0" mnemonicParsing="false" onAction="#pesquisarColaborador" style="-fx-background-color: rgb(102,51,0);" text="Eliminar" textFill="WHITE" />
+      <Button fx:id="btn_eliminarCliente" layoutX="655.0" layoutY="488.0" mnemonicParsing="false" onAction="#pesquisarColaborador" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR" textFill="WHITE" />
     </children>
 
 </AnchorPane>
