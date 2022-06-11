@@ -117,6 +117,10 @@ public class AdicionarClienteController implements Initializable {
         lbl_passwd.setText("");
     }
 
+    public void clickBack(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }

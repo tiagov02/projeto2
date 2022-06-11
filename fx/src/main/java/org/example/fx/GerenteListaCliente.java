@@ -88,6 +88,10 @@ public class GerenteListaCliente implements Initializable {
     public void pesquisaCli(javafx.event.ActionEvent event){
         int cont=0;
         tableClientes.setItems(FXCollections.observableArrayList());
+        if(lbl_cli.getText().equals("")){
+            initialize(null, null);
+            return;
+        }
         for(Cliente cli:ClienteCRUD.findClientesTodos()){
             if(this.lbl_cli.getText().equals(Integer.toString(cli.getIdcliente())) ||
                     this.lbl_cli.getText().toLowerCase().equals(cli.getNome().toLowerCase()) ||

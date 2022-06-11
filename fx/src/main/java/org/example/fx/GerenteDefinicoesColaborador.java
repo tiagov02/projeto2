@@ -49,6 +49,9 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     public TableView<Colaborador> tableColaborador;
 
+    private String est;
+
+    public String getEst() { return "INATIVO";}
 
     public void editCamposColaborador(){
         colsalario.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
@@ -116,9 +119,14 @@ public class GerenteDefinicoesColaborador implements Initializable {
     }
 
 
+
     public void pesquisarColaborador(){
         int cont=0;
         tableColaborador.setItems(FXCollections.observableArrayList());
+        if (pesquisarfield.getText().equals("")){
+            initialize(null, null);
+            return;
+        }
         for(Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
             if(this.pesquisarfield.getText().equals(Integer.toString(colab.getIdcolaborador())) ||
                     this.pesquisarfield.getText().toLowerCase().equals(colab.getNome().toLowerCase()) ||
@@ -175,9 +183,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-    public void clicaDefinicoesProdutos(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "GerentedefinicoesProdutos.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{

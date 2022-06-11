@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarProdutos">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarProdutos">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -17,12 +12,12 @@
                     <font>
                         <Font size="13.0" />
                     </font></Button>
-                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font></Button>
+                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb" />
                 <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-                <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5" />
+                <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
                 <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
             </children></VBox>
@@ -39,7 +34,7 @@
             <ComboBox fx:id="comboBox" layoutX="150.0" layoutY="155.0" prefHeight="26.0" prefWidth="159.0" />
             <Text layoutX="14.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade a comprar" />
             <TextField fx:id="labelqtdcomprar" layoutX="150.0" layoutY="119.0" />
-            <Button layoutX="167.0" layoutY="244.0"  mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
+            <Button layoutX="167.0" layoutY="244.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
