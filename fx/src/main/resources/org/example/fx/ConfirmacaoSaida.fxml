@@ -26,7 +26,7 @@
             </children></VBox>
       <Pane layoutX="290.0" layoutY="171.0" prefHeight="169.0" prefWidth="379.0" style="-fx-background-color: white;">
          <children>
-            <Text layoutX="29.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tem a certeza que pretende sair?">
+            <Text layoutX="65.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tem a certeza que pretende sair?">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
