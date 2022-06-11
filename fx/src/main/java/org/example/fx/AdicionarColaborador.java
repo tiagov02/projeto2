@@ -19,8 +19,6 @@ import java.math.BigDecimal;
 
 public class AdicionarColaborador {
     @FXML
-    private TextField numcolaborador;
-    @FXML
     private TextField nomecolab;
     @FXML
     private TextField telefone;
@@ -41,7 +39,6 @@ public class AdicionarColaborador {
 
 
     public void limpar(){
-        numcolaborador.setText("");
         nomecolab.setText("");
         telefone.setText("");
         salario.setText("");
@@ -53,14 +50,20 @@ public class AdicionarColaborador {
         localidade.setText("");
     }
 
-    public void adicionarColaborador(){
+    public void adicionarColaborador(javafx.event.ActionEvent event) throws IOException {
         Colaborador c1 = new Colaborador();
         c1.setIdtipo(1);
-        c1.setIdcolaborador(Integer.parseInt(numcolaborador.getText()));
         c1.setNome(nomecolab.getText());
         c1.setTelefone(telefone.getText());
         c1.setSalario(new BigDecimal(salario.getText()));
-        c1.setNumporta(Integer.parseInt(numcolaborador.getText()));
+        try{
+            c1.setNumporta(Integer.parseInt(numporta.getText()));
+        }catch(NumberFormatException exception){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras no numero da porta!!");
+            dialogoAviso.showAndWait();
+        }
         c1.setRua(rua.getText());
         c1.setUsername(username.getText());
         try {
@@ -79,6 +82,8 @@ public class AdicionarColaborador {
         }
         c1.setCodpostal(codpostal.getText());
         ColaboradorCRUD.createColaborador(c1);
+        TrocaPaineis.changePanel(event,"GerentedefinicoesColaborador.fxml","Loja Prdutos Biológicos",GerenteDefinicoesColaborador.class);
+
     }
 
 

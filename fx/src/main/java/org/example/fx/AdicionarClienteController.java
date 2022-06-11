@@ -73,7 +73,7 @@ public class AdicionarClienteController implements Initializable {
         select_tipoCliente.getItems().addAll(TipoClienteCRUD.findTiposClientesTodos());
     }
 
-    public void clickOK(javafx.event.ActionEvent event){
+    public void clickOK(javafx.event.ActionEvent event) throws IOException {
         int nPorta=0;
         Tipocliente tp=select_tipoCliente.getValue();
         Cliente cli=new Cliente();
@@ -102,6 +102,7 @@ public class AdicionarClienteController implements Initializable {
         cli.setRua(lbl_rua.getText());
         cli.setIdtipocliente(select_tipoCliente.getSelectionModel().getSelectedItem().getIdtipocliente());
         ClienteCRUD.createCliente(cli);
+        TrocaPaineis.changePanel(event,"GerentedefinicoesCliente.fxml","Loja Produtos Biológicos",GerenteListaCliente.class);
     }
 
     public void clearButton(){
