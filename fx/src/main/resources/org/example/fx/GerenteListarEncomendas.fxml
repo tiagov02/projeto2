@@ -29,7 +29,7 @@
             <AnchorPane prefHeight="203.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" onAction="#clicaLogout" layoutX="111.0" layoutY="1.0"  mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
             </children></VBox>

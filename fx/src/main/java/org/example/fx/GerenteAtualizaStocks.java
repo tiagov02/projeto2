@@ -158,7 +158,7 @@ public class GerenteAtualizaStocks implements Initializable {
 
     public void pesquisa(javafx.event.ActionEvent event){
         int codBarras=0;
-        
+
         if (lbl_codBarras.getText().equals("")){
             initialize(null, null);
             return;
@@ -194,6 +194,10 @@ public class GerenteAtualizaStocks implements Initializable {
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
