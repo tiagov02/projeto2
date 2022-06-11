@@ -10,6 +10,13 @@ public class ConfirmacaoSaida {
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
+    public void cancelarButton(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void logoutButton(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "login.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
