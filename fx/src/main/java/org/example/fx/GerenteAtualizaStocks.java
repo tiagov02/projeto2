@@ -37,9 +37,12 @@ public class GerenteAtualizaStocks implements Initializable {
     private TableColumn<ProdutoTipo, Integer> qtdminima;
     @FXML
     private TableColumn<ProdutoTipo, Float> valor;
-
-
+    @FXML
     public TableView<ProdutoTipo> tableproduto;
+    @FXML
+    private Button btn_pesq;
+    @FXML
+    private TextField lbl_codBarras;
 
 
     public void updateNomeProduto(){
@@ -150,6 +153,32 @@ public class GerenteAtualizaStocks implements Initializable {
             pt.setValUnit(p.getValorunitariototal().floatValue());
             pt.setTipoProduto(p.getTipoprodutoByIdtipoproduto().getSeccao());
             tableproduto.getItems().add(pt);
+        }
+    }
+
+    public void pesquisa(javafx.event.ActionEvent event){
+        tableproduto.setItems(FXCollections.observableArrayList());
+        int codBarras=0;
+        try{
+            codBarras=Integer.parseInt(lbl_codBarras.getText());
+        }
+        catch(NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não pode introduzir letras no cod de barras!!");
+            dialogoAviso.showAndWait();
+        }
+        for(Produto p:ProdutoCRUD.findTodosProdutos()){
+            if(p.getNumproduto()==codBarras){
+                ProdutoTipo pt= new ProdutoTipo();
+                pt.setId(p.getNumproduto());
+                pt.setNome(p.getNome());
+                pt.setQtdStock(p.getQuantidadestock());
+                pt.setQtdMinima(p.getQuantidademinima());
+                pt.setValUnit(p.getValorunitariototal().floatValue());
+                pt.setTipoProduto(p.getTipoprodutoByIdtipoproduto().getSeccao());
+                tableproduto.getItems().add(pt);
+            }
         }
     }
 

@@ -50,6 +50,12 @@ public class ColaboradorAtualizaStocksController implements Initializable {
     @FXML
     private TableColumn<Produto, Integer> tbl_tipoProduto;
 
+    @FXML
+    private Button btn_pesq;
+
+    @FXML
+    private TextField lbl_codBarras;
+
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
         //Cliente[] clientes = listarCliMaisGasto();

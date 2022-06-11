@@ -24,8 +24,8 @@
             </children>
         </VBox>
       <Text layoutX="253.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de barras:" wrappingWidth="107.02099609375" />
-      <TextField layoutX="360.0" layoutY="28.0" />
-      <Button layoutX="533.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
+      <TextField fx:id="lbl_codBarras" layoutX="360.0" layoutY="28.0" />
+      <Button fx:id="btn_pesq" layoutX="533.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <TableView fx:id="table_produtos" layoutX="224.0" layoutY="95.0" prefHeight="212.0" prefWidth="538.0">
          <columns>
             <TableColumn prefWidth="34.0" text="#" />
