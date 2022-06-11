@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCliente">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarClienteController">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -22,34 +20,21 @@
                 <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5" />
                 <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <AnchorPane prefHeight="203.0" prefWidth="218.0" />
-            <AnchorPane prefHeight="33.0" prefWidth="218.0">
-               <children>
-                  <Button layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
-               </children>
-            </AnchorPane>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
             </children></VBox>
-      <TableView fx:id="tableClientes" layoutX="218.0" layoutY="79.0" prefHeight="458.0" prefWidth="537.0">
-        <columns>
-          <TableColumn fx:id="numcliente" prefWidth="35.0" text="#" />
-          <TableColumn fx:id="nomecliente" prefWidth="138.0" text="Nome" />
-            <TableColumn fx:id="tipocliente" text="Tipo Cliente" />
-            <TableColumn fx:id="telefone" prefWidth="58.0" text="Telefone" />
-            <TableColumn fx:id="morada" prefWidth="153.0" text="Morada" />
-            <TableColumn fx:id="codpostal" prefWidth="72.0" text="Cod Postal" />
-        </columns>
-      </TableView>
-      <Text layoutX="263.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <TextField fx:id="lbl_cli" layoutX="315.0" layoutY="29.0" />
-      <Button fx:id="btn_cli" layoutX="476.0" layoutY="29.0" mnemonicParsing="false" onAction="#pesquisaCli" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
-      <Button fx:id="buttoninserircliente" layoutX="639.0" layoutY="29.0" mnemonicParsing="false" onAction="#clicaInsertCliente" style="-fx-background-color: rgb(102,51,0);" text="INSERIR CLIENTE" textFill="WHITE" />
+      <Pane layoutX="290.0" layoutY="171.0" prefHeight="169.0" prefWidth="379.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="29.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tem a certeza que pretende sair?">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="sair" layoutX="238.0" layoutY="102.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: rgb(255,0,0);" text="SIM" textFill="WHITE" />
+            <Button fx:id="cancelar" layoutX="67.0" layoutY="102.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: rgb(102,51,0) rgb(102,51,0);" text="CANCELAR" textFill="WHITE" />
+         </children>
+      </Pane>
     </children>
 
 </AnchorPane>
