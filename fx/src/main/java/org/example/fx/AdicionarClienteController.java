@@ -80,6 +80,7 @@ public class AdicionarClienteController implements Initializable {
         cli.setUsername(lbl_username.getText());
         cli.setPassword(lbl_passwd.getText());
         cli.setNome(lbl_nome.getText());
+        cli.setTelefone(lbl_telefone.getText());
         cli.setIdtipocliente(tp.getIdtipocliente());
         if(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText())==null){
             System.out.println("estou aqui" + lbl_codPostal.getText());
