@@ -158,6 +158,11 @@ public class GerenteAtualizaStocks implements Initializable {
 
     public void pesquisa(javafx.event.ActionEvent event){
         int codBarras=0;
+        
+        if (lbl_codBarras.getText().equals("")){
+            initialize(null, null);
+            return;
+        }
         try{
             codBarras=Integer.parseInt(lbl_codBarras.getText());
         }
