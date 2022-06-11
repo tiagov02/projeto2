@@ -157,7 +157,6 @@ public class GerenteAtualizaStocks implements Initializable {
     }
 
     public void pesquisa(javafx.event.ActionEvent event){
-        tableproduto.setItems(FXCollections.observableArrayList());
         int codBarras=0;
         try{
             codBarras=Integer.parseInt(lbl_codBarras.getText());
@@ -168,17 +167,23 @@ public class GerenteAtualizaStocks implements Initializable {
             dialogoAviso.setHeaderText("Erro! Não pode introduzir letras no cod de barras!!");
             dialogoAviso.showAndWait();
         }
-        for(Produto p:ProdutoCRUD.findTodosProdutos()){
-            if(p.getNumproduto()==codBarras){
-                ProdutoTipo pt= new ProdutoTipo();
-                pt.setId(p.getNumproduto());
-                pt.setNome(p.getNome());
-                pt.setQtdStock(p.getQuantidadestock());
-                pt.setQtdMinima(p.getQuantidademinima());
-                pt.setValUnit(p.getValorunitariototal().floatValue());
-                pt.setTipoProduto(p.getTipoprodutoByIdtipoproduto().getSeccao());
-                tableproduto.getItems().add(pt);
-            }
+        Produto p=ProdutoCRUD.findProduto(codBarras);
+        if(p==null){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não existe nenhum produto com esse cod de barras");
+            dialogoAviso.showAndWait();
+        }
+        else{
+            tableproduto.setItems(FXCollections.observableArrayList());
+            ProdutoTipo pt= new ProdutoTipo();
+            pt.setId(p.getNumproduto());
+            pt.setNome(p.getNome());
+            pt.setQtdStock(p.getQuantidadestock());
+            pt.setQtdMinima(p.getQuantidademinima());
+            pt.setValUnit(p.getValorunitariototal().floatValue());
+            pt.setTipoProduto(p.getTipoprodutoByIdtipoproduto().getSeccao());
+            tableproduto.getItems().add(pt);
         }
     }
 

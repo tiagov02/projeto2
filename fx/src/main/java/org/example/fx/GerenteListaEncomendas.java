@@ -3,12 +3,11 @@ package org.example.fx;
 import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
@@ -40,6 +39,13 @@ public class GerenteListaEncomendas implements Initializable{
     @FXML
     private TableView<ListaEncomendas> tablelistaencomenda;
 
+    @FXML
+    private Button btn_procura;
+
+
+    @FXML
+    private TextField lbl_cliente;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,6 +63,31 @@ public class GerenteListaEncomendas implements Initializable{
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
             tablelistaencomenda.getItems().add(lista);
+        }
+    }
+
+    public void pesquisa(javafx.event.ActionEvent event){
+        tablelistaencomenda.setItems(FXCollections.observableArrayList());
+        int cont=0;
+        for (Fatura fat: FaturaCRUD.findTodasFaturas()){
+            if(lbl_cliente.getText().equals(Integer.toString(fat.getIdcliente())) ||
+                    lbl_cliente.getText().equals(fat.getClienteByIdcliente().getNome()) ||
+                            lbl_cliente.getText().equals(fat.getClienteByIdcliente().getTelefone())){
+                cont++;
+                ListaEncomendas lista = new ListaEncomendas();
+                lista.setNumFatura(fat.getNumfatura());
+                lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
+                lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
+                lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
+                lista.setValorTotal(fat.getValorfatura().floatValue());
+                tablelistaencomenda.getItems().add(lista);
+            }
+        }
+        if(cont==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não existe nenhuma encomenda para o cliente referido!!");
+            dialogoAviso.showAndWait();
         }
     }
 
