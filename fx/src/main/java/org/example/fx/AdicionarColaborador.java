@@ -53,6 +53,7 @@ public class AdicionarColaborador {
     public void adicionarColaborador(javafx.event.ActionEvent event) throws IOException {
         Colaborador c1 = new Colaborador();
         c1.setIdtipo(1);
+        c1.setEstado("ATIVO");
         c1.setNome(nomecolab.getText());
         c1.setTelefone(telefone.getText());
         c1.setSalario(new BigDecimal(salario.getText()));

@@ -18,6 +18,7 @@ import org.example.fx.Logica.TrocaPaineis;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class GerenteListaCompras implements Initializable {
@@ -68,6 +69,35 @@ public class GerenteListaCompras implements Initializable {
             list.setQtdExistente(l.getProdutoByNumproduto().getQuantidadestock());
             list.setTipoProduto(l.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
             tableListaCompras.getItems().add(list);
+        }
+    }
+
+
+    public void procurarProduto(){
+        int count=0;
+        tableListaCompras.setItems(FXCollections.observableArrayList());
+        if (procuraproduto.getText().equals("")){
+            initialize(null, null);
+            return;
+        }
+        for (Linhaencomendafornecedor linha : LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
+            if (this.procuraproduto.getText().equals(Integer.toString(linha.getNumproduto())) ||
+            this.procuraproduto.getText().equals(linha.getProdutoByNumproduto().getNome().toLowerCase(Locale.ROOT))){
+                count++;
+                ListaComprasClass listaComprasClass = new ListaComprasClass();
+                listaComprasClass.setId(linha.getNumproduto());
+                listaComprasClass.setProduto(linha.getProdutoByNumproduto().getNome());
+                listaComprasClass.setTipoProduto(linha.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
+                listaComprasClass.setQtdExistente(linha.getProdutoByNumproduto().getQuantidadestock());
+                listaComprasClass.setQtdComprar(linha.getQuantidade());
+                tableListaCompras.getItems().add(listaComprasClass);
+            }
+        }
+        if (count==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!");
+            dialogoAviso.setHeaderText("Erro! Não existem produtos na lista de compras com os critérios selecionados");
+            dialogoAviso.showAndWait();
         }
     }
 

@@ -109,7 +109,7 @@ public class GerenteListaCliente implements Initializable {
         }
         if(cont==0){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setTitle("ERRO!");
             dialogoAviso.setHeaderText("Erro! Não existem clientes com os critérios de pesquisa selecionados!");
             dialogoAviso.showAndWait();
         }

@@ -48,7 +48,7 @@
       </Button>
       <Text layoutX="235.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto" />
       <TextField fx:id="procuraproduto" layoutX="286.0" layoutY="21.0" />
-      <Button fx:id="buttonpesquisa" layoutX="451.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="PESQUISAR" textFill="WHITE">
+      <Button fx:id="buttonpesquisa" layoutX="451.0" layoutY="20.0" onAction="#procurarProduto" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="PESQUISAR" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>

@@ -8,6 +8,7 @@ import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
@@ -37,13 +38,20 @@ public class AdicionarProdutosListaCompras {
         labelqtdcomprar.setText("");
     }
 
-    public void listCombobox(){
-        //ESTOU A TENTAR LISTAR NA COMBOBOX(Continuar)
-        ObservableList<Fornecedor> fornecedors = FXCollections.observableArrayList();
-        List<Fornecedor> fornecedorsList = FornecedorCRUD.findFornecedores();
-        fornecedors.addAll(fornecedorsList);
-        //comboBox.getItems().addAll(fornecedors);
+    public void addProdutosFalta(){
+        for (Produto p : ProdutoCRUD.findTodosProdutos()){
+            if (!(labelnumproduto.getText().equals(p.getNumproduto()))){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!");
+                dialogoAviso.setHeaderText("Erro! O número de produto não existe!");
+                dialogoAviso.showAndWait();
+            }
+            if (labelnumproduto.getText().equals(p.getNumproduto())){
+                //ENTAO VOU ADICIONAR UMA NOVA LINHAENCOMENDAFORNECEDOR E VOU ADICIONAR UMA NOVA ENCOMENDAFORNECEDOR
+            }
+        }
     }
+
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "AdicionarProduto.fxml", "Loja Produtos Biológicos", GerenteController.class);
