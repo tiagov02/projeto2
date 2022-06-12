@@ -44,7 +44,7 @@
       <TextField fx:id="pesquisarfield" layoutX="307.0" layoutY="18.0" prefHeight="25.0" prefWidth="161.0" />
       <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisarColaborador" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" onAction="#adicionarColaborador" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
-      <Button fx:id="btn_eliminarCliente" layoutX="655.0" layoutY="488.0" mnemonicParsing="false" onAction="#pesquisarColaborador" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR" textFill="WHITE" />
+      <Button fx:id="btn_eliminarCliente" layoutX="655.0" layoutY="488.0" mnemonicParsing="false" onAction="#deleteColaborador" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR" textFill="WHITE" />
     </children>
 
 </AnchorPane>

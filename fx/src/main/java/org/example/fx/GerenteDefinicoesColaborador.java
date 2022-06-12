@@ -13,10 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
@@ -46,6 +43,8 @@ public class GerenteDefinicoesColaborador implements Initializable {
     private TableColumn<Colaborador, String> colEstado;
     @FXML
     private TextField pesquisarfield;
+    @FXML
+    private Button btn_eliminarCliente;
 
     public TableView<Colaborador> tableColaborador;
 
@@ -118,7 +117,25 @@ public class GerenteDefinicoesColaborador implements Initializable {
         });
     }
 
-
+    public void deleteColaborador(){
+        Colaborador colaborador = tableColaborador.getSelectionModel().getSelectedItem();
+        if (colaborador == null){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Selecione um colaborador");
+            dialogoAviso.showAndWait();
+        }
+        else {
+            try {
+                ColaboradorCRUD.deleteColaborador(colaborador.getIdcolaborador());
+            } catch (IdNaoEncontradoException ex){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Selecione um colaborador");
+                dialogoAviso.showAndWait();
+            }
+        }
+    }
 
     public void pesquisarColaborador(){
         int cont=0;

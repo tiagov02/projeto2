@@ -1,9 +1,7 @@
 package org.example.fx;
 
 
-import com.example.bd.CRUD.ClienteCRUD;
-import com.example.bd.CRUD.FornecedorCRUD;
-import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.CRUD.*;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +12,7 @@ import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class AdicionarProdutosListaCompras {
@@ -23,9 +22,8 @@ public class AdicionarProdutosListaCompras {
     @FXML
     private TextField labelqtdcomprar;
     @FXML
-    private ComboBox<Tipoproduto> comboBox;
+    private ComboBox<Fornecedor> comboBox;
 
-    //
 
 
 
@@ -39,6 +37,7 @@ public class AdicionarProdutosListaCompras {
     }
 
     public void addProdutosFalta(){
+        int numEncomenda, quantidade;
         for (Produto p : ProdutoCRUD.findTodosProdutos()){
             if (!(labelnumproduto.getText().equals(p.getNumproduto()))){
                 Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
@@ -47,7 +46,17 @@ public class AdicionarProdutosListaCompras {
                 dialogoAviso.showAndWait();
             }
             if (labelnumproduto.getText().equals(p.getNumproduto())){
-                //ENTAO VOU ADICIONAR UMA NOVA LINHAENCOMENDAFORNECEDOR E VOU ADICIONAR UMA NOVA ENCOMENDAFORNECEDOR
+               //numEncomenda = (EncomendaFornecedorCRUD.findTodasEncomendasFornecedores().size()) + 1;
+                Encomendafornecedor enc = new Encomendafornecedor();
+                Fornecedor fornecedor = comboBox.getValue();
+
+
+                //enc.setNumencomenda(numEncomenda);
+                enc.setIdfornecedor(fornecedor.getIdfornecedor());
+                enc.setQuantidade(Integer.parseInt(labelqtdcomprar.getText()));
+                //enc.setQuantidade();
+
+
             }
         }
     }
