@@ -48,7 +48,7 @@ public class HelloApplication extends Application {
                 TrocaPaineis.changePanel(event,"GerenteMenuPrincipal.fxml","Menu do Gerente",GerenteController.class);
             }
             else{
-                if(c.getIdtipo()==1){
+                if(c.getIdtipo()==1 && c.getEstado().equals("ATIVO")){
                     TrocaPaineis.changePanel(event,"ColaboradorMenuPrincipal.fxml","Menu do Colaborador",ColaboradorController.class);
                 }
                 else{
