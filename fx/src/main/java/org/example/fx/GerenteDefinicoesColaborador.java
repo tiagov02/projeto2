@@ -116,6 +116,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
             }
         });
     }
+/*
+APAGA UM COLABORADOR DE VEZ
+NÃO APAGUES ESTA FUNCAO PQ VAMOS PRECISAR DELA
+
 
     public void deleteColaborador(){
         Colaborador colaborador = tableColaborador.getSelectionModel().getSelectedItem();
@@ -128,6 +132,28 @@ public class GerenteDefinicoesColaborador implements Initializable {
         else {
             try {
                 ColaboradorCRUD.deleteColaborador(colaborador.getIdcolaborador());
+            } catch (IdNaoEncontradoException ex){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Selecione um colaborador");
+                dialogoAviso.showAndWait();
+            }
+        }
+    }
+ */
+
+    public void deleteColaborador(){
+        Colaborador colaborador = tableColaborador.getSelectionModel().getSelectedItem();
+        if (colaborador == null){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Selecione um colaborador");
+            dialogoAviso.showAndWait();
+        }
+        else {
+            try {
+                colaborador.setEstado("INATIVO");
+                ColaboradorCRUD.editColaborador(colaborador);
             } catch (IdNaoEncontradoException ex){
                 Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                 dialogoAviso.setTitle("ERRO!!");
