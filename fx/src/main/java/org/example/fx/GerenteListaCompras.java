@@ -106,9 +106,10 @@ public class GerenteListaCompras implements Initializable {
         numeroProduto.setText("");
     }
 
+
     public void removerCompra(javafx.event.ActionEvent event){
         try {
-            ClienteCRUD.deleteCliente(tableListaCompras.getSelectionModel().getSelectedItem().getId());
+            LinhaEncomendaFornecedorCRUD.deleteLinhaEncomendaFornecedor(tableListaCompras.getSelectionModel().getSelectedItem().getId());
         } catch (IdNaoEncontradoException e) {
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
@@ -117,6 +118,7 @@ public class GerenteListaCompras implements Initializable {
             dialogoAviso.showAndWait();
         }
     }
+
 
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "AdicionarProdutoListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);

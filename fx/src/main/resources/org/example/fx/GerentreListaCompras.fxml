@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -32,7 +27,7 @@
                </children>
             </AnchorPane>
             </children></VBox>
-      <TableView fx:id="tableListaCompras" layoutX="218.0" layoutY="57.0" prefHeight="371.0" prefWidth="537.0">
+      <TableView fx:id="tableListaCompras" layoutX="218.0" layoutY="57.0" prefHeight="432.0" prefWidth="538.0">
         <columns>
             <TableColumn fx:id="colNumero" prefWidth="42.0" text="#" />
           <TableColumn fx:id="colProduto" prefWidth="199.00003051757812" text="Produto" />
@@ -48,18 +43,12 @@
       </Button>
       <Text layoutX="235.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto" />
       <TextField fx:id="procuraproduto" layoutX="286.0" layoutY="21.0" />
-      <Button fx:id="buttonpesquisa" layoutX="451.0" layoutY="20.0" onAction="#procurarProduto" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="PESQUISAR" textFill="WHITE">
+      <Button fx:id="buttonpesquisa" layoutX="451.0" layoutY="20.0" mnemonicParsing="false" onAction="#procurarProduto" style="-fx-background-color: rgb(102,51,0);" text="PESQUISAR" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Text layoutX="241.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero produto" />
-      <Button fx:id="buttonRemover" layoutX="436.0" layoutY="480.0" mnemonicParsing="false" onAction="#removerCompra" style="-fx-background-color: rgb(102,51,0);" text="REMOVER" textFill="WHITE">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonLimpar" layoutX="345.0" layoutY="480.0" mnemonicParsing="false" onAction="#limparButton" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
+      <Button fx:id="buttonRemover" layoutX="662.0" layoutY="489.0" mnemonicParsing="false" onAction="#removerCompra" prefHeight="34.0" prefWidth="79.0" style="-fx-background-color: rgb(102,51,0);" text="REMOVER" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>
