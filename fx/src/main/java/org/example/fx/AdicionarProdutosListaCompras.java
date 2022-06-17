@@ -36,28 +36,25 @@ public class AdicionarProdutosListaCompras {
         labelqtdcomprar.setText("");
     }
 
-    public void addProdutosFalta(){
-        int numEncomenda, quantidade;
-        for (Produto p : ProdutoCRUD.findTodosProdutos()){
-            if (!(labelnumproduto.getText().equals(p.getNumproduto()))){
-                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                dialogoAviso.setTitle("ERRO!");
-                dialogoAviso.setHeaderText("Erro! O número de produto não existe!");
-                dialogoAviso.showAndWait();
-            }
-            if (labelnumproduto.getText().equals(p.getNumproduto())){
-               //numEncomenda = (EncomendaFornecedorCRUD.findTodasEncomendasFornecedores().size()) + 1;
+    public void addProdutosFalta() {
+        int numEncomenda = 0, quantidade = 0, cont = 0;
+        for (Produto p : ProdutoCRUD.findTodosProdutos()) {
+            if (labelnumproduto.getText().equals(Integer.toString(p.getNumproduto()))) {
+                cont++;
+                //numEncomenda = (EncomendaFornecedorCRUD.findTodasEncomendasFornecedores().size()) + 1;
                 Encomendafornecedor enc = new Encomendafornecedor();
                 Fornecedor fornecedor = comboBox.getValue();
-
-
                 //enc.setNumencomenda(numEncomenda);
                 enc.setIdfornecedor(fornecedor.getIdfornecedor());
                 enc.setQuantidade(Integer.parseInt(labelqtdcomprar.getText()));
                 //enc.setQuantidade();
-
-
             }
+        }
+        if (cont==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!");
+            dialogoAviso.setHeaderText("Erro! O número de produto não existe!");
+            dialogoAviso.showAndWait();
         }
     }
 
