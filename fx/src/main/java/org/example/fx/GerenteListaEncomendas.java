@@ -125,6 +125,7 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.setHeaderText("Erro! Não pode alterar o estado desta fatura!!");
             dialogoAviso.showAndWait();
         }
+        tablelistaencomenda.setItems(FXCollections.observableArrayList());
         initialize(null,null);
     }
 
