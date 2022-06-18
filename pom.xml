@@ -17,7 +17,6 @@
     <modules>
         <module>bd</module>
         <module>fx</module>
-        <module>springweb</module>
     </modules>
 
 </project>
