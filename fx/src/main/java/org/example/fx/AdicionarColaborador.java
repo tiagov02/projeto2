@@ -55,8 +55,28 @@ public class AdicionarColaborador {
         c1.setIdtipo(1);
         c1.setEstado("ATIVO");
         c1.setNome(nomecolab.getText());
-        c1.setTelefone(telefone.getText());
-        c1.setSalario(new BigDecimal(salario.getText()));
+        try {
+            c1.setTelefone(telefone.getText());
+            if (c1.getTelefone().length() > 9){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Não pode introduzir mais que nove numeros no numero de telemovel!!");
+                dialogoAviso.showAndWait();
+            }
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras no numero de telefone");
+            dialogoAviso.showAndWait();
+        }
+        try {
+            c1.setSalario(new BigDecimal(salario.getText()));
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras num salario");
+            dialogoAviso.showAndWait();
+        }
         try{
             c1.setNumporta(Integer.parseInt(numporta.getText()));
         }catch(NumberFormatException exception){
@@ -66,7 +86,14 @@ public class AdicionarColaborador {
             dialogoAviso.showAndWait();
         }
         c1.setRua(rua.getText());
-        c1.setUsername(username.getText());
+        try {
+            c1.setUsername(username.getText());
+        } catch (Exception ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir uma password vazia.");
+            dialogoAviso.showAndWait();
+        }
         try {
             c1.setPassword(Encriptacao.encript(password.getText()));
         } catch (Exception ex){
@@ -82,6 +109,9 @@ public class AdicionarColaborador {
             CodPostaisCRUD.create(cod);
         }
         c1.setCodpostal(codpostal.getText());
+        if (codpostal.getText().equals(CodPostaisCRUD.findCodPostal(codpostal.getText()))){
+            localidade.getText().equals(CodPostaisCRUD.findCodPostal(codpostal.getText()).getLocalidade());
+        }
         ColaboradorCRUD.createColaborador(c1);
         TrocaPaineis.changePanel(event,"GerentedefinicoesColaborador.fxml","Loja Prdutos Biológicos",GerenteDefinicoesColaborador.class);
 
