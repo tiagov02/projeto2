@@ -1,5 +1,6 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.*;
@@ -42,13 +43,15 @@ public class GerenteListaEncomendas implements Initializable{
     @FXML
     private Button btn_procura;
 
-
     @FXML
     private TextField lbl_cliente;
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        int idEstado=0;
         numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));

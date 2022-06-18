@@ -6,25 +6,60 @@ import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class AdicionarProdutosListaCompras {
+public class AdicionarProdutosListaCompras implements Initializable {
 
     @FXML
-    private TextField labelnumproduto;
+    private Button addProd;
+    @FXML
+    private Button botaoAtualizaStocks;
+
+    @FXML
+    private Button botaoDefinicoesClientes;
+
+    @FXML
+    private Button botaoDefinicoesColaborador;
+
+    @FXML
+    private Button botaoListaCompras;
+
+    @FXML
+    private Button botaoListaEncomendas;
+
+    @FXML
+    private Button botaoPaginaPrincipal;
+
     @FXML
     private TextField labelqtdcomprar;
+
     @FXML
-    private ComboBox<Fornecedor> comboBox;
+    private ComboBox<String> select_fornecedor;
+
+    @FXML
+    private ComboBox<String> select_produto;
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        for(Fornecedor f:FornecedorCRUD.findFornecedores()){
+            select_fornecedor.getItems().add(f.getNome());
+        }
+        for(Produto p:ProdutoCRUD.findTodosProdutos()){
+            select_produto.getItems().add(p.getNome());
+        }
+    }
 
 
     public void backbutton(javafx.event.ActionEvent event) throws IOException {
@@ -32,30 +67,47 @@ public class AdicionarProdutosListaCompras {
     }
 
     public void cleanButton(){
-        labelnumproduto.setText("");
         labelqtdcomprar.setText("");
     }
 
-    public void addProdutosFalta() {
-        int numEncomenda = 0, quantidade = 0, cont = 0;
-        for (Produto p : ProdutoCRUD.findTodosProdutos()) {
-            if (labelnumproduto.getText().equals(Integer.toString(p.getNumproduto()))) {
-                cont++;
-                //numEncomenda = (EncomendaFornecedorCRUD.findTodasEncomendasFornecedores().size()) + 1;
-                Encomendafornecedor enc = new Encomendafornecedor();
-                Fornecedor fornecedor = comboBox.getValue();
-                //enc.setNumencomenda(numEncomenda);
-                enc.setIdfornecedor(fornecedor.getIdfornecedor());
-                enc.setQuantidade(Integer.parseInt(labelqtdcomprar.getText()));
-                //enc.setQuantidade();
+    public void addProdutosFalta(javafx.event.ActionEvent event) {
+        int idForn=0,idProd=0,qtdComprar=0;
+        Encomendafornecedor ef=new Encomendafornecedor();
+        for(Fornecedor f:FornecedorCRUD.findFornecedores()){
+            if(f.getNome().equals(select_fornecedor.getSelectionModel().getSelectedItem())){
+                idForn=f.getIdfornecedor();
             }
         }
-        if (cont==0){
+        for(Produto p:ProdutoCRUD.findTodosProdutos()){
+            if(p.getNome().equals(select_produto.getSelectionModel().getSelectedItem())){
+                idProd=p.getNumproduto();
+            }
+        }
+        try{
+            qtdComprar=Integer.parseInt(labelqtdcomprar.getText());
+        }
+        catch (NumberFormatException ex){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!");
-            dialogoAviso.setHeaderText("Erro! O número de produto não existe!");
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não pode introduzir letras nq quantidade do produto");
             dialogoAviso.showAndWait();
         }
+        float aux=((ProdutoCRUD.findProduto(idProd)).getValorunitario().floatValue() * qtdComprar);
+        ef.setIdfornecedor(idForn);
+        ef.setQuantidade(qtdComprar);
+        ef.setValortotal(new BigDecimal(Float.toString(aux)));
+        EncomendaFornecedorCRUD.createEncomendaFornecedor(ef);
+        Linhaencomendafornecedor lf=new Linhaencomendafornecedor();
+        lf.setNumencomenda(ef.getNumencomenda());
+        lf.setQuantidade(qtdComprar);
+        lf.setNumproduto(idProd);
+        lf.setValor(new BigDecimal(Float.toString(aux)));
+        LinhaEncomendaFornecedorCRUD.createLinhaEncomendaFornecedor(lf);
+        Alert dialogoAviso = new Alert(Alert.AlertType.INFORMATION);
+        dialogoAviso.setTitle("SUCESSO!!");
+        dialogoAviso.setHeaderText("Adicionou um novo produto com sucesso!!");
+        dialogoAviso.showAndWait();
+        cleanButton();
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
@@ -84,4 +136,6 @@ public class AdicionarProdutosListaCompras {
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
+
+
 }
