@@ -61,11 +61,10 @@ public class HelloApplication extends Application {
 
         }
         catch (Exception ex){
-            /*Alert dialogoAviso = new Alert(Alertrad.AlertType.WARNING);
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText(ex.getMessage());
-            dialogoAviso.showAndWait();*/
-            ex.printStackTrace();
+            dialogoAviso.showAndWait();
         }
     }
 
