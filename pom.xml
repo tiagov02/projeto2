@@ -17,6 +17,7 @@
     <modules>
         <module>bd</module>
         <module>fx</module>
+        <module>springwebmvc</module>
     </modules>
 
 </project>
