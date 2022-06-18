@@ -121,6 +121,10 @@ public class GerenteListaCompras implements Initializable {
                     " o seu administrador de sistema");
             dialogoAviso.showAndWait();
         }
+        Alert dialogoAviso = new Alert(Alert.AlertType.CONFIRMATION);
+        dialogoAviso.setTitle("SUCESSO!");
+        dialogoAviso.setHeaderText("REMOVEU A COMPRA COM SUCESSO!!");
+        dialogoAviso.showAndWait();
     }
 
 
