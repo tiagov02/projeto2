@@ -1,8 +1,12 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Colaborador;
 import com.example.bd.Entity.Estadofatura;
+import com.example.bd.Entity.EstadofaturaPK;
 import com.example.bd.Entity.Fatura;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -13,6 +17,7 @@ import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class ColaboradorListaEncomendasController implements Initializable {
@@ -63,8 +68,37 @@ public class ColaboradorListaEncomendasController implements Initializable {
             lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
+            lista.setIdCliente(fat.getIdcliente());
+            for(Estadofatura ef:EstadoFaturaCRUD.findAllEstadosFaturas()){
+                if(ef.getNumfatura()== fat.getNumfatura()){
+                    lista.setEstadoFatura(ef.getEstadoByIdestado().getDescricao());
+                }
+            }
             tablelistaencomenda.getItems().add(lista);
         }
+    }
+
+    public void alterarEstado(){
+
+        //ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
+        Estadofatura est=new Estadofatura();
+        est.setIdestado(2);
+        est.setDatafatura(new Date());
+    }
+
+    public void alterarEst(){
+        int aux = 2;
+        ListaEncomendas list = tablelistaencomenda.getSelectionModel().getSelectedItem();
+        if (list == null){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Selecione uma encomenda");
+            dialogoAviso.showAndWait();
+        }
+        if (list.getEstadoFatura().equals("por pagar")){
+            list.setEstadoFatura();
+        }
+
     }
 
     public void pesquisa(javafx.event.ActionEvent event){

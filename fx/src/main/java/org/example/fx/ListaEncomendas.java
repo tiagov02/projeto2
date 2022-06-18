@@ -2,6 +2,7 @@ package org.example.fx;
 
 public class ListaEncomendas {
     private int numFatura;
+    private int idCliente;
     private String nomeCliente;
     private String morada;
     private String telefoneCliente;
@@ -57,5 +58,13 @@ public class ListaEncomendas {
 
     public void setEstadoFatura(String estadoFatura) {
         this.estadoFatura = estadoFatura;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 }

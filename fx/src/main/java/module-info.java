@@ -7,6 +7,7 @@ module org.example.fx {
     requires org.kordamp.bootstrapfx.core;
     requires com.example.bd;
     requires java.persistence;
+    requires java.sql;
 
     opens org.example.fx to javafx.fxml;
     exports org.example.fx;
