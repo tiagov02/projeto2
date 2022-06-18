@@ -87,6 +87,11 @@ public class GerenteListaEncomendas implements Initializable{
                 lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
                 lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
                 lista.setValorTotal(fat.getValorfatura().floatValue());
+                for(Estadofatura ef:EstadoFaturaCRUD.findAllEstadosFaturas()){
+                    if(ef.getNumfatura()== fat.getNumfatura()){
+                        lista.setEstadoFatura(ef.getEstadoByIdestado().getDescricao());
+                    }
+                }
                 tablelistaencomenda.getItems().add(lista);
             }
         }
