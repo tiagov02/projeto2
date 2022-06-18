@@ -72,6 +72,10 @@ public class GerenteListaEncomendas implements Initializable{
     public void pesquisa(javafx.event.ActionEvent event){
         tablelistaencomenda.setItems(FXCollections.observableArrayList());
         int cont=0;
+        if (lbl_cliente.getText().equals("")){
+            initialize(null, null);
+            return;
+        }
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
             if(lbl_cliente.getText().equals(Integer.toString(fat.getIdcliente())) ||
                     lbl_cliente.getText().equals(fat.getClienteByIdcliente().getNome()) ||
