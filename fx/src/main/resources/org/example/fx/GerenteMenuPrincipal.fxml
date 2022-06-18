@@ -22,36 +22,45 @@
             <AnchorPane prefHeight="203.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonsair" layoutX="111.0" layoutY="1.0" onAction="#clicaLogout" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonsair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children></VBox>
-      <Pane layoutX="232.0" layoutY="58.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
+      <Pane layoutX="242.0" layoutY="68.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
          <children>
             <Text fill="#094d1e" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendas">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#094d1e" layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual">
+            <Text fill="#094d1e" layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Label fx:id="labelPrintVendas" layoutX="237.0" layoutY="69.0" style="-fx-background-color: transparent;" text="Label" textFill="#094d1e" />
+            <Text fx:id="txt_acumuladoAnual" fill="#094d1e" layoutX="140.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
          </children>
          <padding>
             <Insets left="20.0" />
          </padding>
       </Pane>
-      <Pane layoutX="232.0" layoutY="188.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
+      <Pane layoutX="242.0" layoutY="198.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
          <children>
             <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gastos">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual">
+            <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_acumulaGastos" layoutX="140.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -61,14 +70,19 @@
             <Insets left="20.0" />
          </padding>
       </Pane>
-      <Pane layoutX="232.0" layoutY="322.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
+      <Pane layoutX="242.0" layoutY="332.0" prefHeight="113.0" prefWidth="279.0" style="-fx-background-color: rgb(254,254,254);">
          <children>
             <Text fill="#2cdd23" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lucro">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#2cdd23" layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual">
+            <Text fill="#2cdd23" layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_lucro" fill="#2cdd23" layoutX="100.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -78,7 +92,7 @@
             <Insets left="20.0" />
          </padding>
       </Pane>
-      <Pane layoutX="527.0" layoutY="58.0" prefHeight="244.0" prefWidth="224.0" style="-fx-background-color: rgb(254,254,254);">
+      <Pane layoutX="535.0" layoutY="68.0" prefHeight="244.0" prefWidth="238.0" style="-fx-background-color: rgb(254,254,254);">
          <children>
             <Text fill="#2cdd23" layoutX="5.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOP 5 MELHORES CLIENTES">
                <font>
@@ -110,6 +124,31 @@
                   <Image url="@../../../images/five.png" />
                </image>
             </ImageView>
+            <Text fx:id="txt_cli1" layoutX="35.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_cli2" layoutX="35.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_cli3" layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_cli4" layoutX="35.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_cli5" layoutX="35.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
