@@ -3,6 +3,7 @@ package org.example.fx;
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.CodPostaisCRUD;
 import com.example.bd.CRUD.TipoClienteCRUD;
+import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Codpostais;
 import com.example.bd.Entity.Tipocliente;
@@ -66,24 +67,33 @@ public class AdicionarClienteController implements Initializable {
     private TextField lbl_username;
 
     @FXML
-    private ComboBox<Tipocliente> select_tipoCliente;
+    private ComboBox<String> select_tipoCliente;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        select_tipoCliente.getItems().addAll(TipoClienteCRUD.findTiposClientesTodos());
+        for(Tipocliente tp:TipoClienteCRUD.findTiposClientesTodos()){
+            select_tipoCliente.getItems().add(tp.getTipocliente());
+        }
     }
 
     public void clickOK(javafx.event.ActionEvent event) throws IOException {
         int nPorta=0;
-        Tipocliente tp=select_tipoCliente.getValue();
         Cliente cli=new Cliente();
+        int tp=getIdtipocliente(select_tipoCliente.getValue());
         cli.setUsername(lbl_username.getText());
-        cli.setPassword(lbl_passwd.getText());
+        try {
+            cli.setPassword(Encriptacao.encript(lbl_passwd.getText()));
+        }
+        catch(Exception e){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não foi possivel concluir o pedido pf tente mais tarde!");
+            dialogoAviso.showAndWait();
+        }
         cli.setNome(lbl_nome.getText());
         cli.setTelefone(lbl_telefone.getText());
-        cli.setIdtipocliente(tp.getIdtipocliente());
+        cli.setIdtipocliente(tp);
         if(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText())==null){
-            System.out.println("estou aqui" + lbl_codPostal.getText());
             Codpostais cod=new Codpostais();
             cod.setCodpostal(lbl_codPostal.getText());
             cod.setLocalidade(lbl_localidade.getText());
@@ -101,9 +111,21 @@ public class AdicionarClienteController implements Initializable {
         }
         cli.setNumporta(nPorta);
         cli.setRua(lbl_rua.getText());
-        cli.setIdtipocliente(select_tipoCliente.getSelectionModel().getSelectedItem().getIdtipocliente());
         ClienteCRUD.createCliente(cli);
+        Alert dialogoAviso = new Alert(Alert.AlertType.CONFIRMATION);
+        dialogoAviso.setTitle("SUCESSO!!!");
+        dialogoAviso.setHeaderText("INTRODUZIU UM CLIENTE COM SUCESSO");
+        dialogoAviso.showAndWait();
         TrocaPaineis.changePanel(event,"GerentedefinicoesCliente.fxml","Loja Produtos Biológicos",GerenteListaCliente.class);
+    }
+
+    private int getIdtipocliente(String tipoCli){
+        for(Tipocliente tp:TipoClienteCRUD.findTiposClientesTodos()){
+            if(tipoCli.equals(tp.getTipocliente())){
+                return tp.getIdtipocliente();
+            }
+        }
+        return -1;
     }
 
     public void clearButton(){

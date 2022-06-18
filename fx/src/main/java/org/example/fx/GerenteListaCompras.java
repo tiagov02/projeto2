@@ -125,6 +125,7 @@ public class GerenteListaCompras implements Initializable {
         dialogoAviso.setTitle("SUCESSO!");
         dialogoAviso.setHeaderText("REMOVEU A COMPRA COM SUCESSO!!");
         dialogoAviso.showAndWait();
+        initialize(null,null);
     }
 
 
