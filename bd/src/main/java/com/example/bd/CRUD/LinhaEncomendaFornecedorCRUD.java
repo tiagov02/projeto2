@@ -2,6 +2,8 @@ package com.example.bd.CRUD;
 
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Linhaencomendafornecedor;
+import com.example.bd.Entity.LinhaencomendafornecedorPK;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
@@ -52,7 +54,7 @@ public class LinhaEncomendaFornecedorCRUD implements Serializable {
         }
     }
 
-    public static void deleteLinhaEncomendaFornecedor(int linhaEncomenda) throws IdNaoEncontradoException {
+    public static void deleteLinhaEncomendaFornecedor(LinhaencomendafornecedorPK linhaEncomenda) throws IdNaoEncontradoException {
         EntityManager em = null;
         try {
             em = getEntityManager();

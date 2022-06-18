@@ -10,7 +10,8 @@ public class ListaComprasClass {
     private int qtdExistente;
     private int qtdComprar;
     private Date dataAdd;
-    private int id;
+    private int id; //Id da encomenda
+    private int idProd;
 
     public ListaComprasClass(){
     }
@@ -61,5 +62,13 @@ public class ListaComprasClass {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdProd() {
+        return idProd;
+    }
+
+    public void setIdProd(int idProd) {
+        this.idProd = idProd;
     }
 }

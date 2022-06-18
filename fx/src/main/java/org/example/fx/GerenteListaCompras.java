@@ -64,6 +64,7 @@ public class GerenteListaCompras implements Initializable {
         for(Linhaencomendafornecedor l: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
             ListaComprasClass list= new ListaComprasClass();
             list.setId(l.getNumencomenda());
+            list.setIdProd(l.getNumproduto());
             list.setProduto(l.getProdutoByNumproduto().getNome());
             list.setQtdComprar(l.getQuantidade());
             list.setQtdExistente(l.getProdutoByNumproduto().getQuantidadestock());
@@ -109,7 +110,10 @@ public class GerenteListaCompras implements Initializable {
 
     public void removerCompra(javafx.event.ActionEvent event){
         try {
-            LinhaEncomendaFornecedorCRUD.deleteLinhaEncomendaFornecedor(tableListaCompras.getSelectionModel().getSelectedItem().getId());
+            LinhaencomendafornecedorPK pk=new LinhaencomendafornecedorPK();
+            pk.setNumencomenda(tableListaCompras.getSelectionModel().getSelectedItem().getId());
+            pk.setNumproduto(tableListaCompras.getSelectionModel().getSelectedItem().getIdProd());
+            LinhaEncomendaFornecedorCRUD.deleteLinhaEncomendaFornecedor(pk);
         } catch (IdNaoEncontradoException e) {
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
