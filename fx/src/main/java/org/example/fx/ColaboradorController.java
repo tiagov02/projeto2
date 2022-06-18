@@ -104,7 +104,6 @@ public class ColaboradorController implements Initializable{
     }
 
 
-
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
     }
