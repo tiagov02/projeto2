@@ -2,10 +2,9 @@ package org.example.fx;
 
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
+import com.example.bd.CRUD.LinhaEncomendaFornecedorCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
-import com.example.bd.Entity.Cliente;
-import com.example.bd.Entity.Fatura;
-import com.example.bd.Entity.Produto;
+import com.example.bd.Entity.*;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,6 +56,10 @@ public class ColaboradorController implements Initializable{
     @FXML
     private Text txt_acumulaGastos;
 
+    @FXML
+    private Text txt_lucro;
+
+
 
     /**
      * Mudar para string
@@ -76,7 +79,6 @@ public class ColaboradorController implements Initializable{
     public Map<Cliente,Float> guardaValorFaturasCli(){
         Map<Cliente,Float> melhoresCli=new HashMap<>();
         float valorGastoCli=0;
-        //String[] melhoresCli=new String[5];
         for(Cliente cli: ClienteCRUD.findClientesTodos()){
             for(Fatura f: cli.getFaturasByIdcliente()){
                 valorGastoCli+=f.getValorfatura().floatValue();
@@ -105,6 +107,22 @@ public class ColaboradorController implements Initializable{
         return melhoresCli;
     }
 
+    public float gastos(){
+        float acumuladoGastos=0;
+        for(Linhaencomendafornecedor lf: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
+            acumuladoGastos+=lf.getValor().floatValue();
+        }
+        return acumuladoGastos;
+    }
+
+    public float vendas(){
+        float vendas=0;
+        for(Fatura f:FaturaCRUD.findTodasFaturas()){
+            vendas+=f.getValorfatura().floatValue();
+        }
+        return vendas;
+    }
+
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
@@ -130,5 +148,8 @@ public class ColaboradorController implements Initializable{
         txt_cli3.setText(clientes.get(2).getNome());
         txt_cli4.setText(clientes.get(3).getNome());
         txt_cli5.setText(clientes.get(4).getNome());
+        txt_acumulaGastos.setText(Float.toString(gastos()));
+        txt_acumuladoAnual.setText(Float.toString(vendas()));
+        txt_lucro.setText(Float.toString(vendas()-gastos()));
     }
 }
