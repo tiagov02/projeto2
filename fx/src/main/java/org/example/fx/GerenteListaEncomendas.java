@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
+import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -106,6 +107,25 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.setHeaderText("Erro! Não existe nenhuma encomenda para o cliente referido!!");
             dialogoAviso.showAndWait();
         }
+    }
+    public void alterarEstado(javafx.event.ActionEvent event) {
+        java.util.Date data= new java.util.Date();
+        java.sql.Date date= new java.sql.Date(data.getYear()+1900,data.getMonth()+1,data.getDay());
+        ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
+        Estadofatura ef=new Estadofatura();
+        ef.setIdestado(2);
+        ef.setNumfatura(le.getNumFatura());
+        ef.setDatafatura(date);
+        try{
+            EstadoFaturaCRUD.createEstadoFatura(ef);
+        }
+        catch(RollbackException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro! Não pode alterar o estado desta fatura!!");
+            dialogoAviso.showAndWait();
+        }
+        initialize(null,null);
     }
 
 

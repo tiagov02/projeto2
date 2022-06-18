@@ -15,9 +15,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
+import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ColaboradorListaEncomendasController implements Initializable {
@@ -78,27 +79,24 @@ public class ColaboradorListaEncomendasController implements Initializable {
         }
     }
 
-    public void alterarEstado(){
-
-        //ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
-        Estadofatura est=new Estadofatura();
-        est.setIdestado(2);
-        est.setDatafatura(new Date());
-    }
-
-    public void alterarEst(){
-        int aux = 2;
-        ListaEncomendas list = tablelistaencomenda.getSelectionModel().getSelectedItem();
-        if (list == null){
+    public void alterarEstado(javafx.event.ActionEvent event) {
+        java.util.Date data= new java.util.Date();
+        java.sql.Date date= new java.sql.Date(data.getYear()+1900,data.getMonth()+1,data.getDay());
+        ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
+        Estadofatura ef=new Estadofatura();
+        ef.setIdestado(2);
+        ef.setNumfatura(le.getNumFatura());
+        ef.setDatafatura(date);
+        try{
+            EstadoFaturaCRUD.createEstadoFatura(ef);
+        }
+        catch(RollbackException ex){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
-            dialogoAviso.setHeaderText("Selecione uma encomenda");
+            dialogoAviso.setHeaderText("Erro! Não pode alterar o estado desta fatura!!");
             dialogoAviso.showAndWait();
         }
-        if (list.getEstadoFatura().equals("por pagar")){
-            list.setEstadoFatura();
-        }
-
+        initialize(null,null);
     }
 
     public void pesquisa(javafx.event.ActionEvent event){
