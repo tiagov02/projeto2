@@ -91,8 +91,23 @@ public class AdicionarClienteController implements Initializable {
             dialogoAviso.showAndWait();
         }
         cli.setNome(lbl_nome.getText());
-        cli.setTelefone(lbl_telefone.getText());
+        try {
+            cli.setTelefone(lbl_telefone.getText());
+            if (cli.getTelefone().length() > 9){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Não pode introduzir mais que nove numeros no numero de telemovel!!");
+                dialogoAviso.showAndWait();
+            }
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras no numero de telefone");
+            dialogoAviso.showAndWait();
+        }
+
         cli.setIdtipocliente(tp);
+
         if(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText())==null){
             Codpostais cod=new Codpostais();
             cod.setCodpostal(lbl_codPostal.getText());
@@ -100,6 +115,9 @@ public class AdicionarClienteController implements Initializable {
             CodPostaisCRUD.create(cod);
         }
         cli.setCodpostal(lbl_codPostal.getText());
+        if (lbl_codPostal.getText().equals(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText()))){
+            lbl_localidade.getText().equals(CodPostaisCRUD.findCodPostal(lbl_codPostal.getText()).getLocalidade());
+        }
         try{
             nPorta=Integer.parseInt(lbl_numPortoa.getText());
         }
