@@ -54,6 +54,9 @@ public class ColaboradorController implements Initializable{
     @FXML
     private Text txt_cli5;
 
+    @FXML
+    private Text txt_acumulaGastos;
+
 
     /**
      * Mudar para string
@@ -64,7 +67,7 @@ public class ColaboradorController implements Initializable{
 
     }*/
 
-    public Cliente[] listarCliMaisGasto(){
+    public List<Cliente> listarCliMaisGasto(){
         Map<Cliente,Float> cliMap=guardaValorFaturasCli();
         List<Map.Entry<Cliente,Float>> ordenada=ordenaLista(cliMap);
         return atualiza5MelhoresClientes(ordenada);
@@ -90,14 +93,13 @@ public class ColaboradorController implements Initializable{
         return ordenado;
     }
 
-    public Cliente[] atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
+    public List<Cliente> atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
         int i=0;
-        Cliente[] melhoresCli=new Cliente[5];
+        List<Cliente> melhoresCli=new ArrayList<>();
         Collections.reverse(ordenado);
-        while(i!=4){
-            for(Map.Entry<Cliente,Float> cli:ordenado){
-                melhoresCli[i]= cli.getKey();
-                i++;
+        for(i=0;i<4;i++){
+            for(Map.Entry<Cliente,Float> cli:ordenado) {
+                melhoresCli.add(cli.getKey());
             }
         }
         return melhoresCli;
@@ -122,12 +124,11 @@ public class ColaboradorController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*Cliente[] clientes = listarCliMaisGasto();
-        txt_cli1.setText(clientes[0].getNome());
-        txt_cli2.setText(clientes[1].getNome());
-        txt_cli3.setText(clientes[2].getNome());
-        txt_cli4.setText(clientes[3].getNome());
-        txt_cli5.setText(clientes[4].getNome());*/
-        //Erro no Hibernate inicialize
+        List<Cliente> clientes = listarCliMaisGasto();
+        txt_cli1.setText(clientes.get(0).getNome());
+        txt_cli2.setText(clientes.get(1).getNome());
+        txt_cli3.setText(clientes.get(2).getNome());
+        txt_cli4.setText(clientes.get(3).getNome());
+        txt_cli5.setText(clientes.get(4).getNome());
     }
 }

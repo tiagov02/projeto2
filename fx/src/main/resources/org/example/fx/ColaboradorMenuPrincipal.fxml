@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="538.0" prefWidth="801.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.ColaboradorController">
+<AnchorPane prefHeight="538.0" prefWidth="801.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.ColaboradorController">
    <children>
       <VBox prefHeight="537.0" prefWidth="224.0" style="-fx-background-color: rgb(102,51,0);">
          <children>
@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#094d1e" layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual:">
+            <Text fill="#094d1e" layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -48,7 +48,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual">
+            <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txt_acumulaGastos" layoutX="140.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -65,7 +70,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#2cdd23" layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado anual">
+            <Text fill="#2cdd23" layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acumulado:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

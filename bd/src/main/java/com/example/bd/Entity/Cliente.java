@@ -165,7 +165,7 @@ public class Cliente {
         this.codpostaisByCodpostal = codpostaisByCodpostal;
     }
 
-    @OneToMany(mappedBy = "clienteByIdcliente")
+    @OneToMany(mappedBy = "clienteByIdcliente",fetch=FetchType.EAGER)
     public Collection<Fatura> getFaturasByIdcliente() {
         return faturasByIdcliente;
     }
