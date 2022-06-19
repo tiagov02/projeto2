@@ -162,6 +162,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
         }
     }
 
+     public void alteraPwd(javafx.event.ActionEvent event) throws IOException {
+         TrocaPaineis.changePanel(event, "GerentreAtualizaPwd.fxml", "Loja Produtos Biológicos", GerenteAtualizaPwd.class);
+     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableColaborador.setEditable(true);
