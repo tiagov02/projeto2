@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
+import java.security.spec.ECField;
 
 public class changePassword {
     @FXML
@@ -38,39 +39,28 @@ public class changePassword {
     }
 
     public void alterarPassword(){
+        int cont=0;
+        Colaborador col=null;
         for (Colaborador c : ColaboradorCRUD.findTodosColaboradores()){
-            if (!(lb_user.equals(ColaboradorCRUD.findColaboradores(c.getIdcolaborador())))){
-                Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
-                dialogoAviso.setTitle("ERRO!!");
-                dialogoAviso.setHeaderText("Não existem colaboradores com tal username");
-                dialogoAviso.showAndWait();
-                return;
+            if(this.lb_pwd.getText().equals(c.getUsername())){
+                cont++;
+                col=c;
             }
-            if (!(lb_pwd.equals(lb_pwd1))){
-                Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
-                dialogoAviso.setTitle("ERRO!!");
-                dialogoAviso.setHeaderText("Por favor coloque as palavras-passes iguais.");
-                dialogoAviso.showAndWait();
-                return;
-            }
-            if ((lb_user.equals(ColaboradorCRUD.findColaboradores(c.getIdcolaborador())))){
-                try {
-                    c.setPassword(Encriptacao.encript(lb_pwd.getText()));
-                } catch (Exception ex){
-                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                    dialogoAviso.setTitle("ERRO!!");
-                    dialogoAviso.setHeaderText("Não pode introduzir uma password vazia.");
-                    dialogoAviso.showAndWait();
-                }
-                try {
-                    ColaboradorCRUD.editColaborador(c);
-                } catch (IdNaoEncontradoException ex){
-                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                    dialogoAviso.setTitle("ERRO!!");
-                    dialogoAviso.setHeaderText("ERRO! Não foi possivel atualizar a nova password");
-                    dialogoAviso.showAndWait();
-                }
-            }
+        }
+        if(cont==0){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!");
+            dialogoAviso.setHeaderText("Esse user não existe!!");
+            dialogoAviso.showAndWait();
+        }
+        try {
+            col.setPassword(Encriptacao.encript(lb_pwd.getText()));
+        }
+        catch (Exception ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!");
+            dialogoAviso.setHeaderText("Erro no sistema!!Pf tente mais tarde ou contacte os Serviços");
+            dialogoAviso.showAndWait();
         }
     }
 }
