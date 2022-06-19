@@ -38,6 +38,6 @@ public class ConfirmacaoSaida {
     }
 
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
+        TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
 }
