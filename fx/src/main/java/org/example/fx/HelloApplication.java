@@ -28,6 +28,8 @@ public class HelloApplication extends Application {
     private PasswordField lb_pwd;
     @FXML
     private TextField lb_user;
+    @FXML
+    private Button esquecer;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -37,6 +39,9 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
         //loginApplication.verifyLogin()
+    }
+    public void clicaEsquecer(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "mudarPassword.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void ClicaLogin(javafx.event.ActionEvent event)  {
