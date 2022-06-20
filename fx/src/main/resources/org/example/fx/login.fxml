@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(102,51,0);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.HelloApplication">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(102,51,0);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.HelloApplication">
    <children>
       <ImageView fitHeight="537.0" fitWidth="364.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,11 +35,6 @@
          </image>
       </ImageView>
       <Button fx:id="Btniniciar" layoutX="442.0" layoutY="342.0" mnemonicParsing="false" onAction="#ClicaLogin" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: rgb(0,204,0);" text="Iniciar" textFill="WHITE" />
-      <Button fx:id="esquecer" layoutX="458.0" layoutY="297.0" mnemonicParsing="false" onAction="#clicaEsquecer" style="-fx-background-color: transparent;" text="Esqueci-me da palavra-passe" textFill="#1a93b2">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
    </children>
 
 </AnchorPane>

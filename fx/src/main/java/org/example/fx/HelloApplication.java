@@ -40,9 +40,6 @@ public class HelloApplication extends Application {
         stage.show();
         //loginApplication.verifyLogin()
     }
-    public void clicaEsquecer(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event, "mudarPassword.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
 
     public void ClicaLogin(javafx.event.ActionEvent event)  {
         String pwd=lb_pwd.getText();

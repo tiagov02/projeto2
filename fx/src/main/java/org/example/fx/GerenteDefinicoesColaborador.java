@@ -163,7 +163,7 @@ public class GerenteDefinicoesColaborador implements Initializable {
     }
 
      public void alteraPwd(javafx.event.ActionEvent event) throws IOException {
-         TrocaPaineis.changePanel(event, "GerentreAtualizaPwd.fxml", "Loja Produtos Biológicos", GerenteAtualizaPwd.class);
+         TrocaPaineis.changePanel(event, "GerenteAlteracaoPwd.fxml", "Loja Produtos Biológicos", GerenteAtualizaPwd.class);
      }
 
     @Override
