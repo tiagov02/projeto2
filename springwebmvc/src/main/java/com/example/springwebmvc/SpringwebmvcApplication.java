@@ -1,6 +1,5 @@
 package com.example.springwebmvc;
 
-import com.example.bd.Entity.Cliente;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
