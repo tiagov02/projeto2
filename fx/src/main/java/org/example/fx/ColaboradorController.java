@@ -59,12 +59,6 @@ public class ColaboradorController implements Initializable{
     @FXML
     private Text txt_lucro;
 
-
-
-    /**
-     * Mudar para string
-     */
-
     /*public void atualiza(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"ColaboradorAtualizaStrocks","Atualização de stocks",ColaboradorController.class);
 
