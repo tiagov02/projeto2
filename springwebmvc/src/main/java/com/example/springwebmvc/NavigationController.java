@@ -9,6 +9,6 @@ public class NavigationController {
 
     @GetMapping("/")
     public String getLogin(){
-        return "login";
+        return "index";
     }
 }
