@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+@NamedQuery(name="User.Login",
+        query="select c from Colaborador c WHERE c.username=:user AND c.password=:pass")
 @Entity
 public class Colaborador {
     private int idcolaborador;

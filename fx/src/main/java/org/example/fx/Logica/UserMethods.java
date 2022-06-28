@@ -23,5 +23,24 @@ public class UserMethods {
          }
       }
       throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
+
+      /**
+       * Tentativa de usar namedQueries
+       **/
+      /*
+      String pass;
+      try{
+         pass=Encriptacao.encript(pwd);
+      }
+      catch(Exception e){
+         throw new RunTimeError("Ocorreu um erro no programa, por favor tente de novo dentro de alguns minutos");
+      }
+      Colaborador c=ColaboradorCRUD.loginColab(username,pass);
+
+      if(c==null){
+         throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
+      }
+      return c;
+       */
    }
 }
