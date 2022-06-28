@@ -11,6 +11,7 @@ public class NavigationController {
     public String getIndex(){
         return "index";
     }
+
     @GetMapping("/login")
     public String getLogin(){
         return "login";

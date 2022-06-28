@@ -101,7 +101,8 @@ public class ColaboradorCRUD implements Serializable {
 
     public static Colaborador loginColab(String user, String pwd) {
         EntityManager em= getEntityManager();
-        return ((Colaborador) em.createNamedQuery("User.Login",Colaborador.class).setParameter("user",user).setParameter("pass",pwd));
+        return (em.createNamedQuery("User.Login",Colaborador.class).
+                setParameter("user",user).setParameter("pass",pwd).getSingleResult());
     }
 
 }

@@ -12,22 +12,6 @@ import java.util.Arrays;
 
 public class UserMethods {
    public static Colaborador verifyLogin(String username,String pwd) throws UserPwdErradoaxception, RunTimeError {
-      for(Colaborador c: ColaboradorCRUD.findTodosColaboradores()){
-         try{
-            if(c.getUsername().equals(username) && c.getPassword().equals(Encriptacao.encript(pwd))){
-               UserAtual.getInstance().setCurrentUser(c);
-               return c;
-            }
-         }catch (Exception e){
-            throw new RunTimeError("Ocorreu um erro no programa, por favor tente de novo dentro de alguns minutos");
-         }
-      }
-      throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
-
-      /**
-       * Tentativa de usar namedQueries
-       **/
-      /*
       String pass;
       try{
          pass=Encriptacao.encript(pwd);
@@ -41,6 +25,5 @@ public class UserMethods {
          throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
       }
       return c;
-       */
    }
 }
