@@ -99,5 +99,8 @@ public class ClienteCRUD implements Serializable {
         }
     }
 
-
+    public static List<Cliente> findMelhores(){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Cliente.FindMelhoresCli",Cliente.class).setMaxResults(5).getResultList();
+    }
 }

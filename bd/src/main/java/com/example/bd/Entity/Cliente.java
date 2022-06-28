@@ -3,6 +3,8 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+@NamedQuery(name="Cliente.FindMelhoresCli",
+        query="select c from Cliente c, Fatura f WHERE c.idcliente=f.idcliente group by c.idcliente order by SUM(f.valorfatura) desc")
 @Entity
 public class Cliente {
     private int idcliente;

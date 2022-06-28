@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collection;
 
+@NamedQuery(name="Faturas.Lucros", query="select SUM(f.valorfatura) from Fatura f")
 @Entity
 public class Fatura {
     private int numfatura;

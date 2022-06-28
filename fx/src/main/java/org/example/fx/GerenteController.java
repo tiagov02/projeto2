@@ -28,67 +28,46 @@ import java.util.*;
 
 public class GerenteController implements Initializable {
 
+    public TableView<Colaborador> tableColaborador;
    //ArrayList<Fatura> faturas = new ArrayList<>();
     @FXML
     private Button botaoAtualizaStocks;
-
     @FXML
     private Button botaoDefinicoesClientes;
-
     @FXML
     private Button botaoDefinicoesColaborador;
-
     @FXML
     private Button botaoDefinicoesProdutos;
-
     @FXML
     private Button botaoListaCompras;
-
     @FXML
     private Button botaoListaEncomendas;
-
     @FXML
     private Button btn_procura;
-
     @FXML
     private TableColumn<Fornecedor, String> fornecedorField;
-
     @FXML
     private TableColumn<Fornecedor, String> estadoField;
-
     @FXML
     private TableColumn<Encomendafornecedor, String> moradaField;
-
     @FXML
     private TableColumn<Fornecedor, String> telefoneField;
-
     @FXML
     private TableColumn<Fornecedor, Float> valorTotalField;
-
-
     @FXML
     private Text txt_acumuladoAnual;
-
     @FXML
     private Text txt_cli1;
-
     @FXML
     private Text txt_cli2;
-
     @FXML
     private Text txt_cli3;
-
     @FXML
     private Text txt_cli4;
-
     @FXML
     private Text txt_cli5;
-
     @FXML
     private Text txt_acumulaGastos;
-
-    @FXML
-    private Text txt_lucro;
 
 
 /*
@@ -109,18 +88,14 @@ public class GerenteController implements Initializable {
     /*
             GERENTE MENU PRINCIPAL
      */
-
+    @FXML
+    private Text txt_lucro;
     @FXML
     private Label labelPrintVendas;
-
-
     @FXML
     private TableView<Fornecedor> tableClientes;
     @FXML
     private TableView<Fornecedor> tableListarEncomendas;
-
-
-
     //DEFINICOES DE COLABORADOR
     @FXML
     private TableColumn<Colaborador, Integer> colNumero;
@@ -132,10 +107,6 @@ public class GerenteController implements Initializable {
     private TableColumn<Colaborador, BigDecimal> colSalario;
     @FXML
     private TableColumn<Colaborador, Integer> colEstado;
-
-    public TableView<Colaborador> tableColaborador;
-
-
 
      public List<Cliente> listarCliMaisGasto(){
       Map<Cliente,Float> cliMap=guardaValorFaturasCli();
@@ -237,15 +208,25 @@ public class GerenteController implements Initializable {
 
 
  @Override
- public void initialize(URL url, ResourceBundle resourceBundle) {
-  List<Cliente> clientes = listarCliMaisGasto();
-  txt_cli1.setText(clientes.get(0).getNome());
-  txt_cli2.setText(clientes.get(1).getNome());
-  txt_cli3.setText(clientes.get(2).getNome());
-  txt_cli4.setText(clientes.get(3).getNome());
-  txt_cli5.setText(clientes.get(4).getNome());
-  txt_acumulaGastos.setText(Float.toString(gastos()));
-  txt_acumuladoAnual.setText(Float.toString(vendas()));
-  txt_lucro.setText(Float.toString(vendas()-gastos()));
- }
+   public void initialize(URL url, ResourceBundle resourceBundle) {
+    List<Cliente> clientes = ClienteCRUD.findMelhores();
+    if(clientes.get(0) != null){
+      txt_cli1.setText(clientes.get(0).getNome());
+    }
+    if(clientes.get(1) != null){
+     txt_cli2.setText(clientes.get(1).getNome());
+    }
+    if(clientes.get(2) != null){
+     txt_cli3.setText(clientes.get(2).getNome());
+    }
+    if(clientes.get(3) != null){
+     txt_cli4.setText(clientes.get(3).getNome());
+    }
+    if(clientes.get(4) != null){
+     txt_cli5.setText(clientes.get(4).getNome());
+    }
+    //txt_acumulaGastos.setText(Float.toString(gastos()));
+    //txt_acumuladoAnual.setText(Float.toString(vendas()));
+    //txt_lucro.setText(Float.toString(vendas()-gastos()));
+   }
 }
