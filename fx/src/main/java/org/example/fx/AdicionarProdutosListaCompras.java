@@ -22,26 +22,6 @@ import java.util.ResourceBundle;
 public class AdicionarProdutosListaCompras implements Initializable {
 
     @FXML
-    private Button addProd;
-    @FXML
-    private Button botaoAtualizaStocks;
-
-    @FXML
-    private Button botaoDefinicoesClientes;
-
-    @FXML
-    private Button botaoDefinicoesColaborador;
-
-    @FXML
-    private Button botaoListaCompras;
-
-    @FXML
-    private Button botaoListaEncomendas;
-
-    @FXML
-    private Button botaoPaginaPrincipal;
-
-    @FXML
     private TextField labelqtdcomprar;
 
     @FXML
