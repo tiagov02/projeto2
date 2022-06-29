@@ -14,4 +14,22 @@ public class ClienteController {
     public String getRegistar(){
         return "registar";
     }
+
+    @GetMapping("/index")
+    public String getIndex(){
+        return "index";
+    }
+
+    @GetMapping("/carrinhoCompras")
+    public String getCarrinhoCompras(){
+        return "carrinhoCompras";
+    }
+
+    @GetMapping("/clienteLogado")
+    public String getClienteLogado(){
+        return "clienteLogado";
+    }
+
+
+
 }
