@@ -3,6 +3,7 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+@NamedQuery(name = "TipoProduto.FindBySeccao",query="select tp from Tipoproduto tp WHERE tp.seccao=:seccao")
 @Entity
 public class Tipoproduto {
     private int idtipoproduto;

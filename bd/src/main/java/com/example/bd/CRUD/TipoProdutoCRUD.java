@@ -95,4 +95,10 @@ public class TipoProdutoCRUD {
             }
         }
     }
+
+    public static Tipoproduto findBySeccao(String seccao){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("TipoProduto.FindBySeccao",Tipoproduto.class)
+                .setParameter("seccao",seccao).getSingleResult();
+    }
 }
