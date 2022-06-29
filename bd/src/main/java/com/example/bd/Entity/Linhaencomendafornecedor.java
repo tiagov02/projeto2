@@ -2,6 +2,10 @@ package com.example.bd.Entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+@NamedQuery(name="EncomendaFornecedor.SearchProduto"
+        ,query="select lef from Linhaencomendafornecedor lef WHERE lef.produtoByNumproduto.nome like CONCAT('%',:nome,'%')")
+@NamedQuery(name="EncomendaFornecedor.SearchIdProd",
+query="select lef from Linhaencomendafornecedor lef WHERE lef.produtoByNumproduto.numproduto=:num")
 
 @Entity
 @IdClass(LinhaencomendafornecedorPK.class)

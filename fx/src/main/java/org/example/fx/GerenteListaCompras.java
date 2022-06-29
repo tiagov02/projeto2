@@ -75,15 +75,38 @@ public class GerenteListaCompras implements Initializable {
 
 
     public void procurarProduto(){
+        boolean isNumber=false;
         int count=0;
         tableListaCompras.setItems(FXCollections.observableArrayList());
         if (procuraproduto.getText().equals("")){
             initialize(null, null);
             return;
         }
-        for (Linhaencomendafornecedor linha : LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
-            if (this.procuraproduto.getText().equals(Integer.toString(linha.getNumproduto())) ||
-            this.procuraproduto.getText().equals(linha.getProdutoByNumproduto().getNome().toLowerCase(Locale.ROOT))){
+        String procurar=this.procuraproduto.getText().toLowerCase(Locale.ROOT);
+        int num=0;
+        try{
+            num=Integer.parseInt(this.procuraproduto.getText());
+            isNumber=true;
+        }
+        catch(NumberFormatException ex){
+            isNumber=false;
+        }
+        if(isNumber){
+            List<Linhaencomendafornecedor> linhasproc=LinhaEncomendaFornecedorCRUD.pesquisaIdProd(num);
+            for(Linhaencomendafornecedor linha:linhasproc){
+                count++;
+                ListaComprasClass listaComprasClass = new ListaComprasClass();
+                listaComprasClass.setId(linha.getNumproduto());
+                listaComprasClass.setProduto(linha.getProdutoByNumproduto().getNome());
+                listaComprasClass.setTipoProduto(linha.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
+                listaComprasClass.setQtdExistente(linha.getProdutoByNumproduto().getQuantidadestock());
+                listaComprasClass.setQtdComprar(linha.getQuantidade());
+                tableListaCompras.getItems().add(listaComprasClass);
+            }
+        }
+        else{
+            List<Linhaencomendafornecedor> linhasproc=LinhaEncomendaFornecedorCRUD.pesquisa(procurar);
+            for(Linhaencomendafornecedor linha:linhasproc){
                 count++;
                 ListaComprasClass listaComprasClass = new ListaComprasClass();
                 listaComprasClass.setId(linha.getNumproduto());

@@ -101,4 +101,14 @@ public class LinhaEncomendaFornecedorCRUD implements Serializable {
             }
         }
     }
+    public static List<Linhaencomendafornecedor> pesquisa(String nome){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("EncomendaFornecedor.SearchProduto",Linhaencomendafornecedor.class).
+                setParameter("nome",nome).getResultList();
+    }
+    public static List<Linhaencomendafornecedor> pesquisaIdProd(int numProd){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("EncomendaFornecedor.SearchIdProd",Linhaencomendafornecedor.class).
+                setParameter("num",numProd).getResultList();
+    }
 }
