@@ -9,4 +9,9 @@ public class ClienteController {
     public String getLogin(){
         return "login";
     }
+
+    @GetMapping("/registar")
+    public String getRegistar(){
+        return "registar";
+    }
 }
