@@ -101,9 +101,15 @@ public class GerenteController implements Initializable {
    @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
     List<Cliente> clientes = ClienteCRUD.findMelhores();
-    if(clientes.get(0) != null){
-      txt_cli1.setText(clientes.get(0).getNome());
+    try{
+        if(clientes.get(0) != null){
+            txt_cli1.setText(clientes.get(0).getNome());
+        }
     }
+    catch(IndexOutOfBoundsException ex){
+        txt_cli1.setText(null);
+    }
+
     try{
      if(clientes.get(1) != null){
       txt_cli2.setText(clientes.get(1).getNome());
