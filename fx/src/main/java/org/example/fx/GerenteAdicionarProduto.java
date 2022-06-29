@@ -45,7 +45,7 @@ public class GerenteAdicionarProduto implements Initializable {
         }
     }
 
-    public void addProduto(javafx.event.ActionEvent event){
+    public void addProduto(javafx.event.ActionEvent event) throws IOException {
         boolean isWrong=false;
         Tipoproduto tp= TipoProdutoCRUD.findBySeccao(combotipoproduto.getValue());
         Produto p=new Produto();
@@ -86,6 +86,11 @@ public class GerenteAdicionarProduto implements Initializable {
                 p.setIdtipoproduto(tp.getIdtipoproduto());
                 p.setEstado("ATIVO");
                 ProdutoCRUD.createProduto(p);
+                Alert dialogoAviso = new Alert(Alert.AlertType.INFORMATION);
+                dialogoAviso.setTitle("SUCESSO!!!");
+                dialogoAviso.setHeaderText("Introduziu um produto com sucesso!!");
+                dialogoAviso.showAndWait();
+                clicaPaginaPrincipal(event);
             }
 
         }
