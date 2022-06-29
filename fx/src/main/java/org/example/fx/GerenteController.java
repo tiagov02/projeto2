@@ -27,33 +27,6 @@ import java.net.URL;
 import java.util.*;
 
 public class GerenteController implements Initializable {
-
-    public TableView<Colaborador> tableColaborador;
-   //ArrayList<Fatura> faturas = new ArrayList<>();
-    @FXML
-    private Button botaoAtualizaStocks;
-    @FXML
-    private Button botaoDefinicoesClientes;
-    @FXML
-    private Button botaoDefinicoesColaborador;
-    @FXML
-    private Button botaoDefinicoesProdutos;
-    @FXML
-    private Button botaoListaCompras;
-    @FXML
-    private Button botaoListaEncomendas;
-    @FXML
-    private Button btn_procura;
-    @FXML
-    private TableColumn<Fornecedor, String> fornecedorField;
-    @FXML
-    private TableColumn<Fornecedor, String> estadoField;
-    @FXML
-    private TableColumn<Encomendafornecedor, String> moradaField;
-    @FXML
-    private TableColumn<Fornecedor, String> telefoneField;
-    @FXML
-    private TableColumn<Fornecedor, Float> valorTotalField;
     @FXML
     private Text txt_acumuladoAnual;
     @FXML
@@ -68,82 +41,8 @@ public class GerenteController implements Initializable {
     private Text txt_cli5;
     @FXML
     private Text txt_acumulaGastos;
-
-
-/*
-    //LISTAR ENCOMENDAS
-    @FXML
-    private TableColumn<Fatura, Integer> NumEncomenda;
-    @FXML
-    private TableColumn<Fatura, String> ClienteField;
-    @FXML
-    private TableColumn<Moradaentrega, String> moradaField;
-    @FXML
-    private TableColumn<Cliente, String> telefoneField;
-    @FXML
-    private TableColumn<Fatura, BigDecimal> valorTotalField;
-
- */
-
-    /*
-            GERENTE MENU PRINCIPAL
-     */
     @FXML
     private Text txt_lucro;
-    @FXML
-    private Label labelPrintVendas;
-    @FXML
-    private TableView<Fornecedor> tableClientes;
-    @FXML
-    private TableView<Fornecedor> tableListarEncomendas;
-    //DEFINICOES DE COLABORADOR
-    @FXML
-    private TableColumn<Colaborador, Integer> colNumero;
-    @FXML
-    private TableColumn<Colaborador, String> colNome;
-    @FXML
-    private TableColumn<Colaborador, String> colTelefone;
-    @FXML
-    private TableColumn<Colaborador, BigDecimal> colSalario;
-    @FXML
-    private TableColumn<Colaborador, Integer> colEstado;
-
-     public List<Cliente> listarCliMaisGasto(){
-      Map<Cliente,Float> cliMap=guardaValorFaturasCli();
-      List<Map.Entry<Cliente,Float>> ordenada=ordenaLista(cliMap);
-      return atualiza5MelhoresClientes(ordenada);
-     }
-
-     public Map<Cliente,Float> guardaValorFaturasCli(){
-      Map<Cliente,Float> melhoresCli=new HashMap<>();
-      float valorGastoCli=0;
-      for(Cliente cli: ClienteCRUD.findClientesTodos()){
-       for(Fatura f: cli.getFaturasByIdcliente()){
-        valorGastoCli+=f.getValorfatura().floatValue();
-       }
-       melhoresCli.put(cli,valorGastoCli);
-       valorGastoCli=0;
-      }
-      return melhoresCli;
-     }
-
-     public List<Map.Entry<Cliente,Float>> ordenaLista(Map<Cliente,Float> cliValGasto){
-      List<Map.Entry<Cliente,Float>> ordenado=new ArrayList<>(cliValGasto.entrySet());
-      ordenado.sort(Map.Entry.comparingByValue());
-      return ordenado;
-     }
-
-     public List<Cliente> atualiza5MelhoresClientes(List<Map.Entry<Cliente,Float>> ordenado){
-      int i=0;
-      List<Cliente> melhoresCli=new ArrayList<>();
-      Collections.reverse(ordenado);
-      for(i=0;i<4;i++){
-       for(Map.Entry<Cliente,Float> cli:ordenado) {
-        melhoresCli.add(cli.getKey());
-       }
-      }
-      return melhoresCli;
-     }
 
      public float gastos(){
       return EncomendaFornecedorCRUD.findGastos().floatValue();
