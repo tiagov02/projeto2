@@ -92,7 +92,6 @@ public class GerenteAdicionarProduto implements Initializable {
                 dialogoAviso.showAndWait();
                 clicaPaginaPrincipal(event);
             }
-
         }
     }
     public void limpar(){
