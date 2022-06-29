@@ -5,11 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ClienteController {
-    @GetMapping("/login")
-    public String getLogin(){
-        return "login";
-    }
-
     @GetMapping("/registar")
     public String getRegistar(){
         return "registar";
