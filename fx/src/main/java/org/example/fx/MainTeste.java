@@ -10,5 +10,6 @@ public class MainTeste {
 
 
     public static void main(String[] args) throws Exception {
+        //System.out.println("\n!\n!\nLUCROS: "+FaturaCRUD.findLucros());
     }
 }

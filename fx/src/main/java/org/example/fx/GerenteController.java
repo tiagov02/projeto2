@@ -146,19 +146,11 @@ public class GerenteController implements Initializable {
      }
 
      public float gastos(){
-      float acumuladoGastos=0;
-      for(Linhaencomendafornecedor lf: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
-       acumuladoGastos+=lf.getValor().floatValue();
-      }
-      return acumuladoGastos;
+      return EncomendaFornecedorCRUD.findGastos().floatValue();
      }
 
      public float vendas(){
-      float vendas=0;
-      for(Fatura f:FaturaCRUD.findTodasFaturas()){
-       vendas+=f.getValorfatura().floatValue();
-      }
-      return vendas;
+      return FaturaCRUD.findLucros().floatValue();
      }
 
 
@@ -207,7 +199,7 @@ public class GerenteController implements Initializable {
     }
 
 
- @Override
+   @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
     List<Cliente> clientes = ClienteCRUD.findMelhores();
     if(clientes.get(0) != null){
@@ -225,8 +217,8 @@ public class GerenteController implements Initializable {
     if(clientes.get(4) != null){
      txt_cli5.setText(clientes.get(4).getNome());
     }
-    //txt_acumulaGastos.setText(Float.toString(gastos()));
-    //txt_acumuladoAnual.setText(Float.toString(vendas()));
-    //txt_lucro.setText(Float.toString(vendas()-gastos()));
+    txt_acumulaGastos.setText(Float.toString(gastos()));
+    txt_acumuladoAnual.setText(Float.toString(vendas()));
+    txt_lucro.setText(Float.toString(vendas()-gastos()));
    }
 }

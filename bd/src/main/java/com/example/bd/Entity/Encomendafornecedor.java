@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+@NamedQuery(name="EncomendaFornecedor.gastos",query="select sum(ef.valortotal) from Encomendafornecedor ef")
 @Entity
 public class Encomendafornecedor {
     private int numencomenda;

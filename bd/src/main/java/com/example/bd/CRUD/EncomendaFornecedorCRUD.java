@@ -7,6 +7,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class EncomendaFornecedorCRUD implements Serializable {
@@ -88,9 +89,6 @@ public class EncomendaFornecedorCRUD implements Serializable {
             }
         }
     }
-
-
-
     public static void editEncomendaFornecedor(Encomendafornecedor encomenda) throws IdNaoEncontradoException {
         EntityManager em = null;
         try {
@@ -113,5 +111,10 @@ public class EncomendaFornecedorCRUD implements Serializable {
                 em.close();
             }
         }
+    }
+
+    public static BigDecimal findGastos(){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("EncomendaFornecedor.gastos",BigDecimal.class).getSingleResult();
     }
 }

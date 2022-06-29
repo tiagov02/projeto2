@@ -139,10 +139,10 @@ public class FaturaCRUD implements Serializable {
         }
     }
 
-    /*public BigDecimal FindLucros(){
+    public static BigDecimal findLucros(){
         EntityManager em=getEntityManager();
-        return em.createNamedQuery("Faturas.Lucros",BigDecimal.class).
-    }*/
+        return em.createNamedQuery("Faturas.findValVendas",BigDecimal.class).getSingleResult();
+    }
 
     /**
      * Lógica
