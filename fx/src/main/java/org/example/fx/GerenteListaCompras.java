@@ -132,7 +132,7 @@ public class GerenteListaCompras implements Initializable {
 
 
     public void removerCompra(javafx.event.ActionEvent event){
-        try {
+        try{
             LinhaencomendafornecedorPK pk=new LinhaencomendafornecedorPK();
             pk.setNumencomenda(tableListaCompras.getSelectionModel().getSelectedItem().getId());
             pk.setNumproduto(tableListaCompras.getSelectionModel().getSelectedItem().getIdProd());
