@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteAtualizaStocks">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteAtualizaStocks">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -28,7 +28,7 @@
             <AnchorPane prefHeight="203.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonSair" onAction="#clicaLogout" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
             </children></VBox>
@@ -45,6 +45,7 @@
       <Text layoutX="243.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de barras:" wrappingWidth="107.02099609375" />
       <TextField fx:id="lbl_codBarras" layoutX="350.0" layoutY="18.0" />
       <Button fx:id="btn_pesq" layoutX="523.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisa" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
+      <Button fx:id="btn_addProd" onAction="#ClickAddProduto" layoutX="648.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="Adicionar Produto" textFill="WHITE" />
     </children>
 
 </AnchorPane>

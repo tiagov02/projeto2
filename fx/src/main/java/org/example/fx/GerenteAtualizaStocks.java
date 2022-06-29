@@ -191,7 +191,9 @@ public class GerenteAtualizaStocks implements Initializable {
             tableproduto.getItems().add(pt);
         }
     }
-
+    public void ClickAddProduto(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event,"AdicionarProduto.fxml","Loja Produtos Biologicos",GerenteAdicionarProduto.class);
+    }
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
