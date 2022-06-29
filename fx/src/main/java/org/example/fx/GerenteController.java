@@ -205,17 +205,37 @@ public class GerenteController implements Initializable {
     if(clientes.get(0) != null){
       txt_cli1.setText(clientes.get(0).getNome());
     }
-    if(clientes.get(1) != null){
-     txt_cli2.setText(clientes.get(1).getNome());
+    try{
+     if(clientes.get(1) != null){
+      txt_cli2.setText(clientes.get(1).getNome());
+     }
     }
-    if(clientes.get(2) != null){
-     txt_cli3.setText(clientes.get(2).getNome());
+    catch (IndexOutOfBoundsException ex){
+     txt_cli2.setText(null);
     }
-    if(clientes.get(3) != null){
-     txt_cli4.setText(clientes.get(3).getNome());
+    try{
+     if(clientes.get(2) != null){
+      txt_cli3.setText(clientes.get(2).getNome());
+     }
     }
-    if(clientes.get(4) != null){
-     txt_cli5.setText(clientes.get(4).getNome());
+    catch (IndexOutOfBoundsException ex) {
+     txt_cli3.setText(null);
+    }
+    try{
+     if(clientes.get(3) != null){
+      txt_cli4.setText(clientes.get(3).getNome());
+     }
+    }
+    catch (IndexOutOfBoundsException ex) {
+     txt_cli4.setText(null);
+    }
+    try{
+     if(clientes.get(4) != null){
+      txt_cli5.setText(clientes.get(4).getNome());
+     }
+    }
+    catch (IndexOutOfBoundsException ex) {
+     txt_cli5.setText(null);
     }
     txt_acumulaGastos.setText(Float.toString(gastos()));
     txt_acumuladoAnual.setText(Float.toString(vendas()));
