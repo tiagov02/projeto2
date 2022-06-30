@@ -8,9 +8,9 @@ import com.example.bd.Entity.Colaborador;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -20,7 +20,7 @@ public class LoginController {
         model.addAttribute("cli",cli);
         return "login";
     }
-
+/*
     @PostMapping("/plogin")
     public String plogin(@ModelAttribute Cliente cli, Model model){
         System.out.println("USER: "+cli.getUsername());
@@ -39,5 +39,20 @@ public class LoginController {
             return "error";
         }
         return "registar";
+    }
+
+ */
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String verificaLogin(@RequestParam String nomeutilizador, @RequestParam String pass, HttpSession session, Model model){
+        Cliente cli = ClienteCRUD.login(nomeutilizador, pass);
+
+        if (cli != null && cli.getPassword().equals(pass)){
+            session.setAttribute("logincliente", cli);
+            return "clienteLogado";
+        }
+        else {
+            model.addAttribute("erro", "Username ou password erradas");
+            return "login";
+        }
     }
 }
