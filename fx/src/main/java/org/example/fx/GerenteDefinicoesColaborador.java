@@ -140,19 +140,36 @@ public class GerenteDefinicoesColaborador implements Initializable {
     }
 
     public void pesquisarColaborador(){
-        int cont=0;
+        int cont=0,idcolab=0;
+        boolean isNumber=false;
         tableColaborador.setItems(FXCollections.observableArrayList());
         if (pesquisarfield.getText().equals("")){
             initialize(null, null);
             return;
         }
-        for(Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
+        try{
+            idcolab=Integer.parseInt(this.pesquisarfield.getText());
+            isNumber=true;
+        }
+        catch (NumberFormatException ex){
+            isNumber=false;
+        }
+        /*for(Colaborador colab: ColaboradorCRUD.findTodosColaboradores()){
             if(this.pesquisarfield.getText().equals(Integer.toString(colab.getIdcolaborador())) ||
                     this.pesquisarfield.getText().toLowerCase().equals(colab.getNome().toLowerCase()) ||
                     this.pesquisarfield.getText().equals(colab.getTelefone())){
                 cont++;
                 tableColaborador.getItems().add(colab);
             }
+        }*/
+        if(!isNumber){
+            List<Colaborador> result= ColaboradorCRUD.findColaboradorByTelefNome(pesquisarfield.getText(),pesquisarfield.getText());
+            tableColaborador.getItems().addAll(result);
+            cont=result.size();
+        }
+        else{
+            Colaborador colab=ColaboradorCRUD.findColaboradores(idcolab);
+            if(colab==null) cont=0;
         }
         if(cont==0){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);

@@ -105,4 +105,10 @@ public class ColaboradorCRUD implements Serializable {
                 setParameter("user",user).setParameter("pass",pwd).getSingleResult());
     }
 
+    public static List<Colaborador> findColaboradorByTelefNome(String tlf,String nome){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Colaborador.findByNomeNumTelef",Colaborador.class).
+                setParameter("telef",tlf).setParameter("nome",nome).getResultList();
+    }
+
 }
