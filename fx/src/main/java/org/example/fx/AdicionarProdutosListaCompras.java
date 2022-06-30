@@ -68,7 +68,7 @@ public class AdicionarProdutosListaCompras implements Initializable {
         labelqtdcomprar.setText("");
     }
 
-    public void addProdutosFalta(javafx.event.ActionEvent event) {
+    public void addProdutosFalta(javafx.event.ActionEvent event) throws IOException {
         float valTotal=0;
         Encomendafornecedor ef=new Encomendafornecedor();
         Fornecedor f=FornecedorCRUD.findByName(select_fornecedor.getSelectionModel().getSelectedItem());
@@ -90,10 +90,34 @@ public class AdicionarProdutosListaCompras implements Initializable {
         } catch (IdNaoEncontradoException e) {
             e.printStackTrace();
         }
+        clicaListaCompras(event);
     }
 
     public void addLinhasEncomenda(javafx.event.ActionEvent event){
-
+        int qtd=0;
+        float valTotal=0;
+        boolean isWrong=false;
+        Produto p= ProdutoCRUD.findByName(select_produto.getSelectionModel().getSelectedItem());
+        try{
+            qtd=Integer.parseInt(labelqtdcomprar.getText());
+            isWrong=false;
+        }
+        catch(NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Erro!Não pode escrever letras na quantidade a comprar!");
+            dialogoAviso.showAndWait();
+            isWrong=true;
+        }
+        if(!isWrong){
+            EncomendaForLinhaModel ef=new EncomendaForLinhaModel();
+            ef.setIdProd(p.getNumproduto());
+            ef.setNomeProd(p.getNome());
+            ef.setQtdProd(qtd);
+            valTotal=qtd*p.getValorunitario().floatValue();
+            ef.setValTotal(valTotal);
+            table_lisrProd.getItems().add(ef);
+        }
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
