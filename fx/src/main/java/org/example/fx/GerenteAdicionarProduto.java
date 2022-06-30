@@ -94,6 +94,58 @@ public class GerenteAdicionarProduto implements Initializable {
             }
         }
     }
+
+    //FIZ ISTO MAS TAMBEM NÃO FUNCIONA...CHAMEI-A NO FX
+    public void adicionarProduto(){
+        float total = 0;
+        Produto p = new Produto();
+        p.setEstado("ATIVO");
+        p.setNome(nomeproduto.getText());
+        p.setIdtipoproduto(1);
+        p.setQuantidademinima(1);
+        p.setQuantidadestock(1);
+        p.setValorunitario(new BigDecimal(12));
+        p.setTaxaiva(new BigDecimal(0.23));
+        p.setValorunitariototal(new BigDecimal(12));
+        try {
+            p.setQuantidademinima(Integer.parseInt(qtdminima.getText()));
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras na quantidade minima");
+            dialogoAviso.showAndWait();
+        }
+        try {
+            p.setQuantidadestock(Integer.parseInt(qtdstock.getText()));
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras na quantidade minima");
+            dialogoAviso.showAndWait();
+        }
+        try {
+            p.setValorunitario(new BigDecimal(valorunitario.getText()));
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras na quantidade minima");
+            dialogoAviso.showAndWait();
+        }
+        try {
+            p.setTaxaiva(new BigDecimal(taxaiva.getText()));
+        } catch (NumberFormatException ex){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Não pode introduzir letras na quantidade minima");
+            dialogoAviso.showAndWait();
+        }
+        total = (1+ p.getTaxaiva().floatValue());
+        p.setValorunitariototal(new BigDecimal(total));
+        for (Tipoproduto tp : TipoProdutoCRUD.findTiposProduto()){
+            combotipoproduto.getItems().add(tp.getSeccao());
+        }
+        p.setIdtipoproduto(combotipoproduto.getSelectionModel().getSelectedIndex());
+    }
     public void limpar(){
         nomeproduto.setText(null);
         qtdminima.setText(null);
