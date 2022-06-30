@@ -52,18 +52,21 @@ public class AdicionarProdutosListaCompras implements Initializable {
 
     public void addProdutosFalta(javafx.event.ActionEvent event) {
         int qtdComprar=0;
+        boolean isWrong=false;
         Encomendafornecedor ef=new Encomendafornecedor();
         Fornecedor f=FornecedorCRUD.findByName(select_fornecedor.getSelectionModel().getSelectedItem());
         Produto p= ProdutoCRUD.findByName(select_produto.getSelectionModel().getSelectedItem());
 
         try{
             qtdComprar=Integer.parseInt(labelqtdcomprar.getText());
+            isWrong=true;
         }
         catch (NumberFormatException ex){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Erro! Não pode introduzir letras nq quantidade do produto");
             dialogoAviso.showAndWait();
+            isWrong=false;
         }
     }
 
