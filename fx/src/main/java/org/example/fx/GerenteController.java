@@ -142,16 +142,15 @@ public class GerenteController implements Initializable {
     catch (IndexOutOfBoundsException ex) {
      txt_cli5.setText(null);
     }
-    try{
-        txt_acumulaGastos.setText(Float.toString(gastos()));
-        txt_acumuladoAnual.setText(Float.toString(vendas()));
-        txt_lucro.setText(Float.toString(vendas()-gastos()));
-    }
-    catch(NullPointerException ex){
-        txt_acumuladoAnual.setText(null);
-        txt_acumulaGastos.setText(null);
-        txt_lucro.setText(null);
-    }
-
+       try{
+           txt_acumulaGastos.setText(Float.toString(gastos()));
+           txt_acumuladoAnual.setText(Float.toString(vendas()));
+           txt_lucro.setText(Float.toString(vendas()-gastos()));
+       }
+       catch(NullPointerException ex){
+           txt_acumuladoAnual.setText(null);
+           txt_acumulaGastos.setText(null);
+           txt_lucro.setText(null);
+       }
    }
 }

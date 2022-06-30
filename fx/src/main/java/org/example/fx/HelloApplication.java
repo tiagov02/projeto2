@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 
-public class HelloApplication extends Application {
+public class   HelloApplication extends Application {
     @FXML
     private Button Btniniciar;
     @FXML
