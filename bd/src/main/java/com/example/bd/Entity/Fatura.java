@@ -6,6 +6,9 @@ import java.sql.Date;
 import java.util.Collection;
 
 @NamedQuery(name="Faturas.findValVendas", query="select SUM(f.valorfatura) from Fatura f")
+@NamedQuery(name="Fatura.FindByNomeTelefone",
+        query="select f from Fatura f WHERE f.clienteByIdcliente.nome=:nome OR f.clienteByIdcliente.telefone=:telefone")
+@NamedQuery(name="Fatura.FindByIdCliente",query="select f from Fatura f WHERE f.idcliente=:idcliente")
 @Entity
 public class Fatura {
     private int numfatura;

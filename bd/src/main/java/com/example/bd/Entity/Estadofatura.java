@@ -3,6 +3,8 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.sql.Date;
 
+@NamedQuery(name="EstadoFatura.FindUltimoEstadoByIdFatura",
+query="select e from Estado e,Estadofatura ef, Fatura f WHERE f.numfatura=:id AND f.numfatura=ef.numfatura AND e.idestado=ef.idestado AND ef.datafatura=(select MAX(ef.datafatura) from Estadofatura ef WHERE ef.numfatura=:id)")
 @Entity
 @IdClass(EstadofaturaPK.class)
 public class Estadofatura {

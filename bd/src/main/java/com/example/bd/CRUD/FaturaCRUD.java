@@ -152,4 +152,15 @@ public class FaturaCRUD implements Serializable {
         lf.setNumfatura(f.getNumfatura());
         LinhaFaturaCRUD.createLinhaFatura(lf);
     }
+
+    public static List<Fatura> findByTelefoneNomeCli(String telefone, String nome){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Fatura.FindByNomeTelefone",Fatura.class)
+                .setParameter("nome",nome).setParameter("telefone",telefone).getResultList();
+    }
+    public List<Fatura> findByIdCliente(int id){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Fatura.FindByIdCliente",Fatura.class)
+                .setParameter("idcliente",id).getResultList();
+    }
 }

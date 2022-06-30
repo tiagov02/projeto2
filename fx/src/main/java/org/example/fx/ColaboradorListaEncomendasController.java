@@ -4,10 +4,7 @@ import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
-import com.example.bd.Entity.Colaborador;
-import com.example.bd.Entity.Estadofatura;
-import com.example.bd.Entity.EstadofaturaPK;
-import com.example.bd.Entity.Fatura;
+import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +16,7 @@ import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ColaboradorListaEncomendasController implements Initializable {
@@ -55,7 +53,6 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int idEstado=0;
         numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));
@@ -70,11 +67,8 @@ public class ColaboradorListaEncomendasController implements Initializable {
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
             lista.setIdCliente(fat.getIdcliente());
-            for(Estadofatura ef:EstadoFaturaCRUD.findAllEstadosFaturas()){
-                if(ef.getNumfatura()== fat.getNumfatura()){
-                    lista.setEstadoFatura(ef.getEstadoByIdestado().getDescricao());
-                }
-            }
+            Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+            lista.setEstadoFatura(e.getDescricao());
             tablelistaencomenda.getItems().add(lista);
         }
     }
@@ -102,30 +96,35 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
     public void pesquisa(javafx.event.ActionEvent event){
         tablelistaencomenda.setItems(FXCollections.observableArrayList());
+        boolean isNumber=false;
         int cont=0;
+        int idcli=0;
         if (lbl_cliente.getText().equals("")){
             initialize(null, null);
             return;
         }
-        for (Fatura fat: FaturaCRUD.findTodasFaturas()){
-            if(lbl_cliente.getText().equals(Integer.toString(fat.getIdcliente())) ||
-                    lbl_cliente.getText().equals(fat.getClienteByIdcliente().getNome()) ||
-                    lbl_cliente.getText().equals(fat.getClienteByIdcliente().getTelefone())){
-                cont++;
+        try{
+            idcli=Integer.parseInt(lbl_cliente.getText());
+            isNumber=true;
+        }
+        catch (NumberFormatException ex){
+            isNumber=false;
+        }
+        if(!isNumber){
+            List<Fatura> result=FaturaCRUD.findByTelefoneNomeCli(lbl_cliente.getText(),lbl_cliente.getText());
+            for(Fatura fat:result){
                 ListaEncomendas lista = new ListaEncomendas();
                 lista.setNumFatura(fat.getNumfatura());
                 lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
                 lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
                 lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
                 lista.setValorTotal(fat.getValorfatura().floatValue());
-                for(Estadofatura ef: EstadoFaturaCRUD.findAllEstadosFaturas()){
-                    if(ef.getNumfatura()== fat.getNumfatura()){
-                        lista.setEstadoFatura(ef.getEstadoByIdestado().getDescricao());
-                    }
-                }
-                tablelistaencomenda.getItems().add(lista);
+                Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+                lista.setEstadoFatura(e.getDescricao());
             }
+
         }
+
         if(cont==0){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");

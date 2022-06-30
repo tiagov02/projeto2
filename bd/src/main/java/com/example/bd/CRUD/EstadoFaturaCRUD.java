@@ -1,6 +1,7 @@
 package com.example.bd.CRUD;
 
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Estado;
 import com.example.bd.Entity.Estadofatura;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
@@ -100,5 +101,10 @@ public class EstadoFaturaCRUD implements Serializable {
                 em.close();
             }
         }
+    }
+
+    public static Estado getUltimoEstadoFatura(int idfatura){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("EstadoFatura.FindUltimoEstadoByIdFatura", Estado.class).setParameter("id",idfatura).getSingleResult();
     }
 }
