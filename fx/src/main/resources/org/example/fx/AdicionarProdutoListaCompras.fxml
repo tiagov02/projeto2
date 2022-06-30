@@ -61,14 +61,19 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <TableView layoutX="204.0" layoutY="246.0" prefHeight="172.0" prefWidth="295.0">
+            <TableView layoutX="55.0" layoutY="245.0" prefHeight="172.0" prefWidth="295.0">
               <columns>
                 <TableColumn prefWidth="32.800018310546875" text="#" />
-                  <TableColumn prefWidth="85.60000610351562" text="Produto" />
-                  <TableColumn prefWidth="57.5999755859375" text="Quantidade" />
+                  <TableColumn minWidth="0.0" prefWidth="69.59994506835938" text="Produto" />
+                  <TableColumn prefWidth="74.4000244140625" text="Quantidade" />
                   <TableColumn prefWidth="124.79998779296875" text="Valor Total" />
               </columns>
             </TableView>
+            <Button fx:id="btn_eliminarLinha" layoutX="380.0" layoutY="258.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR LINHA" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
             </children>
         </Pane>
     </children>
