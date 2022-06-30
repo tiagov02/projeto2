@@ -3,6 +3,7 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+@NamedQuery(name="Fornecedores.FindByNome",query="select f from Fornecedor f WHERE f.nome=:nome")
 @Entity
 public class Fornecedor {
     private int idfornecedor;

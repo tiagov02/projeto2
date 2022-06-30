@@ -97,4 +97,9 @@ public class FornecedorCRUD {
             }
         }
     }
+
+    public static Fornecedor findByName(String nome){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Fornecedores.FindByNome",Fornecedor.class).setParameter("nome",nome).getSingleResult();
+    }
 }

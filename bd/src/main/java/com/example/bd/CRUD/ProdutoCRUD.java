@@ -125,4 +125,9 @@ public class ProdutoCRUD implements Serializable {
             }
         }
     }
+
+    public static Produto findByName(String name){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Produto.findNome",Produto.class).setParameter("nome",name).getSingleResult();
+    }
 }

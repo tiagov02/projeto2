@@ -51,18 +51,11 @@ public class AdicionarProdutosListaCompras implements Initializable {
     }
 
     public void addProdutosFalta(javafx.event.ActionEvent event) {
-        int idForn=0,idProd=0,qtdComprar=0;
+        int qtdComprar=0;
         Encomendafornecedor ef=new Encomendafornecedor();
-        for(Fornecedor f:FornecedorCRUD.findFornecedores()){
-            if(f.getNome().equals(select_fornecedor.getSelectionModel().getSelectedItem())){
-                idForn=f.getIdfornecedor();
-            }
-        }
-        for(Produto p:ProdutoCRUD.findTodosProdutos()){
-            if(p.getNome().equals(select_produto.getSelectionModel().getSelectedItem())){
-                idProd=p.getNumproduto();
-            }
-        }
+        Fornecedor f=FornecedorCRUD.findByName(select_fornecedor.getSelectionModel().getSelectedItem());
+        Produto p= ProdutoCRUD.findByName(select_produto.getSelectionModel().getSelectedItem());
+
         try{
             qtdComprar=Integer.parseInt(labelqtdcomprar.getText());
         }
@@ -72,22 +65,6 @@ public class AdicionarProdutosListaCompras implements Initializable {
             dialogoAviso.setHeaderText("Erro! Não pode introduzir letras nq quantidade do produto");
             dialogoAviso.showAndWait();
         }
-        float aux=((ProdutoCRUD.findProduto(idProd)).getValorunitario().floatValue() * qtdComprar);
-        ef.setIdfornecedor(idForn);
-        ef.setQuantidade(qtdComprar);
-        ef.setValortotal(new BigDecimal(Float.toString(aux)));
-        EncomendaFornecedorCRUD.createEncomendaFornecedor(ef);
-        Linhaencomendafornecedor lf=new Linhaencomendafornecedor();
-        lf.setNumencomenda(ef.getNumencomenda());
-        lf.setQuantidade(qtdComprar);
-        lf.setNumproduto(idProd);
-        lf.setValor(new BigDecimal(Float.toString(aux)));
-        LinhaEncomendaFornecedorCRUD.createLinhaEncomendaFornecedor(lf);
-        Alert dialogoAviso = new Alert(Alert.AlertType.INFORMATION);
-        dialogoAviso.setTitle("SUCESSO!!");
-        dialogoAviso.setHeaderText("Adicionou um novo produto com sucesso!!");
-        dialogoAviso.showAndWait();
-        cleanButton();
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {

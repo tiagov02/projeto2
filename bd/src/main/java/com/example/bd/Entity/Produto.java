@@ -3,7 +3,7 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
-
+@NamedQuery(name="Produto.findNome",query="select p from Produto p WHERE p.nome=:nome")
 @Entity
 public class Produto {
     private int numproduto;
