@@ -2,6 +2,7 @@ package org.example.fx;
 
 
 import com.example.bd.CRUD.*;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,23 +69,30 @@ public class AdicionarProdutosListaCompras implements Initializable {
     }
 
     public void addProdutosFalta(javafx.event.ActionEvent event) {
-        int qtdComprar=0;
-        boolean isWrong=false;
+        float valTotal=0;
         Encomendafornecedor ef=new Encomendafornecedor();
         Fornecedor f=FornecedorCRUD.findByName(select_fornecedor.getSelectionModel().getSelectedItem());
         Produto p= ProdutoCRUD.findByName(select_produto.getSelectionModel().getSelectedItem());
+        ef.setIdfornecedor(f.getIdfornecedor());
+        EncomendaFornecedorCRUD.createEncomendaFornecedor(ef);
+        for(EncomendaForLinhaModel lef:this.table_lisrProd.getItems()){
+            Linhaencomendafornecedor linha=new Linhaencomendafornecedor();
+            linha.setValor(new BigDecimal(lef.getValTotal()));
+            linha.setNumproduto(lef.getIdProd());
+            linha.setQuantidade(lef.getQtdProd());
+            linha.setNumencomenda(ef.getNumencomenda());
+            valTotal+=lef.getValTotal();
+            LinhaEncomendaFornecedorCRUD.createLinhaEncomendaFornecedor(linha);
+        }
+        ef.setValortotal(new BigDecimal(valTotal));
+        try {
+            EncomendaFornecedorCRUD.editEncomendaFornecedor(ef);
+        } catch (IdNaoEncontradoException e) {
+            e.printStackTrace();
+        }
+    }
 
-        try{
-            qtdComprar=Integer.parseInt(labelqtdcomprar.getText());
-            isWrong=true;
-        }
-        catch (NumberFormatException ex){
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!!");
-            dialogoAviso.setHeaderText("Erro! Não pode introduzir letras nq quantidade do produto");
-            dialogoAviso.showAndWait();
-            isWrong=false;
-        }
+    public void addLinhasEncomenda(javafx.event.ActionEvent event){
 
     }
 
