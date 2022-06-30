@@ -7,10 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -30,9 +28,28 @@ public class AdicionarProdutosListaCompras implements Initializable {
     @FXML
     private ComboBox<String> select_produto;
 
+    @FXML
+    private TableColumn<EncomendaForLinhaModel, Integer> col_idProd;
+
+    @FXML
+    private TableColumn<EncomendaForLinhaModel, String> col_nomeProd;
+
+    @FXML
+    private TableColumn<EncomendaForLinhaModel, Integer> col_qtdProduto;
+
+    @FXML
+    private TableColumn<EncomendaForLinhaModel, Float> col_valTotal;
+
+    @FXML
+    private TableView<EncomendaForLinhaModel> table_lisrProd;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        col_idProd.setCellValueFactory(new PropertyValueFactory<>("idProd"));
+        col_nomeProd.setCellValueFactory(new PropertyValueFactory<>("nomeProd"));
+        col_qtdProduto.setCellValueFactory(new PropertyValueFactory<>("qtdProd"));
+        col_valTotal.setCellValueFactory(new PropertyValueFactory<>("valTotal"));
         for(Fornecedor f:FornecedorCRUD.findFornecedores()){
             select_fornecedor.getItems().add(f.getNome());
         }
@@ -68,6 +85,7 @@ public class AdicionarProdutosListaCompras implements Initializable {
             dialogoAviso.showAndWait();
             isWrong=false;
         }
+
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
