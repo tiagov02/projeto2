@@ -26,6 +26,7 @@ public class LoginController {
 
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
+        System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
         Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
 
@@ -45,6 +46,7 @@ public class LoginController {
      */
     //link https://www.w3schools.blog/login-spring-mvc
     //APARECE ERRO
+    /*
     @RequestMapping("/login")
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
         String userName=request.getParameter("user");
@@ -56,4 +58,5 @@ public class LoginController {
             return new ModelAndView("error");
         }
     }
+    */
 }
