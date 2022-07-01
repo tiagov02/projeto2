@@ -10,7 +10,7 @@ public class MainTeste {
 
 
     public static void main(String[] args) throws Exception {
-        Codpostais cod=CodPostaisCRUD.findCodPostal("0989-777");
-        System.out.println("Cod postal: "+cod.getCodpostal()+"\nLocalidade : "+cod.getLocalidade());
+        //Codpostais cod=CodPostaisCRUD.findCodPostal("0989-777");
+        //System.out.println("Cod postal: "+cod.getCodpostal()+"\nLocalidade : "+cod.getLocalidade());
     }
 }
