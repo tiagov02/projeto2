@@ -8,6 +8,7 @@ import org.example.fx.Exceptions.RunTimeError;
 import org.example.fx.Exceptions.UserPwdErradoaxception;
 import org.example.fx.SingleInstance.UserAtual;
 
+import javax.persistence.NoResultException;
 import java.util.Arrays;
 
 public class UserMethods {
@@ -19,11 +20,12 @@ public class UserMethods {
       catch(Exception e){
          throw new RunTimeError("Ocorreu um erro no programa, por favor tente de novo dentro de alguns minutos");
       }
-      Colaborador c=ColaboradorCRUD.loginColab(username,pass);
-
-      if(c==null){
+      try{
+         Colaborador c=ColaboradorCRUD.loginColab(username,pass);
+         UserAtual.getInstance().setCurrentUser(c);
+         return c;
+      } catch(NoResultException ex){
          throw new UserPwdErradoaxception("O utilizador ou a password estão errados;");
       }
-      return c;
    }
 }

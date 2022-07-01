@@ -1,8 +1,10 @@
 package com.example.springwebmvc;
 
 import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Encrypt.*;
+import com.example.bd.Entity.Colaborador;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,13 @@ public class LoginController {
 
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
-        Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
+        String pwd="";
+        try{
+           pwd=Encriptacao.encript(login.getPassword());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Colaborador cli = ColaboradorCRUD.loginColab(login.getNomeUser(), pwd);
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
         /*try{
