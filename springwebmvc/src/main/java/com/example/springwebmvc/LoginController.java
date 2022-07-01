@@ -25,15 +25,16 @@ public class LoginController {
 
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
+        Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
-        try{
-            Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
+        /*try{
             return "clientelogado";
         }catch (NoResultException ex){
             //model.addAttribute("erro", "Username ou password erradas");
             return "error";
-        }
+        }*/
+        return "error";
     }
 
 

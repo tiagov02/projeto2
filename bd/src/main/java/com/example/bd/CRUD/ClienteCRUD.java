@@ -106,7 +106,7 @@ public class ClienteCRUD implements Serializable {
 
     public static Cliente login(String user, String pwd){
         EntityManager em=getEntityManager();
-        return em.createNamedQuery("Cliente.Login",Cliente.class).
-                setParameter("user",user).setParameter("pass",pwd).getSingleResult();
+        return (em.createNamedQuery("Cliente.Login",Cliente.class).
+                setParameter("user",user).setParameter("pass",pwd).getSingleResult());
     }
 }
