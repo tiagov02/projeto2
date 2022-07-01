@@ -27,18 +27,33 @@ public class RegistoController {
     @PostMapping(value="/registado")
     public String regista(@ModelAttribute ModelCliente cli,Model model){
         String pwd="";
+        Cliente cliente=new Cliente();
         try{
             pwd= Encriptacao.encript(cli.getPassword());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cli.setPassword(pwd);
-        cli.setIdtipocliente(1);
+        //cli.setPassword(pwd);
+        //cli.setIdtipocliente(1);
         Codpostais cod= CodPostaisCRUD.findCodPostal(cli.getCodpostal());
         if(cod==null){
+            Codpostais cd= new Codpostais();
+            cd.setLocalidade(cli.getLocalidade());
+            cd.setCodpostal(cli.getCodpostal());
+            CodPostaisCRUD.create(cd);
         }
+        cliente.setPassword(pwd);
+        cliente.setUsername(cli.getUsername());
+        cliente.setIdtipocliente(1);
+        cliente.setCodpostal(cli.getCodpostal());
+        cliente.setNome(cli.getNome());
+        cliente.setTelefone(cli.getTelefone());
+        cliente.setNumporta(cli.getNumporta());
+        cliente.setRua(cli.getRua());
+
         try{
-        }catch(PersistenceException ex){
+            ClienteCRUD.createCliente(cliente);
+        }catch (PersistenceException ex){
             return "error";
         }
         return "clientelogado";
