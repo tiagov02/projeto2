@@ -22,7 +22,7 @@ public class LoginController {
         model.addAttribute("login",login);
         return "login";
     }
-
+//comit
 
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
