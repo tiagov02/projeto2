@@ -1,10 +1,10 @@
 package com.example.springwebmvc;
 
-public class loginData {
+public class LoginData {
     private String nomeUser;
     private String password;
 
-    public loginData() {
+    public LoginData() {
     }
 
     public String getNomeUser() {
