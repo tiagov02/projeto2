@@ -12,6 +12,6 @@ public class MainTeste {
     public static void main(String[] args) throws Exception {
         String userName="cliente";
         String password="cli";
-        Cliente cli=ClienteCRUD.login(userName,password);
+        //Cliente cli=ClienteCRUD.login(userName,password);
     }
 }

@@ -27,22 +27,16 @@ public class LoginController {
 
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
-        String pwd="";
-        try{
-           pwd=Encriptacao.encript(login.getPassword());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Colaborador cli = ColaboradorCRUD.loginColab(login.getNomeUser(), pwd);
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
-        /*try{
+        try{
+            Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
             return "clientelogado";
         }catch (NoResultException ex){
             //model.addAttribute("erro", "Username ou password erradas");
             return "error";
-        }*/
-        return "error";
+        }
+        //return "error";
     }
 
 
