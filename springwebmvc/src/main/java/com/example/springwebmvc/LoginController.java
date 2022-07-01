@@ -9,17 +9,20 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-    @GetMapping("/login")
+    /*@GetMapping("/login")
     public String getLogin(Model model){
         Cliente cli= new Cliente();
         model.addAttribute("cli",cli);
         return "login";
-    }
+    }*/
 /*
     @PostMapping("/plogin")
     public String plogin(@ModelAttribute Cliente cli, Model model){
@@ -42,7 +45,7 @@ public class LoginController {
     }
 
  */
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    /*@RequestMapping(value = "/login",method = RequestMethod.POST)
     public String verificaLogin(@RequestParam String nomeutilizador, @RequestParam String pass, HttpSession session, Model model){
         Cliente cli = ClienteCRUD.login(nomeutilizador, pass);
 
@@ -54,5 +57,15 @@ public class LoginController {
             model.addAttribute("erro", "Username ou password erradas");
             return "login";
         }
+    }*/
+    @RequestMapping("/login")
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
+        String userName=request.getParameter("user");
+        String password=request.getParameter("pass");
+        Cliente cli=ClienteCRUD.login(userName,password);
+        if(cli==null){
+            return new ModelAndView("error");
+        }
+        return new ModelAndView("registar");
     }
 }
