@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -71,10 +72,11 @@ public class LoginController {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
         String userName=request.getParameter("user");
         String password=request.getParameter("pass");
-        Cliente cli=ClienteCRUD.login(userName,password);
-        if(cli==null) {
+        try{
+            Cliente cli=ClienteCRUD.login(userName,password);
+            return new ModelAndView("registar");
+        } catch(NoResultException ex){
             return new ModelAndView("error");
         }
-        return new ModelAndView("registar");
     }
 }
