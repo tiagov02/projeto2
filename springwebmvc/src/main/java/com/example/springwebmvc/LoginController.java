@@ -58,12 +58,18 @@ public class LoginController {
             return "login";
         }
     }*/
+
+    /**
+     * PARA APAGAR LINK ABAIXO
+     */
+    //link https://www.w3schools.blog/login-spring-mvc
+    //APARECE ERRO
     @RequestMapping("/login")
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response){
         String userName=request.getParameter("user");
         String password=request.getParameter("pass");
         Cliente cli=ClienteCRUD.login(userName,password);
-        if(cli==null){
+        if(cli==null) {
             return new ModelAndView("error");
         }
         return new ModelAndView("registar");
