@@ -59,9 +59,10 @@ public class GerenteAdicionarProduto implements Initializable {
             quantStock=Integer.parseInt(qtdstock.getText());
             txiva=new BigDecimal(taxaiva.getText());
             valunit=new BigDecimal(valorunitario.getText());
-            isWrong=true;
+            isWrong=false;
         }
         catch(NumberFormatException ex){
+            isWrong=true;
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!");
             dialogoAviso.setHeaderText("Erro! Não pode adicionar letras em campos numéricos");
