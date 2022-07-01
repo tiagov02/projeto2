@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.NoResultException;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -20,9 +21,11 @@ public class LoginController {
     }
 
     @PostMapping(value = "/plogin")
-    public String verificaLogin(@ModelAttribute LoginData login, Model model){
+    public String verificaLogin(@ModelAttribute LoginData login, Model model, HttpSession session) {
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
+                session.setAttribute("UserLogged",cli);
+                System.out.println("ESTOU AQUI");
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";
