@@ -22,33 +22,10 @@ public class LoginController {
         model.addAttribute("login",login);
         return "login";
     }
-/*
-    @PostMapping("/plogin")
-    public String plogin(@ModelAttribute Cliente cli, Model model){
-        System.out.println("USER: "+cli.getUsername());
-        String pass="";
-        try{
-            pass= Encriptacao.encript(cli.getPassword());
-        }
-        catch(Exception e){
-            //throw new RunTimeError("Ocorreu um erro no programa, por favor tente de novo dentro de alguns minutos");
-            return "error";
-        }
-        Cliente c= ClienteCRUD.login(cli.getUsername(), pass);
-        System.out.println("USER: "+cli.getUsername()+"\n\nPASSWORD"+cli.getPassword());
-
-        if(c==null){
-            return "error";
-        }
-        return "registar";
-    }
 
 
-
- */
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
-        System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
         Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
 
