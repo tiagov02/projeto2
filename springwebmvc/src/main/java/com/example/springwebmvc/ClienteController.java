@@ -26,10 +26,5 @@ public class ClienteController {
         return "carrinhoCompras";
     }
 
-    @GetMapping("/clienteLogado")
-    public String getClienteLogado(){
-        return "clienteLogado";
-    }
-
 
 }

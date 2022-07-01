@@ -22,24 +22,21 @@ public class LoginController {
         model.addAttribute("login",login);
         return "login";
     }
-//comit
 
-    @PostMapping(value = "/plogin")
+    @PostMapping(value = "/login")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
-        Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
-
-
-        if (cli != null){
-            return "clienteLogado";
-        }
-        else {
-            model.addAttribute("erro", "Username ou password erradas");
+        try{
+            Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
+            return "clientelogado";
+        }catch (NoResultException ex){
+            //model.addAttribute("erro", "Username ou password erradas");
             return "login";
         }
-
     }
+
+
 
     /**
      * PARA APAGAR LINK ABAIXO
