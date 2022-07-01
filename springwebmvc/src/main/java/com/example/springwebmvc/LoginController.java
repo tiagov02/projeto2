@@ -32,7 +32,7 @@ public class LoginController {
             return "clientelogado";
         }catch (NoResultException ex){
             //model.addAttribute("erro", "Username ou password erradas");
-            return "login";
+            return "error";
         }
     }
 
