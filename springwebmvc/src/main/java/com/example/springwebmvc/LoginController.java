@@ -23,7 +23,7 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
