@@ -28,7 +28,6 @@ public class LoginController {
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute loginData login, Model model){
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
-
         try{
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
@@ -41,9 +40,14 @@ public class LoginController {
             //model.addAttribute("erro", "Username ou password erradas");
             return "error";
         }
-        //return "error";
     }
+/*
+    @PostMapping(value = "/registo")
+    public String registar(@ModelAttribute RegistarCliente registo){
+        Cliente cli = new Cliente();
 
+    }
+*/
 
 
     /**
