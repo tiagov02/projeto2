@@ -30,8 +30,13 @@ public class LoginController {
         System.out.println("USER" + login.getNomeUser() + "PASSWORD" + login.getPassword());
 
         try{
-            Cliente cli = ClienteCRUD.login(login.getNomeUser(), login.getPassword());
-            return "clientelogado";
+            try {
+                Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
+                return "clientelogado";
+            } catch (Exception ex){
+                return "error";
+            }
+
         }catch (NoResultException ex){
             //model.addAttribute("erro", "Username ou password erradas");
             return "error";
