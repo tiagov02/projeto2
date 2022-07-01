@@ -11,10 +11,6 @@ import java.util.Optional;
 
 @Controller
 public class ClienteController {
-    @GetMapping("/registar")
-    public String getRegistar(){
-        return "registar";
-    }
 
     @GetMapping("/index")
     public String getIndex(){

@@ -1,4 +1,4 @@
-package com.example.springwebmvc;
+package com.example.springwebmvc.ModelClasses;
 
 public class LoginData {
     private String nomeUser;

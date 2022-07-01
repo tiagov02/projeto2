@@ -10,8 +10,7 @@ public class MainTeste {
 
 
     public static void main(String[] args) throws Exception {
-        String userName="cliente";
-        String password="cli";
-        //Cliente cli=ClienteCRUD.login(userName,password);
+        Codpostais cod=CodPostaisCRUD.findCodPostal("0989-777");
+        System.out.println("Cod postal: "+cod.getCodpostal()+"\nLocalidade : "+cod.getLocalidade());
     }
 }

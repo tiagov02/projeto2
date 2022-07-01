@@ -3,6 +3,7 @@ package com.example.springwebmvc;
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Encrypt.*;
+import com.example.springwebmvc.ModelClasses.LoginData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
