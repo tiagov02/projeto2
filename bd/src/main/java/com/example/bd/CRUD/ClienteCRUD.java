@@ -1,6 +1,6 @@
 package com.example.bd.CRUD;
 
-import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.CRUD.exceptions.*;
 import com.example.bd.Entity.Cliente;
 
 import javax.persistence.*;
