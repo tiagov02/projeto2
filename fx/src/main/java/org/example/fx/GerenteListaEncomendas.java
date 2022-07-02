@@ -6,10 +6,14 @@ import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.fx.Logica.TrocaPaineis;
 
 import javax.persistence.NoResultException;
@@ -44,7 +48,7 @@ public class GerenteListaEncomendas implements Initializable{
     private TableView<ListaEncomendas> tablelistaencomenda;
 
     @FXML
-    private Button btn_procura;
+    private Button btn_consulta;
 
     @FXML
     private TextField lbl_cliente;
@@ -112,6 +116,28 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Erro! Não existe nenhuma encomenda para o cliente referido!!");
             dialogoAviso.showAndWait();
+        }
+    }
+    public void verDetalhes() throws Exception{
+        Stage stage = new Stage();
+        FXMLLoader fx = new FXMLLoader(ColaboradorListaEncomendasController.class.getResource("VerDetalhesListaCompras.fxml"));
+        Scene scene = new Scene(fx.load(), 539, 430);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void viewDetails(){
+        ListaEncomendas le = tablelistaencomenda.getSelectionModel().getSelectedItem();
+        if (le == null){
+            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            dialogoAviso.setTitle("ERRO!!");
+            dialogoAviso.setHeaderText("Selecione uma encomenda");
+            dialogoAviso.showAndWait();
+        }
+        else {
+            try {
+                verDetalhes();
+            } catch (Exception ex){}
         }
     }
     public void alterarEstado(javafx.event.ActionEvent event) {

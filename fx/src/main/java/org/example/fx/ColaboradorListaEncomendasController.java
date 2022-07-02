@@ -58,16 +58,7 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
 
 
-    public void verDetalhes() throws Exception{
-        Stage stage = new Stage();
-        FXMLLoader fx = new FXMLLoader(ColaboradorListaEncomendasController.class.getResource("VerDetalhesListaCompras.fxml"));
-        Scene scene = new Scene(fx.load(), 539, 430);
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    public void selectLine(){
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
