@@ -19,6 +19,9 @@ import javax.servlet.http.HttpSession;
 public class CarrinhoComprasController {
     @GetMapping(value="/addCarrinhoCompras/{idprod}")
     public String addCarrinhoCompras(HttpSession session,@PathVariable int idprod){
+        /**
+         * MUDAR QUANTIDADE
+         */
         int qtd=1;
         float valTotal=0;
         Produto prod= ProdutoCRUD.findProduto(idprod);
@@ -37,6 +40,7 @@ public class CarrinhoComprasController {
             valTotal+=l.getPreco();
         }
         ((ModelFatura) session.getAttribute("carrinho")).setValTotal(valTotal);
+        System.out.println("ESTOU AQUI");
         return "carrinhoCompras";
     }
 }
