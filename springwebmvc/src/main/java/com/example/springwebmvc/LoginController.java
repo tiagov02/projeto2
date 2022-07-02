@@ -21,7 +21,6 @@ public class LoginController {
         return "login";
     }
 
-    //
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute LoginData login, Model model, HttpSession session) {
             try {
