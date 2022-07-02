@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Loja de Produtos Biologicos</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="./css/price-range.css" rel="stylesheet">
+</head>
+
+<body>
+<header id="header"><!--header-->
+
+  <div class="header-middle"><!--header-middle-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="logo pull-left">
+            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="shop-menu pull-right">
+            <ul class="nav navbar-nav">
+              <li><a href="cart.html"><i class="fa fa-shopping-cart"><img src="images/compras.png" width="20"/></i></a></li>
+              <li><a href="index"><i class="fa fa-lock"></i>SAIR</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-middle-->
+
+
+
+  <div class="header-bottom"><!--header-bottom-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="mainmenu pull-left">
+            <ul class="nav navbar-nav collapse navbar-collapse">
+              <li><a href="index.html" class="active">Inicio</a></li>
+              <li class="dropdown"><a href="#">Comprar<i class="fa fa-angle-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                  <li><a href="teste">Produtos</a></li>
+                  <li><a href="product-details.html">Carrinho</a></li>
+                  <li><a href="checkout.html">As minhas encomendas</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="search_box pull-right">
+            <input type="text" placeholder="Procurar"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-bottom-->
+</header><!--/header-->
+
+<!-- ATE AQUI CORRETO -->
+<!-- APENAS VER BARRA DE PESQUISA -->
+<table border="1">
+  <tr>
+    <th>Nome Peoduto</th>
+    <th>Preço</th>
+  </tr>
+  <tr th:each="prod : ${produtos}" >
+    <td th:text="${prod.nome}"></td>
+    <td th:text="${prod.valorunitariototal}"></td>
+    <td><a th:href="@{/addCarrinhoCompras/{idprod}(idprod=${prod.numproduto})}">Adicionar ao carrinho de compras</a></td>
+    <td>
+      <a></a>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
