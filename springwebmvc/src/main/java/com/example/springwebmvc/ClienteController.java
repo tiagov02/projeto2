@@ -17,10 +17,5 @@ public class ClienteController {
         return "index";
     }
 
-    @GetMapping("/carrinhoCompras")
-    public String getCarrinhoCompras(){
-        return "carrinhoCompras";
-    }
-
 
 }

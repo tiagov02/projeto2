@@ -77,6 +77,7 @@
   <tr th:each="prod : ${produtos}" >
     <td th:text="${prod.nome}"></td>
     <td th:text="${prod.valorunitariototal}"></td>
+    <td><a th:href="@{/addCarrinhoCompras/{idprod}(idprod=${prod.numproduto})}">Adicionar ao carrinho de compras</a></td>
     <td>
       <a></a>
     </td>
