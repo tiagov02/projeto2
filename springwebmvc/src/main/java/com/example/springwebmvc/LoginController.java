@@ -1,6 +1,7 @@
 package com.example.springwebmvc;
 
 import com.example.bd.CRUD.ClienteCRUD;
+import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Encrypt.*;
 import com.example.springwebmvc.ModelClasses.LoginData;
@@ -25,6 +26,7 @@ public class LoginController {
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
                 session.setAttribute("UserLogged",cli);
+                //model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";
