@@ -45,7 +45,7 @@
         <Button fx:id="btn_procura" layoutX="571.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisa" style="-fx-background-color: rgb(102,51,0);" text="Procurar" textFill="#fcfcfc" />
         <Button fx:id="btn_procura1" layoutX="664.0" layoutY="504.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="83.0" style="-fx-background-color: rgb(102,51,0);" text="Eliminar" textFill="#fcfcfc" />
         <Button fx:id="btn_procura2" layoutX="653.0" layoutY="18.0" mnemonicParsing="false" onAction="#alterarEstado" style="-fx-background-color: rgb(102,51,0);" text="Alterar Estado" textFill="#fcfcfc" />
-      <Button fx:id="btn_consdetalhe" layoutX="232.0" layoutY="504.0" mnemonicParsing="false" onAction="#alterarEstado" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: rgb(102,51,0);" text="Consultar Detalhes" textFill="#fcfcfc" />
+      <Button fx:id="btn_procura21" layoutX="232.0" layoutY="504.0" mnemonicParsing="false" onAction="#alterarEstado" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: rgb(102,51,0);" text="Consultar Detalhes" textFill="#fcfcfc" />
     </children>
 
 </AnchorPane>
