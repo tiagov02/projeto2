@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -118,27 +119,24 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.showAndWait();
         }
     }
-    public void verDetalhes() throws Exception{
-        Stage stage = new Stage();
-        FXMLLoader fx = new FXMLLoader(ColaboradorListaEncomendasController.class.getResource("VerDetalhesListaCompras.fxml"));
-        Scene scene = new Scene(fx.load(), 539, 430);
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    public void viewDetails(){
+    public void test() throws Exception{
         ListaEncomendas le = tablelistaencomenda.getSelectionModel().getSelectedItem();
         if (le == null){
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+            Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
             dialogoAviso.setTitle("ERRO!!");
-            dialogoAviso.setHeaderText("Selecione uma encomenda");
+            dialogoAviso.setHeaderText("Erro! Selecione uma encomenda!!");
             dialogoAviso.showAndWait();
         }
-        else {
-            try {
-                verDetalhes();
-            } catch (Exception ex){}
+        else{
+            FXMLLoader fx = new FXMLLoader(getClass().getResource("VerDetalhesListaCompras.fxml"));
+            fx.setController(new PopupController(le.getNumFatura()));
+            Stage stage = new Stage();
+            Scene scene = new Scene(fx.load(), 539, 430);
+            stage.setScene(scene);
+            stage.show();
         }
+
     }
     public void alterarEstado(javafx.event.ActionEvent event) {
         java.util.Date data= new java.util.Date();
