@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 
+import javax.persistence.NoResultException;
 import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -53,7 +54,6 @@ public class GerenteListaEncomendas implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int idEstado=0;
         numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));
@@ -67,8 +67,11 @@ public class GerenteListaEncomendas implements Initializable{
             lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
-            Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
-            lista.setEstadoFatura(e.getDescricao());
+            try {
+                Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+                lista.setEstadoFatura(e.getDescricao());
+            } catch (NoResultException ex){
+            }
             tablelistaencomenda.getItems().add(lista);
         }
     }

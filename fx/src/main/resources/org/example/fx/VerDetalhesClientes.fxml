@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaEncomendas">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.VerDetalhesCliente">
    <children>
       <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
          <children>
@@ -33,15 +33,15 @@
             </AnchorPane>
          </children>
       </VBox>
-      <TableView layoutX="218.0" layoutY="35.0" prefHeight="501.0" prefWidth="537.0">
+      <TableView fx:id="tableCliente" layoutX="218.0" layoutY="35.0" prefHeight="501.0" prefWidth="537.0">
          <columns>
-            <TableColumn prefWidth="41.0" text="#" />
-            <TableColumn prefWidth="160.0" text="Nome Cliente" />
-            <TableColumn prefWidth="100.0" text="Telefone" />
-            <TableColumn prefWidth="97.0" text="Codigo Postal" />
-            <TableColumn prefWidth="138.0" text="Rua" />
+            <TableColumn fx:id="numCliente" prefWidth="41.0" text="#" />
+            <TableColumn fx:id="nomeCliente" prefWidth="160.0" text="Nome Cliente" />
+            <TableColumn fx:id="telefoneCliente" prefWidth="100.0" text="Telefone" />
+            <TableColumn fx:id="codPostalCliente" prefWidth="97.0" text="Codigo Postal" />
+            <TableColumn fx:id="ruaCliente" prefWidth="138.0" text="Rua" />
          </columns>
       </TableView>
-      <Button fx:id="buttonback" layoutX="218.0" layoutY="1.0" mnemonicParsing="false" onAction="#alterarEstado" style="-fx-background-color: white;" text="&lt;- back" />
+      <Button fx:id="buttonback" layoutX="218.0" layoutY="1.0" mnemonicParsing="false" onAction="#buttonBack" style="-fx-background-color: white;" text="&lt;- back" />
    </children>
 </AnchorPane>

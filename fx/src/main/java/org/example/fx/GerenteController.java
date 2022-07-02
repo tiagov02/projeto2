@@ -43,8 +43,18 @@ public class GerenteController implements Initializable {
     private Text txt_acumulaGastos;
     @FXML
     private Text txt_lucro;
+    @FXML
+    private Button button_cliente1;
+    @FXML
+    private Button button_cliente2;
+    @FXML
+    private Button button_cliente3;
+    @FXML
+    private Button button_cliente4;
+    @FXML
+    private Button button_cliente5;
 
-     public float gastos(){
+    public float gastos(){
       return EncomendaFornecedorCRUD.findGastos().floatValue();
      }
 
@@ -57,6 +67,27 @@ public class GerenteController implements Initializable {
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
        }
+
+
+    public void clicaCliente1(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaCliente2(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaCliente3(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaCliente4(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaCliente5(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
@@ -81,7 +112,7 @@ public class GerenteController implements Initializable {
         TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
-    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
+    public void clicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
 
@@ -153,4 +184,41 @@ public class GerenteController implements Initializable {
            txt_lucro.setText(null);
        }
    }
+/*
+   public int melhorCliente(){
+        int melhor;
+       List<Cliente> clientes = ClienteCRUD.findMelhores();
+       melhor = clientes.get(0).getIdcliente();
+       return melhor;
+   }
+
+    public String segundomelhorCliente(){
+        String segundomelhor;
+        List<Cliente> clientes = ClienteCRUD.findMelhores();
+        segundomelhor = clientes.get(0).getNome();
+        return segundomelhor;
+    }
+
+    public String terceiromelhorCliente(){
+        String terceiromelhor;
+        List<Cliente> clientes = ClienteCRUD.findMelhores();
+        terceiromelhor = clientes.get(0).getNome();
+        return terceiromelhor;
+    }
+
+    public String quartomelhorCliente(){
+        String quartomelhor;
+        List<Cliente> clientes = ClienteCRUD.findMelhores();
+        quartomelhor = clientes.get(0).getNome();
+        return quartomelhor;
+    }
+
+    public String quintomelhorCliente(){
+        String quintomelhor;
+        List<Cliente> clientes = ClienteCRUD.findMelhores();
+        quintomelhor = clientes.get(0).getNome();
+        return quintomelhor;
+    }
+
+ */
 }
