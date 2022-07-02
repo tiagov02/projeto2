@@ -1,19 +1,25 @@
 package org.example.fx;
 
-import com.example.bd.CRUD.ColaboradorCRUD;
-import com.example.bd.CRUD.EstadoFaturaCRUD;
-import com.example.bd.CRUD.FaturaCRUD;
+import com.example.bd.CRUD.*;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+import javafx.util.converter.FormatStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import javax.persistence.RollbackException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -44,12 +50,24 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
     @FXML
     private Button btn_procura;
+    @FXML
+    private Button btn_consdetalhe;
 
     @FXML
     private TextField lbl_cliente;
 
 
 
+    public void verDetalhes() throws Exception{
+        Stage stage = new Stage();
+        FXMLLoader fx = new FXMLLoader(ColaboradorListaEncomendasController.class.getResource("VerDetalhesListaCompras.fxml"));
+        Scene scene = new Scene(fx.load(), 539, 430);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void selectLine(){
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +77,7 @@ public class ColaboradorListaEncomendasController implements Initializable {
         telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
         valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
+        System.out.println();
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
             ListaEncomendas lista = new ListaEncomendas();
             lista.setNumFatura(fat.getNumfatura());
@@ -69,7 +88,6 @@ public class ColaboradorListaEncomendasController implements Initializable {
             lista.setIdCliente(fat.getIdcliente());
             Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
             lista.setEstadoFatura(e.getDescricao());
-            tablelistaencomenda.getItems().add(lista);
         }
     }
 
@@ -132,6 +150,9 @@ public class ColaboradorListaEncomendasController implements Initializable {
             dialogoAviso.showAndWait();
         }
     }
+
+
+
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
