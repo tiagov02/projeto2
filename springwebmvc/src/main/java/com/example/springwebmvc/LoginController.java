@@ -25,7 +25,6 @@ public class LoginController {
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
                 session.setAttribute("UserLogged",cli);
-                System.out.println("ESTOU AQUI");
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";

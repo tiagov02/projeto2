@@ -16,6 +16,7 @@ public class NavigationController {
 
     @GetMapping("/teste")
     public String teste(HttpSession session){
+        //((Cliente) session.getAttribute("UserLogged")).getIdcliente()
         session.getAttribute("UserLogged");
         return "error";
     }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class RegistoController {
@@ -25,7 +26,7 @@ public class RegistoController {
     }
 
     @PostMapping(value="/registado")
-    public String regista(@ModelAttribute ModelCliente cli,Model model){
+    public String regista(@ModelAttribute ModelCliente cli,Model model, HttpSession session){
         String pwd="";
         Cliente cliente=new Cliente();
         try{
@@ -56,6 +57,7 @@ public class RegistoController {
         }catch (PersistenceException ex){
             return "error";
         }
+        session.setAttribute("UserLogged",cliente);
         return "clientelogado";
     }
 }
