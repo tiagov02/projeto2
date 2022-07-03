@@ -121,8 +121,11 @@ public class GerenteListaEncomendas implements Initializable{
     }
 
     public void test() throws Exception{
-        VerDetalhesEncomendas ver = new VerDetalhesEncomendas();
-        ver.start();
+        Stage stage = new Stage();
+        FXMLLoader fx = new FXMLLoader(HelloApplication.class.getResource("VerDetalhesListaCompras.fxml"));
+        Scene scene = new Scene(fx.load(), 320, 240);
+        stage.setScene(scene);
+        stage.show();
         /*
         ListaEncomendas le = tablelistaencomenda.getSelectionModel().getSelectedItem();
         if (le == null){
