@@ -1,6 +1,8 @@
 package com.example.springwebmvc;
 
+import com.example.bd.CRUD.LinhaFaturaCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.Entity.Linhafatura;
 import com.example.bd.Entity.Produto;
 import com.example.springwebmvc.ModelClasses.ModelFatura;
 import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
