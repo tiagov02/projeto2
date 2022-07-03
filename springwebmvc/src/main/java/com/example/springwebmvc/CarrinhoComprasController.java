@@ -45,6 +45,7 @@ public class CarrinhoComprasController {
 
     @GetMapping("/carrinhoCompras")
     public String carrinhoCompras(HttpSession session,Model model){
+        model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
         return "carrinhoCompras";
     }
 }

@@ -18,4 +18,9 @@ public class HistoricoEncomendasController {
         model.addAttribute("faturas",faturascli);
         return "historicoencomendas";
     }
+
+    @GetMapping("/detalheencomenda")
+    public String getDetalhesEncomenda(){
+        return "";
+    }
 }
