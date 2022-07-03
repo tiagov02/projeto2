@@ -5,6 +5,8 @@ import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Encrypt.*;
 import com.example.springwebmvc.ModelClasses.LoginData;
+import com.example.springwebmvc.ModelClasses.ModelFatura;
+import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +28,10 @@ public class LoginController {
         int qtd=1;
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
+                ModelLinhaFatura linha=new ModelLinhaFatura();
                 session.setAttribute("UserLogged",cli);
                 model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
-                model.addAttribute("quantidade",qtd);
+                model.addAttribute("quantidade",linha.getQuant());
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";

@@ -6,6 +6,7 @@ import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,8 +58,10 @@ public class GerenteListaEncomendas implements Initializable{
 
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        test();
         numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));
@@ -120,12 +123,31 @@ public class GerenteListaEncomendas implements Initializable{
         }
     }
 
-    public void test() throws Exception{
+    public void test(){
+        ActionEvent event = new ActionEvent();
+        btn_consulta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent){
+                Stage stage = new Stage();
+                FXMLLoader fx = new FXMLLoader(HelloApplication.class.getResource("VerDetalhesListaCompras.fxml"));
+                try {
+                    Scene scene = new Scene(fx.load(), 320, 240);
+                    stage.show();
+                    stage.setScene(scene);
+
+                    //TrocaPaineis.changePanel(event,"VerDetalhesListaCompras.fxml", "Detalhes Encomenda", GerenteListaEncomendas.class);
+                } catch (Exception ex){}
+
+            }
+        });
+        /*
         Stage stage = new Stage();
         FXMLLoader fx = new FXMLLoader(HelloApplication.class.getResource("VerDetalhesListaCompras.fxml"));
         Scene scene = new Scene(fx.load(), 320, 240);
         stage.setScene(scene);
         stage.show();
+
+         */
         /*
         ListaEncomendas le = tablelistaencomenda.getSelectionModel().getSelectedItem();
         if (le == null){
