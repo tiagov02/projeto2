@@ -121,6 +121,9 @@ public class GerenteListaEncomendas implements Initializable{
     }
 
     public void test() throws Exception{
+        VerDetalhesEncomendas ver = new VerDetalhesEncomendas();
+        ver.start();
+        /*
         ListaEncomendas le = tablelistaencomenda.getSelectionModel().getSelectedItem();
         if (le == null){
             Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
@@ -136,6 +139,8 @@ public class GerenteListaEncomendas implements Initializable{
             stage.setScene(scene);
             stage.show();
         }
+
+         */
 
     }
     public void alterarEstado(javafx.event.ActionEvent event) {
