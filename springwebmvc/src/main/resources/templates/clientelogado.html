@@ -78,7 +78,7 @@
   <tr th:each="prod : ${produtos}" >
     <td th:text="${prod.nome}"></td>
     <td th:text="${prod.valorunitariototal}"></td>
-    <td><input class="form-control" type="number" name="quantidade" th:value="${quantidade}" /></td>
+    <td><input class="form-control" type="number" name="quantidade" th:field="*{quantidade}" /></td>
     <td><a th:href="@{/addCarrinhoCompras(idprod=${prod.numproduto},qtd=${quantidade})}">Adicionar ao carrinho de compras</a></td>
     <td>
       <a></a>

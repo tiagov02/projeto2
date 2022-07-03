@@ -24,11 +24,11 @@ public class LoginController {
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute LoginData login, Model model, HttpSession session) {
             try {
-                //Integer qtd=null;
+                int qtd=1;
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
                 session.setAttribute("UserLogged",cli);
                 model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
-                model.addAttribute("quantidade",1);
+                model.addAttribute("quantidade",qtd);
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";
