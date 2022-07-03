@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 /**
  * ESTA A ADICIONAR SÓ 1 PRODUTO --> MUDAR
  *
- * a qtd vai ter se ser recebida por link??
  */
 @Controller
 public class CarrinhoComprasController {
