@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
 public class CarrinhoComprasController {
 
     @GetMapping(value="/addCarrinhoCompras")
-    public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod){
-        int qtd=1;
+    public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod,@RequestParam int qtd){
+        //int qtd=1;
         float valTotal=0;
         Produto prod= ProdutoCRUD.findProduto(idprod);
         if(session.getAttribute("carrinho")==null){

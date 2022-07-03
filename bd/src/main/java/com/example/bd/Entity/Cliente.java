@@ -6,6 +6,7 @@ import java.util.Collection;
 @NamedQuery(name="Cliente.FindMelhoresCli",
         query="select c from Cliente c, Fatura f WHERE c.idcliente=f.idcliente group by c.idcliente order by SUM(f.valorfatura) desc")
 @NamedQuery(name="Cliente.Login",query = "select c from Cliente c WHERE c.username=:user AND c.password=:pass")
+
 @Entity
 public class Cliente {
     private int idcliente;
