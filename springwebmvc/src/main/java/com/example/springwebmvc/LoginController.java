@@ -24,6 +24,7 @@ public class LoginController {
     @PostMapping(value = "/plogin")
     public String verificaLogin(@ModelAttribute LoginData login, Model model, HttpSession session) {
             try {
+                //Integer qtd=null;
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
                 session.setAttribute("UserLogged",cli);
                 model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
