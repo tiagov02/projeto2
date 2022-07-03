@@ -5,6 +5,7 @@ import com.example.bd.Entity.Produto;
 import com.example.springwebmvc.ModelClasses.ModelFatura;
 import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class CarrinhoComprasController {
 
     @GetMapping(value="/addCarrinhoCompras")
-    public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod,@RequestParam int qtd){
+    public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
         //int qtd=1;
         float valTotal=0;
         Produto prod= ProdutoCRUD.findProduto(idprod);
@@ -37,7 +38,12 @@ public class CarrinhoComprasController {
             valTotal+=l.getPreco();
         }
         ((ModelFatura) session.getAttribute("carrinho")).setValTotal(valTotal);
-        //System.out.println("ESTOU AQUI");
+        model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
+        return "carrinhoCompras";
+    }
+
+    @GetMapping("/carrinhoCompras")
+    public String carrinhoCompras(HttpSession session,Model model){
         return "carrinhoCompras";
     }
 }
