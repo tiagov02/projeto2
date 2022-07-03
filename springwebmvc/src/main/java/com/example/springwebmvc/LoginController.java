@@ -28,10 +28,9 @@ public class LoginController {
         int qtd=1;
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
-                ModelLinhaFatura linha=new ModelLinhaFatura();
                 session.setAttribute("UserLogged",cli);
                 model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
-                model.addAttribute("quantidade",linha.getQuant());
+                model.addAttribute("quantidade",qtd);
                 return "clientelogado";
             } catch (Exception ex){
                 return "error";

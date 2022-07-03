@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CarrinhoComprasController {
 
-    @GetMapping(value="/addCarrinhoCompras")
+    @PostMapping(value="/addCarrinhoCompras")
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
         //int qtd=1;
         float valTotal=0;
