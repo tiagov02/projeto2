@@ -19,13 +19,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CarrinhoComprasController {
 
-    @PostMapping(value="/addCarrinhoCompras")
+    @GetMapping(value="/addCarrinhoCompras")
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
         //int qtd=1;
         float valTotal=0;
-        try{
-            session.getAttribute("UserLogged");
-        }catch(NullPointerException ex){
+        if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
         Produto prod= ProdutoCRUD.findProduto(idprod);
