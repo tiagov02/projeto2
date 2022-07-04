@@ -23,6 +23,11 @@ public class CarrinhoComprasController {
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
         //int qtd=1;
         float valTotal=0;
+        try{
+            session.getAttribute("UserLogged");
+        }catch(NullPointerException ex){
+            return "redirect:/login";
+        }
         Produto prod= ProdutoCRUD.findProduto(idprod);
         if(session.getAttribute("carrinho")==null){
             session.setAttribute("carrinho",new ModelFatura());
