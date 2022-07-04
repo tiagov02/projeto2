@@ -80,7 +80,7 @@
     <td th:text="${fatura.data}"></td>
     <td th:text="${fatura.valorfatura}"></td>
     <td>
-      <a></a>
+      <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>
     </td>
   </tr>
 </table>

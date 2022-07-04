@@ -6,6 +6,7 @@ import com.example.bd.Entity.Fatura;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -20,7 +21,7 @@ public class HistoricoEncomendasController {
     }
 
     @GetMapping("/detalheencomenda")
-    public String getDetalhesEncomenda(){
+    public String getDetalhesEncomenda(HttpSession session,@RequestParam int numfatura){
         return "";
     }
 }

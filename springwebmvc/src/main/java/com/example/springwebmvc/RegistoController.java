@@ -55,6 +55,7 @@ public class RegistoController {
         try{
             ClienteCRUD.createCliente(cliente);
         }catch (PersistenceException ex){
+            model.addAttribute("mensagem","Houve um erro na criação! pf tente mais tarde ou contacte o administrados!!");
             return "error";
         }
         session.setAttribute("UserLogged",cliente);
