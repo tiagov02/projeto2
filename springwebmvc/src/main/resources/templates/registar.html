@@ -26,6 +26,9 @@
     <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
         <div class="wrapper wrapper--w960">
             <div class="card card-2">
+                <div>
+                    <a href="index"><img src="images/imagem.jpg"width="100" length="100" alt="" /></a>
+                </div>
                 <div class="card-heading"></div>
                 <div class="wrap d-md-flex">
                 <div class="card-body">
@@ -57,10 +60,18 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
+                                    <input class="input--style-2 js-datepicker" type="number" placeholder="Numero de Porta" th:field="*{numporta}" name="birthday">
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="col-6">
+                                <div class="input-group">
                                     <input class="input--style-2 js-datepicker" type="text" placeholder="Numero de Porta" th:field="*{numporta}" name="birthday">
                                     <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                 </div>
                             </div>
+                            -->
                         </div>
                         <div class="row row-space">
                             <div class="col-6">
@@ -86,6 +97,7 @@
                             <button class="btn btn--radius btn--green" type="submit">Registar</button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
