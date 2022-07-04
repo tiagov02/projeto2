@@ -1,7 +1,10 @@
 package com.example.springwebmvc;
 
+import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.Entity.Cliente;
+import com.example.bd.Entity.Estado;
+import com.example.bd.Entity.Estadofatura;
 import com.example.bd.Entity.Fatura;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,15 @@ public class HistoricoEncomendasController {
     }
 
     @GetMapping("/detalheencomenda")
-    public String getDetalhesEncomenda(HttpSession session,@RequestParam int numfatura){
-        return "";
+    public String getDetalhesEncomenda(HttpSession session,@RequestParam int numfatura, Model model){
+        Fatura fat=FaturaCRUD.findFatura(numfatura);
+        Estado ef= EstadoFaturaCRUD.getUltimoEstadoFatura(numfatura);
+        if(fat.getIdcliente() != ((Cliente) session.getAttribute("UserLogged")).getIdcliente() ){
+            model.addAttribute("mensagem","Unauthorized");
+            return "error";
+        }
+        model.addAttribute("fatura",fat);
+        model.addAttribute("estado",ef.getDescricao());
+        return "detalhesencomenda";
     }
 }

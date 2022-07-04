@@ -152,7 +152,7 @@ public class Fatura {
         this.moradaentregaByIdentrega = moradaentregaByIdentrega;
     }
 
-    @OneToMany(mappedBy = "faturaByNumfatura")
+    @OneToMany(mappedBy = "faturaByNumfatura",fetch=FetchType.EAGER)
     public Collection<Linhafatura> getLinhafaturasByNumfatura() {
         return linhafaturasByNumfatura;
     }
