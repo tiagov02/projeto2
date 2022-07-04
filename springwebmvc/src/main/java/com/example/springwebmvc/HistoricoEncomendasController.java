@@ -2,10 +2,8 @@ package com.example.springwebmvc;
 
 import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
-import com.example.bd.Entity.Cliente;
-import com.example.bd.Entity.Estado;
-import com.example.bd.Entity.Estadofatura;
-import com.example.bd.Entity.Fatura;
+import com.example.bd.Entity.*;
+import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,6 +26,7 @@ public class HistoricoEncomendasController {
     @GetMapping("/detalheencomenda")
     public String getDetalhesEncomenda(@RequestParam int numfatura, Model model,HttpSession session){
         Fatura fat=FaturaCRUD.findFatura(numfatura);
+        List<ModelLinhaFatura> linhas=new ArrayList<>();
         try{
             Estado ef= EstadoFaturaCRUD.getUltimoEstadoFatura(numfatura);
             model.addAttribute("estado",ef.getDescricao());
@@ -41,7 +41,16 @@ public class HistoricoEncomendasController {
         }catch(NullPointerException ex){
             return "redirect:/login";
         }
+        for(Linhafatura lf: fat.getLinhafaturasByNumfatura()){
+            ModelLinhaFatura linha=new ModelLinhaFatura();
+            linha.setPreco(lf.getPreco().floatValue());
+            linha.setQuant(lf.getQuantidade());
+            linha.setIdProd(lf.getNumproduto());
+            linha.setNomeProd(lf.getProdutoByNumproduto().getNome());
+            linhas.add(linha);
+        }
         model.addAttribute("fatura",fat);
+        model.addAttribute("linhasfatura",linhas);
         return "detalhesencomenda";
     }
 }
