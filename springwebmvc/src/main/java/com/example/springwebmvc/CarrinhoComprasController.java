@@ -48,6 +48,9 @@ public class CarrinhoComprasController {
 
     @GetMapping("/carrinhoCompras")
     public String carrinhoCompras(HttpSession session,Model model){
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
         return "carrinhoCompras";
     }
