@@ -74,11 +74,13 @@
 
 
 <table border="1">
+<!--
   <tr>
     <th>Nome Produto</th>
     <th>Preço</th>
     <th>Quantidade </th>
   </tr>
+  -->
   <tr th:each="prod : ${produtos}" >
     <td th:text="${prod.nome}"></td>
     <td th:text="${prod.valorunitariototal}"></td>
