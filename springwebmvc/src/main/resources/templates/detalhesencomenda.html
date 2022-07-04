@@ -81,7 +81,7 @@
     <th>Quantidade encomendada</th>
     <th>Preço</th>
   </tr>
-  <tr th:each="linha : ${linhasfatura}" >
+  <tr th:each="linha : ${linhasfatura}">
     <td th:text="${linha.idProd}"></td>
     <td th:text="${linha.nomeProd}"></td>
     <td th:text="${linha.quant}"></td>
