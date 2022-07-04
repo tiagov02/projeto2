@@ -71,21 +71,23 @@
 <!-- APENAS VER BARRA DE PESQUISA -->
 
 <p th:text="'Id da fatura: '+ ${fatura.numfatura}"></p>
-<p th:text="'Data da fatura'+${fatura.data}"></p>
+<p th:text="'Data da fatura: '+${fatura.data}"></p>
+
+<h1>Produtos encomendados</h1>
 <table border="1">
   <tr>
     <th>#</th>
-    <th>Data da Compra</th>
-    <th>Valor da Fatura</th>
+    <th>Nome</th>
+    <th>Quantidade encomendada</th>
+    <th>Preço</th>
   </tr>
-  <tr th:each="linha : ${linhafatura}" >
-    <td th:text="${fatura.numfatura}"></td>
-    <td th:text="${fatura.data}"></td>
-    <td th:text="${fatura.valorfatura}"></td>
-    <td>
-      <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>
-    </td>
+  <tr th:each="linha : ${linhasfatura}" >
+    <td th:text="${linha.idProd}"></td>
+    <td th:text="${linha.nomeProd}"></td>
+    <td th:text="${linha.quant}"></td>
+    <td th:text="${linha.preco}"></td>
   </tr>
 </table>
+<p th:text="'Valor Total: '+${fatura.valorfatura}"></p>
 </body>
 </html>
