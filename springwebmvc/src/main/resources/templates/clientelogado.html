@@ -73,7 +73,7 @@
 </div>
 
 
-<table border="1">
+<!--<table border="1">
   <tr>
     <th>Nome Produto</th>
     <th>Preço</th>
@@ -88,7 +88,19 @@
       <a></a>
     </td>
   </tr>
-</table>
+</table>-->
+
+<div th:each="prod : ${produtos}">
+  <div class="productinfo text-center">
+    <h2 th:text="${prod.nome}"></h2>
+    <p th:text="${prod.valorunitariototal}"></p>
+    <a th:href="@{/addCarrinhoCompras(idprod=${prod.numproduto},qtd=${quantidade})}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>teste1</a>
+  </div>
+  <div class="choose">
+    <ul class="nav nav-pills nav-justified">
+      <li><a href="#"><i class="fa fa-plus-square"></i>Ver detalhes</a></li>
+    </ul>
+  </div>
 
 
 </body>
