@@ -31,8 +31,8 @@ public class LoginController {
                 session.setAttribute("UserLogged",cli);
                 return "redirect:/produto";
             } catch (Exception ex){
-                model.addAttribute("mensagem","Não autorizado! User ou pass errados!");
-                return "error";
+                model.addAttribute("mensagem","User ou pass errados!");
+                return "redirect:/login";
             }
     }
 }
