@@ -67,4 +67,10 @@ public class CarrinhoComprasController {
         }
         return "redirect:/carrinhoCompras";
     }
+
+    @GetMapping("/clienteLogado")
+    public String getClienteLogado(){
+        return "clienteLogado";
+    }
+
 }
