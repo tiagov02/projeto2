@@ -35,4 +35,12 @@ public class LoginController {
                 return "redirect:/login";
             }
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        if(session.getAttribute("UserLogged") != null){
+            session.setAttribute("UserLogged",null);
+        }
+        return "redirect:/";
+    }
 }
