@@ -32,7 +32,6 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho")==null){
             session.setAttribute("carrinho",new ModelFatura());
         }
-        //((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().add(linha);
         for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()) {
             if(idprod == lf.getIdProd()){
                 auxQtd=lf.getQuant() + qtd;
