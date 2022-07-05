@@ -2,6 +2,7 @@ package com.example.springwebmvc;
 
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.CodPostaisCRUD;
+import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.Cliente;
 import com.example.bd.Entity.Codpostais;
@@ -61,4 +62,5 @@ public class RegistoController {
         session.setAttribute("UserLogged",cliente);
         return "clientelogado";
     }
+
 }
