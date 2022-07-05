@@ -22,6 +22,8 @@ public class CarrinhoComprasController {
     @GetMapping(value="/addCarrinhoCompras")
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
         //int qtd=1;
+        boolean containsProduct=false;
+        int auxQtd=0;
         float valTotal=0;
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
@@ -30,15 +32,25 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho")==null){
             session.setAttribute("carrinho",new ModelFatura());
         }
-        ModelLinhaFatura linha=new ModelLinhaFatura();
-        linha.setIdProd(prod.getNumproduto());
-        linha.setNomeProd(prod.getNome());
-        linha.setQuant(qtd);
-        linha.setPreco(prod.getValorunitariototal().floatValue()*qtd);
-        linha.setPrecoUnitario(prod.getValorunitariototal().floatValue());
+        //((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().add(linha);
+        for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()) {
+            if(idprod == lf.getIdProd()){
+                auxQtd=lf.getQuant() + qtd;
+                lf.setQuant(auxQtd);
+                lf.setPreco(auxQtd*lf.getPrecoUnitario());
+                containsProduct=true;
+            }
+        }
+        if(!containsProduct){
+            ModelLinhaFatura linha=new ModelLinhaFatura();
+            linha.setIdProd(prod.getNumproduto());
+            linha.setNomeProd(prod.getNome());
+            linha.setQuant(qtd);
+            linha.setPreco(prod.getValorunitariototal().floatValue()*qtd);
+            linha.setPrecoUnitario(prod.getValorunitariototal().floatValue());
 
-        ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().add(linha);
-
+            ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().add(linha);
+        }
         for(ModelLinhaFatura l:((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
             valTotal+=l.getPreco();
         }
@@ -58,7 +70,6 @@ public class CarrinhoComprasController {
 
     @PostMapping("/updateqtd")
     public String updateQtd(@ModelAttribute ModelLinhaFatura linha,HttpSession session, Model model){
-        //
         if(session.getAttribute("UserLogged") == null) {
             return "redirect:/login";
         }
