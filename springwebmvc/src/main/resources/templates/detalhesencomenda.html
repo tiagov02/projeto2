@@ -91,7 +91,7 @@
   <h2 class="title text-center">PRODUTOS ENCOMENDADOS</h2>
 </div>
 
-<!--
+
 <section id="cart_items">
   <div class="container">
     <div class="table-responsive cart_info">
@@ -108,16 +108,17 @@
         <tbody>
         <tr th:each="linha : ${linhasfatura}">
           <td class="cart_product">
-          <td th:text="${linha.idProd}"></td>
+            <a  th:text="${linha.idProd}"></a>
           </td>
+
           <td class="cart_description">
-          <td th:text="${linha.nomeProd}"></td>
+            <a th:text="${linha.nomeProd}"></a>
           </td>
           <td class="cart_price">
-          <td th:text="${linha.quant}"></td>
+            <a th:text="${linha.quant}"></a>
           </td>
-          <td class="cart_price">
-          <td th:text="${linha.preco}"></td>
+          <td class="cart_total">
+            <a th:text="${linha.preco}"></a>
           </td>
         </tr>
         </tbody>
@@ -125,24 +126,13 @@
     </div>
   </div>
 </section>
--->
-<!--/#cart_items-->
 
-<table border="1">
-  <tr>
-    <th>#</th>
-    <th>Nome</th>
-    <th>Quantidade encomendada</th>
-    <th>Preço</th>
-  </tr>
-  <tr th:each="linha : ${linhasfatura}">
-    <td th:text="${linha.idProd}"></td>
-    <td th:text="${linha.nomeProd}"></td>
-    <td th:text="${linha.quant}"></td>
-    <td th:text="${linha.preco}"></td>
-  </tr>
-</table>
 
-<p th:text="'Valor Total: '+${fatura.valorfatura}"></p>
+<div class="detalhes">
+  <p th:text="'Valor Total: '+${fatura.valorfatura}"></p>
+</div>
+
+
+
 </body>
 </html>
