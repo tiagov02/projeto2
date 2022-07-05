@@ -95,7 +95,6 @@
   <div class="productinfo text-center">
     <h2 th:text="${prod.nome}"></h2>
     <p th:text="${prod.valorunitariototal}"></p>
-    <input type="number" th:field="*{quantidade}" />
     <a th:href="@{/addCarrinhoCompras(idprod=${prod.numproduto},qtd=${quantidade})}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a>
   </div>
   <div class="choose">
