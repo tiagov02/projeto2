@@ -5,6 +5,7 @@ public class ModelLinhaFatura {
     private int quant;
     private float preco;
     private String nomeProd;
+    private float precoUnitario;
 
     public ModelLinhaFatura() {}
 
@@ -38,5 +39,13 @@ public class ModelLinhaFatura {
 
     public void setNomeProd(String nomeProd) {
         this.nomeProd = nomeProd;
+    }
+
+    public float getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(float precoUnitario) {
+        this.precoUnitario = precoUnitario;
     }
 }

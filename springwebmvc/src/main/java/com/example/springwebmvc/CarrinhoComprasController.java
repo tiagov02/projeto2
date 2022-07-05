@@ -35,6 +35,7 @@ public class CarrinhoComprasController {
         linha.setNomeProd(prod.getNome());
         linha.setQuant(qtd);
         linha.setPreco(prod.getValorunitariototal().floatValue()*qtd);
+        linha.setPrecoUnitario(prod.getValorunitariototal().floatValue());
 
         ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().add(linha);
 
