@@ -78,4 +78,14 @@ public class CarrinhoComprasController {
         return "redirect:/carrinhoCompras";
     }
 
+
+
+    @GetMapping(value = "/selecionarMorada")
+    public String getMorada(Model model, HttpSession session) {
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        return "selecionarMorada";
+    }
+
 }
