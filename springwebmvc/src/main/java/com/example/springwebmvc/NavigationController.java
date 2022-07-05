@@ -10,10 +10,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class NavigationController {
 
-    @GetMapping("/")
-    public String getIndex(){
-        return "index";
-    }
 
     @GetMapping("/teste")
     public String teste(HttpSession session){

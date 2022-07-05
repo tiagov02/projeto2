@@ -37,14 +37,4 @@ public class LoginController {
                 return "error";
             }
     }
-    @GetMapping(value = "/produto")
-    public String getProdutos(Model model, HttpSession session) {
-        int qtd=1;
-        if(session.getAttribute("UserLogged") == null){
-            return "redirect:/login";
-        }
-        model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
-        model.addAttribute("quantidade",qtd);
-        return "clientelogado";
-    }
 }
