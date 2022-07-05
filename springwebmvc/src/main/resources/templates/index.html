@@ -73,7 +73,7 @@
 
 
 
-
+<!--
 	<section>
 		<div class="container">
 			<div class="row">
@@ -81,41 +81,41 @@
 					<table border="1">
 					<div class="left-sidebar">
 						<h2>Tipos de Produtos</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+						<div class="panel-group category-products" id="accordian">
 
-							<!--INSERIR TIPOS DE PRODUTOS -->
+
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title"><a href="#">Kids</a></h4>
 								</div>
 							</div>
-							<!--FIM DE INSERCAO DE TIPOS DE PRODUTOS -->
-						</div><!--/category-products-->
+
+						</div>
 					</div>
 					</table>
 				</div>
+	-->
+
+	<div class="col-sm-9 padding-right">
+		<h2 class="title text-center">PRODUTOS</h2>
+	</div>
 
 
 <!-- inserir um produto -->
-				<div class="col-sm-9 padding-right">
-					<h2 class="title text-center">PRODUTOS</h2>
-				</div>
-
-						<div class="col-sm-4">
-										<div class="productinfo text-center">
-											<h2>Easy Polo Black Edition</h2>
-											<p>56 &euro;</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>teste1</a>
-										</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Ver detalhes</a></li>
-									</ul>
-								</div>
-						</div><!--features_items-->
+	<div  class="col-sm-4" th:each="prod : ${produtos}">
+		<div class="col-sm-6">
+			<div class="productinfo text-center">
+				<h2 th:text="${prod.nome}"></h2>
+				<p th:text="${prod.valorunitariototal}"></p>
+				<a th:href="@{/addCarrinhoCompras(idprod=${prod.numproduto},qtd=${quantidade})}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a>
+			</div>
+			<div class="choose">
+				<ul class="nav nav-pills nav-justified">
+					<li><a href="#"><i class="fa fa-plus-square"></i>Ver detalhes1</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 <!-- FIM DE INSERÇÃO DE UM PRODUTO -->
-		</div>
-		</div>
-	</section>
 </body>
 </html>
