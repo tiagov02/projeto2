@@ -98,4 +98,9 @@ public class MoradaEntregaCRUD implements Serializable {
             }
         }
     }
+
+    public static Moradaentrega getMoradaLoja(){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("MoradaEntrega.GetMoradaLoja",Moradaentrega.class).getSingleResult();
+    }
 }

@@ -3,7 +3,7 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
-
+@NamedQuery(name="MoradaEntrega.GetMoradaLoja",query="select mor from Moradaentrega mor WHERE mor.rua='LOJA'")
 @Entity
 public class Moradaentrega {
     private int identrega;
