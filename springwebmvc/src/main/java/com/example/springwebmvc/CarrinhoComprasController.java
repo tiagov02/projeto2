@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -111,7 +112,7 @@ public class CarrinhoComprasController {
     }
 
     /**
-     * Fazer o save na database e redirecionar para a página principal ou pag de HistoricoEncomenda
+     * CONTROLLERS CONDICIONAIS DEPENDENDO DA FORMA DE ENTREGA
      */
     //Morada predefinida do user
     @GetMapping("/terminarEncUser")
@@ -164,14 +165,57 @@ public class CarrinhoComprasController {
     }
     //se for na loja
     @GetMapping("/terminarEncLoja")
-    public String terminarEncMoradaLoja(HttpSession session){
+    public String terminarEncMoradaLoja(HttpSession session, Model model){
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
-        return "redirect:/produto";
+        Moradaentrega mor;
+        Fatura fat= new Fatura();
+        try{
+            mor=MoradaEntregaCRUD.getMoradaLoja();
+        }catch (NoResultException ex){
+            mor=new Moradaentrega();
+            mor.setRua("LOJA");
+            mor.setCodpostal("4444-444");
+            mor.setNumporta(2);
+            try{
+                MoradaEntregaCRUD.createMoradaEntrega(mor);
+            }catch (PersistenceException exept){
+                model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+                return "error";
+            }
+        }
+        Calendar calendar = Calendar.getInstance();
+        fat.setIdcliente(((Cliente) session.getAttribute("UserLogged")).getIdcliente());
+        fat.setData(new java.sql.Date((calendar.getTime()).getTime()));
+        //CRIADO ESTE USER WEBAPI
+        fat.setIdcolaborador(12);
+        fat.setIdentrega(mor.getIdentrega());
+        fat.setValorfatura(new BigDecimal(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        try{
+            FaturaCRUD.createFatura(fat);
+        }catch (PersistenceException ex){
+            model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+            return "error";
+        }
+        for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
+            Linhafatura linha=new Linhafatura();
+            linha.setNumfatura(fat.getNumfatura());
+            linha.setQuantidade(lf.getQuant());
+            linha.setNumproduto(lf.getIdProd());
+            linha.setPreco(new BigDecimal(lf.getPreco()));
+            try{
+                LinhaFaturaCRUD.createLinhaFatura(linha);
+            }catch (PersistenceException ex){
+                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException e) {}
+                model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+                return "error";
+            }
+        }
+        return ("/detalheencomenda?numfatura="+fat.getNumfatura());
     }
     //Se o cliente quiser numa Morada diferente
     @GetMapping(value = "/selecionarMorada")
