@@ -69,21 +69,49 @@
 
 <!-- ATE AQUI CORRETO -->
 <!-- APENAS VER BARRA DE PESQUISA -->
-<table border="1">
-  <tr>
-    <th>#</th>
-    <th>Data da Compra</th>
-    <th>Valor da Fatura</th>
-  </tr>
-  <tr th:each="fatura : ${faturas}" >
-    <td th:text="${fatura.numfatura}"></td>
-    <td th:text="${fatura.data}"></td>
-    <td th:text="${fatura.valorfatura}"></td>
-    <td>
-      <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>
-    </td>
-  </tr>
-</table>
+
+
+<div class="col-sm-12 padding-center">
+  <h2 class="title text-center">HISTORICO DE ENCOMENDAS</h2>
+</div>
+
+<section id="cart_items">
+  <div class="container">
+    <div class="table-responsive cart_info">
+      <table class="table table-condensed">
+        <thead>
+        <tr class="cart_menu">
+          <td class="description">Numero de Fatura</td>
+          <td class="price">Data da Compra</td>
+          <td class="quantity">Valor da Fatura</td>
+          <td class="total">Consultar</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fatura : ${faturas}">
+          <td class="cart_product">
+            <a  th:text="${fatura.numfatura}"></a>
+          </td>
+
+          <td class="cart_description">
+            <a th:text="${fatura.data}"></a>
+          </td>
+
+
+          <td class="cart_price">
+            <a th:text="${fatura.valorfatura}"></a>
+          </td>
+
+          <td class="cart_quantity">
+            <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section> <!--/#cart_items-->
 
 
 </body>
