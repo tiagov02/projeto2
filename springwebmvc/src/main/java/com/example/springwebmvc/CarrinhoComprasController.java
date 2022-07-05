@@ -1,9 +1,6 @@
 package com.example.springwebmvc;
 
-import com.example.bd.CRUD.FaturaCRUD;
-import com.example.bd.CRUD.LinhaFaturaCRUD;
-import com.example.bd.CRUD.MoradaEntregaCRUD;
-import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.CRUD.*;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
 import com.example.springwebmvc.ModelClasses.ModelFatura;
@@ -83,7 +80,8 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
-        return "redirect:/carrinhoCompras";
+        //return "redirect:/carrinhoCompras";
+        return "error";
     }
 
     @GetMapping(value="/passo2")
@@ -225,12 +223,65 @@ public class CarrinhoComprasController {
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
+        /*if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }*/
+        return "selecionarMorada";
+    }
+
+    @PostMapping(value = "/saveEncomenda")
+    public String saveEncomendaMor(@ModelAttribute ModelMorada morada, HttpSession session, Model model){
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
-        return "selecionarMorada";
+        Moradaentrega mor=new Moradaentrega();
+        Fatura fat= new Fatura();
+        Codpostais cod= CodPostaisCRUD.findCodPostal(morada.getCodpostal());
+        if(cod==null){
+            Codpostais cd= new Codpostais();
+            cd.setLocalidade(morada.getLocalidade());
+            cd.setCodpostal(morada.getCodpostal());
+            CodPostaisCRUD.create(cd);
+        }
+        mor.setNumporta(morada.getNumporta());
+        mor.setCodpostal(morada.getCodpostal());
+        mor.setRua(morada.getRua());
+        try{
+            MoradaEntregaCRUD.createMoradaEntrega(mor);
+        }catch (PersistenceException ex){
+            model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+            return "error";
+        }
+        Calendar calendar = Calendar.getInstance();
+        fat.setIdcliente(((Cliente) session.getAttribute("UserLogged")).getIdcliente());
+        fat.setData(new java.sql.Date((calendar.getTime()).getTime()));
+        //CRIADO ESTE USER WEBAPI
+        fat.setIdcolaborador(12);
+        fat.setIdentrega(mor.getIdentrega());
+        fat.setValorfatura(new BigDecimal(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        try{
+            FaturaCRUD.createFatura(fat);
+        }catch (PersistenceException ex){
+            model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+            return "error";
+        }
+        for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
+            Linhafatura linha=new Linhafatura();
+            linha.setNumfatura(fat.getNumfatura());
+            linha.setQuantidade(lf.getQuant());
+            linha.setNumproduto(lf.getIdProd());
+            linha.setPreco(new BigDecimal(lf.getPreco()));
+            try{
+                LinhaFaturaCRUD.createLinhaFatura(linha);
+            }catch (PersistenceException ex){
+                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException e) {}
+                model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
+                return "error";
+            }
+        }
+        return ("/detalheencomenda?numfatura="+fat.getNumfatura());
     }
-    /**
-     * POST MAPPING PARA ESTE FORMULARIO
-     */
 }
