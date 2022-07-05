@@ -230,5 +230,7 @@ public class CarrinhoComprasController {
         }
         return "selecionarMorada";
     }
-
+    /**
+     * POST MAPPING PARA ESTE FORMULARIO
+     */
 }
