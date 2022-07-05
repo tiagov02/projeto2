@@ -73,22 +73,6 @@
 </div>
 
 
-<!--<table border="1">
-  <tr>
-    <th>Nome Produto</th>
-    <th>Preço</th>
-    <th>Quantidade </th>
-  </tr>
-  <tr th:each="prod : ${produtos}" >
-    <td th:text="${prod.nome}"></td>
-    <td th:text="${prod.valorunitariototal}"></td>
-    <td><input class="form-control" type="number" name="quantidade" th:field="*{quantidade}" /></td>
-    <td><a th:href="@{/addCarrinhoCompras(idprod=${prod.numproduto},qtd=${quantidade})}">Adicionar ao carrinho de compras</a></td>
-    <td>
-      <a></a>
-    </td>
-  </tr>
-</table>-->
 
 <div  class="col-sm-4" th:each="prod : ${produtos}">
   <div class="col-sm-6">

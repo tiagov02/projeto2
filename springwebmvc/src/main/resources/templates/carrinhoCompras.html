@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="./images/logo.png" alt="" /></a>
+                        <a href="index"><img src="./images/logo.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -51,26 +51,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="cart_description" th:each="linha : ${carrinho.linhaFat}">
+                <tr th:each="linha : ${carrinho.linhaFat}">
+                    <td class="cart_description">
                         <h4 th:text="${linha.nomeProd}"></h4> <!--NOME DE PRODUTO -->
                         <p th:text="${linha.idProd}"></p> <!--NUMERO DE PRODUTO -->
                     </td>
                     <td class="cart_price">
-                        <p>$59</p>
+                        <h4 th:text="${linha.precoUnitario}"></h4> <!--NOME DE PRODUTO -->
                     </td>
-                    <td class="cart_quantity" th:each="linha : ${carrinho.linhaFat}">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
+                    <form th:action="@{/registado}" th:object="${cli}" method="POST">
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_down" href=""> - </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                <a class="cart_quantity_up" href=""> + </a>
+                            </div>
+                        </td>
+                    </form>
                     <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                        <h4 th:text="${linha.preco}"></h4> <!--NOME DE PRODUTO -->
                     </td>
                 </tr>
                 </tbody>
@@ -79,6 +78,20 @@
     </div>
 </section> <!--/#cart_items-->
 
+<style>
+    .button_next {
+        background-color: #663300;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 1000px;
+        cursor: pointer;
+    }
+</style>
+
+<button href="index" class="button_next">Seguinte(Passo 2 de 3)</button>
 
 </body>
 </html>
