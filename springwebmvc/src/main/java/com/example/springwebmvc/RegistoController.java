@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class RegistoController {
 
     @GetMapping(value = "/registar")
-    public String registar(Model model){
+    public String getRegistar(Model model){
         ModelCliente cli=new ModelCliente();
         model.addAttribute("cli",cli);
         return "registar";
