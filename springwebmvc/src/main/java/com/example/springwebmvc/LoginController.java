@@ -29,9 +29,7 @@ public class LoginController {
             try {
                 Cliente cli = ClienteCRUD.login(login.getNomeUser(), Encriptacao.encript(login.getPassword()));
                 session.setAttribute("UserLogged",cli);
-                model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
-                model.addAttribute("quantidade",qtd);
-                return "clientelogado";
+                return "redirect:/produto";
             } catch (Exception ex){
                 model.addAttribute("mensagem","Não autorizado! User ou pass errados!");
                 return "error";
