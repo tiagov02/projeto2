@@ -59,7 +59,7 @@
                     <td class="cart_price">
                         <h4 th:text="${linha.precoUnitario}"></h4> <!--NOME DE PRODUTO -->
                     </td>
-                    <form th:action="@{/registado}" th:object="${cli}" method="POST">
+                    <form th:action="@{/updateqtd}" th:object="${linha}" method="POST">
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_down" href=""> - </a>

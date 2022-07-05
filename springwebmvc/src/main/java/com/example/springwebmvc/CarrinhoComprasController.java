@@ -48,11 +48,23 @@ public class CarrinhoComprasController {
     }
 
     @GetMapping("/carrinhoCompras")
-    public String carrinhoCompras(HttpSession session,Model model){
+    public String getCarrinhoCompras(HttpSession session,Model model){
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
         return "carrinhoCompras";
+    }
+
+    @PostMapping("/updateqtd")
+    public String updateQtd(@ModelAttribute ModelLinhaFatura linha,HttpSession session, Model model){
+        //
+        if(session.getAttribute("UserLogged") == null) {
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        return "redirect:/carrinhoCompras";
     }
 }
