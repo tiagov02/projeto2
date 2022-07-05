@@ -79,8 +79,57 @@ public class CarrinhoComprasController {
         return "redirect:/carrinhoCompras";
     }
 
+    @GetMapping(value="/passo2")
+    public String getPasso2(@RequestParam String selectEntrega, HttpSession session, Model model){
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        //Se o user escolher entregar na morada predefinida
+        if(selectEntrega.equals("user")){
+            return "redirect:/terminarEncUser";
+        }
+        //se for na loja
+        if(selectEntrega.equals("loja")){
+            return "redirect:/terminarEncLoja";
+        }
+        //Se o cliente quiser numa Morada diferente
+        if(selectEntrega.equals("novamorada")){
+            return "redirect:/selecionarMorada";
+        }
+        model.addAttribute("mensagem","Houve um erro da nossa parte, pf tente mais tarde" +
+                "ou contacte o suporte da loja!");
+        return "error";
+    }
 
-
+    /**
+     * Fazer o save na database e redirecionar para a página principal ou pag de HistoricoEncomenda
+     */
+    //Morada predefinida do user
+    @GetMapping("/terminarEncUser")
+    public String terminarEncMoradaUser(HttpSession session){
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        return "redirect:/produto";
+    }
+    //se for na loja
+    @GetMapping("/terminarEncLoja")
+    public String terminarEncMoradaLoja(HttpSession session){
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        return "redirect:/produto";
+    }
+    //Se o cliente quiser numa Morada diferente
     @GetMapping(value = "/selecionarMorada")
     public String getMorada(Model model, HttpSession session) {
         ModelMorada moradaCli=new ModelMorada();
