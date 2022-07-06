@@ -26,20 +26,21 @@
     <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
         <div class="wrapper wrapper--w960">
             <div class="card card-2">
-                <div>
-                    <a href="index"><img src="images/imagem.jpg"width="100" length="100" alt="" /></a>
-                </div>
                 <div class="card-heading"></div>
                 <div class="wrap d-md-flex">
                     <p th:text="'A sua encomenda com número: '+${numencomenda}+' foi realizada com sucesso!'"></p>
                     <p th:text="'Tem valor de: '+${valencomenda}+'€'"></p>
                     <p>Ir para a minha área de cliente:</p>
-                    <h1 th:href="@{/minhasEncomendas}">Ir para a minha área de cliente</h1>
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" th:action="@{/minhasEncomendas}">Ir para a area cliente</button>
+                    </div>
                 </div>
     </div>
         </div>
     </div>
 </section>
+
+<button></button>
 
 
 </body>
