@@ -149,8 +149,9 @@ public class CarrinhoComprasController {
         //CRIADO ESTE USER WEBAPI
         fat.setIdcolaborador(12);
         fat.setIdentrega(mor.getIdentrega());
-        fat.setValorfatura(BigDecimal.valueOf(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
-        System.out.println("ESTOU AQUI");
+        /*BigDecimal val=new BigDecimal(Float.toString(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        fat.setValorfatura(val);
+        System.out.println("ESTOU AQUI");*/
         try{
             FaturaCRUD.createFatura(fat);
         }catch (PersistenceException ex){
