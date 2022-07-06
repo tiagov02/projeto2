@@ -22,7 +22,6 @@ public class FaturaCRUD implements Serializable {
     }
 
     public static void createFatura(Fatura fatura){
-        fatura.setValorfatura(new BigDecimal(0));
         EntityManager em = null;
         try {
             em = getEntityManager();
