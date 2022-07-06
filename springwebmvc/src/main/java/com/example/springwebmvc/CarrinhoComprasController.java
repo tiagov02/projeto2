@@ -149,7 +149,8 @@ public class CarrinhoComprasController {
         //CRIADO ESTE USER WEBAPI
         fat.setIdcolaborador(12);
         fat.setIdentrega(mor.getIdentrega());
-        fat.setValorfatura(new BigDecimal(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        fat.setValorfatura(BigDecimal.valueOf(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        System.out.println("ESTOU AQUI");
         try{
             FaturaCRUD.createFatura(fat);
         }catch (PersistenceException ex){
@@ -203,7 +204,7 @@ public class CarrinhoComprasController {
         //CRIADO ESTE USER WEBAPI
         fat.setIdcolaborador(12);
         fat.setIdentrega(mor.getIdentrega());
-        fat.setValorfatura(new BigDecimal(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        fat.setValorfatura(BigDecimal.valueOf(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
         try{
             FaturaCRUD.createFatura(fat);
         }catch (PersistenceException ex){
@@ -273,7 +274,7 @@ public class CarrinhoComprasController {
         //CRIADO ESTE USER WEBAPI
         fat.setIdcolaborador(12);
         fat.setIdentrega(mor.getIdentrega());
-        fat.setValorfatura(new BigDecimal(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
+        fat.setValorfatura(BigDecimal.valueOf(((ModelFatura) session.getAttribute("carrinho")).getValTotal()));
         try{
             FaturaCRUD.createFatura(fat);
         }catch (PersistenceException ex){

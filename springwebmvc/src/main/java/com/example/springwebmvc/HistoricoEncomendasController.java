@@ -18,6 +18,9 @@ import java.util.List;
 public class HistoricoEncomendasController {
     @GetMapping("/minhasEncomendas")
     public String getEncomendas(HttpSession session, Model model){
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
         List<Fatura> faturascli= FaturaCRUD.getFaturasByIdCliente(((Cliente) session.getAttribute("UserLogged")).getIdcliente());
         model.addAttribute("faturas",faturascli);
         return "historicoencomendas";
