@@ -231,6 +231,7 @@ public class CarrinhoComprasController {
         session.setAttribute("carrinho",null);
         model.addAttribute("numencomenda",fat.getNumfatura());
         model.addAttribute("valencomenda",fat.getValorfatura());
+        model.addAttribute("nomecliente", fat.getClienteByIdcliente().getNome());
         return "conclusaoEncomenda";
     }
 

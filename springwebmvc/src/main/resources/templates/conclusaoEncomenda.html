@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <title>Loja de Produtos Biologicos</title>
-    <link rel="stylesheet" href="../static/css/login.css">
-    <link href="./css/registar.css" rel="stylesheet" media="all">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body>
+
+
+
 <header id="header"><!--header-->
 
     <div class="header-middle"><!--header-middle-->
@@ -14,13 +17,25 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index"><img src="images/logo.png" alt="" /></a>
+                        <a href="produto"><img src="./images/logo.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="cart.html"><i class="fa fa-shopping-cart"><img src="./images/compras.png" width="20"/></i></a></li>
+                            <li><a href="index.html"><i class="fa fa-lock"></i>SAIR</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/header-middle-->
-</header>
+</header><!--/header-->
+
+
+<p>&nbsp;</p>
+
 
 <section>
     <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
@@ -28,20 +43,22 @@
             <div class="card card-2">
                 <div class="card-heading"></div>
                 <div class="wrap d-md-flex">
-                    <p th:text="'A sua encomenda com número: '+${numencomenda}+' foi realizada com sucesso!'"></p>
-                    <p th:text="'Tem valor de: '+${valencomenda}+'€'"></p>
-                    <p>Ir para a minha área de cliente:</p>
+                    <div class="col-sm-12 padding-center">
+                        <h2 class="title text-center" th:text="'A sua encomenda com número: '+${numencomenda}+' foi realizada com sucesso!'"></h2>
+                    </div>
+                    <p class="text-center" th:text="'Estimado(a) '+${nomecliente}+','"></p>
+                    <p class="text-center" th:text="'A sua encomenda '+${numencomenda}+' foi registada com sucesso e encontra-se a ser preparada pelos nossos colaboradores.'"></p>
+                    <p class="text-center" th:text="'O valor total da sua encomenda é '+${valencomenda}+'.'"></p>
                     <div class="p-t-30">
-                        <button class="btn btn--radius btn--green" th:action="@{/minhasEncomendas}">Ir para a area cliente</button>
+                        <div class="text-center">
+                        <button th:action="@{/minhasEncomendas}">Ir para a area cliente</button>
+                        </div>
                     </div>
                 </div>
     </div>
         </div>
     </div>
 </section>
-
-<button></button>
-
 
 </body>
 </html>
