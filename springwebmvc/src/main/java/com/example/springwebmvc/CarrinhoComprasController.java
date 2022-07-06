@@ -174,6 +174,7 @@ public class CarrinhoComprasController {
         session.setAttribute("carrinho",null);
         model.addAttribute("numencomenda",fat.getNumfatura());
         model.addAttribute("valencomenda",fat.getValorfatura());
+        model.addAttribute("nomecliente",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "conclusaoEncomenda";
     }
     //se for na loja
@@ -231,7 +232,7 @@ public class CarrinhoComprasController {
         session.setAttribute("carrinho",null);
         model.addAttribute("numencomenda",fat.getNumfatura());
         model.addAttribute("valencomenda",fat.getValorfatura());
-        model.addAttribute("nomecliente", fat.getClienteByIdcliente().getNome());
+        model.addAttribute("nomecliente",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "conclusaoEncomenda";
     }
 
@@ -305,6 +306,7 @@ public class CarrinhoComprasController {
         session.setAttribute("carrinho",null);
         model.addAttribute("numencomenda",fat.getNumfatura());
         model.addAttribute("valencomenda",fat.getValorfatura());
+        model.addAttribute("nomecliente",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "conclusaoEncomenda";
     }
 }
