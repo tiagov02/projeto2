@@ -60,15 +60,17 @@ public class CarrinhoComprasController {
         }
         ((ModelFatura) session.getAttribute("carrinho")).setValTotal(valTotal);
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
-        return "carrinhoCompras";
+        return "redirect:/carrinhoCompras";
     }
 
     @GetMapping("/carrinhoCompras")
     public String getCarrinhoCompras(HttpSession session,Model model){
+        String formaentrega="";
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
+        model.addAttribute("formaentrega",formaentrega);
         return "carrinhoCompras";
     }
 
@@ -85,27 +87,28 @@ public class CarrinhoComprasController {
     }
 
     @GetMapping(value="/passo2")
-    public String getPasso2(@RequestParam String selectEntrega, HttpSession session, Model model){
+    public String getPasso2(@RequestParam String metodoentrega, HttpSession session, Model model){
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
-        //Se o user escolher entregar na morada predefinida
-        if(selectEntrega.equals("user")){
+        /*//Se o user escolher entregar na morada predefinida
+        if(metodoentrega.equals("user")){
             return "redirect:/terminarEncUser";
         }
         //se for na loja
-        if(selectEntrega.equals("loja")){
+        if(metodoentrega.equals("loja")){
             return "redirect:/terminarEncLoja";
         }
         //Se o cliente quiser numa Morada diferente
-        if(selectEntrega.equals("novamorada")){
+        if(metodoentrega.equals("novamorada")){
             return "redirect:/selecionarMorada";
         }
         model.addAttribute("mensagem","Houve um erro da nossa parte, pf tente mais tarde" +
                 "ou contacte o suporte da loja!");
+        return "error";*/
         return "error";
     }
 

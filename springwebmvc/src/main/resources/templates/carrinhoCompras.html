@@ -90,8 +90,14 @@
         cursor: pointer;
     }
 </style>
+<!--SELECT DO TIPO DE ENCOMENDA-->
+<select th:field="*{formaentrega}">
+    <option th:value="'user'">Morada predefinida</option>
+    <option th:value="'loja'">Levantar em loja</option>
+    <option th:value="'novamorada'">Levantar noutra morada</option>
+</select>
 
-<button href="index" class="button_next">Seguinte(Passo 2 de 3)</button>
+<button th:action="@{/addCarrinhoCompras(metodoentrega=${formaentrega})}" class="button_next">Seguinte(Passo 2 de 3)</button>
 
 </body>
 </html>
