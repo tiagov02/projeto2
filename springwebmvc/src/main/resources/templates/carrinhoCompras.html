@@ -89,13 +89,24 @@
         margin: 4px 1000px;
         cursor: pointer;
     }
+
+    .select_Combo{
+        margin: 4px 300px;
+    }
 </style>
+
+
+<div class="col-sm-6 padding-center">
+    <h2 class="title text-center">SELECIONE A MORADA</h2>
+    <select th:field="*{formaentrega}" class="select_Combo">
+        <option th:value="'user'">Morada predefinida</option>
+        <option th:value="'loja'">Levantar em loja</option>
+        <option th:value="'novamorada'">Levantar noutra morada</option>
+    </select>
+</div>
+
 <!--SELECT DO TIPO DE ENCOMENDA-->
-<select th:field="*{formaentrega}">
-    <option th:value="'user'">Morada predefinida</option>
-    <option th:value="'loja'">Levantar em loja</option>
-    <option th:value="'novamorada'">Levantar noutra morada</option>
-</select>
+
 
 <button th:action="@{/addCarrinhoCompras(metodoentrega=${formaentrega})}" class="button_next">Seguinte(Passo 2 de 3)</button>
 
