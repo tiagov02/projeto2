@@ -51,7 +51,7 @@
     <h2 class="title text-center">CARRINHO DE COMPRAS</h2>
 </div>
 
-<form th:action="@{/passo2}" th:object="${formaentrega}" method="post">
+<form th:action="@{/terminarEncUser}" method="get">
 <section id="cart_items">
     <div class="container">
         <div class="table-responsive cart_info">
@@ -94,12 +94,12 @@
 </section> <!--/#cart_items-->
 
 <div class="col-sm-6 padding-center">
-    <h2 class="title text-center">SELECIONE A MORADA</h2>
+    <!--<h2 class="title text-center">SELECIONE A MORADA</h2>
     <select th:field="*{forma}" class="select_Combo">
         <option th:value="'user'">Morada predefinida</option>
         <option th:value="'loja'">Levantar em loja</option>
         <option th:value="'novamorada'">Levantar noutra morada</option>
-    </select>
+    </select>-->
 </div>
 
 <!--SELECT DO TIPO DE ENCOMENDA-->
