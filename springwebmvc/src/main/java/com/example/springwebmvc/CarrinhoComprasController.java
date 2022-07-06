@@ -6,6 +6,7 @@ import com.example.bd.Entity.*;
 import com.example.springwebmvc.ModelClasses.ModelFatura;
 import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
 import com.example.springwebmvc.ModelClasses.ModelMorada;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -230,6 +231,20 @@ public class CarrinhoComprasController {
             return "redirect:/produto";
         }*/
         return "selecionarMorada";
+    }
+
+    @GetMapping(value = "/conclusaoEncomenda")
+    public String getConclusao(Model model, HttpSession session){
+        ModelMorada morada = new ModelMorada();
+        model.addAttribute("moradacli", morada);
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        /*if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }*/
+        return "conclusaoEncomenda";
+
     }
 
     @PostMapping(value = "/saveEncomenda")
