@@ -26,6 +26,9 @@ public class HistoricoEncomendasController {
     @GetMapping("/detalheencomenda")
     public String getDetalhesEncomenda(@RequestParam int numfatura, Model model,HttpSession session){
         Fatura fat=FaturaCRUD.findFatura(numfatura);
+        String ent= fat.getMoradaentregaByIdentrega().getRua() +" , "+fat.getMoradaentregaByIdentrega().getNumporta()+" , "+
+                fat.getMoradaentregaByIdentrega().getCodpostal()+ " , "+
+                fat.getMoradaentregaByIdentrega().getCodpostaisByCodpostal().getLocalidade();
         List<ModelLinhaFatura> linhas=new ArrayList<>();
         try{
             Estado ef= EstadoFaturaCRUD.getUltimoEstadoFatura(numfatura);
@@ -51,6 +54,12 @@ public class HistoricoEncomendasController {
         }
         model.addAttribute("fatura",fat);
         model.addAttribute("linhasfatura",linhas);
+        if(fat.getMoradaentregaByIdentrega().getRua().equals("LOJA")){
+            model.addAttribute("entrega","Entrega em loja");
+        }
+        else{
+            model.addAttribute("entrega",ent);
+        }
         return "detalhesencomenda";
     }
 }
