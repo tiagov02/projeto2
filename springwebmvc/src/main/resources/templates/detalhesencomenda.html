@@ -109,17 +109,17 @@
         <tbody>
         <tr th:each="linha : ${linhasfatura}">
           <td class="cart_product">
-            <a  th:text="${linha.idProd}"></a>
+            <p  th:text="${linha.idProd}"></p>
           </td>
 
           <td class="cart_description">
-            <a th:text="${linha.nomeProd}"></a>
+            <p th:text="${linha.nomeProd}"></p>
           </td>
           <td class="cart_price">
-            <a th:text="${linha.quant}"></a>
+            <p th:text="${linha.quant}"></p>
           </td>
           <td class="cart_total">
-            <a th:text="${linha.preco}"></a>
+            <p th:text="${linha.preco}"></p>
           </td>
         </tr>
         </tbody>

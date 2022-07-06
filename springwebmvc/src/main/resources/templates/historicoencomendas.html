@@ -93,16 +93,16 @@
         <tbody>
         <tr th:each="fatura : ${faturas}">
           <td class="cart_product">
-            <a  th:text="${fatura.numfatura}"></a>
+            <p  th:text="${fatura.numfatura}"></p>
           </td>
 
           <td class="cart_description">
-            <a th:text="${fatura.data}"></a>
+            <p th:text="${fatura.data}"></p>
           </td>
 
 
           <td class="cart_price">
-            <a th:text="${fatura.valorfatura}"></a>
+            <p th:text="${fatura.valorfatura}"></p>
           </td>
 
           <td class="cart_quantity">
