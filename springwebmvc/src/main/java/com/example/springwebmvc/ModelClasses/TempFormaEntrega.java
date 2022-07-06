@@ -1,15 +1,15 @@
 package com.example.springwebmvc.ModelClasses;
 
 public class TempFormaEntrega {
-    private String forma;
+    private int forma;
 
     public TempFormaEntrega() {}
 
-    public String getForma() {
+    public int getForma() {
         return forma;
     }
 
-    public void setFormaentrega(String forma) {
+    public void setFormaentrega(int forma) {
         this.forma = forma;
     }
 }

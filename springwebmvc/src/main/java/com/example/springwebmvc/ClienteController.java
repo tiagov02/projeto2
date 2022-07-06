@@ -16,10 +16,8 @@ public class ClienteController {
 
     @GetMapping("/index")
     public String getIndex(){
-        return "index";
+        return "redirect:/";
     }
-
-
 
 
 }

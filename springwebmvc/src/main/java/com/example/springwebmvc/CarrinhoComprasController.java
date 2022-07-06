@@ -3,10 +3,7 @@ package com.example.springwebmvc;
 import com.example.bd.CRUD.*;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
-import com.example.springwebmvc.ModelClasses.ModelFatura;
-import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
-import com.example.springwebmvc.ModelClasses.ModelMorada;
-import com.example.springwebmvc.ModelClasses.TempFormaEntrega;
+import com.example.springwebmvc.ModelClasses.*;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +13,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * ESTA A ADICIONAR SÓ 1 PRODUTO --> MUDAR
@@ -29,6 +28,10 @@ public class CarrinhoComprasController {
     @GetMapping("/carrinhoCompras")
     public String getCarrinhoCompras(HttpSession session,Model model){
         TempFormaEntrega formaentrega=new TempFormaEntrega();
+        /*List<ModelListaEntregas> valores=new ArrayList<>();
+        valores.add(new ModelListaEntregas("user","Na sua casa"));
+        valores.add(new ModelListaEntregas("loja","Levantar em loja"));
+        valores.add(new ModelListaEntregas("novamorada","Escolher uma morada da sua preferencia"));*/
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
@@ -36,7 +39,8 @@ public class CarrinhoComprasController {
             return "redirect:/produto";
         }
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
-        model.addAttribute("formaentrega",formaentrega);
+        model.addAttribute("ent",formaentrega);
+        //model.addAttribute("opcoes",valores);
         return "carrinhoCompras";
     }
 
@@ -145,23 +149,24 @@ public class CarrinhoComprasController {
      * Métodos para o 2º passo depois de continuar encomenda
      */
     @PostMapping(value="/passo2")
-    public String getPasso2(@ModelAttribute TempFormaEntrega formaentrega, HttpSession session, Model model){
+    public String getPasso2(@ModelAttribute TempFormaEntrega ent, HttpSession session, Model model){
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
+        System.out.println("ESTOU AQUI");
         //Se o user escolher entregar na morada predefinida
-        if(formaentrega.getForma().equals("user")){
+        if(ent.getForma()==1){
             return "redirect:/terminarEncUser";
         }
         //se for na loja
-        if(formaentrega.getForma().equals("loja")){
+        if(ent.getForma()==2){
             return "redirect:/terminarEncLoja";
         }
         //Se o cliente quiser numa Morada diferente
-        if(formaentrega.getForma().equals("novamorada")){
+        if(ent.getForma()==3){
             return "redirect:/selecionarMorada";
         }
         model.addAttribute("mensagem","Houve um erro da nossa parte, pf tente mais tarde" +

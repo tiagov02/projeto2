@@ -47,7 +47,6 @@
     <h2 class="title text-center">CARRINHO DE COMPRAS</h2>
 </div>
 
-<form th:action="@{/terminarEncUser}" method="get">
 <section id="cart_items">
     <div class="container">
         <div class="table-responsive cart_info">
@@ -84,6 +83,14 @@
                 </tr>
                 </tbody>
             </table>
+            <form th:action="@{/passo2}" th:object="${ent}" method="POST">
+                <select th:field="*{forma}" name="forma">
+                    <option th:value="1" th:text="'Sua morada'"></option>
+                    <option th:value="2" th:text="'Levantar em loja'"></option>
+                    <option th:value="3" th:text="'Levantar noutra morada escolhida por si'"></option>
+                </select>
+                <button type="submit" class="button_next">Seguinte(Passo 2 de 3)</button>
+            </form>
         </div>
     </div>
 </section> <!--/#cart_items-->
@@ -100,8 +107,7 @@
 <!--SELECT DO TIPO DE ENCOMENDA-->
 
 
-<button type="submit" class="button_next">Seguinte(Passo 2 de 3)</button>
-</form>
+
 
 </body>
 </html>
