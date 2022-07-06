@@ -29,6 +29,9 @@ public class CarrinhoComprasController {
     @GetMapping("/carrinhoCompras")
     public String getCarrinhoCompras(HttpSession session,Model model){
         TempFormaEntrega formaentrega=new TempFormaEntrega();
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
@@ -82,6 +85,7 @@ public class CarrinhoComprasController {
         }
         for(ModelLinhaFatura l:((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
             valTotal+=l.getPreco();
+            ((ModelFatura) session.getAttribute("carrinho")).setValTotal(valTotal);
         }
         ((ModelFatura) session.getAttribute("carrinho")).setValTotal(valTotal);
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
@@ -166,7 +170,7 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return ("/detalheencomenda?numfatura="+fat.getNumfatura());
+        return "redirect:/minhasEncomendas";
     }
     //se for na loja
     @GetMapping("/terminarEncLoja")
@@ -220,7 +224,7 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return ("/detalheencomenda?numfatura="+fat.getNumfatura());
+        return "redirect:/minhasEncomendas";
     }
 
     //Se o cliente quiser numa Morada diferente
@@ -290,6 +294,6 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return ("/detalheencomenda?numfatura="+fat.getNumfatura());
+        return "redirect:/minhasEncomendas";
     }
 }
