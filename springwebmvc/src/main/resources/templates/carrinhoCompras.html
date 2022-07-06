@@ -6,7 +6,22 @@
     <link href="./css/main.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
 </head>
+<style>
+    .button_next {
+        background-color: #663300;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 1000px;
+        cursor: pointer;
+    }
 
+    .select_Combo{
+        margin: 4px 300px;
+    }
+</style>
 <body>
 <header id="header"><!--header-->
 
@@ -36,7 +51,7 @@
     <h2 class="title text-center">CARRINHO DE COMPRAS</h2>
 </div>
 
-
+<form th:action="@{/passo2}" th:object="${formaentrega}" method="post">
 <section id="cart_items">
     <div class="container">
         <div class="table-responsive cart_info">
@@ -78,27 +93,9 @@
     </div>
 </section> <!--/#cart_items-->
 
-<style>
-    .button_next {
-        background-color: #663300;
-        padding: 10px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 1000px;
-        cursor: pointer;
-    }
-
-    .select_Combo{
-        margin: 4px 300px;
-    }
-</style>
-
-
 <div class="col-sm-6 padding-center">
     <h2 class="title text-center">SELECIONE A MORADA</h2>
-    <select th:field="*{formaentrega}" class="select_Combo">
+    <select th:field="*{forma}" class="select_Combo">
         <option th:value="'user'">Morada predefinida</option>
         <option th:value="'loja'">Levantar em loja</option>
         <option th:value="'novamorada'">Levantar noutra morada</option>
@@ -108,7 +105,8 @@
 <!--SELECT DO TIPO DE ENCOMENDA-->
 
 
-<button th:action="@{/addCarrinhoCompras(metodoentrega=${formaentrega})}" class="button_next">Seguinte(Passo 2 de 3)</button>
+<button type="submit" class="button_next">Seguinte(Passo 2 de 3)</button>
+</form>
 
 </body>
 </html>

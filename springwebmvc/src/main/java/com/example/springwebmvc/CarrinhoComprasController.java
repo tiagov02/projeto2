@@ -6,6 +6,7 @@ import com.example.bd.Entity.*;
 import com.example.springwebmvc.ModelClasses.ModelFatura;
 import com.example.springwebmvc.ModelClasses.ModelLinhaFatura;
 import com.example.springwebmvc.ModelClasses.ModelMorada;
+import com.example.springwebmvc.ModelClasses.TempFormaEntrega;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,29 @@ import java.util.Date;
  */
 @Controller
 public class CarrinhoComprasController {
+
+    @GetMapping("/carrinhoCompras")
+    public String getCarrinhoCompras(HttpSession session,Model model){
+        TempFormaEntrega formaentrega=new TempFormaEntrega();
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
+        model.addAttribute("formaentrega",formaentrega);
+        return "carrinhoCompras";
+    }
+
+    @PostMapping("/updateqtd")
+    public String updateQtd(@ModelAttribute ModelLinhaFatura linha,HttpSession session, Model model){
+        if(session.getAttribute("UserLogged") == null) {
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho") == null){
+            return "redirect:/produto";
+        }
+        //return "redirect:/carrinhoCompras";
+        return "error";
+    }
 
     @GetMapping(value="/addCarrinhoCompras")
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
@@ -64,52 +88,31 @@ public class CarrinhoComprasController {
         return "redirect:/carrinhoCompras";
     }
 
-    @GetMapping("/carrinhoCompras")
-    public String getCarrinhoCompras(HttpSession session,Model model){
-        String formaentrega="";
-        if(session.getAttribute("carrinho") == null){
-            return "redirect:/produto";
-        }
-        model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
-        model.addAttribute("formaentrega",formaentrega);
-        return "carrinhoCompras";
-    }
-
-    @PostMapping("/updateqtd")
-    public String updateQtd(@ModelAttribute ModelLinhaFatura linha,HttpSession session, Model model){
-        if(session.getAttribute("UserLogged") == null) {
-            return "redirect:/login";
-        }
-        if(session.getAttribute("carrinho") == null){
-            return "redirect:/produto";
-        }
-        //return "redirect:/carrinhoCompras";
-        return "error";
-    }
-
-    @GetMapping(value="/passo2")
-    public String getPasso2(@RequestParam String metodoentrega, HttpSession session, Model model){
+    /**
+     * Métodos para o 2º passo depois de continuar encomenda
+     */
+    @PostMapping(value="/passo2")
+    public String getPasso2(@ModelAttribute TempFormaEntrega formaentrega, HttpSession session, Model model){
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
-        /*//Se o user escolher entregar na morada predefinida
-        if(metodoentrega.equals("user")){
+        //Se o user escolher entregar na morada predefinida
+        if(formaentrega.getForma().equals("user")){
             return "redirect:/terminarEncUser";
         }
         //se for na loja
-        if(metodoentrega.equals("loja")){
+        if(formaentrega.getForma().equals("loja")){
             return "redirect:/terminarEncLoja";
         }
         //Se o cliente quiser numa Morada diferente
-        if(metodoentrega.equals("novamorada")){
+        if(formaentrega.getForma().equals("novamorada")){
             return "redirect:/selecionarMorada";
         }
         model.addAttribute("mensagem","Houve um erro da nossa parte, pf tente mais tarde" +
                 "ou contacte o suporte da loja!");
-        return "error";*/
         return "error";
     }
 
@@ -219,6 +222,7 @@ public class CarrinhoComprasController {
         }
         return ("/detalheencomenda?numfatura="+fat.getNumfatura());
     }
+
     //Se o cliente quiser numa Morada diferente
     @GetMapping(value = "/selecionarMorada")
     public String getMorada(Model model, HttpSession session) {
@@ -227,24 +231,10 @@ public class CarrinhoComprasController {
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
-        /*if(session.getAttribute("carrinho") == null){
+        if(session.getAttribute("carrinho") == null) {
             return "redirect:/produto";
-        }*/
-        return "selecionarMorada";
-    }
-
-    @GetMapping(value = "/conclusaoEncomenda")
-    public String getConclusao(Model model, HttpSession session){
-        ModelMorada morada = new ModelMorada();
-        model.addAttribute("moradacli", morada);
-        if(session.getAttribute("UserLogged") == null){
-            return "redirect:/login";
         }
-        /*if(session.getAttribute("carrinho") == null){
-            return "redirect:/produto";
-        }*/
-        return "conclusaoEncomenda";
-
+        return "selecionarMorada";
     }
 
     @PostMapping(value = "/saveEncomenda")
