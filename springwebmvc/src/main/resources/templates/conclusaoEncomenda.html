@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <title>Loja de Produtos Biologicos</title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/main.css" rel="stylesheet">
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link href="./css/registar.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -15,25 +14,33 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="produto"><img src="./images/logo.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"><img src="./images/compras.png" width="20"/></i></a></li>
-                            <li><a href="index.html"><i class="fa fa-lock"></i>SAIR</a></li>
-                        </ul>
+                        <a href="index"><img src="images/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/header-middle-->
-</header><!--/header-->
+</header>
+
+<section>
+    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div>
+                    <a href="index"><img src="images/imagem.jpg"width="100" length="100" alt="" /></a>
+                </div>
+                <div class="card-heading"></div>
+                <div class="wrap d-md-flex">
+                    <p th:text="'A sua encomenda com número: '+${numencomenda}+' foi realizada com sucesso!'"></p>
+                    <p th:text="'Tem valor de: '+${valencomenda}+'€'"></p>
+                    <p>Ir para a minha área de cliente:</p>
+                    <a href="/minhasEncomendas"></a>
+                </div>
+    </div>
+        </div>
+    </div>
+</section>
 
 
-<div class="col-sm-12 padding-center">
-    <h2 class="title text-center">CONCLUSAO ENCOMENDA</h2>
-</div>
 </body>
 </html>

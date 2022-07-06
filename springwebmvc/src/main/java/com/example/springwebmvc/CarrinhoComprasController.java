@@ -171,7 +171,10 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return "redirect:/minhasEncomendas";
+        session.setAttribute("carrinho",null);
+        model.addAttribute("numencomenda",fat.getNumfatura());
+        model.addAttribute("valencomenda",fat.getValorfatura());
+        return "conclusaoEncomenda";
     }
     //se for na loja
     @GetMapping("/terminarEncLoja")
@@ -225,7 +228,10 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return "redirect:/minhasEncomendas";
+        session.setAttribute("carrinho",null);
+        model.addAttribute("numencomenda",fat.getNumfatura());
+        model.addAttribute("valencomenda",fat.getValorfatura());
+        return "conclusaoEncomenda";
     }
 
     //Se o cliente quiser numa Morada diferente
@@ -295,6 +301,9 @@ public class CarrinhoComprasController {
                 return "error";
             }
         }
-        return "redirect:/minhasEncomendas";
+        session.setAttribute("carrinho",null);
+        model.addAttribute("numencomenda",fat.getNumfatura());
+        model.addAttribute("valencomenda",fat.getValorfatura());
+        return "conclusaoEncomenda";
     }
 }
