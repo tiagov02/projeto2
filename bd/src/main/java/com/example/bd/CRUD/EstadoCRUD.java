@@ -113,4 +113,8 @@ public class EstadoCRUD implements Serializable {
             }
         }
     }
+    public static Estado findPorPagar(){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Estado.FindPorPagar",Estado.class).getSingleResult();
+    }
 }

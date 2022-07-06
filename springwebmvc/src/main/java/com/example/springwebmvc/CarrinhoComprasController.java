@@ -40,15 +40,64 @@ public class CarrinhoComprasController {
         return "carrinhoCompras";
     }
 
-    @PostMapping("/updateqtd")
-    public String updateQtd(@ModelAttribute ModelLinhaFatura linha,HttpSession session, Model model){
-        if(session.getAttribute("UserLogged") == null) {
+    @GetMapping("/aumentaQtd")
+    public String aumentarQtd(@RequestParam int idprod, HttpSession session, Model model){
+        int auxQtd=0;
+        float auxPrecoLn=0,auxPrecoAt=0;
+        int i=0;
+        if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
-        if(session.getAttribute("carrinho") == null){
-            return "redirect:/produto";
+        if(session.getAttribute("carrinho")==null){
+            session.setAttribute("carrinho",new ModelFatura());
         }
-        //return "redirect:/carrinhoCompras";
+        for(ModelLinhaFatura lf:((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
+            i++;
+            if(lf.getIdProd()==idprod) {
+                auxQtd= lf.getQuant() + 1;
+                lf.setQuant(auxQtd);
+                auxPrecoLn=lf.getPreco() + lf.getPrecoUnitario();
+                auxPrecoAt=((ModelFatura) session.getAttribute("carrinho")).getValTotal() + lf.getPrecoUnitario();
+                lf.setPreco(auxPrecoLn);
+                ((ModelFatura) session.getAttribute("carrinho")).setValTotal(auxPrecoAt);
+                return "redirect:/carrinhoCompras";
+            }
+        }
+        model.addAttribute("mensagem","Houve um erro do nosso lado! PF contacte o administrador!");
+        return "error";
+    }
+    @GetMapping("/diminuiQtd")
+    public String diminuirQtd(@RequestParam int idprod, HttpSession session, Model model){
+        int auxQtd=0;
+        float auxPrecoLn=0,auxPrecoAt=0;
+        int i=0;
+        if(session.getAttribute("UserLogged") == null){
+            return "redirect:/login";
+        }
+        if(session.getAttribute("carrinho")==null){
+            session.setAttribute("carrinho",new ModelFatura());
+        }
+        for(ModelLinhaFatura lf:((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
+            i++;
+            if(lf.getIdProd()==idprod) {
+                auxQtd= lf.getQuant() - 1;
+                if(auxQtd==0){
+                    auxPrecoLn= lf.getPreco();
+                    auxPrecoAt=((ModelFatura) session.getAttribute("carrinho")).getValTotal();
+                    ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().remove(lf);
+                    ((ModelFatura) session.getAttribute("carrinho")).setValTotal(auxPrecoAt - auxPrecoLn);
+                    return "redirect:/carrinhoCompras";
+                }else{
+                    lf.setQuant(auxQtd);
+                    auxPrecoLn=lf.getPreco() - lf.getPrecoUnitario();
+                    auxPrecoAt=((ModelFatura) session.getAttribute("carrinho")).getValTotal() - lf.getPrecoUnitario();
+                    lf.setPreco(auxPrecoLn);
+                    ((ModelFatura) session.getAttribute("carrinho")).setValTotal(auxPrecoAt);
+                    return "redirect:/carrinhoCompras";
+                }
+            }
+        }
+        model.addAttribute("mensagem","Houve um erro do nosso lado! PF contacte o administrador!");
         return "error";
     }
 
@@ -132,6 +181,14 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
+        Estado e;
+        try{
+            e= EstadoCRUD.findPorPagar();
+        }catch(NoResultException ex){
+            e=new Estado();
+            e.setDescricao("por pagar");
+            EstadoCRUD.createEstado(e);
+        }
         Moradaentrega mor= new Moradaentrega();
         Fatura fat= new Fatura();
         mor.setCodpostal(((Cliente) session.getAttribute("UserLogged")).getCodpostal());
@@ -150,13 +207,17 @@ public class CarrinhoComprasController {
         fat.setIdcolaborador(12);
         fat.setIdentrega(mor.getIdentrega());
         fat.setValorfatura(new BigDecimal(Float.toString(((ModelFatura) session.getAttribute("carrinho")).getValTotal())));
-        System.out.println("ESTOU AQUI");
         try{
             FaturaCRUD.createFatura(fat);
         }catch (PersistenceException ex){
             model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
             return "error";
         }
+        Estadofatura est=new Estadofatura();
+        est.setIdestado(e.getIdestado());
+        est.setNumfatura(fat.getNumfatura());
+        est.setDatafatura(new java.sql.Date((calendar.getTime()).getTime()));
+        EstadoFaturaCRUD.createEstadoFatura(est);
         for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
             Linhafatura linha=new Linhafatura();
             linha.setNumfatura(fat.getNumfatura());
@@ -166,7 +227,7 @@ public class CarrinhoComprasController {
             try{
                 LinhaFaturaCRUD.createLinhaFatura(linha);
             }catch (PersistenceException ex){
-                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException e) {}
+                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException exception) {}
                 model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
                 return "error";
             }
@@ -185,6 +246,14 @@ public class CarrinhoComprasController {
         }
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
+        }
+        Estado e;
+        try{
+            e= EstadoCRUD.findPorPagar();
+        }catch(NoResultException ex){
+            e=new Estado();
+            e.setDescricao("por pagar");
+            EstadoCRUD.createEstado(e);
         }
         Moradaentrega mor;
         Fatura fat= new Fatura();
@@ -215,6 +284,11 @@ public class CarrinhoComprasController {
             model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
             return "error";
         }
+        Estadofatura est=new Estadofatura();
+        est.setIdestado(e.getIdestado());
+        est.setNumfatura(fat.getNumfatura());
+        est.setDatafatura(new java.sql.Date((calendar.getTime()).getTime()));
+        EstadoFaturaCRUD.createEstadoFatura(est);
         for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
             Linhafatura linha=new Linhafatura();
             linha.setNumfatura(fat.getNumfatura());
@@ -224,7 +298,7 @@ public class CarrinhoComprasController {
             try{
                 LinhaFaturaCRUD.createLinhaFatura(linha);
             }catch (PersistenceException ex){
-                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException e) {}
+                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException exception) {}
                 model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
                 return "error";
             }
@@ -258,6 +332,14 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
+        Estado e;
+        try{
+            e= EstadoCRUD.findPorPagar();
+        }catch(NoResultException ex){
+            e=new Estado();
+            e.setDescricao("por pagar");
+            EstadoCRUD.createEstado(e);
+        }
         Moradaentrega mor=new Moradaentrega();
         Fatura fat= new Fatura();
         Codpostais cod= CodPostaisCRUD.findCodPostal(morada.getCodpostal());
@@ -289,6 +371,11 @@ public class CarrinhoComprasController {
             model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
             return "error";
         }
+        Estadofatura est=new Estadofatura();
+        est.setIdestado(e.getIdestado());
+        est.setNumfatura(fat.getNumfatura());
+        est.setDatafatura(new java.sql.Date((calendar.getTime()).getTime()));
+        EstadoFaturaCRUD.createEstadoFatura(est);
         for(ModelLinhaFatura lf: ((ModelFatura) session.getAttribute("carrinho")).getLinhaFat()){
             Linhafatura linha=new Linhafatura();
             linha.setNumfatura(fat.getNumfatura());
@@ -298,7 +385,7 @@ public class CarrinhoComprasController {
             try{
                 LinhaFaturaCRUD.createLinhaFatura(linha);
             }catch (PersistenceException ex){
-                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException e) {}
+                try {FaturaCRUD.deleteFatura(fat.getNumfatura());} catch (IdNaoEncontradoException exception) {}
                 model.addAttribute("mensagem","Houve um erro na sua encomenda. Pf tente mais tarde");
                 return "error";
             }

@@ -3,6 +3,7 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
+@NamedQuery(name="Estado.FindPorPagar", query="select e from Estado e WHERE e.descricao='por pagar'")
 @Entity
 public class Estado {
     private int idestado;
