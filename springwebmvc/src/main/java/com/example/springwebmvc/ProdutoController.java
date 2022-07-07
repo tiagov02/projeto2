@@ -1,6 +1,7 @@
 package com.example.springwebmvc;
 
 import com.example.bd.CRUD.ProdutoCRUD;
+import com.example.bd.Entity.Cliente;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class ProdutoController {
         }
         model.addAttribute("produtos", ProdutoCRUD.findTodosProdutos());
         model.addAttribute("quantidade",qtd);
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "clientelogado";
     }
 }

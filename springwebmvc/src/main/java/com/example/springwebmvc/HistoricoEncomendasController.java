@@ -23,6 +23,7 @@ public class HistoricoEncomendasController {
         }
         List<Fatura> faturascli= FaturaCRUD.getFaturasByIdCliente(((Cliente) session.getAttribute("UserLogged")).getIdcliente());
         model.addAttribute("faturas",faturascli);
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "historicoencomendas";
     }
 
@@ -63,6 +64,7 @@ public class HistoricoEncomendasController {
         else{
             model.addAttribute("entrega",ent);
         }
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "detalhesencomenda";
     }
 }

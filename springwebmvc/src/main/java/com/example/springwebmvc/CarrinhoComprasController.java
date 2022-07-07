@@ -28,10 +28,6 @@ public class CarrinhoComprasController {
     @GetMapping("/carrinhoCompras")
     public String getCarrinhoCompras(HttpSession session,Model model){
         TempFormaEntrega formaentrega=new TempFormaEntrega();
-        /*List<ModelListaEntregas> valores=new ArrayList<>();
-        valores.add(new ModelListaEntregas("user","Na sua casa"));
-        valores.add(new ModelListaEntregas("loja","Levantar em loja"));
-        valores.add(new ModelListaEntregas("novamorada","Escolher uma morada da sua preferencia"));*/
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
@@ -41,6 +37,7 @@ public class CarrinhoComprasController {
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
         model.addAttribute("ent",formaentrega);
         //model.addAttribute("opcoes",valores);
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "carrinhoCompras";
     }
 
