@@ -105,6 +105,7 @@ public class EstadoFaturaCRUD implements Serializable {
 
     public static Estado getUltimoEstadoFatura(int idfatura){
         EntityManager em=getEntityManager();
-        return em.createNamedQuery("EstadoFatura.FindUltimoEstadoByIdFatura", Estado.class).setParameter("id",idfatura).getSingleResult();
+        return em.createNamedQuery("EstadoFatura.FindUltimoEstadoByIdFatura", Estado.class).setParameter("id",idfatura)
+                .setMaxResults(1).getSingleResult();
     }
 }
