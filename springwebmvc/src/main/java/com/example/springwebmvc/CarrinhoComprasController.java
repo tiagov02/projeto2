@@ -34,6 +34,9 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho") == null){
             return "redirect:/produto";
         }
+        if(((ModelFatura) session.getAttribute("carrinho")).getLinhaFat().size() == 0){
+            return "redirect:/produto";
+        }
         model.addAttribute("carrinho",((ModelFatura) session.getAttribute("carrinho")));
         model.addAttribute("ent",formaentrega);
         //model.addAttribute("opcoes",valores);
