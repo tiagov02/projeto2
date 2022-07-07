@@ -200,6 +200,7 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.showAndWait();
         }
         tablelistaencomenda.setItems(FXCollections.observableArrayList());
+        comboalteraestado.setItems(FXCollections.observableArrayList());
         initialize(null,null);
     }
 
