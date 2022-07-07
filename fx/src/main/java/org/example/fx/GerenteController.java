@@ -184,41 +184,4 @@ public class GerenteController implements Initializable {
            txt_lucro.setText(null);
        }
    }
-/*
-   public int melhorCliente(){
-        int melhor;
-       List<Cliente> clientes = ClienteCRUD.findMelhores();
-       melhor = clientes.get(0).getIdcliente();
-       return melhor;
-   }
-
-    public String segundomelhorCliente(){
-        String segundomelhor;
-        List<Cliente> clientes = ClienteCRUD.findMelhores();
-        segundomelhor = clientes.get(0).getNome();
-        return segundomelhor;
-    }
-
-    public String terceiromelhorCliente(){
-        String terceiromelhor;
-        List<Cliente> clientes = ClienteCRUD.findMelhores();
-        terceiromelhor = clientes.get(0).getNome();
-        return terceiromelhor;
-    }
-
-    public String quartomelhorCliente(){
-        String quartomelhor;
-        List<Cliente> clientes = ClienteCRUD.findMelhores();
-        quartomelhor = clientes.get(0).getNome();
-        return quartomelhor;
-    }
-
-    public String quintomelhorCliente(){
-        String quintomelhor;
-        List<Cliente> clientes = ClienteCRUD.findMelhores();
-        quintomelhor = clientes.get(0).getNome();
-        return quintomelhor;
-    }
-
- */
 }
