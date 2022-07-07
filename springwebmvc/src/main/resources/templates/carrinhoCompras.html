@@ -83,7 +83,7 @@
                 </tr>
                 </tbody>
             </table>
-            <form th:action="@{/passo2}" th:object="${ent}" method="POST">
+            <form th:action="@{/passo2}" th:object="${ent}" method="get">
                 <select th:field="*{forma}" name="forma">
                     <option th:value="1" th:text="'Sua morada'"></option>
                     <option th:value="2" th:text="'Levantar em loja'"></option>

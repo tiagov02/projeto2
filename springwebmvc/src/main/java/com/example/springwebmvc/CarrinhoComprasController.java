@@ -148,8 +148,8 @@ public class CarrinhoComprasController {
     /**
      * Métodos para o 2º passo depois de continuar encomenda
      */
-    @PostMapping(value="/passo2")
-    public String getPasso2(@ModelAttribute TempFormaEntrega ent, HttpSession session, Model model){
+    @GetMapping(value="/passo2")
+    public String getPasso2(@RequestParam int forma, HttpSession session, Model model){
         if(session.getAttribute("UserLogged") == null){
             return "redirect:/login";
         }
@@ -158,15 +158,15 @@ public class CarrinhoComprasController {
         }
         System.out.println("ESTOU AQUI");
         //Se o user escolher entregar na morada predefinida
-        if(ent.getForma()==1){
+        if(forma==1){
             return "redirect:/terminarEncUser";
         }
         //se for na loja
-        if(ent.getForma()==2){
+        if(forma==2){
             return "redirect:/terminarEncLoja";
         }
         //Se o cliente quiser numa Morada diferente
-        if(ent.getForma()==3){
+        if(forma==3){
             return "redirect:/selecionarMorada";
         }
         model.addAttribute("mensagem","Houve um erro da nossa parte, pf tente mais tarde" +
