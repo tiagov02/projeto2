@@ -52,7 +52,7 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <p th:text="${nomeuser}"></p>
+                            <li><a th:text="'Bem-vindo '+${nomeuser}"><i class="fa fa-shopping-cart"></i></a></li>
                             <li><a href="carrinhoCompras"><i class="fa fa-shopping-cart"><img src="./images/compras.png" width="20"/></i></a></li>
                             <li><a href="/logout"><i class="fa fa-lock"></i>SAIR</a></li>
                         </ul>
@@ -103,6 +103,8 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="col-sm-6 padding-center">
+                <h2 class="title text-center">SELECIONE A MORADA</h2>
             <form th:action="@{/passo2}" th:object="${ent}" method="get">
                 <select th:field="*{forma}" name="forma">
                     <option th:value="1" th:text="'Sua morada'"></option>
@@ -111,20 +113,10 @@
                 </select>
                 <button type="submit" class="button_next">Seguinte(Passo 2 de 3)</button>
             </form>
+            </div>
         </div>
     </div>
 </section> <!--/#cart_items-->
-
-<div class="col-sm-6 padding-center">
-    <!--<h2 class="title text-center">SELECIONE A MORADA</h2>
-    <select th:field="*{forma}" class="select_Combo">
-        <option th:value="'user'">Morada predefinida</option>
-        <option th:value="'loja'">Levantar em loja</option>
-        <option th:value="'novamorada'">Levantar noutra morada</option>
-    </select>-->
-</div>
-
-<!--SELECT DO TIPO DE ENCOMENDA-->
 
 
 

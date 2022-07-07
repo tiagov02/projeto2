@@ -44,6 +44,7 @@ public class CarrinhoComprasController {
     @GetMapping("/aumentaQtd")
     public String aumentarQtd(@RequestParam int idprod, HttpSession session, Model model){
         int auxQtd=0;
+
         float auxPrecoLn=0,auxPrecoAt=0;
         int i=0;
         if(session.getAttribute("UserLogged") == null){
@@ -70,6 +71,7 @@ public class CarrinhoComprasController {
     @GetMapping("/diminuiQtd")
     public String diminuirQtd(@RequestParam int idprod, HttpSession session, Model model){
         int auxQtd=0;
+
         float auxPrecoLn=0,auxPrecoAt=0;
         int i=0;
         if(session.getAttribute("UserLogged") == null){
@@ -104,7 +106,6 @@ public class CarrinhoComprasController {
 
     @GetMapping(value="/addCarrinhoCompras")
     public String addCarrinhoCompras(HttpSession session, @RequestParam int idprod, @RequestParam int qtd, Model model){
-        //int qtd=1;
         boolean containsProduct=false;
         int auxQtd=0;
         float valTotal=0;
