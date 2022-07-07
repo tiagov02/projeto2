@@ -5,6 +5,8 @@
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/main.css" rel="stylesheet">
   <link href="./css/price-range.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/box.css">
+  <link rel="stylesheet" href="css/boxtext.css">
 </head>
 
 <body>
@@ -70,19 +72,34 @@
 </header><!--/header-->
 
 <div class="col-sm-12 padding-right">
-  <h2 class="title text-center" th:text="'Detalhes do Produto: '+${produto.nome}"></h2>     NOME DE PRODUTO
+  <h2 class="title text-center" th:text="'Detalhes do Produto: '+${produto.nome}"></h2>
 </div>
 
 
-<section id="cart_items">
+<div class="three_box">
   <div class="container">
-    <p th:text="'Numero do produto: '+${produto.numproduto}"></p>
-    <p th:text="'Tipo de Produto: '+${produto.tipoprodutoByIdtipoproduto.seccao}"></p>
-    <p th:text="'Nome do Produto: '+${produto.nome}"></p>
-    <p th:text="'Quantidade em stock: '+${produto.quantidadestock}"></p>
-    <p th:text="'Preço: '+${produto.valorunitariototal}"></p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="box_text">
+          <h3>Tipo de Produto</h3>
+          <p th:text="${produto.tipoprodutoByIdtipoproduto.seccao}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box_text">
+          <h3>Quantidade em Stock</h3>
+          <p th:text="${produto.quantidadestock}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box_text">
+          <h3>Preco de Venda</h3>
+          <p th:text="${produto.valorunitariototal}"></p>
+        </div>
+      </div>
+    </div>
   </div>
-</section> <!--/#cart_items-->
+</div>
 
 </body>
 </html>

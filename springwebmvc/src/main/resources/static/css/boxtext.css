@@ -1,0 +1,33 @@
+
+.three_box {
+     background-color: #fff;
+     padding-top: 90px;
+}
+
+.box_text {
+     background: #fff;
+     text-align: center;
+     padding: 50px 20px 20px 20px;
+     border: #48ca95 solid 1px;
+     border-radius: 15px;
+}
+
+.box_text h3 {
+     color: #121010;
+     font-size: 20px;
+     line-height: 22px;
+     font-weight: bold;
+     padding-bottom: 25px;
+}
+
+.box_text p {
+     font-size: 17px;
+     color: #050505;
+     line-height: 30px;
+}
+
+.box_text i {
+     padding-bottom: 25px;
+     display: block;
+}
+
