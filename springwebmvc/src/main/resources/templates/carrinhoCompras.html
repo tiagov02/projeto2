@@ -17,6 +17,7 @@
         margin: 4px 1000px;
         cursor: pointer;
     }
+
 </style>
 <body>
 <header id="header"><!--header-->
@@ -73,7 +74,6 @@
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_down" th:href="@{/diminuiQtd(idprod=${linha.idProd})}"> - </a>
-                                <!--<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">-->
                                 <p class="cart_quantity_input" th:text="${linha.quant}"></p>
                                 <a class="cart_quantity_up" th:href="@{/aumentaQtd(idprod=${linha.idProd})}"> + </a>
                             </div>
