@@ -18,6 +18,7 @@ import javafx.util.converter.FormatStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -107,7 +108,7 @@ public class ColaboradorListaEncomendasController implements Initializable {
         try{
             EstadoFaturaCRUD.createEstadoFatura(ef);
         }
-        catch(RollbackException ex){
+        catch(PersistenceException ex){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Erro! Não pode alterar o estado desta fatura!!");
