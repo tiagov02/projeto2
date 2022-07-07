@@ -70,50 +70,17 @@
 </header><!--/header-->
 
 <div class="col-sm-12 padding-right">
-  <h2 class="title text-center" th:text="'Detalhes do Produto: '+${nomeproduto}"></h2>     NOME DE PRODUTO
+  <h2 class="title text-center" th:text="'Detalhes do Produto: '+${produto.nome}"></h2>     NOME DE PRODUTO
 </div>
 
 
 <section id="cart_items">
   <div class="container">
-    <div class="table-responsive cart_info">
-      <table class="table table-condensed">
-        <thead>
-        <tr class="cart_menu">
-          <td class="description">Numero de Produto</td>
-          <td class="price">Tipo de Produto</td>
-          <td class="quantity">Valor Unitário</td>
-          <td class="total">Taxa de IVA</td>
-          <td class="valortot">Valor Venda</td>
-          <td></td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td class="cart_product">
-            <p  th:text="${fatura.numfatura}"></p>  NUMERO PRODUTO
-          </td>
-
-          <td class="cart_description">
-            <p th:text="${fatura.data}"></p>   TIPO DE PRODUTO
-          </td>
-
-
-          <td class="cart_price">
-            <p th:text="${fatura.valorfatura}"></p> VALOR UNITARIO
-          </td>
-
-          <td class="cart_quantity">
-            <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>   TAXA DE IVA
-          </td>
-
-          <td class="cart_valortot">
-            <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>  VALOR FINAL PRODUTO
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+    <p th:text="'Numero do produto: '+${produto.numproduto}"></p>
+    <p th:text="'Tipo de Produto: '+${produto.tipoprodutoByIdtipoproduto.seccao}"></p>
+    <p th:text="'Nome do Produto: '+${produto.nome}"></p>
+    <p th:text="'Quantidade em stock: '+${produto.quantidadestock}"></p>
+    <p th:text="'Preço: '+${produto.valorunitariototal}"></p>
   </div>
 </section> <!--/#cart_items-->
 
