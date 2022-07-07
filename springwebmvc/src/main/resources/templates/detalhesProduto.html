@@ -68,6 +68,11 @@
   <h2 class="title text-center" th:text="'Detalhes do Produto: '+${produto.nome}"></h2>
 </div>
 
+<style>
+  .button_nextstep{
+    padding: 60px 900px;
+  }
+</style>
 
 <div class="three_box">
   <div class="container">
@@ -91,8 +96,9 @@
         </div>
       </div>
     </div>
-    <!--<button class="button_next" >Adicionar ao Carrinho</button>-->
+    <div class="button_nextstep">
     <a th:href="@{/addCarrinhoCompras(idprod=${produto.numproduto},qtd=1)}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a>
+    </div>
   </div>
 </div>
 
