@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Loja de Produtos Biologicos</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+  <link href="./css/price-range.css" rel="stylesheet">
+</head>
+
+<body>
+<header id="header"><!--header-->
+
+  <div class="header-middle"><!--header-middle-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="logo pull-left">
+            <a href="/produto"><img src="images/logo.png" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="shop-menu pull-right">
+            <ul class="nav navbar-nav">
+              <li><a th:text="'BEM-VINDO '+${nomeuser}"><i class="fa fa-shopping-cart"></i></a></li>
+              <li><a href="carrinhoCompras"><i class="fa fa-shopping-cart"><img src="images/compras.png" width="20"/></i></a></li>
+              <li><a href="logout"><i class="fa fa-lock"></i>SAIR</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-middle-->
+
+
+
+  <div class="header-bottom"><!--header-bottom-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="mainmenu pull-left">
+            <ul class="nav navbar-nav collapse navbar-collapse">
+              <li><a href="/produto" class="active">Inicio</a></li>
+              <li class="dropdown"><a href="#">Comprar<i class="fa fa-angle-down"></i></a>
+                <ul role="menu" class="sub-menu">
+                  <li><a href="produto">Produtos</a></li>
+                  <li><a href="carrinhoCompras">Carrinho</a></li>
+                  <li><a href="minhasEncomendas">As minhas encomendas</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="search_box pull-right">
+            <input type="text" placeholder="Procurar"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/header-bottom-->
+</header><!--/header-->
+
+<div class="col-sm-12 padding-right">
+  <h2 class="title text-center" th:text="'Detalhes do Produto: '+${nomeproduto}"></h2>     NOME DE PRODUTO
+</div>
+
+
+<section id="cart_items">
+  <div class="container">
+    <div class="table-responsive cart_info">
+      <table class="table table-condensed">
+        <thead>
+        <tr class="cart_menu">
+          <td class="description">Numero de Produto</td>
+          <td class="price">Tipo de Produto</td>
+          <td class="quantity">Valor Unitário</td>
+          <td class="total">Taxa de IVA</td>
+          <td class="valortot">Valor Venda</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produto : ${produto}">
+          <td class="cart_product">
+            <p  th:text="${fatura.numfatura}"></p>  NUMERO PRODUTO
+          </td>
+
+          <td class="cart_description">
+            <p th:text="${fatura.data}"></p>   TIPO DE PRODUTO
+          </td>
+
+
+          <td class="cart_price">
+            <p th:text="${fatura.valorfatura}"></p> VALOR UNITARIO
+          </td>
+
+          <td class="cart_quantity">
+            <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>   TAXA DE IVA
+          </td>
+
+          <td class="cart_valortot">
+            <a th:href="@{/detalheencomenda(numfatura=${fatura.numfatura})}">Ver detalhes</a>  VALOR FINAL PRODUTO
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section> <!--/#cart_items-->
+
+</body>
+</html>
