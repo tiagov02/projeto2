@@ -41,6 +41,9 @@ public class LoginController {
         if(session.getAttribute("UserLogged") != null){
             session.setAttribute("UserLogged",null);
         }
+        if(session.getAttribute("carrinho") != null){
+            session.setAttribute("carrinho",null);
+        }
         return "redirect:/";
     }
 }
