@@ -80,7 +80,9 @@ public class GerenteListaCliente implements Initializable {
             clienteTipo.setNomeCliente(cliente.getNome());
             clienteTipo.setTipoCliente(cliente.getTipoclienteByIdtipocliente().getTipocliente());
             clienteTipo.setTelefone(cliente.getTelefone());
-            clienteTipo.setMorada(cliente.getCodpostaisByCodpostal().getCodpostal() + "  " +  cliente.getCodpostaisByCodpostal().getLocalidade());
+            clienteTipo.setMorada(cliente.getRua()+","+cliente.getNumporta()+" , "+
+                    cliente.getCodpostaisByCodpostal().getCodpostal() + " , "
+                    + cliente.getCodpostaisByCodpostal().getLocalidade());
             tableClientes.getItems().add(clienteTipo);
         }
     }
@@ -102,7 +104,8 @@ public class GerenteListaCliente implements Initializable {
                 clienteTipo.setNomeCliente(cli.getNome());
                 clienteTipo.setTipoCliente(cli.getTipoclienteByIdtipocliente().getTipocliente());
                 clienteTipo.setTelefone(cli.getTelefone());
-                clienteTipo.setMorada(cli.getCodpostaisByCodpostal().getCodpostal() + "  "
+                clienteTipo.setMorada(cli.getRua()+","+cli.getNumporta()+" , "+
+                        cli.getCodpostaisByCodpostal().getCodpostal() + " , "
                         + cli.getCodpostaisByCodpostal().getLocalidade());
                 tableClientes.getItems().add(clienteTipo);
             }
