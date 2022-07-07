@@ -117,4 +117,9 @@ public class EstadoCRUD implements Serializable {
         EntityManager em=getEntityManager();
         return em.createNamedQuery("Estado.FindPorPagar",Estado.class).getSingleResult();
     }
+    public static Estado findEstado(String descricao){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Estado.FindByDescricao",Estado.class).
+                setParameter("descr",descricao).getSingleResult();
+    }
 }

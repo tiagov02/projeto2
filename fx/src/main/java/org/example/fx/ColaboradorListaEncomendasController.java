@@ -17,10 +17,12 @@ import javafx.stage.Stage;
 import javafx.util.converter.FormatStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
+import javax.persistence.NoResultException;
 import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,7 +49,8 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
     @FXML
     private TableView<ListaEncomendas> tablelistaencomenda;
-
+    @FXML
+    private ComboBox<String> comboalteraestado;
     @FXML
     private Button btn_procura;
     @FXML
@@ -68,6 +71,9 @@ public class ColaboradorListaEncomendasController implements Initializable {
         telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
         valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
+        comboalteraestado.getItems().add("por pagar");
+        comboalteraestado.getItems().add("paga");
+        comboalteraestado.getItems().add("entregue");
         System.out.println();
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
             ListaEncomendas lista = new ListaEncomendas();
@@ -80,16 +86,24 @@ public class ColaboradorListaEncomendasController implements Initializable {
             Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
             lista.setEstadoFatura(e.getDescricao());
         }
+
     }
 
     public void alterarEstado(javafx.event.ActionEvent event) {
-        java.util.Date data= new java.util.Date();
-        java.sql.Date date= new java.sql.Date(data.getYear()+1900,data.getMonth()+1,data.getDay());
+        Calendar calendar = Calendar.getInstance();
         ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
+        Estado e;
+        try{
+            e=EstadoCRUD.findEstado(comboalteraestado.getSelectionModel().getSelectedItem());
+        }catch (NoResultException except){
+            e=new Estado();
+            e.setDescricao(comboalteraestado.getSelectionModel().getSelectedItem());
+            EstadoCRUD.createEstado(e);
+        }
         Estadofatura ef=new Estadofatura();
-        ef.setIdestado(2);
         ef.setNumfatura(le.getNumFatura());
-        ef.setDatafatura(date);
+        ef.setDatafatura(new java.sql.Date((calendar.getTime()).getTime()));
+        ef.setIdestado(e.getIdestado());
         try{
             EstadoFaturaCRUD.createEstadoFatura(ef);
         }

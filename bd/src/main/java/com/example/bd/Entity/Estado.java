@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @NamedQuery(name="Estado.FindPorPagar", query="select e from Estado e WHERE e.descricao='por pagar'")
+@NamedQuery(name="Estado.FindByDescricao",query="select e from Estado e WHERE e.descricao=:descr")
 @Entity
 public class Estado {
     private int idestado;

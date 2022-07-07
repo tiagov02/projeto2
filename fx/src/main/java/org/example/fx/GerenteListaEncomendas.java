@@ -1,5 +1,6 @@
 package org.example.fx;
 
+import com.example.bd.CRUD.EstadoCRUD;
 import com.example.bd.CRUD.EstadoFaturaCRUD;
 import com.example.bd.CRUD.FaturaCRUD;
 import com.example.bd.CRUD.ProdutoCRUD;
@@ -23,6 +24,7 @@ import javax.persistence.RollbackException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,6 +50,8 @@ public class GerenteListaEncomendas implements Initializable{
 
     @FXML
     private TableView<ListaEncomendas> tablelistaencomenda;
+    @FXML
+    private ComboBox<String> comboalteraestado;
 
     @FXML
     private Button btn_consulta;
@@ -61,13 +65,16 @@ public class GerenteListaEncomendas implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        test();
+        //test();
         numfatura.setCellValueFactory(new PropertyValueFactory<>("numFatura"));
         nomecliente.setCellValueFactory(new PropertyValueFactory<>("nomeCliente"));
         moradacliente.setCellValueFactory(new PropertyValueFactory<>("morada"));
         telefonecliente.setCellValueFactory(new PropertyValueFactory<>("telefoneCliente"));
         valortotalfatura.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
         estadofatura.setCellValueFactory(new PropertyValueFactory<>("estadoFatura"));
+        comboalteraestado.getItems().add("por pagar");
+        comboalteraestado.getItems().add("paga");
+        comboalteraestado.getItems().add("entregue");
         for (Fatura fat: FaturaCRUD.findTodasFaturas()){
             ListaEncomendas lista = new ListaEncomendas();
             lista.setNumFatura(fat.getNumfatura());
@@ -169,13 +176,20 @@ public class GerenteListaEncomendas implements Initializable{
 
     }
     public void alterarEstado(javafx.event.ActionEvent event) {
-        java.util.Date data= new java.util.Date();
-        java.sql.Date date= new java.sql.Date(data.getYear()+1900,data.getMonth()+1,data.getDay());
+        Calendar calendar = Calendar.getInstance();
         ListaEncomendas le=tablelistaencomenda.getSelectionModel().getSelectedItem();
+        Estado e;
+        try{
+            e= EstadoCRUD.findEstado(comboalteraestado.getSelectionModel().getSelectedItem());
+        }catch (NoResultException except){
+            e=new Estado();
+            e.setDescricao(comboalteraestado.getSelectionModel().getSelectedItem());
+            EstadoCRUD.createEstado(e);
+        }
         Estadofatura ef=new Estadofatura();
-        ef.setIdestado(2);
         ef.setNumfatura(le.getNumFatura());
-        ef.setDatafatura(date);
+        ef.setDatafatura(new java.sql.Date((calendar.getTime()).getTime()));
+        ef.setIdestado(e.getIdestado());
         try{
             EstadoFaturaCRUD.createEstadoFatura(ef);
         }
