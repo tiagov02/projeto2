@@ -60,7 +60,7 @@ public class RegistoController {
             return "error";
         }
         session.setAttribute("UserLogged",cliente);
-        return "clientelogado";
+        return "redirect:/produto";
     }
 
 }

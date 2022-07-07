@@ -33,7 +33,13 @@
                 <div class="wrap d-md-flex">
                 <div class="card-body">
                     <h2 class="title">Registo</h2>
-                    <form th:object="${cli}" method="POST">
+                    <form th:action="@{/postalterauser}" th:object="${cli}" method="POST">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <input class="input--style-2 js-datepicker" type="text" placeholder="Seu id de cliente" th:field="*{idcliente}" name="birthday" readonly>
+                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                            </div>
+                        </div>
                         <div class="input-group">
                             <input class="input--style-2" type="text" placeholder="Nome" th:field="*{nome}" name="name" readonly>
                         </div>
@@ -64,14 +70,6 @@
                                     <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                 </div>
                             </div>
-                            <!--
-                            <div class="col-6">
-                                <div class="input-group">
-                                    <input class="input--style-2 js-datepicker" type="text" placeholder="Numero de Porta" th:field="*{numporta}" name="birthday">
-                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                </div>
-                            </div>
-                            -->
                             <!--BOTÃO DE BACK-->
                         </div>
                         <div class="row row-space">
