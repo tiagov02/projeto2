@@ -324,6 +324,7 @@ public class CarrinhoComprasController {
         if(session.getAttribute("carrinho") == null) {
             return "redirect:/produto";
         }
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "selecionarMorada";
     }
 
