@@ -74,7 +74,6 @@ public class CarrinhoComprasController {
     @GetMapping("/diminuiQtd")
     public String diminuirQtd(@RequestParam int idprod, HttpSession session, Model model){
         int auxQtd=0;
-
         float auxPrecoLn=0,auxPrecoAt=0;
         int i=0;
         if(session.getAttribute("UserLogged") == null){
