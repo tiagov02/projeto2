@@ -17,6 +17,25 @@
         margin: 4px 1000px;
         cursor: pointer;
     }
+    .cart_quantity_botao a{
+        background: #F0F0E9;
+        color: #696763;
+        display: inline-block;
+        font-size: 16px;
+        height: 28px;
+        overflow: hidden;
+        text-align: center;
+        width: 35px;
+        float: left;
+        line-height: 28px;
+    }
+    .cart_quantity_inputt {
+        color: #696763;
+        float: left;
+        font-size: 16px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
 
 </style>
 <body>
@@ -72,9 +91,9 @@
                         <h4 th:text="${linha.precoUnitario}"></h4> <!--NOME DE PRODUTO -->
                     </td>
                         <td class="cart_quantity">
-                            <div class="cart_quantity_button">
+                            <div class="cart_quantity_botao">
                                 <a class="cart_quantity_down" th:href="@{/diminuiQtd(idprod=${linha.idProd})}"> - </a>
-                                <p class="cart_quantity_input" th:text="${linha.quant}"></p>
+                                <p class="cart_quantity_inputt" th:text="${linha.quant}"></p>
                                 <a class="cart_quantity_up" th:href="@{/aumentaQtd(idprod=${linha.idProd})}"> + </a>
                             </div>
                         </td>
