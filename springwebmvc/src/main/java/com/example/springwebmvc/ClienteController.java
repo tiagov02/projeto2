@@ -39,8 +39,6 @@ public class ClienteController {
         cli.setCodpostal(cliTemp.getCodpostal());
         cli.setTelefone(cliTemp.getTelefone());
         cli.setNome(cliTemp.getNome());
-        //Retirar
-        cli.setPassword(cliTemp.getPassword());
         cli.setIdcliente(cliTemp.getIdcliente());
         cli.setNumporta(cliTemp.getNumporta());
         cli.setRua(cliTemp.getRua());
