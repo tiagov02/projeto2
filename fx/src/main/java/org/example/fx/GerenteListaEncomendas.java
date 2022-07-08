@@ -206,8 +206,10 @@ public class GerenteListaEncomendas implements Initializable{
     }
 
     public void getDetalhesEncomenda(javafx.event.ActionEvent event) throws IOException {
-        EncUserTemp.getInstance().setCurrentId(tablelistaencomenda.getSelectionModel().getSelectedItem().getNumFatura());
-        TrocaPaineis.changePanel(event, "DetalhesEncomenda.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        if(tablelistaencomenda.getSelectionModel().getSelectedItem() != null){
+            EncUserTemp.getInstance().setCurrentId(tablelistaencomenda.getSelectionModel().getSelectedItem().getNumFatura());
+            TrocaPaineis.changePanel(event, "DetalhesEncomenda.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        }
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
