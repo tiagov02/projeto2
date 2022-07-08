@@ -7,6 +7,8 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/main.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/boxtext.css">
+    <link href="./css/mudarcliente.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -32,69 +34,53 @@
 </div><!--/header-middle-->
 </header><!--/header-->
 
-<!--<h1>&nbsp;</h1>   TAG FOR CREATE SPACE -->
+<h1>&nbsp;</h1>
 
 <section>
-    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
-        <div class="wrapper wrapper--w960">
-            <div class="card card-2">
-                <div class="card-heading"></div>
-                <div class="wrap d-md-flex">
-                    <div class="card-body">
-                        <h2 class="title">Introduza os dados para a respetiva entrega</h2>
-                        <form th:action="@{/saveEncomenda}" th:object="${moradacli}" method="post">
-                            <div class="row row-space">
-                                <div class="col-6">
-                                    <div class="input-group">
-                                        <input class="input--style-2 js-datepicker" type="text" placeholder="Codigo-Postal" th:field="*{codpostal}" name="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <input class="input--style-2 js-datepicker" type="text" placeholder="Localidade" th:field="*{localidade}" name="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">INTRODUZA A MORADA DE ENVIO</h2>
+                    <form th:action="@{/saveEncomenda}" th:object="${moradacli}" method="post">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Codigo Postal</label>
+                                    <input class="input--style-4" type="text" placeholder="Codigo-Postal" th:field="*{codpostal}" name="birthday">
                                 </div>
                             </div>
-                            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Localidade</label>
+                                    <input class="input--style-4" type="text" placeholder="Localidade" th:field="*{localidade}" name="birthday">
+                                </div>
+                            </div>
+                        </div>
 
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <input class="input--style-2" type="text" placeholder="Rua" th:field="*{rua}" name="res_code">
-                                    </div>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <input class="input--style-2" type="number" placeholder="Numero de Porta" th:field="*{numporta}" name="res_code">
-                                        </div>
-                                    </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Rua</label>
+                                    <input class="input--style-4" type="text"  placeholder="Rua" th:field="*{rua}" name="birthday">
                                 </div>
                             </div>
-                            <!--
-                                <div class="row row-space">
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <p class="col-sm-12 padding-center">Data e hora da entrega: </p>
-                                            <input class="input--style-2" type="datetime-local" placeholder="Hora de Entrega" name="res_code">
-                                        </div>
-                                    </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Numero de Porta</label>
+                                    <input class="input--style-4" type="text" placeholder="Numero" th:field="*{numporta}" name="birthday">
                                 </div>
-                                -->
-                                <div class="p-t-30">
-                                    <button class="btn btn--radius btn--green" type="submit">Seguinte(Passo 3 de 3)</button>
-                                </div>
-
-                        </form>
-                    </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius btn--green" type="submit">Seguinte(Passo 3 de 3)</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
+
 </body>
 </html>
