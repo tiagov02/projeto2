@@ -48,10 +48,14 @@ public class GerenteDetalhesEncomendasController implements Initializable {
     @FXML
     private Label nomeCliente;
 
+    @FXML
+    private Label telefonecliente;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int idFatura= EncUserTemp.getInstance().getCurrentId();
         Fatura f= FaturaCRUD.findFatura(idFatura);
+        System.out.println("Estou aqui");
         Estado est= EstadoFaturaCRUD.getUltimoEstadoFatura(idFatura);
         String morada= f.getMoradaentregaByIdentrega().getRua()+" , "+
                 f.getMoradaentregaByIdentrega().getNumporta()+" , "+f.getMoradaentregaByIdentrega().getCodpostal()+" , "+
@@ -74,6 +78,8 @@ public class GerenteDetalhesEncomendasController implements Initializable {
         estadoEnc.setText(est.getDescricao());
         moradaEnc.setText(morada);
         nomeCliente.setText(f.getClienteByIdcliente().getNome());
+        telefonecliente.setText(f.getClienteByIdcliente().getNome());
+
     }
     public void buttonBack(javafx.event.ActionEvent event) throws IOException {
         EncUserTemp.getInstance().setCurrentId(0);
