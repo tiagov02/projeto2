@@ -12,6 +12,7 @@ public class EncUserTemp {
         }
         return singleinstance;
     }
+    //
 
     public int getCurrentId() {
         return idEncomenda;
