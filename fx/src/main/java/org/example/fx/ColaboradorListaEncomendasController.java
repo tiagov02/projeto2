@@ -84,8 +84,13 @@ public class ColaboradorListaEncomendasController implements Initializable {
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
             lista.setIdCliente(fat.getIdcliente());
-            Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
-            lista.setEstadoFatura(e.getDescricao());
+            try{
+                Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+                lista.setEstadoFatura(e.getDescricao());
+            }catch(NoResultException ex){
+                lista.setEstadoFatura("Erro não existe estado para esta fatura");
+            }
+            tablelistaencomenda.getItems().add(lista);
         }
 
     }
