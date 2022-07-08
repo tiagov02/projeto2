@@ -71,7 +71,7 @@ public class ColaboradorListaComprasController implements Initializable {
     }
 
 
-    public void procurarProduto(){
+    /*public void procurarProduto(){
         boolean isNumber=false;
         int count=0;
         tableListaCompras.setItems(FXCollections.observableArrayList());
@@ -120,7 +120,7 @@ public class ColaboradorListaComprasController implements Initializable {
             dialogoAviso.setHeaderText("Erro! Não existem produtos na lista de compras com os critérios selecionados");
             dialogoAviso.showAndWait();
         }
-    }
+    }*/
 
 
     public void limparButton(){
