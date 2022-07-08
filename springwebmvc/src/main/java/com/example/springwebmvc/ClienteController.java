@@ -68,6 +68,7 @@ public class ClienteController {
         cli.setRua(cliTemp.getRua());
         cli.setUsername(cliTemp.getUsername());
         model.addAttribute("cli",cli);
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "mudarcliente";
     }
 
@@ -95,7 +96,6 @@ public class ClienteController {
             return "error";
         }
         session.setAttribute("UserLogged",cliente);
-        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "redirect:/meusdetalhes";
     }
 
