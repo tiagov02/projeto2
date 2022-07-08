@@ -63,11 +63,109 @@
     </div>
   </div><!--/header-bottom-->
 </header><!--/header-->
-<p th:text="'ID :'+${cli.idcliente}"></p>
-<p th:text="'NOME: '+${cli.nome}"></p>
-<p th:text="'MORADA: '+${morcli}"></p>
-<p th:text="'Telefone: '+${cli.telefone}"></p>
-<a th:href="@{/alterauser}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Alterar os meus dados</a>
 
+
+<style type="text/css">
+  body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: white;
+  }
+  .main-body {
+    padding: 15px;
+  }
+  .card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+  }
+
+  .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  .button_nextste{
+    background-color: #663300;
+  }
+</style>
+
+
+<div class="container">
+  <div class="main-body">
+
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img src="./images/avatar.png" alt="Admin" class="rounded-circle" width="150">
+              <div class="mt-3">
+                <h1>&nbsp;</h1>
+                <h4 th:text="'NOME: '+${cli.nome}"></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h4 class="mb-0">Nome</h4>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <p th:text="${cli.nome}"></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h4 class="mb-0">Telefone</h4>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <p th:text="${cli.telefone}"></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h4 class="mb-0">Morada</h4>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <p th:text="${morcli}"></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12">
+                <a class="btn btn-info" th:href="@{/alterauser}">Alterar os meus dados</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
