@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCliente">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCliente">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -28,18 +28,17 @@
             <AnchorPane prefHeight="203.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonSair" onAction="#clicaLogout" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
             </children></VBox>
       <TableView fx:id="tableClientes" layoutX="218.0" layoutY="79.0" prefHeight="458.0" prefWidth="537.0">
         <columns>
           <TableColumn fx:id="numcliente" prefWidth="35.0" text="#" />
-          <TableColumn fx:id="nomecliente" prefWidth="138.0" text="Nome" />
-            <TableColumn fx:id="tipocliente" text="Tipo Cliente" />
-            <TableColumn fx:id="telefone" prefWidth="58.0" text="Telefone" />
-            <TableColumn fx:id="morada" prefWidth="153.0" text="Morada" />
-            <TableColumn fx:id="codpostal" prefWidth="72.0" text="Cod Postal" />
+          <TableColumn fx:id="nomecliente" prefWidth="151.20001220703125" text="Nome" />
+            <TableColumn fx:id="tipocliente" prefWidth="84.79998779296875" text="Tipo Cliente" />
+            <TableColumn fx:id="telefone" prefWidth="79.19998168945312" text="Telefone" />
+            <TableColumn fx:id="morada" prefWidth="178.4000244140625" text="Morada" />
         </columns>
       </TableView>
       <Text layoutX="263.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente:">
