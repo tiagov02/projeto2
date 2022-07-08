@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.SingleInstance.EncUserTemp;
 
 import javax.persistence.NoResultException;
 import javax.persistence.RollbackException;
@@ -204,6 +205,10 @@ public class GerenteListaEncomendas implements Initializable{
         initialize(null,null);
     }
 
+    public void getDetalhesEncomenda(javafx.event.ActionEvent event) throws IOException {
+        EncUserTemp.getInstance().setCurrentId(tablelistaencomenda.getSelectionModel().getSelectedItem().getNumFatura());
+        TrocaPaineis.changePanel(event, "DetalhesEncomenda.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);

@@ -76,7 +76,7 @@ public class GerenteDetalhesEncomendasController implements Initializable {
         nomeCliente.setText(f.getClienteByIdcliente().getNome());
     }
     public void buttonBack(javafx.event.ActionEvent event) throws IOException {
-        EncUserTemp.getInstance().setCurrentId(null);
-        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        EncUserTemp.getInstance().setCurrentId(0);
+        TrocaPaineis.changePanel(event, "GerenteListarEncomendas.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 }

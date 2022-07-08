@@ -47,7 +47,7 @@
       <TextField fx:id="lbl_cliente" layoutX="275.0" layoutY="18.0" prefHeight="26.0" prefWidth="196.0" />
       <Button fx:id="btn_procura" layoutX="487.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisa" style="-fx-background-color: rgb(102,51,0);" text="Procurar" textFill="#fcfcfc" />
       <Button fx:id="btn_procura2" layoutX="653.0" layoutY="18.0" mnemonicParsing="false" onAction="#alterarEstado" style="-fx-background-color: rgb(102,51,0);" text="Alterar Estado" textFill="#fcfcfc" />
-      <Button fx:id="btn_consulta" layoutX="227.0" layoutY="504.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: rgb(102,51,0);" text="Consultar Detalhes" textFill="#fcfcfc" />
+      <Button fx:id="btn_consulta" layoutX="227.0" layoutY="504.0" mnemonicParsing="false" onAction="#getDetalhesEncomenda" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: rgb(102,51,0);" text="Consultar Detalhes" textFill="#fcfcfc" />
       <ComboBox fx:id="comboalteraestado" layoutX="555.0" layoutY="18.0" prefHeight="26.0" prefWidth="90.0" />
     </children>
 
