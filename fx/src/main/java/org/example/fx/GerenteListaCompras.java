@@ -24,29 +24,19 @@ public class GerenteListaCompras implements Initializable {
 
     @FXML
     private TableColumn<ListaComprasClass, Integer> colNumero;
-    @FXML
-    private TableColumn<ListaComprasClass, String> colProduto;
-    @FXML
-    private TableColumn<ListaComprasClass, String> colTipoProduto;
-    @FXML
-    private TableColumn<ListaComprasClass, Integer> colQtdExistente;
-    @FXML
-    private TableColumn<ListaComprasClass, Integer> colQtdComprar;
 
     @FXML
     private TextField procuraproduto;
-    @FXML
-    private Button buttonpesquisa;
-    @FXML
-    private Button buttonaddproduto;
-    @FXML
-    private TextField numeroProduto;
-    @FXML
-    private Button buttonLimpar;
-    @FXML
-    private Button buttonRemover;
 
     public TableView<ListaComprasClass> tableListaCompras;
+    @FXML
+    private TableColumn<?, ?> colDtFatura;
+
+    @FXML
+    private TableColumn<?, ?> colFornecedor;
+
+    @FXML
+    private TableColumn<?, ?> colValTotal;
 
 
     @Override
@@ -55,20 +45,7 @@ public class GerenteListaCompras implements Initializable {
         tableListaCompras.setEditable(true);
         colNumero.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colNumero.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
-        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
-        colQtdExistente.setCellValueFactory(new PropertyValueFactory<>("qtdExistente"));
-        colQtdComprar.setCellValueFactory(new PropertyValueFactory<>("qtdComprar"));
-        for(Linhaencomendafornecedor l: LinhaEncomendaFornecedorCRUD.findAllLinhasEncomendasFornecedores()){
-            ListaComprasClass list= new ListaComprasClass();
-            list.setId(l.getNumencomenda());
-            list.setIdProd(l.getNumproduto());
-            list.setProduto(l.getProdutoByNumproduto().getNome());
-            list.setQtdComprar(l.getQuantidade());
-            list.setQtdExistente(l.getProdutoByNumproduto().getQuantidadestock());
-            list.setTipoProduto(l.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
-            tableListaCompras.getItems().add(list);
-        }
+
     }
 
 
@@ -125,7 +102,7 @@ public class GerenteListaCompras implements Initializable {
 
 
     public void limparButton(){
-        numeroProduto.setText("");
+        procuraproduto.setText("");
     }
 
 
