@@ -13,4 +13,6 @@ module org.example.fx {
     exports org.example.fx;
     exports org.example.fx.Logica;
     opens org.example.fx.Logica to javafx.fxml;
+    exports org.example.fx.ModelClasses;
+    opens org.example.fx.ModelClasses to javafx.fxml;
 }

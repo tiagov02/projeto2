@@ -12,10 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ListaComprasClass;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;

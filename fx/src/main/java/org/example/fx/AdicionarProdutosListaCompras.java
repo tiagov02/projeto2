@@ -4,18 +4,16 @@ package org.example.fx;
 import com.example.bd.CRUD.*;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.EncomendaForLinhaModel;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdicionarProdutosListaCompras implements Initializable {

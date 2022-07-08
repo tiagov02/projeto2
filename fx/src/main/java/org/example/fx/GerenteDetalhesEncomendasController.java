@@ -11,8 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.controlsfx.control.PropertySheet;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ModelLinhaFatura;
 import org.example.fx.SingleInstance.EncUserTemp;
 
 import java.io.IOException;

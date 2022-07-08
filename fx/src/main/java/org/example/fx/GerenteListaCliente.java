@@ -1,36 +1,20 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ClienteCRUD;
-import com.example.bd.CRUD.ColaboradorCRUD;
-import com.example.bd.CRUD.ProdutoCRUD;
-import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Cliente;
-import com.example.bd.Entity.Colaborador;
-import com.example.bd.Entity.Produto;
-import com.example.bd.Entity.Tipocliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.Stage;
-import javafx.util.converter.DefaultStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ClienteTipo;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.concurrent.Callable;
 
 public class GerenteListaCliente implements Initializable {
     @FXML

@@ -4,16 +4,14 @@ import com.example.bd.CRUD.*;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import org.example.fx.Exceptions.NumberException;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ListaComprasClass;
 
 import java.io.IOException;
 import java.net.URL;

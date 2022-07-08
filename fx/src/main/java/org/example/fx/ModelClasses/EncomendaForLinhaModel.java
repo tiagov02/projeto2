@@ -1,4 +1,4 @@
-package org.example.fx;
+package org.example.fx.ModelClasses;
 
 public class EncomendaForLinhaModel {
     private Integer idProd;

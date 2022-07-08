@@ -14,6 +14,7 @@ import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ProdutoTipo;
 
 import java.io.IOException;
 import java.math.BigDecimal;

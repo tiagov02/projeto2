@@ -1,4 +1,4 @@
-package org.example.fx;
+package org.example.fx.ModelClasses;
 
 import com.example.bd.CRUD.ClienteCRUD;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;

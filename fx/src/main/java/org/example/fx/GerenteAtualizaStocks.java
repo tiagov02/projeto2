@@ -3,9 +3,7 @@ package org.example.fx;
 import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Produto;
-import com.example.bd.Entity.Tipoproduto;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,11 +14,11 @@ import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.ModelClasses.ProdutoTipo;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class GerenteAtualizaStocks implements Initializable {
