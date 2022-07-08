@@ -95,6 +95,7 @@ public class ClienteController {
             return "error";
         }
         session.setAttribute("UserLogged",cliente);
+        model.addAttribute("nomeuser",((Cliente) session.getAttribute("UserLogged")).getNome());
         return "redirect:/meusdetalhes";
     }
 
