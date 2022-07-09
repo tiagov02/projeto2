@@ -102,4 +102,11 @@ public class FornecedorCRUD {
         EntityManager em=getEntityManager();
         return em.createNamedQuery("Fornecedores.FindByNome",Fornecedor.class).setParameter("nome",nome).getSingleResult();
     }
+
+    public static List<Fornecedor> findByDados(String data){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Fornecedor.FindByDados",Fornecedor.class).
+                setParameter("nome",data).setParameter("telef",data).setParameter("email",data).
+                getResultList();
+    }
 }

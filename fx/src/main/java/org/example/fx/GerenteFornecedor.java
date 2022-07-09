@@ -99,22 +99,34 @@ public class GerenteFornecedor implements Initializable {
         });
     }
 
-    public void pesquisaColab(javafx.event.ActionEvent event){
+    public void pesquisaFornecedor(javafx.event.ActionEvent event){
+        if(procuraforn.getText() != null){
+            tableFornecedores.setItems(FXCollections.observableArrayList());
+            List<Fornecedor> result=FornecedorCRUD.findByDados(procuraforn.getText());
+            if(result.size() == 0){
+                Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Não existem Fornecedores para o critérios de pesquisa referenciados!!");
+                dialogoAviso.showAndWait();
+                initialize(null,null);
+            }
+            else{
+                tableFornecedores.getItems().addAll(result);
+            }
 
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableFornecedores.setEditable(true);
+        colNumero.setCellValueFactory(new PropertyValueFactory<>("idfornecedor"));
+        colFornecedor.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colMorada.setCellValueFactory(new PropertyValueFactory<>("rua"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colTelefone.setCellValueFactory(new PropertyValueFactory<>("numtelefone"));
         editCamposFornecedor();
-        for (Fornecedor f : FornecedorCRUD.findFornecedores()){
-            colNumero.setCellValueFactory(new PropertyValueFactory<>("idfornecedor"));
-            colFornecedor.setCellValueFactory(new PropertyValueFactory<>("nome"));
-            colMorada.setCellValueFactory(new PropertyValueFactory<>("rua"));
-            colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-            colTelefone.setCellValueFactory(new PropertyValueFactory<>("numtelefone"));
-            tableFornecedores.setItems(getFornecedores());
-        }
+        tableFornecedores.setItems(getFornecedores());
     }
 
 
