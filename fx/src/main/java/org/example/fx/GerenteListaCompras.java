@@ -74,7 +74,8 @@ public class GerenteListaCompras implements Initializable {
     public void getDetalhesCompra(javafx.event.ActionEvent event) throws IOException {
         if(tableListaCompras.getSelectionModel().getSelectedItem() != null){
             EncUserTemp.getInstance().setCurrentId(tableListaCompras.getSelectionModel().getSelectedItem().getId());
-            TrocaPaineis.changePanel(event, "DetalhesEncomenda.fxml", "Loja Produtos Biológicos", GerenteController.class);
+            TrocaPaineis.changePanel(event, "DetalhesCompra.fxml", "Loja Produtos Biológicos",
+                    GerenteController.class);
         }
     }
 
