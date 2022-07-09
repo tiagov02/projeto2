@@ -12,6 +12,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ListaComprasClass;
+import org.example.fx.ModelClasses.ModelEncomendaFornecedor;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,28 +29,43 @@ public class GerenteListaCompras implements Initializable {
     @FXML
     private TextField procuraproduto;
 
-    public TableView<ListaComprasClass> tableListaCompras;
-    @FXML
-    private TableColumn<?, ?> colDtFatura;
+    public TableView<ModelEncomendaFornecedor> tableListaCompras;
 
     @FXML
-    private TableColumn<?, ?> colFornecedor;
+    private TableColumn<ModelEncomendaFornecedor, String> colFornecedor;
 
     @FXML
-    private TableColumn<?, ?> colValTotal;
+    private TableColumn<ModelEncomendaFornecedor, Float> colValTotal;
+
+    @FXML
+    private TableColumn<ModelEncomendaFornecedor, String> colMorada;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //editar table
-        tableListaCompras.setEditable(true);
-        colNumero.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        //tableListaCompras.setEditable(true);
+        //colNumero.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colNumero.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colFornecedor.setCellValueFactory(new PropertyValueFactory<>("nomeFornecedor"));
+        colValTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
+        colMorada.setCellValueFactory(new PropertyValueFactory<>("morada"));
 
+        for(Encomendafornecedor ef:EncomendaFornecedorCRUD.findTodasEncomendasFornecedores()){
+            ModelEncomendaFornecedor enc=new ModelEncomendaFornecedor();
+            enc.setId(ef.getNumencomenda());
+            enc.setNomeFornecedor(ef.getFornecedorByIdfornecedor().getNome());
+            enc.setPrecoTotal(ef.getValortotal().floatValue());
+            String morada=ef.getFornecedorByIdfornecedor().getRua()+" , "+ef.getFornecedorByIdfornecedor().getNumporta()+
+                    " , "+ef.getFornecedorByIdfornecedor().getCodpostal()+" , "
+                    +ef.getFornecedorByIdfornecedor().getCodpostaisByCodpostal().getLocalidade();
+            enc.setMorada(morada);
+            tableListaCompras.getItems().add(enc);
+        }
     }
 
 
-    public void procurarProduto(){
+    /*public void procurarProduto(){
         boolean isNumber=false;
         int count=0;
         tableListaCompras.setItems(FXCollections.observableArrayList());
@@ -98,32 +114,11 @@ public class GerenteListaCompras implements Initializable {
             dialogoAviso.setHeaderText("Erro! Não existem produtos na lista de compras com os critérios selecionados");
             dialogoAviso.showAndWait();
         }
-    }
+    }*/
 
 
     public void limparButton(){
         procuraproduto.setText("");
-    }
-
-
-    public void removerCompra(javafx.event.ActionEvent event){
-        try{
-            LinhaencomendafornecedorPK pk=new LinhaencomendafornecedorPK();
-            pk.setNumencomenda(tableListaCompras.getSelectionModel().getSelectedItem().getId());
-            pk.setNumproduto(tableListaCompras.getSelectionModel().getSelectedItem().getIdProd());
-            LinhaEncomendaFornecedorCRUD.deleteLinhaEncomendaFornecedor(pk);
-        } catch (IdNaoEncontradoException e) {
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!!");
-            dialogoAviso.setHeaderText("Houve um erro no sistema! Por favor volte a tentar em algum tempo ou contacte" +
-                    " o seu administrador de sistema");
-            dialogoAviso.showAndWait();
-        }
-        Alert dialogoAviso = new Alert(Alert.AlertType.CONFIRMATION);
-        dialogoAviso.setTitle("SUCESSO!");
-        dialogoAviso.setHeaderText("REMOVEU A COMPRA COM SUCESSO!!");
-        dialogoAviso.showAndWait();
-        initialize(null,null);
     }
 
 

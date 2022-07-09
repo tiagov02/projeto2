@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCompras">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -30,9 +35,9 @@
       <TableView fx:id="tableListaCompras" layoutX="218.0" layoutY="57.0" prefHeight="432.0" prefWidth="538.0">
         <columns>
             <TableColumn fx:id="colNumero" prefWidth="42.0" text="#" />
-          <TableColumn fx:id="colFornecedor" prefWidth="199.00003051757812" text="Fornecedor" />
-            <TableColumn fx:id="colDtFatura" prefWidth="185.60000610351562" text="Data da fatura" />
-          <TableColumn fx:id="colValTotal" prefWidth="104.0" text="Valor Total" />
+          <TableColumn fx:id="colFornecedor" prefWidth="157.5999755859375" text="Fornecedor" />
+            <TableColumn fx:id="colMorada" prefWidth="170.39999389648438" text="Morada" />
+          <TableColumn fx:id="colValTotal" prefWidth="128.79998779296875" text="Valor Total" />
         </columns>
       </TableView>
       <Button fx:id="buttonaddproduto" layoutX="623.0" layoutY="22.0" mnemonicParsing="false" onAction="#clicaadicionarProduto" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR PRODUTO" textFill="WHITE">
