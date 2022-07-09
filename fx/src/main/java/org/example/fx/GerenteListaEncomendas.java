@@ -239,4 +239,7 @@ public class GerenteListaEncomendas implements Initializable{
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
+    public void clicaDefinicoesFornecedor(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteFornecedores.fxml","Listagem de encomendas",GerenteController.class);
+    }
 }

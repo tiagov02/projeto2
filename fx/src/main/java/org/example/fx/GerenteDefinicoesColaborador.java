@@ -237,5 +237,9 @@ public class GerenteDefinicoesColaborador implements Initializable {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
 
+    public void clicaDefinicoesFornecedor(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteFornecedores.fxml","Listagem de encomendas",GerenteController.class);
+    }
+
 
 }
