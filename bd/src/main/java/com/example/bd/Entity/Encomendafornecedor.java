@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Collection;
 
 @NamedQuery(name="EncomendaFornecedor.gastos",query="select sum(ef.valortotal) from Encomendafornecedor ef")
+@NamedQuery(name="EncomendaFornecedor.getByFornecedor",
+        query="select ef from Encomendafornecedor ef,Fornecedor f WHERE ef.idfornecedor=f.idfornecedor AND(f.nome like CONCAT('%',:nome,'%') OR f.email=:email OR f.numtelefone=:telefone)")
 @Entity
 public class Encomendafornecedor {
     private int numencomenda;

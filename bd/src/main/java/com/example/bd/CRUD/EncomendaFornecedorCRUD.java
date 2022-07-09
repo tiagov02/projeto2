@@ -117,4 +117,10 @@ public class EncomendaFornecedorCRUD implements Serializable {
         EntityManager em=getEntityManager();
         return em.createNamedQuery("EncomendaFornecedor.gastos",BigDecimal.class).getSingleResult();
     }
+
+    public List<Encomendafornecedor> getByFornecedor(String forn){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("EncomendaFornecedor.getByFornecedor",Encomendafornecedor.class)
+                .setParameter("nome",forn).setParameter("email",forn).setParameter("telefone",forn).getResultList();
+    }
 }

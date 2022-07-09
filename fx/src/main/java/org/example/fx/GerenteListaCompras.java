@@ -65,11 +65,9 @@ public class GerenteListaCompras implements Initializable {
         }
     }
 
-    /**
-     * FAZER PROCURAR PRODUTO
-     * @param event
-     * @throws IOException
-     */
+    public void procurarProduto(javafx.event.ActionEvent event){
+
+    }
 
     public void getDetalhesCompra(javafx.event.ActionEvent event) throws IOException {
         if(tableListaCompras.getSelectionModel().getSelectedItem() != null){
