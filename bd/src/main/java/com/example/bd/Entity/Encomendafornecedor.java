@@ -90,7 +90,7 @@ public class Encomendafornecedor {
         this.fornecedorByIdfornecedor = fornecedorByIdfornecedor;
     }
 
-    @OneToMany(mappedBy = "encomendafornecedorByNumencomenda")
+    @OneToMany(mappedBy = "encomendafornecedorByNumencomenda",fetch=FetchType.EAGER)
     public Collection<Linhaencomendafornecedor> getLinhaencomendafornecedorsByNumencomenda() {
         return linhaencomendafornecedorsByNumencomenda;
     }
