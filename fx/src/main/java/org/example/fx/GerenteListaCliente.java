@@ -126,10 +126,6 @@ public class GerenteListaCliente implements Initializable {
     public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
-    public void clicaDefinicoesProdutos(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "GerentedefinicoesProdutos.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
     public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
