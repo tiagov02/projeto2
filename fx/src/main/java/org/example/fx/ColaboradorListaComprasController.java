@@ -94,12 +94,15 @@ public class ColaboradorListaComprasController implements Initializable {
             initialize(null,null);
         }
     }
+    public void buttonBack(javafx.event.ActionEvent event) throws IOException {
+        clicaListaCompras(event);
+    }
     public void getDetalhesCompra(javafx.event.ActionEvent event) throws IOException {
-        /*if(tableListaCompras.getSelectionModel().getSelectedItem() != null){
+        if(tableListaCompras.getSelectionModel().getSelectedItem() != null){
             EncUserTemp.getInstance().setCurrentId(tableListaCompras.getSelectionModel().getSelectedItem().getId());
-            TrocaPaineis.changePanel(event, "", "Loja Produtos Biológicos",
-                    GerenteController.class);
-        }*/
+            TrocaPaineis.changePanel(event, "ColaboradorDetalhesCompra.fxml", "Loja Produtos Biológicos",
+                    ColaboradorController.class);
+        }
     }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
