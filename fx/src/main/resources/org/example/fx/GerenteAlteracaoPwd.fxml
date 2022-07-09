@@ -13,35 +13,6 @@
 
 <AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteAtualizaPwd">
    <children>
-      <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
-         <children>
-            <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
-            <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
-            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa" />
-            <AnchorPane prefHeight="153.0" prefWidth="218.0" />
-            <AnchorPane prefHeight="33.0" prefWidth="218.0">
-               <children>
-                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
-               </children>
-            </AnchorPane>
-         </children>
-      </VBox>
       <Pane layoutX="269.0" layoutY="78.0" prefHeight="382.0" prefWidth="424.0" style="-fx-background-color: white;">
          <children>
             <TextField fx:id="lb_user" layoutX="115.0" layoutY="96.0" prefHeight="41.0" prefWidth="216.0" promptText="Utilizador" />
@@ -72,6 +43,44 @@
          </children>
       </Pane>
       <Button fx:id="buttonalterar1" layoutX="218.0" layoutY="-4.0" mnemonicParsing="false" onAction="#alterarPassword" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: transparent;" text="&lt;-VOLTAR" textFill="#663300" />
+      <VBox prefHeight="538.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
+         <children>
+            <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaotiposprodutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="TIPOS DE PRODUTOS" textFill="#fcfafa">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <AnchorPane prefHeight="103.0" prefWidth="218.0" />
+            <AnchorPane prefHeight="33.0" prefWidth="218.0">
+               <children>
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
    </children>
 
 </AnchorPane>
