@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDetalhesEncomendasController">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDetalhesCompra">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -43,14 +43,12 @@
                 <Font size="11.0" />
             </font>
         </Button>
-      <Label layoutX="269.0" layoutY="52.0" text="Morada da encomenda:" />
-      <Label layoutX="269.0" layoutY="83.0" prefHeight="18.0" prefWidth="138.0" text="Nome do cliente:" />
-      <Label layoutX="269.0" layoutY="111.0" text="Telefone do cliente:" />
-      <Label layoutX="269.0" layoutY="140.0" text="Estado da encomenda: " />
-      <Label fx:id="moradaEnc" layoutX="407.0" layoutY="52.0" />
-      <Label fx:id="nomeCliente" layoutX="379.0" layoutY="84.0" />
-      <Label fx:id="telefonecliente" layoutX="381.0" layoutY="111.0" />
-      <Label fx:id="estadoEnc" layoutX="407.0" layoutY="140.0" />
+      <Label layoutX="269.0" layoutY="52.0" text="Morada do Fornecedor" />
+      <Label layoutX="269.0" layoutY="83.0" prefHeight="18.0" prefWidth="138.0" text="Nome do fornecedor:" />
+      <Label layoutX="269.0" layoutY="111.0" text="Telefone do fornecedor:" />
+      <Label fx:id="moradaEnc" layoutX="407.0" layoutY="52.0" prefHeight="18.0" prefWidth="0.0" />
+      <Label fx:id="nomeCliente" layoutX="391.0" layoutY="84.0" prefHeight="18.0" prefWidth="30.0" />
+      <Label fx:id="telefonecliente" layoutX="395.0" layoutY="110.0" prefHeight="18.0" prefWidth="11.0" />
     </children>
 
 </AnchorPane>
