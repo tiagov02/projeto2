@@ -117,6 +117,9 @@ public class AdicionarProdutosListaCompras implements Initializable {
             table_lisrProd.getItems().add(ef);
         }
     }
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);

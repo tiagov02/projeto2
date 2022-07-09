@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ModelEncomendaFornecedor;
 import org.example.fx.ModelClasses.ModelLinhaFatura;
@@ -47,6 +48,11 @@ public class GerenteDetalhesCompra implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        colTipoProduto.setCellValueFactory(new PropertyValueFactory<>("tipoProduto"));
+        colQtd.setCellValueFactory(new PropertyValueFactory<>("qtdComprada"));
+        colProduto.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+        colPreco.setCellValueFactory(new PropertyValueFactory<>("valTotal"));
+        colNumero.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
         Encomendafornecedor ef= EncomendaFornecedorCRUD.findEncomendaFornecedor(EncUserTemp.getInstance().getCurrentId());
         String morada=ef.getFornecedorByIdfornecedor().getRua()+" , "+ef.getFornecedorByIdfornecedor().getNumporta()+" , "+
                 ef.getFornecedorByIdfornecedor().getCodpostal()+" , "+
