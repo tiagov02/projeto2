@@ -50,15 +50,16 @@
                     <p class="text-center" th:text="'Estimado(a) '+${nomecliente}+','"></p>
                     <p class="text-center" th:text="'A sua encomenda '+${numencomenda}+' foi registada com sucesso e encontra-se a ser preparada pelos nossos colaboradores.'"></p>
                     <p class="text-center" th:text="'O valor total da sua encomenda é '+${valencomenda}+'€.'"></p>
+
                     <form th:action="@{/minhasEncomendas}" method="get">
-                    <div class="p-t-30">
-                        <div class="text-center">
-                        <button type="submit">Ir para a area cliente</button>
+                        <div class="p-t-30">
+                            <div class="text-center">
+                                <button type="submit">Ir para a area cliente</button>
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </div>
-    </div>
+            </div>
         </div>
     </div>
 </section>
