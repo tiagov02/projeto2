@@ -18,11 +18,11 @@
                </font>
             </Text>
             <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Fornecedor" />
-            <TextField fx:id="nomecolab" layoutX="150.0" layoutY="105.0" />
+            <TextField fx:id="nomeforn" layoutX="150.0" layoutY="105.0" />
             <Text layoutX="17.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone " />
             <TextField fx:id="telefone" layoutX="150.0" layoutY="142.0" />
             <Text layoutX="14.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <TextField fx:id="salario" layoutX="150.0" layoutY="184.0" />
+            <TextField fx:id="email" layoutX="150.0" layoutY="185.0" />
             <Button layoutX="149.0" layoutY="435.0" mnemonicParsing="false" onAction="#adicionarColaborador" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
                <font>
                   <Font size="11.0" />
@@ -38,15 +38,15 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <TextField fx:id="numporta" layoutX="150.0" layoutY="227.0" />
+            <TextField fx:id="iban" layoutX="150.0" layoutY="227.0" />
             <Text layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN" />
             <Text layoutX="18.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rua" />
-            <TextField fx:id="rua" layoutX="150.0" layoutY="268.0" />
+            <TextField fx:id="rua" layoutX="150.0" layoutY="266.0" />
             <Text layoutX="18.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de Porta" />
-            <TextField fx:id="username" layoutX="149.0" layoutY="308.0" />
+            <TextField fx:id="numporta" layoutX="149.0" layoutY="308.0" />
             <Text layoutX="16.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo Postal" />
             <Text layoutX="16.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidade" />
-            <TextField fx:id="codpostal" layoutX="149.0" layoutY="351.0" />
+            <TextField fx:id="codpostal" layoutX="149.0" layoutY="352.0" />
             <TextField fx:id="localidade" layoutX="149.0" layoutY="391.0" />
          </children>
       </Pane>
