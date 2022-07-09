@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCliente">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteListaCliente">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -25,7 +25,8 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <AnchorPane prefHeight="203.0" prefWidth="218.0" />
+            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa" />
+            <AnchorPane prefHeight="153.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
                   <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />

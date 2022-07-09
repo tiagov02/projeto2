@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
+<AnchorPane prefHeight="537.0" prefWidth="738.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDefinicoesColaborador">
     <children>
         <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
             <children>
@@ -25,7 +25,8 @@
                   <Font name="System Bold" size="12.0" />
                </font></Button>
                 <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
-            <AnchorPane prefHeight="203.0" prefWidth="218.0" />
+            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa" />
+            <AnchorPane prefHeight="154.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
                   <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
@@ -50,7 +51,7 @@
       <Button layoutX="477.0" layoutY="18.0" mnemonicParsing="false" onAction="#pesquisarColaborador" style="-fx-background-color: rgb(102,51,0);" text="Pesquisar" textFill="WHITE" />
       <Button layoutX="567.0" layoutY="18.0" mnemonicParsing="false" onAction="#adicionarColaborador" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE" />
       <Button fx:id="btn_eliminarCliente" layoutX="655.0" layoutY="488.0" mnemonicParsing="false" onAction="#deleteColaborador" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: rgb(102,51,0);" text="ELIMINAR" textFill="WHITE" />
-      <Button fx:id="btn_alteraPwd" layoutX="238.0" layoutY="488.0" mnemonicParsing="false" onAction="#alteraPwd" prefHeight="35.0" prefWidth="122.0" style="-fx-background-color: rgb(102,51,0);" text="Altera password" textFill="WHITE" />
+      <Button fx:id="btn_alteraPwd" layoutX="238.0" layoutY="488.0" mnemonicParsing="false" onAction="#alteraPwd" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: rgb(102,51,0);" text="ALTERAR PASSWORD" textFill="WHITE" />
     </children>
 
 </AnchorPane>

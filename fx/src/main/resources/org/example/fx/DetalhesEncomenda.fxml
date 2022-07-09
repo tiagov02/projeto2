@@ -8,49 +8,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDetalhesEncomendasController">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.GerenteDetalhesEncomendasController">
     <children>
-        <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
-            <children>
-                <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
-                    <font>
-                        <Font size="13.0" />
-                    </font></Button>
-                <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font></Button>
-                <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
-                <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5" />
-                <AnchorPane prefHeight="302.0" prefWidth="204.0" />
-                <AnchorPane prefHeight="33.0" prefWidth="218.0">
-                    <children>
-                        <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
-                    </children>
-                </AnchorPane>
-            </children></VBox>
-        <TableView fx:id="tableListaCompras" layoutX="229.0" layoutY="207.0" prefHeight="271.0" prefWidth="499.0">
+        <TableView fx:id="tableListaCompras" layoutX="217.0" layoutY="172.0" prefHeight="367.0" prefWidth="538.0">
             <columns>
                 <TableColumn fx:id="colNumero" prefWidth="42.0" text="#" />
-                <TableColumn fx:id="colProduto" prefWidth="124.0" text="Produto" />
-                <TableColumn fx:id="colTipoProduto" prefWidth="114.39999389648438" text="TipoProduto" />
-                <TableColumn fx:id="colQtd" prefWidth="100.79998779296875" text="Qtd comprada" />
-            <TableColumn fx:id="colPreco" prefWidth="121.60003662109375" text="Preço" />
+                <TableColumn fx:id="colProduto" prefWidth="198.0" text="Produto" />
+                <TableColumn fx:id="colTipoProduto" prefWidth="122.5" text="TipoProduto" />
+                <TableColumn fx:id="colQtd" prefWidth="90.0" text="Qtd comprada" />
+            <TableColumn fx:id="colPreco" prefWidth="83.5" text="Preço" />
             </columns>
         </TableView>
-        <Button fx:id="back" layoutX="229.0" layoutY="500.0" mnemonicParsing="false" onAction="#buttonBack" style="-fx-background-color: rgb(102,51,0);" text="VOLTAR" textFill="WHITE">
+        <Button fx:id="back" layoutX="218.0" layoutY="4.0" mnemonicParsing="false" onAction="#buttonBack" style="-fx-background-color: transparent;" text="&lt;- VOLTAR" textFill="#663300">
             <font>
                 <Font size="11.0" />
             </font>
         </Button>
-      <Label layoutX="269.0" layoutY="52.0" text="Morada da encomenda:" />
-      <Label layoutX="269.0" layoutY="83.0" prefHeight="18.0" prefWidth="138.0" text="Nome do cliente:" />
+      <Label layoutX="268.0" layoutY="44.0" text="Morada da encomenda:" />
+      <Label layoutX="269.0" layoutY="75.0" prefHeight="18.0" prefWidth="138.0" text="Nome do cliente:" />
       <Label layoutX="269.0" layoutY="111.0" text="Telefone do cliente:" />
       <Label layoutX="269.0" layoutY="140.0" text="Estado da encomenda: " />
-      <Label fx:id="moradaEnc" layoutX="407.0" layoutY="52.0" />
-      <Label fx:id="nomeCliente" layoutX="379.0" layoutY="84.0" />
-      <Label fx:id="telefonecliente" layoutX="381.0" layoutY="111.0" />
-      <Label fx:id="estadoEnc" layoutX="407.0" layoutY="140.0" />
+      <Label fx:id="moradaEnc" layoutX="413.0" layoutY="44.0" prefHeight="17.0" prefWidth="86.0" />
+      <Label fx:id="nomeCliente" layoutX="383.0" layoutY="76.0" prefHeight="17.0" prefWidth="48.0" />
+      <Label fx:id="telefonecliente" layoutX="389.0" layoutY="111.0" prefHeight="17.0" prefWidth="37.0" />
+      <Label fx:id="estadoEnc" layoutX="407.0" layoutY="140.0" prefHeight="17.0" prefWidth="56.0" />
+      <VBox prefHeight="537.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
+         <children>
+            <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa" />
+            <AnchorPane prefHeight="153.0" prefWidth="218.0" />
+            <AnchorPane prefHeight="33.0" prefWidth="218.0">
+               <children>
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
     </children>
 
 </AnchorPane>
