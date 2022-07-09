@@ -44,8 +44,8 @@
             <TableColumn fx:id="colNumero" prefWidth="30.0" text="#" />
             <TableColumn fx:id="colFornecedor" prefWidth="110.0" text="Fornecedor" />
             <TableColumn fx:id="colMorada" prefWidth="188.5" text="Morada" />
-            <TableColumn fx:id="colValTotal" prefWidth="132.5" text="Email" />
-            <TableColumn prefWidth="76.0" text="Telefone" />
+            <TableColumn fx:id="colEmail" prefWidth="132.5" text="Email" />
+            <TableColumn fx:id="colTelefone" prefWidth="76.0" text="Telefone" />
          </columns>
       </TableView>
       <Button fx:id="buttonaddproduto" layoutX="588.0" layoutY="22.0" mnemonicParsing="false" onAction="#clicaadicionarProduto" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR COLABORADOR" textFill="WHITE">
