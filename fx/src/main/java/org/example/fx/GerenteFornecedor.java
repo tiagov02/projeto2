@@ -2,16 +2,21 @@ package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
 import com.example.bd.CRUD.FornecedorCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Colaborador;
 import com.example.bd.Entity.Fornecedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DefaultStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
@@ -43,9 +48,63 @@ public class GerenteFornecedor implements Initializable {
         return fornecedors;
     }
 
+    public void editCamposFornecedor(){
+        colFornecedor.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colFornecedor.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Fornecedor, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Fornecedor, String> fornecedorStringCellEditEvent) {
+                Fornecedor f = fornecedorStringCellEditEvent.getRowValue();
+                f.setNome(fornecedorStringCellEditEvent.getNewValue());
+                try {
+                    FornecedorCRUD.editFornecedor(f);
+                } catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
+                }
+            }
+        });
+        colEmail.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colEmail.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Fornecedor, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Fornecedor, String> fornecedorStringCellEditEvent) {
+                Fornecedor f = fornecedorStringCellEditEvent.getRowValue();
+                f.setEmail(fornecedorStringCellEditEvent.getNewValue());
+                try {
+                    FornecedorCRUD.editFornecedor(f);
+                } catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
+                }
+            }
+        });
+
+        colTelefone.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        colTelefone.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Fornecedor, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Fornecedor, String> fornecedorStringCellEditEvent) {
+                Fornecedor f = fornecedorStringCellEditEvent.getRowValue();
+                f.setNumtelefone(fornecedorStringCellEditEvent.getNewValue());
+                try {
+                    FornecedorCRUD.editFornecedor(f);
+                } catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
+                }
+            }
+        });
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //tableFornecedores.setEditable(true);
+        tableFornecedores.setEditable(true);
+        editCamposFornecedor();
         for (Fornecedor f : FornecedorCRUD.findFornecedores()){
             colNumero.setCellValueFactory(new PropertyValueFactory<>("idfornecedor"));
             colFornecedor.setCellValueFactory(new PropertyValueFactory<>("nome"));
