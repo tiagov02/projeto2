@@ -113,7 +113,7 @@ public class AdicionarColaborador {
             localidade.getText().equals(CodPostaisCRUD.findCodPostal(codpostal.getText()).getLocalidade());
         }
         ColaboradorCRUD.createColaborador(c1);
-        TrocaPaineis.changePanel(event,"GerentedefinicoesColaborador.fxml","Loja Prdutos Biológicos",GerenteDefinicoesColaborador.class);
+        TrocaPaineis.changePanel(event,"GerentedefinicoesColaborador.fxml","Loja Produtos Biológicos",GerenteDefinicoesColaborador.class);
 
     }
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
