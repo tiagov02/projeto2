@@ -87,6 +87,7 @@ public class GerenteListaEncomendas implements Initializable{
                 Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
                 lista.setEstadoFatura(e.getDescricao());
             } catch (NoResultException ex){
+                lista.setEstadoFatura("Erro! não existe nenhum estado para esta fatura!");
             }
             tablelistaencomenda.getItems().add(lista);
         }
