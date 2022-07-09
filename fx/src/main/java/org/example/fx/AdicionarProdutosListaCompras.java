@@ -91,6 +91,13 @@ public class AdicionarProdutosListaCompras implements Initializable {
         clicaListaCompras(event);
     }
 
+    public void deleteLinhaEncomenda(javafx.event.ActionEvent event){
+        if(table_lisrProd.getSelectionModel().getSelectedItem() != null){
+            table_lisrProd.getItems().remove(table_lisrProd.getSelectionModel().getSelectedItem());
+            initialize(null,null);
+        }
+    }
+
     public void addLinhasEncomenda(javafx.event.ActionEvent event){
         int qtd=0;
         float valTotal=0;
