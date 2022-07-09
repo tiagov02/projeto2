@@ -116,6 +116,9 @@ public class AdicionarColaborador {
         TrocaPaineis.changePanel(event,"GerentedefinicoesColaborador.fxml","Loja Prdutos Biológicos",GerenteDefinicoesColaborador.class);
 
     }
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
 
     public void clicaVoltar(javafx.event.ActionEvent event) throws IOException {
