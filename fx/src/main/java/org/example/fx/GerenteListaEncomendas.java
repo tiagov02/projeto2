@@ -99,6 +99,7 @@ public class GerenteListaEncomendas implements Initializable{
         int idcli=0;
         if (lbl_cliente.getText().equals("")){
             tablelistaencomenda.setItems(FXCollections.observableArrayList());
+            comboalteraestado.setItems(FXCollections.observableArrayList());
             initialize(null, null);
             return;
         }
@@ -108,6 +109,7 @@ public class GerenteListaEncomendas implements Initializable{
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Erro! Não existe nenhuma encomenda para o cliente referido!!");
             dialogoAviso.showAndWait();
+            comboalteraestado.setItems(FXCollections.observableArrayList());
             initialize(null,null);
         }
         for(Fatura fat:result){
