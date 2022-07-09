@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarColaborador">
+   <children>
+      <Pane layoutX="291.0" layoutY="33.0" prefHeight="474.0" prefWidth="361.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="19.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADIÇÃO DE COLABORADORES">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Fornecedor" />
+            <TextField fx:id="nomecolab" layoutX="150.0" layoutY="105.0" />
+            <Text layoutX="17.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone " />
+            <TextField fx:id="telefone" layoutX="150.0" layoutY="142.0" />
+            <Text layoutX="14.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <TextField fx:id="salario" layoutX="150.0" layoutY="184.0" />
+            <Button layoutX="149.0" layoutY="435.0" mnemonicParsing="false" onAction="#adicionarColaborador" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button layoutX="24.0" layoutY="435.0" mnemonicParsing="false" onAction="#limpar" prefHeight="28.0" prefWidth="60.0" style="-fx-background-color: rgb(102,51,0);" text="LIMPAR" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clicaVoltar" style="-fx-background-color: WHITE;" text="&lt;-VOLTAR" textFill="#663300">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <TextField fx:id="numporta" layoutX="150.0" layoutY="227.0" />
+            <Text layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN" />
+            <Text layoutX="18.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rua" />
+            <TextField fx:id="rua" layoutX="150.0" layoutY="268.0" />
+            <Text layoutX="18.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de Porta" />
+            <TextField fx:id="username" layoutX="149.0" layoutY="308.0" />
+            <Text layoutX="16.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo Postal" />
+            <Text layoutX="16.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localidade" />
+            <TextField fx:id="codpostal" layoutX="149.0" layoutY="351.0" />
+            <TextField fx:id="localidade" layoutX="149.0" layoutY="391.0" />
+         </children>
+      </Pane>
+      <VBox prefHeight="538.0" prefWidth="218.0" style="-fx-background-color: rgb(102,51,0);">
+         <children>
+            <Button fx:id="botaoPaginaPrincipal" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaPaginaPrincipal" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="PAGINA PRINCIPAL" textFill="#fffefe">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
+            <Button fx:id="botaoAtualizaStocks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaAtualizaStockProdutos" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="ATUALIZAR PRODUTOS" textFill="#f5f5f5">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE CLIENTES" textFill="#fcfafa" />
+            <Button fx:id="botaoDefinicoesClientes1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇOES DE FORNECEDORES" textFill="#fcfafa">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <AnchorPane prefHeight="153.0" prefWidth="218.0" />
+            <AnchorPane prefHeight="33.0" prefWidth="218.0">
+               <children>
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
