@@ -112,6 +112,9 @@ public class GerenteController implements Initializable {
     public void clicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
+    public void clicaDefinicoesFornecedor(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteFornecedores.fxml","Listagem de encomendas",GerenteController.class);
+    }
 
    @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
