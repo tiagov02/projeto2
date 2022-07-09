@@ -104,9 +104,6 @@ public class GerenteController implements Initializable {
     public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
-    public void clicaDefinicoesProdutos(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "GerentedefinicoesProdutos.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
 
     public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
@@ -115,19 +112,6 @@ public class GerenteController implements Initializable {
     public void clicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
-
-    public void listaEncomendas(javafx.event.ActionEvent event){
-        //dfgdfg
-    }
-
-    public Float getValorFatura(){
-         float total = 0;
-        for(Fatura f: FaturaCRUD.findTodasFaturas()){
-            total+=f.getValorfatura().floatValue();
-        }
-        return total;
-    }
-
 
    @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
