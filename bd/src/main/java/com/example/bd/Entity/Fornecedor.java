@@ -3,7 +3,8 @@ package com.example.bd.Entity;
 import javax.persistence.*;
 import java.util.Collection;
 
-@NamedQuery(name="Fornecedores.FindByNome",query="select f from Fornecedor f WHERE f.nome=:nome")
+@NamedQuery(name="Fornecedores.FindByDados",
+        query="select f from Fornecedor f WHERE f.nome like CONCAT('%',:nome,'%') OR f.numtelefone=:telef OR f.email=:email ")
 @Entity
 public class Fornecedor {
     private int idfornecedor;

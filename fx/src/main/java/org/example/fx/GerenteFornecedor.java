@@ -10,10 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DefaultStringConverter;
@@ -37,6 +34,8 @@ public class GerenteFornecedor implements Initializable {
     private TableColumn<Fornecedor, String> colTelefone;
     @FXML
     private TableView<Fornecedor> tableFornecedores;
+    @FXML
+    private TextField procuraforn;
 
 
 
@@ -98,6 +97,9 @@ public class GerenteFornecedor implements Initializable {
                 }
             }
         });
+    }
+
+    public void pesquisaColab(javafx.event.ActionEvent event){
 
     }
 
