@@ -134,7 +134,7 @@ public class AdicionarClienteController implements Initializable {
         dialogoAviso.setTitle("SUCESSO!!!");
         dialogoAviso.setHeaderText("INTRODUZIU UM CLIENTE COM SUCESSO");
         dialogoAviso.showAndWait();
-        TrocaPaineis.changePanel(event,"GerentedefinicoesCliente.fxml","Loja Produtos Biológicos",GerenteListaCliente.class);
+        TrocaPaineis.changePanel(event,"GerentedefinicoesClientes.fxml","Loja Produtos Biológicos",GerenteListaCliente.class);
     }
 
     private int getIdtipocliente(String tipoCli){
