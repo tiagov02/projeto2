@@ -8,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ModelEncomendaFornecedor;
 import org.example.fx.ModelClasses.ModelLinhaFatura;
 import org.example.fx.SingleInstance.EncUserTemp;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -63,5 +65,9 @@ public class GerenteDetalhesCompra implements Initializable {
             item.setValTotal(lf.getValor().floatValue());
             tableListaCompras.getItems().add(item);
         }
+    }
+    public void buttonBack(javafx.event.ActionEvent event) throws IOException {
+        EncUserTemp.getInstance().setCurrentId(0);
+        TrocaPaineis.changePanel(event, "GerenteListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 }

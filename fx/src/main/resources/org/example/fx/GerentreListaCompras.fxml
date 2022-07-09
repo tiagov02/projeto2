@@ -52,7 +52,7 @@
             <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="buttonDetalhes" layoutX="634.0" layoutY="489.0" mnemonicParsing="false" onAction="#removerCompra" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: rgb(102,51,0);" text="LISTAR DETALHES" textFill="WHITE">
+      <Button fx:id="buttonDetalhes" layoutX="634.0" layoutY="489.0" mnemonicParsing="false" onAction="#getDetalhesCompra" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: rgb(102,51,0);" text="LISTAR DETALHES" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>

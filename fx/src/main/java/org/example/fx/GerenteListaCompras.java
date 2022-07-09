@@ -13,6 +13,7 @@ import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ListaComprasClass;
 import org.example.fx.ModelClasses.ModelEncomendaFornecedor;
+import org.example.fx.SingleInstance.EncUserTemp;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,58 +65,18 @@ public class GerenteListaCompras implements Initializable {
         }
     }
 
+    /**
+     * FAZER PROCURAR PRODUTO
+     * @param event
+     * @throws IOException
+     */
 
-    /*public void procurarProduto(){
-        boolean isNumber=false;
-        int count=0;
-        tableListaCompras.setItems(FXCollections.observableArrayList());
-        if (procuraproduto.getText().equals("")){
-            initialize(null, null);
-            return;
+    public void getDetalhesCompra(javafx.event.ActionEvent event) throws IOException {
+        if(tableListaCompras.getSelectionModel().getSelectedItem() != null){
+            EncUserTemp.getInstance().setCurrentId(tableListaCompras.getSelectionModel().getSelectedItem().getId());
+            TrocaPaineis.changePanel(event, "DetalhesEncomenda.fxml", "Loja Produtos Biológicos", GerenteController.class);
         }
-        String procurar=this.procuraproduto.getText().toLowerCase(Locale.ROOT);
-        int num=0;
-        try{
-            num=Integer.parseInt(this.procuraproduto.getText());
-            isNumber=true;
-        }
-        catch(NumberFormatException ex){
-            isNumber=false;
-        }
-        if(isNumber){
-            List<Linhaencomendafornecedor> linhasproc=LinhaEncomendaFornecedorCRUD.pesquisaIdProd(num);
-            for(Linhaencomendafornecedor linha:linhasproc){
-                count++;
-                ListaComprasClass listaComprasClass = new ListaComprasClass();
-                listaComprasClass.setId(linha.getNumproduto());
-                listaComprasClass.setProduto(linha.getProdutoByNumproduto().getNome());
-                listaComprasClass.setTipoProduto(linha.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
-                listaComprasClass.setQtdExistente(linha.getProdutoByNumproduto().getQuantidadestock());
-                listaComprasClass.setQtdComprar(linha.getQuantidade());
-                tableListaCompras.getItems().add(listaComprasClass);
-            }
-        }
-        else{
-            List<Linhaencomendafornecedor> linhasproc=LinhaEncomendaFornecedorCRUD.pesquisa(procurar);
-            for(Linhaencomendafornecedor linha:linhasproc){
-                count++;
-                ListaComprasClass listaComprasClass = new ListaComprasClass();
-                listaComprasClass.setId(linha.getNumproduto());
-                listaComprasClass.setProduto(linha.getProdutoByNumproduto().getNome());
-                listaComprasClass.setTipoProduto(linha.getProdutoByNumproduto().getTipoprodutoByIdtipoproduto().getSeccao());
-                listaComprasClass.setQtdExistente(linha.getProdutoByNumproduto().getQuantidadestock());
-                listaComprasClass.setQtdComprar(linha.getQuantidade());
-                tableListaCompras.getItems().add(listaComprasClass);
-            }
-        }
-        if (count==0){
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!");
-            dialogoAviso.setHeaderText("Erro! Não existem produtos na lista de compras com os critérios selecionados");
-            dialogoAviso.showAndWait();
-        }
-    }*/
-
+    }
 
     public void limparButton(){
         procuraproduto.setText("");
