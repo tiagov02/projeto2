@@ -15,6 +15,7 @@ import org.example.fx.Logica.TrocaPaineis;
 import org.example.fx.ModelClasses.ModelLinhaFatura;
 import org.example.fx.SingleInstance.EncUserTemp;
 
+import javax.persistence.NoResultException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,8 +56,13 @@ public class GerenteDetalhesEncomendasController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int idFatura= EncUserTemp.getInstance().getCurrentId();
         Fatura f= FaturaCRUD.findFatura(idFatura);
-        System.out.println("Estou aqui");
-        Estado est= EstadoFaturaCRUD.getUltimoEstadoFatura(idFatura);
+        Estado est;
+        try{
+            est = EstadoFaturaCRUD.getUltimoEstadoFatura(idFatura);
+            estadoEnc.setText(est.getDescricao());
+        }catch(NoResultException ex){
+            estadoEnc.setText("Erro! Não existe nenhum estado para esta fatura");
+        }
         String morada= f.getMoradaentregaByIdentrega().getRua()+" , "+
                 f.getMoradaentregaByIdentrega().getNumporta()+" , "+f.getMoradaentregaByIdentrega().getCodpostal()+" , "+
                 f.getMoradaentregaByIdentrega().getCodpostaisByCodpostal().getLocalidade();
@@ -75,7 +81,6 @@ public class GerenteDetalhesEncomendasController implements Initializable {
             ml.setValTotal(lf.getPreco().floatValue());
             tableListaCompras.getItems().add(ml);
         }
-        estadoEnc.setText(est.getDescricao());
         moradaEnc.setText(morada);
         nomeCliente.setText(f.getClienteByIdcliente().getNome());
         telefonecliente.setText(f.getClienteByIdcliente().getNome());
