@@ -85,4 +85,35 @@ public class GerenteDetalhesEncomendasController implements Initializable {
         EncUserTemp.getInstance().setCurrentId(0);
         TrocaPaineis.changePanel(event, "GerenteListarEncomendas.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
+
+    public void ClickAddProduto(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event,"AdicionarProduto.fxml","Loja Produtos Biologicos",GerenteAdicionarProduto.class);
+    }
+    public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerenteAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesColaborador(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void clicaDefinicoesClientes(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "GerentedefinicoesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
+    }
 }
