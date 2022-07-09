@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdicionarColaborador">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdiconarFornecedor">
    <children>
       <Pane layoutX="291.0" layoutY="33.0" prefHeight="474.0" prefWidth="361.0" style="-fx-background-color: white;">
          <children>
@@ -23,7 +23,7 @@
             <TextField fx:id="telefone" layoutX="150.0" layoutY="142.0" />
             <Text layoutX="14.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
             <TextField fx:id="email" layoutX="150.0" layoutY="185.0" />
-            <Button layoutX="149.0" layoutY="435.0" mnemonicParsing="false" onAction="#adicionarColaborador" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
+            <Button layoutX="149.0" layoutY="435.0" mnemonicParsing="false" onAction="#adicionarFornecedor" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
@@ -77,7 +77,7 @@
             <AnchorPane prefHeight="153.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

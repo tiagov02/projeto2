@@ -57,6 +57,9 @@ public class GerenteFornecedor implements Initializable {
     }
 
 
+    public void adicionarFornecedor(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "AdicionarFornecedor.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);

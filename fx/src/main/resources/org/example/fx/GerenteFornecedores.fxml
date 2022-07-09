@@ -48,7 +48,7 @@
             <TableColumn fx:id="colTelefone" prefWidth="76.0" text="Telefone" />
          </columns>
       </TableView>
-      <Button fx:id="buttonaddproduto" layoutX="588.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
+      <Button fx:id="buttonaddproduto" layoutX="588.0" layoutY="22.0" mnemonicParsing="false" onAction="#adicionarFornecedor" style="-fx-background-color: rgb(102,51,0);" text="ADICIONAR FORNECEDOR" textFill="WHITE">
          <font>
             <Font size="11.0" />
          </font>
