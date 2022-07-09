@@ -66,7 +66,32 @@ public class GerenteListaCompras implements Initializable {
     }
 
     public void procurarProduto(javafx.event.ActionEvent event){
-
+        int cont=0;
+        if(procuraproduto.getText() != null){
+            tableListaCompras.setItems(FXCollections.observableArrayList());
+            List<Encomendafornecedor> result=EncomendaFornecedorCRUD.getByFornecedor(procuraproduto.getText());
+            for(Encomendafornecedor ef:result){
+                cont++;
+                ModelEncomendaFornecedor enc=new ModelEncomendaFornecedor();
+                enc.setId(ef.getNumencomenda());
+                enc.setNomeFornecedor(ef.getFornecedorByIdfornecedor().getNome());
+                enc.setPrecoTotal(ef.getValortotal().floatValue());
+                String morada=ef.getFornecedorByIdfornecedor().getRua()+" , "+ef.getFornecedorByIdfornecedor().getNumporta()+
+                        " , "+ef.getFornecedorByIdfornecedor().getCodpostal()+" , "
+                        +ef.getFornecedorByIdfornecedor().getCodpostaisByCodpostal().getLocalidade();
+                enc.setMorada(morada);
+                tableListaCompras.getItems().add(enc);
+            }
+            if(cont==0){
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!!");
+                dialogoAviso.setHeaderText("Erro! Não existe nenhum fornededor com estes dados!");
+                dialogoAviso.showAndWait();
+                initialize(null,null);
+            }
+        }else{
+            initialize(null,null);
+        }
     }
 
     public void getDetalhesCompra(javafx.event.ActionEvent event) throws IOException {
