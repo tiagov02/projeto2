@@ -96,39 +96,30 @@ public class GerenteListaEncomendas implements Initializable{
     public void pesquisa(javafx.event.ActionEvent event){
         tablelistaencomenda.setItems(FXCollections.observableArrayList());
         boolean isNumber=false;
-        int cont=0;
         int idcli=0;
         if (lbl_cliente.getText().equals("")){
+            tablelistaencomenda.setItems(FXCollections.observableArrayList());
             initialize(null, null);
             return;
         }
-        try{
-            idcli=Integer.parseInt(lbl_cliente.getText());
-            isNumber=true;
-        }
-        catch (NumberFormatException ex){
-            isNumber=false;
-        }
-        if(!isNumber){
-            List<Fatura> result=FaturaCRUD.findByTelefoneNomeCli(lbl_cliente.getText(),lbl_cliente.getText());
-            for(Fatura fat:result){
-                ListaEncomendas lista = new ListaEncomendas();
-                lista.setNumFatura(fat.getNumfatura());
-                lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
-                lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
-                lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
-                lista.setValorTotal(fat.getValorfatura().floatValue());
-                Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
-                lista.setEstadoFatura(e.getDescricao());
-            }
-
-        }
-
-        if(cont==0){
+        List<Fatura> result=FaturaCRUD.findByTelefoneNomeCli(lbl_cliente.getText(),lbl_cliente.getText());
+        if(result.size() == 0){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!!");
             dialogoAviso.setHeaderText("Erro! Não existe nenhuma encomenda para o cliente referido!!");
             dialogoAviso.showAndWait();
+            initialize(null,null);
+        }
+        for(Fatura fat:result){
+            ListaEncomendas lista = new ListaEncomendas();
+            lista.setNumFatura(fat.getNumfatura());
+            lista.setNomeCliente(fat.getClienteByIdcliente().getNome());
+            lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
+            lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
+            lista.setValorTotal(fat.getValorfatura().floatValue());
+            Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+            lista.setEstadoFatura(e.getDescricao());
+            tablelistaencomenda.getItems().add(lista);
         }
     }
 
