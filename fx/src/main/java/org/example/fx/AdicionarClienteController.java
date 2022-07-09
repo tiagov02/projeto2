@@ -184,4 +184,8 @@ public class AdicionarClienteController implements Initializable {
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
+
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 }
