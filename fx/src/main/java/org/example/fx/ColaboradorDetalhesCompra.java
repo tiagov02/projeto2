@@ -89,4 +89,8 @@ public class ColaboradorDetalhesCompra implements Initializable {
     public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
     }
+
+    public void buttonBack(javafx.event.ActionEvent event) throws IOException {
+        clicaListaCompras(event);
+    }
 }
