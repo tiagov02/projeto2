@@ -87,7 +87,7 @@ public class GerenteDetalhesEncomendasController implements Initializable {
 
     }
     public void buttonBack(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event, "GerentreListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "GerenteListarEncomendas.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void ClickAddProduto(javafx.event.ActionEvent event) throws IOException{

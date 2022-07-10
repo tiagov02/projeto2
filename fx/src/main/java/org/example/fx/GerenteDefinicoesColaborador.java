@@ -22,6 +22,7 @@ import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.SingleInstance.EncUserTemp;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -178,7 +179,10 @@ public class GerenteDefinicoesColaborador implements Initializable {
     }
 
      public void alteraPwd(javafx.event.ActionEvent event) throws IOException {
-         TrocaPaineis.changePanel(event, "GerenteAlteracaoPwd.fxml", "Loja Produtos Biológicos", GerenteAtualizaPwd.class);
+        if(tableColaborador.getSelectionModel().getSelectedItem() != null){
+            EncUserTemp.getInstance().setCurrentId(tableColaborador.getSelectionModel().getSelectedItem().getIdcolaborador());
+            TrocaPaineis.changePanel(event, "GerenteAlteracaoPwd.fxml", "Loja Produtos Biológicos", GerenteAtualizaPwd.class);
+        }
      }
 
     @Override

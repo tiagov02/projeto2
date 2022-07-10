@@ -1,24 +1,28 @@
 package org.example.fx;
 
 import com.example.bd.CRUD.ColaboradorCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Encrypt.Encriptacao;
 import com.example.bd.Entity.Colaborador;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.SingleInstance.EncUserTemp;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class GerenteAtualizaPwd {
+public class GerenteAtualizaPwd implements Initializable {
     @FXML
     private PasswordField lb_pwd;
-    @FXML
-    private TextField lb_user;
+
     @FXML
     private PasswordField lb_pwd1;
+
+    @FXML
+    private Label nomeUserLabel;
     @FXML
     private Button buttonalterar;
     @FXML
@@ -26,34 +30,46 @@ public class GerenteAtualizaPwd {
     @FXML
     private Button buttonvoltar;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Colaborador c= ColaboradorCRUD.findColaboradores(EncUserTemp.getInstance().getCurrentId());
+        nomeUserLabel.setText(c.getUsername());
+    }
     public void limparDados(){
         lb_pwd.setText("");
         lb_pwd1.setText("");
-        lb_user.setText("");
     }
 
     public void alterarPassword(){
-        int cont=0;
-        Colaborador col=null;
-        for (Colaborador c : ColaboradorCRUD.findTodosColaboradores()){
-            if(this.lb_pwd.getText().equals(c.getUsername())){
-                cont++;
-                col=c;
+        Colaborador c= ColaboradorCRUD.findColaboradores(EncUserTemp.getInstance().getCurrentId());
+        String pwd="";
+        if(lb_pwd.getText().equals(lb_pwd1.getText())){
+            try{
+               pwd = Encriptacao.encript(lb_pwd.getText());
+            } catch (Exception e) {
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!");
+                dialogoAviso.setHeaderText("Não foi possível alterar pf tente mais tarde!!");
+                dialogoAviso.showAndWait();
+                return;
             }
-        }
-        if(cont==0){
-            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-            dialogoAviso.setTitle("ERRO!");
-            dialogoAviso.setHeaderText("Esse user não existe!!");
+            c.setPassword(pwd);
+            try {
+                ColaboradorCRUD.editColaborador(c);
+            } catch (IdNaoEncontradoException e) {
+                Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                dialogoAviso.setTitle("ERRO!");
+                dialogoAviso.setHeaderText("Não foi possível alterar pf tente mais tarde!!");
+                dialogoAviso.showAndWait();
+            }
+            Alert dialogoAviso = new Alert(Alert.AlertType.INFORMATION);
+            dialogoAviso.setTitle("SUCESSO!");
+            dialogoAviso.setHeaderText("Alterou a password do colaborador: "+c.getUsername()+" com sucesso!");
             dialogoAviso.showAndWait();
-        }
-        try {
-            col.setPassword(Encriptacao.encript(lb_pwd.getText()));
-        }
-        catch (Exception ex){
+        }else{
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!");
-            dialogoAviso.setHeaderText("Erro no sistema!!Pf tente mais tarde ou contacte os Serviços");
+            dialogoAviso.setHeaderText("A password deverá ser igual nas duas labels");
             dialogoAviso.showAndWait();
         }
     }
