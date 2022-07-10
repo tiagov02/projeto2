@@ -169,28 +169,25 @@ public class ColaboradorListaEncomendasController implements Initializable {
 
         }
     }
-
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorListaComprasController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
-    public void clicaListaEncomendas(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
+    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"ColaboradorListaEncomendas.fxml","Listagem de encomendas",GerenteController.class);
     }
 
-    public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
-    public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "AdicionarProdutoListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
+
 
 
 }

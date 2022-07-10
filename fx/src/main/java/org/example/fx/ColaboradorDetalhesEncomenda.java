@@ -101,7 +101,14 @@ public class ColaboradorDetalhesEncomenda implements Initializable {
         TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
     }
 
-    public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
+    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
+    }
+    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
+    }
+
+    public void buttonBack(javafx.event.ActionEvent event) throws IOException {
+        clicaListaEncomendas(event);
     }
 }
