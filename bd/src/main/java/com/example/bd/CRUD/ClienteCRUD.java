@@ -109,4 +109,10 @@ public class ClienteCRUD implements Serializable {
         return (em.createNamedQuery("Cliente.Login",Cliente.class).
                 setParameter("user",user).setParameter("pass",pwd).getSingleResult());
     }
+
+    public static List<Cliente> findCliByData(String data){
+        EntityManager em=getEntityManager();
+        return em.createNamedQuery("Cliente.FindTelefOuNomeOuUser",Cliente.class).setParameter("nome",data).
+                setParameter("telef",data).setParameter("user",data).getResultList();
+    }
 }

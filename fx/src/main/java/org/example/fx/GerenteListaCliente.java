@@ -78,27 +78,24 @@ public class GerenteListaCliente implements Initializable {
             initialize(null, null);
             return;
         }
-        for(Cliente cli:ClienteCRUD.findClientesTodos()){
-            if(this.lbl_cli.getText().equals(Integer.toString(cli.getIdcliente())) ||
-                    this.lbl_cli.getText().toLowerCase().equals(cli.getNome().toLowerCase()) ||
-                    this.lbl_cli.getText().equals(cli.getTelefone())){
-                cont++;
-                ClienteTipo clienteTipo = new ClienteTipo();
-                clienteTipo.setNumCliente(cli.getIdcliente());
-                clienteTipo.setNomeCliente(cli.getNome());
-                clienteTipo.setTipoCliente(cli.getTipoclienteByIdtipocliente().getTipocliente());
-                clienteTipo.setTelefone(cli.getTelefone());
-                clienteTipo.setMorada(cli.getRua()+","+cli.getNumporta()+" , "+
-                        cli.getCodpostaisByCodpostal().getCodpostal() + " , "
-                        + cli.getCodpostaisByCodpostal().getLocalidade());
-                tableClientes.getItems().add(clienteTipo);
-            }
-        }
-        if(cont==0){
+        List<Cliente> clis=ClienteCRUD.findCliByData(lbl_cli.getText());
+        if(clis.size() == 0){
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!");
             dialogoAviso.setHeaderText("Erro! Não existem clientes com os critérios de pesquisa selecionados!");
             dialogoAviso.showAndWait();
+            initialize(null,null);
+        }
+        for(Cliente cli: clis){
+            ClienteTipo clienteTipo = new ClienteTipo();
+            clienteTipo.setNumCliente(cli.getIdcliente());
+            clienteTipo.setNomeCliente(cli.getNome());
+            clienteTipo.setTipoCliente(cli.getTipoclienteByIdtipocliente().getTipocliente());
+            clienteTipo.setTelefone(cli.getTelefone());
+            clienteTipo.setMorada(cli.getRua()+","+cli.getNumporta()+" , "+
+                    cli.getCodpostaisByCodpostal().getCodpostal() + " , "
+                    + cli.getCodpostaisByCodpostal().getLocalidade());
+            tableClientes.getItems().add(clienteTipo);
         }
     }
 

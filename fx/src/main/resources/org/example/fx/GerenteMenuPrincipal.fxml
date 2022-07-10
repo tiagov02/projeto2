@@ -135,11 +135,6 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button fx:id="button_cliente1" layoutX="34.0" layoutY="60.0" mnemonicParsing="false" onAction="#clicaCliente1" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="button_cliente2" layoutX="34.0" layoutY="91.0" mnemonicParsing="false" onAction="#clicaCliente2" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparenttransparent;" />
-            <Button fx:id="button_cliente3" layoutX="35.0" layoutY="122.0" mnemonicParsing="false" onAction="#clicaCliente3" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparenttransparent;" />
-            <Button fx:id="button_cliente4" layoutX="34.0" layoutY="155.0" mnemonicParsing="false" onAction="#clicaCliente4" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparenttransparent;" />
-            <Button fx:id="button_cliente5" layoutX="34.0" layoutY="187.0" mnemonicParsing="false" onAction="#clicaCliente5" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparenttransparent;" />
          </children>
       </Pane>
       <Button layoutX="44.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="197.0" style="-fx-background-color: transparent;" />
@@ -176,7 +171,7 @@
             <AnchorPane prefHeight="103.0" prefWidth="218.0" />
             <AnchorPane prefHeight="33.0" prefWidth="218.0">
                <children>
-                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
+                  <Button fx:id="buttonSair" layoutX="111.0" layoutY="1.0" mnemonicParsing="false" onAction="#clicaLogout" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: rgb(255,0,0);" text="SAIR" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

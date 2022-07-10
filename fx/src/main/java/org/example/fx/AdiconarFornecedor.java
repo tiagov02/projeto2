@@ -123,5 +123,7 @@ public class AdiconarFornecedor {
         TrocaPaineis.changePanel(event,"TiposProduto.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
 
-
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
 }
