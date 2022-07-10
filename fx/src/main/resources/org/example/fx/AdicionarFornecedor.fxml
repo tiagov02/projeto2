@@ -8,11 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdiconarFornecedor">
+<AnchorPane prefHeight="537.0" prefWidth="755.0" style="-fx-background-color: rgb(192,192,192);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fx.AdiconarFornecedor">
    <children>
       <Pane layoutX="291.0" layoutY="33.0" prefHeight="474.0" prefWidth="361.0" style="-fx-background-color: white;">
          <children>
-            <Text layoutX="19.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADIÇÃO DE COLABORADORES">
+            <Text layoutX="19.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADIÇÃO DE FORNECEDORES">
                <font>
                   <Font size="24.0" />
                </font>
@@ -59,7 +59,7 @@
             </Button>
             <Button fx:id="botaoListaCompras" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaListaCompras" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="LISTA COMPRAS" textFill="#fffbfb">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font size="13.0" />
                </font>
             </Button>
             <Button fx:id="botaoListaEncomendas" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ClicaListarEncomendas" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="LISTAR ENCOMENDAS" textFill="#f8f8f8" />
@@ -70,7 +70,7 @@
             </Button>
             <Button fx:id="botaotiposprodutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="TIPOS DE PRODUTOS" textFill="#fcfafa">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font size="13.0" />
                </font>
             </Button>
             <Button fx:id="botaoDefinicoesColaborador" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesColaborador" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="DEFINIÇÕES DE COLABORADOR" textFill="#fcfafa" />
