@@ -40,7 +40,7 @@ public class GerenteAtualizaPwd implements Initializable {
         lb_pwd1.setText("");
     }
 
-    public void alterarPassword(){
+    public void alterarPassword(javafx.event.ActionEvent event) throws IOException {
         Colaborador c= ColaboradorCRUD.findColaboradores(EncUserTemp.getInstance().getCurrentId());
         String pwd="";
         if(lb_pwd.getText().equals(lb_pwd1.getText())){
@@ -66,6 +66,7 @@ public class GerenteAtualizaPwd implements Initializable {
             dialogoAviso.setTitle("SUCESSO!");
             dialogoAviso.setHeaderText("Alterou a password do colaborador: "+c.getUsername()+" com sucesso!");
             dialogoAviso.showAndWait();
+            clicaDefinicoesColaborador(event);
         }else{
             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
             dialogoAviso.setTitle("ERRO!");
