@@ -119,8 +119,13 @@ public class GerenteListaEncomendas implements Initializable{
             lista.setMorada(fat.getMoradaentregaByIdentrega().getCodpostal() + "  " + fat.getMoradaentregaByIdentrega().getRua() + "  " + fat.getMoradaentregaByIdentrega().getNumporta());
             lista.setTelefoneCliente(fat.getClienteByIdcliente().getTelefone());
             lista.setValorTotal(fat.getValorfatura().floatValue());
-            Estado e=EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
-            lista.setEstadoFatura(e.getDescricao());
+            Estado e;
+            try{
+                e= EstadoFaturaCRUD.getUltimoEstadoFatura(fat.getNumfatura());
+                lista.setEstadoFatura(e.getDescricao());
+            }catch (NoResultException ex){
+                lista.setEstadoFatura("Erro! não existe nenhum estado para esta fatura!");
+            }
             tablelistaencomenda.getItems().add(lista);
         }
     }
