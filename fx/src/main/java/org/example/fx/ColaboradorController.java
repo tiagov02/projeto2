@@ -88,15 +88,16 @@ public class ColaboradorController implements Initializable{
         List<Cliente> clientes = ClienteCRUD.findMelhores();
         try{
             if(clientes.get(0) != null){
-                txt_cli1.setText(clientes.get(0).getNome());
+                txt_cli1.setText(clientes.get(0).getNome()+" // "+clientes.get(0).getTelefone());
             }
-        } catch (IndexOutOfBoundsException ex){
+        }
+        catch(IndexOutOfBoundsException ex){
             txt_cli1.setText(null);
         }
 
         try{
             if(clientes.get(1) != null){
-                txt_cli2.setText(clientes.get(1).getNome());
+                txt_cli2.setText(clientes.get(1).getNome()+ " // "+clientes.get(1).getTelefone());
             }
         }
         catch (IndexOutOfBoundsException ex){
@@ -104,7 +105,7 @@ public class ColaboradorController implements Initializable{
         }
         try{
             if(clientes.get(2) != null){
-                txt_cli3.setText(clientes.get(2).getNome());
+                txt_cli3.setText(clientes.get(2).getNome()+" // "+clientes.get(2).getTelefone());
             }
         }
         catch (IndexOutOfBoundsException ex) {
@@ -112,7 +113,7 @@ public class ColaboradorController implements Initializable{
         }
         try{
             if(clientes.get(3) != null){
-                txt_cli4.setText(clientes.get(3).getNome());
+                txt_cli4.setText(clientes.get(3).getNome()+" // "+clientes.get(3).getTelefone());
             }
         }
         catch (IndexOutOfBoundsException ex) {
@@ -120,7 +121,7 @@ public class ColaboradorController implements Initializable{
         }
         try{
             if(clientes.get(4) != null){
-                txt_cli5.setText(clientes.get(4).getNome());
+                txt_cli5.setText(clientes.get(4).getNome()+" // "+clientes.get(0).getTelefone());
             }
         }
         catch (IndexOutOfBoundsException ex) {

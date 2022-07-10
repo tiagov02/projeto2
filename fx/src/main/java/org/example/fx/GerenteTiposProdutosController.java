@@ -59,27 +59,6 @@ public class GerenteTiposProdutosController implements Initializable {
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
-
-    public void clicaCliente1(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
-    public void clicaCliente2(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
-    public void clicaCliente3(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
-    public void clicaCliente4(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
-    public void clicaCliente5(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "VerDetalhesClientes.fxml", "Loja Produtos Biológicos", GerenteController.class);
-    }
-
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "GerenteMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
