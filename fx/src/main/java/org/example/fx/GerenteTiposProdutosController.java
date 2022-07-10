@@ -31,10 +31,10 @@ public class GerenteTiposProdutosController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
         coldescricao.setCellValueFactory(new PropertyValueFactory<>("seccao"));
         tableTipos.getItems().addAll(TipoProdutoCRUD.findTiposProduto());
+        coldescricao.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
     public void editTipos(){
-        coldescricao.setCellFactory(TextFieldTableCell.forTableColumn());
         coldescricao.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoproduto, String>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Tipoproduto, String> tipoprodutoStringCellEditEvent) {
