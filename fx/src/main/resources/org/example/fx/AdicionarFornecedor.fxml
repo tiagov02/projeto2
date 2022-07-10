@@ -68,7 +68,7 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="botaotiposprodutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaDefinicoesClientes" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="TIPOS DE PRODUTOS" textFill="#fcfafa">
+            <Button fx:id="botaotiposprodutos" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#clicaTipoProduto" prefHeight="50.0" prefWidth="220.0" style="-fx-background-color: transparenttransparent;" text="TIPOS DE PRODUTOS" textFill="#fcfafa">
                <font>
                   <Font size="13.0" />
                </font>
