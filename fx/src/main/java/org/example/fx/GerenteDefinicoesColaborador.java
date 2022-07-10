@@ -48,10 +48,6 @@ public class GerenteDefinicoesColaborador implements Initializable {
 
     public TableView<Colaborador> tableColaborador;
 
-    private String est;
-
-    public String getEst() { return "INATIVO";}
-
     public void editCamposColaborador(){
         colsalario.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
         colsalario.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Colaborador, BigDecimal>>() {
@@ -137,6 +133,8 @@ public class GerenteDefinicoesColaborador implements Initializable {
                 dialogoAviso.showAndWait();
             }
         }
+        tableColaborador.setItems(FXCollections.observableArrayList());
+        initialize(null,null);
     }
 
     public void pesquisarColaborador(){
