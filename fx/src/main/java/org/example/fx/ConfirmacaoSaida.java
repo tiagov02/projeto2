@@ -40,4 +40,7 @@ public class ConfirmacaoSaida {
     public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteListarEncomendas.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
+    public void clicaTipoProduto(javafx.event.ActionEvent event) throws IOException {
+        TrocaPaineis.changePanel(event,"TiposProduto.fxml","Loja Produtos Biológicos",GerenteController.class);
+    }
 }

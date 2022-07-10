@@ -29,4 +29,5 @@ public class ConfirmacaoSaidaColaborador {
         TrocaPaineis.changePanel(event,"ColaboradorListaEncomendas.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
 
+
 }

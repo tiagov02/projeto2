@@ -1,72 +1,60 @@
 package org.example.fx;
 
-import com.example.bd.CRUD.*;
-import com.example.bd.Encrypt.Encriptacao;
-import com.example.bd.Entity.*;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import com.example.bd.CRUD.TipoProdutoCRUD;
+import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
+import com.example.bd.Entity.Tipoproduto;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.TextFieldTableCell;
 import org.example.fx.Logica.TrocaPaineis;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
 
-public class GerenteController implements Initializable {
+public class GerenteTiposProdutosController implements Initializable {
     @FXML
-    private Text txt_acumuladoAnual;
-    @FXML
-    private Text txt_cli1;
-    @FXML
-    private Text txt_cli2;
-    @FXML
-    private Text txt_cli3;
-    @FXML
-    private Text txt_cli4;
-    @FXML
-    private Text txt_cli5;
-    @FXML
-    private Text txt_acumulaGastos;
-    @FXML
-    private Text txt_lucro;
-    @FXML
-    private Button button_cliente1;
-    @FXML
-    private Button button_cliente2;
-    @FXML
-    private Button button_cliente3;
-    @FXML
-    private Button button_cliente4;
-    @FXML
-    private Button button_cliente5;
+    private TableColumn<Tipoproduto, Integer> colId;
 
-    public float gastos(){
-      return EncomendaFornecedorCRUD.findGastos().floatValue();
-     }
+    @FXML
+    private TableColumn<Tipoproduto, String> coldescricao;
 
-     public float vendas(){
-      return FaturaCRUD.findLucros().floatValue();
-     }
+    @FXML
+    private TableView<Tipoproduto> tableTipos;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colId.setCellValueFactory(new PropertyValueFactory<>("idtipoproduto"));
+        coldescricao.setCellValueFactory(new PropertyValueFactory<>("seccao"));
+        tableTipos.getItems().addAll(TipoProdutoCRUD.findTiposProduto());
 
+    }
+    public void editTipos(){
+        coldescricao.setCellFactory(TextFieldTableCell.forTableColumn());
+        coldescricao.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoproduto, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Tipoproduto, String> tipoprodutoStringCellEditEvent) {
+                Tipoproduto tp=tipoprodutoStringCellEditEvent.getRowValue();
+                tp.setSeccao(tipoprodutoStringCellEditEvent.getNewValue());
+                try{
+                    TipoProdutoCRUD.editFornecedor(tp);
+                }catch (IdNaoEncontradoException ex){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.ERROR);
+                    dialogoAviso.setTitle("ERRO!!");
+                    dialogoAviso.setHeaderText(ex.getMessage());
+                    dialogoAviso.showAndWait();
+                }
+            }
+        });
+    }
 
-
-    public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
+    public void clicaLogout(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
-       }
+    }
 
 
     public void clicaCliente1(javafx.event.ActionEvent event) throws IOException{
@@ -119,60 +107,4 @@ public class GerenteController implements Initializable {
     public void clicaTipoProduto(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"TiposProduto.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
-
-   @Override
-   public void initialize(URL url, ResourceBundle resourceBundle) {
-    List<Cliente> clientes = ClienteCRUD.findMelhores();
-    try{
-        if(clientes.get(0) != null){
-            txt_cli1.setText(clientes.get(0).getNome());
-        }
-    }
-    catch(IndexOutOfBoundsException ex){
-        txt_cli1.setText(null);
-    }
-
-    try{
-     if(clientes.get(1) != null){
-      txt_cli2.setText(clientes.get(1).getNome());
-     }
-    }
-    catch (IndexOutOfBoundsException ex){
-     txt_cli2.setText(null);
-    }
-    try{
-     if(clientes.get(2) != null){
-      txt_cli3.setText(clientes.get(2).getNome());
-     }
-    }
-    catch (IndexOutOfBoundsException ex) {
-     txt_cli3.setText(null);
-    }
-    try{
-     if(clientes.get(3) != null){
-      txt_cli4.setText(clientes.get(3).getNome());
-     }
-    }
-    catch (IndexOutOfBoundsException ex) {
-     txt_cli4.setText(null);
-    }
-    try{
-     if(clientes.get(4) != null){
-      txt_cli5.setText(clientes.get(4).getNome());
-     }
-    }
-    catch (IndexOutOfBoundsException ex) {
-     txt_cli5.setText(null);
-    }
-       try{
-           txt_acumulaGastos.setText(Float.toString(gastos()));
-           txt_acumuladoAnual.setText(Float.toString(vendas()));
-           txt_lucro.setText(Float.toString(vendas()-gastos()));
-       }
-       catch(NullPointerException ex){
-           txt_acumuladoAnual.setText(null);
-           txt_acumulaGastos.setText(null);
-           txt_lucro.setText(null);
-       }
-   }
 }
