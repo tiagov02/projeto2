@@ -223,4 +223,5 @@ public class GerenteAtualizaStocks implements Initializable {
     public void clicaDefinicoesFornecedor(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"GerenteFornecedores.fxml","Listagem de encomendas",GerenteController.class);
     }
+
 }
