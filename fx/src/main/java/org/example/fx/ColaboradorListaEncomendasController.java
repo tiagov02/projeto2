@@ -16,6 +16,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.FormatStringConverter;
 import org.example.fx.Logica.TrocaPaineis;
+import org.example.fx.SingleInstance.EncUserTemp;
 
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
@@ -161,26 +162,35 @@ public class ColaboradorListaEncomendasController implements Initializable {
             dialogoAviso.showAndWait();
         }
     }
+    public void getDetalhesEncomenda(javafx.event.ActionEvent event) throws IOException {
+        if(tablelistaencomenda.getSelectionModel().getSelectedItem() != null){
+            EncUserTemp.getInstance().setCurrentId(tablelistaencomenda.getSelectionModel().getSelectedItem().getNumFatura());
+            TrocaPaineis.changePanel(event, "ColaboradorDetalhesEncomenda.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
 
-
-
+        }
+    }
 
     public void clicaPaginaPrincipal(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorMenuPrincipal.fxml", "Loja Produtos Biológicos", ColaboradorController.class);
     }
 
     public void clicaListaCompras(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "ColaboradorListaCompras.fxml", "Loja Produtos Biológicos", ColaboradorListaComprasController.class);
     }
 
-    public void ClicaListarEncomendas(javafx.event.ActionEvent event) throws IOException {
-        TrocaPaineis.changePanel(event,"ColaboradorListaEncomendas.fxml","Listagem de encomendas",GerenteController.class);
+    public void clicaListaEncomendas(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorListaEncomendas.fxml", "Loja Produtos Biológicos", ColaboradorListaEncomendasController.class);
     }
 
-    public void clicaAtualizaStockProdutos(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    public void clicaAtualizaStocks(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
     }
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
+    public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{
+        TrocaPaineis.changePanel(event, "AdicionarProdutoListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
+    }
+
+
 }
