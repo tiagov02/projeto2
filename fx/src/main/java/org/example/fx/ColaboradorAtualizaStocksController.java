@@ -207,7 +207,7 @@ public class ColaboradorAtualizaStocksController implements Initializable {
         TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaidaColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
 
 }

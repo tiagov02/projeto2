@@ -3,13 +3,16 @@ package org.example.fx;
 import com.example.bd.CRUD.ProdutoCRUD;
 import com.example.bd.CRUD.exceptions.IdNaoEncontradoException;
 import com.example.bd.Entity.Produto;
+import com.example.bd.Entity.Tipoproduto;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -128,6 +131,7 @@ public class GerenteAtualizaStocks implements Initializable {
             }
         });
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

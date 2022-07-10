@@ -119,7 +119,7 @@ public class ColaboradorListaComprasController implements Initializable {
         TrocaPaineis.changePanel(event, "ColaboradorAtualizaStocks.fxml", "Loja Produtos Biológicos", ColaboradorAtualizaStocksController.class);
     }
     public void clicaLogout(javafx.event.ActionEvent event) throws IOException{
-        TrocaPaineis.changePanel(event, "ConfirmacaoSaida.fxml", "Loja Produtos Biológicos", GerenteController.class);
+        TrocaPaineis.changePanel(event, "ConfirmacaoSaidaColaborador.fxml", "Loja Produtos Biológicos", GerenteController.class);
     }
     public void clicaadicionarProduto(javafx.event.ActionEvent event) throws IOException{
         TrocaPaineis.changePanel(event, "AdicionarProdutoListaCompras.fxml", "Loja Produtos Biológicos", GerenteController.class);
