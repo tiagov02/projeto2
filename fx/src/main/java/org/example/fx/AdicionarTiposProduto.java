@@ -3,12 +3,16 @@ package org.example.fx;
 import com.example.bd.CRUD.TipoProdutoCRUD;
 import com.example.bd.Entity.Tipoproduto;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import org.example.fx.Logica.TrocaPaineis;
 
 import javax.persistence.RollbackException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AdicionarTiposProduto {
     @FXML
@@ -74,5 +78,6 @@ public class AdicionarTiposProduto {
     public void clicaTipoProduto(javafx.event.ActionEvent event) throws IOException {
         TrocaPaineis.changePanel(event,"TiposProduto.fxml","Loja Produtos Biológicos",GerenteController.class);
     }
+
 
 }

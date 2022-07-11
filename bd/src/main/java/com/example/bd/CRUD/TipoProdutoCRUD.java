@@ -72,7 +72,7 @@ public class TipoProdutoCRUD {
     }
 
 
-    public static void editFornecedor(Tipoproduto tipo) throws IdNaoEncontradoException {
+    public static void editTipoProduto(Tipoproduto tipo) throws IdNaoEncontradoException {
         EntityManager em = null;
         try {
             em = getEntityManager();
