@@ -35,8 +35,6 @@ public class RegistoController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //cli.setPassword(pwd);
-        //cli.setIdtipocliente(1);
         Codpostais cod= CodPostaisCRUD.findCodPostal(cli.getCodpostal());
         if(cod==null){
             Codpostais cd= new Codpostais();
@@ -52,7 +50,6 @@ public class RegistoController {
         cliente.setTelefone(cli.getTelefone());
         cliente.setNumporta(cli.getNumporta());
         cliente.setRua(cli.getRua());
-
         try{
             ClienteCRUD.createCliente(cliente);
         }catch (PersistenceException ex){
