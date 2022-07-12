@@ -12,7 +12,7 @@ public class ClienteCRUD implements Serializable {
     private static final String PERSISTENCE_UNIT_NAME = "default";
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
-    //public ClienteCRUD(){}
+
 
     public static EntityManager getEntityManager() {
         return emf.createEntityManager();
